@@ -5,6 +5,10 @@ Step 1: Installing Emscripten
 
 There are multiple approach to install Emscripten, all listed on the [SDK](https://github.com/kripken/emscripten/wiki/Emscripten-SDK) page of the project. We have made it easy for all platforms.
 
+
+
+ici : [la](README) 
+
 ### Windows
 
 -   Install the full package of the [Emscripten SDK 1.22](http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#windows)
