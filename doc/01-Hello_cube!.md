@@ -146,7 +146,7 @@ By default, our `PerspectiveCamera` will be in (0, 0, 0) looking down the -Z axi
 ```
  cube-\>addComponent(Transform::create(Matrix4x4::create()-\>translation(0.f, 0.f, -5.f))); 
  
- ```
+```
 
 
 Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](Moving_objects.md) tutorial
@@ -158,7 +158,7 @@ We can then add our cube directly to the scene root using the `Node::addChild()`
 ```
  root-\>addChild(cube); 
  
- ```
+```
 
 
 Step 5: Render the scene
@@ -197,7 +197,9 @@ To make our cube rotate a bit more at each frame, we simply add this line to our
 ` cube->component<Transform>()->matrix()->prependRotationY(.01f);`
 ` sceneManager->nextFrame(t, dt);`
 
-}); ```
+});
+
+```
 
 
 Final code
