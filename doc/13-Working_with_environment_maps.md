@@ -18,13 +18,13 @@ Prerequisites
 
 To fully understand the rest of the tutorial, you need to know how to setup a scene with a phong material, and how to load textures:
 
--   [Working with the PhongMaterial](doc/Working_with_the_PhongMaterial.md)
--   [Loading and using textures](doc/Loading_and_using_textures.md)
+-   [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
+-   [Loading and using textures](Loading_and_using_textures.md)
 
 Step 0: Setup a scene
 ---------------------
 
-The setup will be the same that the one at the end of the [Working with the PhongMaterial](doc/Working_with_the_PhongMaterial.md) tutorial:
+The setup will be the same that the one at the end of the [Working with the PhongMaterial](Working_with_the_PhongMaterial.md) tutorial:
 
 ```
 
@@ -192,5 +192,5 @@ int main(int argc, char\*\* argv) {
 Where to go from here
 ---------------------
 
-`environmentMap` can me mixed with `specularMap` ([Working with specular maps](doc/Working_with_specular_maps_.md)) and/or `normalMap` ([Working with normal maps ](doc/Working_with_normal_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial reference#Full_Example).
+`environmentMap` can me mixed with `specularMap` ([Working with specular maps](Working_with_specular_maps_.md)) and/or `normalMap` ([Working with normal maps ](Working_with_normal_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial reference#Full_Example).
 

@@ -1,4 +1,4 @@
-In the previous tutorial, we've seen [how to bind the model to world matrix](doc/Binding_the_model_to_world_transform.md) in our effects. Using the same binding mechanism, we can bind the camera properties. Especially the "view matrix", which is used to transform "global" world-space 3D vertices into the camera relative view-space.
+In the previous tutorial, we've seen [how to bind the model to world matrix](Binding_the_model_to_world_transform.md) in our effects. Using the same binding mechanism, we can bind the camera properties. Especially the "view matrix", which is used to transform "global" world-space 3D vertices into the camera relative view-space.
 
 To do this, we will use data binding to :
 
@@ -28,7 +28,7 @@ Here is how we can bind the camera transform and projection in our effect using 
 } ```
 
 
-If you read the [Binding the model to world transform](doc/Binding_the_model_to_world_transform.md) tutorial, you'll notice that the `uniformBindings` we declare here are a bit different. This is because we have to declare where our bindings properties should be read from. Our `uniformBindings` declare the following fields:
+If you read the [Binding the model to world transform](Binding_the_model_to_world_transform.md) tutorial, you'll notice that the `uniformBindings` we declare here are a bit different. This is because we have to declare where our bindings properties should be read from. Our `uniformBindings` declare the following fields:
 
 -   `property`: the name of the data property that should be set in our application;
 -   `source`: where the data should be read from.
@@ -39,7 +39,7 @@ The `source` declaration can have three values:
 -   `renderer`: the bound values should be read from the node that hosts the `Renderer` component;
 -   `root`: the bound values should be read from the scene root node.
 
-By default, the `source` field is set to `target`. But in the case of our camera, the `PerspectiveCamera` is located on the same node than the `Renderer`. Thus, we set the `source` field to `renderer`. To learn more about data binding and binding sources, please read the [Understanding data binding](doc/Understanding_data_binding.md) article.
+By default, the `source` field is set to `target`. But in the case of our camera, the `PerspectiveCamera` is located on the same node than the `Renderer`. Thus, we set the `source` field to `renderer`. To learn more about data binding and binding sources, please read the [Understanding data binding](Understanding_data_binding.md) article.
 
 The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is the result of the view matrix mutiplied with the projection. Using this property will save us some computation in our vertex shader:
 
@@ -73,7 +73,7 @@ The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is
 } ```
 
 
-You can learn more about the `\*.effect` files format in the [Effect files format reference](doc/Effect_files_format_reference.md) article.
+You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
 
 Step 2: Updating the application code
 -------------------------------------
@@ -90,7 +90,7 @@ Now that our view matrix is bound, we don't have to set it manually. But we have
 root-\>addChild(camera); ```
 
 
-Note that because we will likely need to move and orient our camera, we also add a `Transform` component to our `camera` scene node. To learn more about this component, you can read the [Moving objects](doc/Moving_objects.md) tutorial.
+Note that because we will likely need to move and orient our camera, we also add a `Transform` component to our `camera` scene node. To learn more about this component, you can read the [Moving objects](Moving_objects.md) tutorial.
 
 **Attention!** Always make sure the `PerspectiveCamera` is added on the same node as the `Renderer` component that is supposed to perform the rendering operations. As every scene might have multiple cameras, their respective `[data::Provider`](data::Provider`) has to be added to the `[data::Container`](data::Container`) of the same node than the `Renderer`. In short, the properties of a `PerspectiveCamera` will be available only to the `Renderer` that is on the same node; which makes it possible to have multiple camera/renderer in the same scene.
 

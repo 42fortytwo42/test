@@ -71,7 +71,7 @@ or the `BasicMaterial::set()` dynamic method directly:
 
 If you set the `diffuseMap`, the `diffuseColor` property will not be used anymore. This is done thanks to Minko's support for "über-shaders". This feature allows the rendering engine to use rendering programs - or shaders - that can handle many different situations such as in this case rendering with a texture or a solid color. This is a very efficient solution to make it easy to customize rendering with little effort.
 
-You can read more about textures in the [Loading and using textures](doc/Loading_and_using_textures.md) tutorial.
+You can read more about textures in the [Loading and using textures](Loading_and_using_textures.md) tutorial.
 
 Final code
 ----------

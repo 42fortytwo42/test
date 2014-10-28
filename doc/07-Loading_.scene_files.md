@@ -42,7 +42,7 @@ auto complete = sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLi
 sceneManager-\>assets()-\>load(); ```
 
 
-You can look at the [serializer example](doc/ExampleSerializer.md) for a more detailed example of importing a .scene file.
+You can look at the [serializer example](ExampleSerializer.md) for a more detailed example of importing a .scene file.
 
 Final Code
 ==========

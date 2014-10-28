@@ -1,4 +1,4 @@
-This tutorial requires that your have read [Create a new application](doc/Create_a_new_application.md). We'll suppose your application is named `my-project`.
+This tutorial requires that your have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named `my-project`.
 
 Step 1: Install the toolchain
 -----------------------------
@@ -61,5 +61,5 @@ If you also want to erase generated solution files (`.sln`, `.vcxproj` files), y
 Step 6: Support more targets (optional)
 ---------------------------------------
 
-Your application should now target Windows in one click. You can also [turn your native application into an HTML5 one](doc/Targeting_HTML5.md)!
+Your application should now target Windows in one click. You can also [turn your native application into an HTML5 one](Targeting_HTML5.md)!
 

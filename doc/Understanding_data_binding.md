@@ -9,7 +9,7 @@ To understand what could be the different issues in this process, we will start 
 Use case
 --------
 
-To understand how our CPU side code collaborates with the GPU side program, let's take a simple example. The following code belongs to the [Create your first custom effect](doc/Create_your_first_custom_effect.md) tutorial:
+To understand how our CPU side code collaborates with the GPU side program, let's take a simple example. The following code belongs to the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial:
 
 asset/effect/MyCustomEffect.effect ```
  {
@@ -267,7 +267,7 @@ There are 4 different kinds of bindings:
 
 **A binding is declared with at least a property name and a source.** The property name will be used to get the corresponding value from a `[data::Container`](data::Container`). The "source" will tell which container should be read. The source of a binding can be set to `<data::BindingSource>::TARGET` ("target"), `<data::BindingSource>::RENDERER` ("renderer") or `<data::BindingSource>::ROOT` ("root").
 
-Here is an example of how uniform bindings can be declared in an `\*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](doc/Effect_files_format_reference.md)):
+Here is an example of how uniform bindings can be declared in an `\*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](Effect_files_format_reference.md)):
 
 ```
  "uniformBindings" : {
@@ -331,7 +331,7 @@ On the diagram, you can see that:
 Where to go from there
 ----------------------
 
-To learn more about how to work with uniform bindings, please read the [Binding the model to world transform](doc/Binding_the_model_to_world_transform.md) or the [Binding the camera](doc/Binding_the_camera.md) tutorial.
+To learn more about how to work with uniform bindings, please read the [Binding the model to world transform](Binding_the_model_to_world_transform.md) or the [Binding the camera](Binding_the_camera.md) tutorial.
 
 To learn more about how to work with macro bindings, please read the [Authoring über-shaders](Authoring über-shaders) tutorial.
 

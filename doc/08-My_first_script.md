@@ -9,14 +9,14 @@ Scripting in Lua is very cool because you get the best of both worlds:
 
 Before we start, you should read the following tutorials:
 
--   [Create a new application](doc/Create_a_new_application.md)
+-   [Create a new application](Create_a_new_application.md)
 -   [Hello cube!](Hello cube!)
--   [How to enable a plugin](doc/How_to_enable_a_plugin.md)
+-   [How to enable a plugin](How_to_enable_a_plugin.md)
 
 Step 0: Enabling the Lua plugin
 -------------------------------
 
-The very first step is to make sure we can use Lua scripts in our applications. To do this, we're going to follow the [Create a new application](doc/Create_a_new_application.md) tutorial and then the [How to enable a plugin](doc/How_to_enable_a_plugin.md) tutorial to enable the "lua" plugin. Your `premake5.lua` file should look like this:
+The very first step is to make sure we can use Lua scripts in our applications. To do this, we're going to follow the [Create a new application](Create_a_new_application.md) tutorial and then the [How to enable a plugin](How_to_enable_a_plugin.md) tutorial to enable the "lua" plugin. Your `premake5.lua` file should look like this:
 
 ```
  dofile(os.getenv("MINKO\HOME") .. "/sdk.lua")

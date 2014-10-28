@@ -5,7 +5,7 @@ If you are importing a `collada` file (`.dae`), the animations that are present 
 
 ### Importing animations from a collada file
 
-If you haven't already, please read the [Importing assets](doc/Importing_assets.md) tutorial. After importing your collada file, add a new instance of the symbol in your scene. Then, either unlink the symbol or go inside it.
+If you haven't already, please read the [Importing assets](Importing_assets.md) tutorial. After importing your collada file, add a new instance of the symbol in your scene. Then, either unlink the symbol or go inside it.
 
 ![](masteranim.png "masteranim.png")
 

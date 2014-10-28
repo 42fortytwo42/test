@@ -86,5 +86,5 @@ Go to `bin/html5/release`, and open the generated HTML page with [Firefox](http:
 
 In some cases, you will need to access the page through a web server running on your computer. Use your favorite ([Apache](http://httpd.apache.org/), [nginx](http://wiki.nginx.org/Main), [pow](http://pow.cx/), [IIS](http://www.iis.net/)) and set up your document root to point to `bin/html5/release`. You can now reach your application though you local domain as seamlessly as you would on the Internet.
 
-At this point, you should be interested in debugging your application. Have a look at [Debugging HTML5 applications](doc/Debugging_HTML5_applications.md).
+At this point, you should be interested in debugging your application. Have a look at [Debugging HTML5 applications](Debugging_HTML5_applications.md).
 

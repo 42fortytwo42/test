@@ -1,4 +1,4 @@
-This tutorial requires that your have read [Create a new application](doc/Create_a_new_application.md). We'll suppose your application is named `my-project`.
+This tutorial requires that your have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named `my-project`.
 
 Step 1: Installing the toolchain
 --------------------------------
@@ -31,7 +31,7 @@ sudo port install gcc48 sudo port select --set gcc mp-gcc48 ```
 Step 2: Generate the solution
 -----------------------------
 
-While Xcode project support is part of the short-term roadmap (it's already available for [iOS](doc/Targetting_iOS.md)), only \`Makefile\`s are supported at the moment. A script is provided to generate a GNU Make-compatible solution with default options:
+While Xcode project support is part of the short-term roadmap (it's already available for [iOS](Targetting_iOS.md)), only \`Makefile\`s are supported at the moment. A script is provided to generate a GNU Make-compatible solution with default options:
 
 ```
  script/solution\gmake\gcc.sh ```
@@ -124,5 +124,5 @@ If you also want to erase generated solution files (`Makefile`s), you can use a 
 Step 6: Support more targets (optional)
 ---------------------------------------
 
-Your application should now target OS X in one click. You can also [turn your native application into an HTML5 one](doc/Targeting_HTML5.md)!
+Your application should now target OS X in one click. You can also [turn your native application into an HTML5 one](Targeting_HTML5.md)!
 

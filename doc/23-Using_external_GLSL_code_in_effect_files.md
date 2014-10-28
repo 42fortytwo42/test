@@ -37,9 +37,9 @@ You also have to remember that you can always choose between declaring some `uni
 
 To learn how to setup `uniformBindings`, you can read the following tutorials:
 
--   [Creating custom materials](doc/Creating_custom_materials.md)
--   [Binding the model to world transform](doc/Binding_the_model_to_world_transform.md)
--   [Binding the camera](doc/Binding_the_camera.md)
+-   [Creating custom materials](Creating_custom_materials.md)
+-   [Binding the model to world transform](Binding_the_model_to_world_transform.md)
+-   [Binding the camera](Binding_the_camera.md)
 
 Final code
 ----------

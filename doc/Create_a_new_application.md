@@ -25,7 +25,7 @@ It's more than likely that your application will actually require some Minko plu
  minko.plugin.enable("jpeg") ```
 
 
-If the plugin you want to use is not listed (see [Plugin compatibility matrix](doc/Plugin_compatibility_matrix.md) ), just add it yourself:
+If the plugin you want to use is not listed (see [Plugin compatibility matrix](Plugin_compatibility_matrix.md) ), just add it yourself:
 
 ```
  minko.plugin.enable("my-plugin") ```
@@ -35,7 +35,7 @@ where "my-plugin" is a registered plugin of the SDK (typically listed in the `pl
 
 **The SDL plugin is enabled by default** because it is required to build the default application. Most of the examples in the SDK use the SDL Minko plugin which requires the SDL2 library. Yet, the framework itself, and all of its plugins (except the SDL one of course) should compile just fine without SDL. You are free to use your own context/window manager library, but we recommend to use SDL as it works out of the box on most platforms and allows you to write 100% cross-platform code. If you want to use your own context/window manager, disable it by commenting out the corresponding line.
 
-You can read more about enabling plugins in the [How to enable a plugin](doc/How_to_enable_a_plugin.md) tutorial.
+You can read more about enabling plugins in the [How to enable a plugin](How_to_enable_a_plugin.md) tutorial.
 
 Step 3: Target your platform
 ----------------------------
@@ -49,18 +49,18 @@ In your application root, you will find a `script` directory containing scripts 
 
 To learn more about this step, take some time to read the tutorials for each platform:
 
--   [Targeting Windows](doc/Targeting_Windows.md)
--   [Targeting OS X](doc/Targeting_OS_X.md)
--   [Targeting Linux](doc/Targeting_Linux.md)
--   [Targeting iOS](doc/Targeting_iOS.md)
--   [Targeting Android](doc/Targeting_Android.md) (coming with the beta 2...)
--   [Targeting HTML5](doc/Targeting_HTML5.md)
--   [Targeting Flash](doc/Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
+-   [Targeting Windows](Targeting_Windows.md)
+-   [Targeting OS X](Targeting_OS_X.md)
+-   [Targeting Linux](Targeting_Linux.md)
+-   [Targeting iOS](Targeting_iOS.md)
+-   [Targeting Android](Targeting_Android.md) (coming with the beta 2...)
+-   [Targeting HTML5](Targeting_HTML5.md)
+-   [Targeting Flash](Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
 
 This will teach you how to build and run your application. Now, you can start coding in your favorite environment.
 
 Step 4: Go further! (optional)
 ------------------------------
 
-Check out our [ application examples](doc/Examples.md). It's a great way to discover and learn the cool new features we've implemented!
+Check out our [ application examples](Examples.md). It's a great way to discover and learn the cool new features we've implemented!
 

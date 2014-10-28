@@ -1,4 +1,4 @@
-In this tutorial, we will see how to create custom materials. The code for this tutorial will be based on the code done in the [Create your first custom effect](doc/Create_your_first_custom_effect.md) tutorial.
+In this tutorial, we will see how to create custom materials. The code for this tutorial will be based on the code done in the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial.
 
 Before we begin it is important to understand the difference between a `Material` - such as the `BasicMaterial` - and an `Effect` - such as the `Basic.effect`:
 
@@ -75,7 +75,7 @@ The `uniformBindings` will affect:
 
 In this case, our effect as a single pass so declaring the `uniformBindings` at the effect root on in the pass object will make no difference. But if you write an effect with multiple passes, you might want to take this into consideration to have per-pass `uniformBindings`.
 
-You can learn more about the `\*.effect` files format in the [Effect files format reference](doc/Effect_files_format_reference.md) article.
+You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
 
 Step 2: Setting up our custom material
 --------------------------------------

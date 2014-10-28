@@ -1,7 +1,7 @@
 Step 1: Downloading and extracting the SDK
 ------------------------------------------
 
-**During the beta the SDK is only installable from the sources and this step does not work. Please folow the [Getting started with Minko 3 beta 1](doc/Getting_started_with_Minko_3_beta_1.md) tutorial.**
+**During the beta the SDK is only installable from the sources and this step does not work. Please folow the [Getting started with Minko 3 beta 1](Getting_started_with_Minko_3_beta_1.md) tutorial.**
 
 \<strike\>The first step is to download the Minko SDK and extract it wherever you want on your local machine. The archive download is available here:
 
@@ -53,11 +53,11 @@ Step 3: Installing toolsets
 
 Now that's you've got the SDK set up, let's use Minko. Depending on host and target platforms, you have multiple choices to build a Minko application. Here's a collection of tutorials you might want to read:
 
--   [Targeting Windows](doc/Targeting_Windows.md)
--   [Targeting OS X](doc/Targeting_OS_X.md)
--   [Targeting Linux](doc/Targeting_Linux.md)
--   [Targeting iOS](doc/Targeting_iOS.md)
--   [Targeting Android](doc/Targeting_Android.md) (coming with the beta 2...)
--   [Targeting HTML5](doc/Targeting_HTML5.md)
--   [Targeting Flash](doc/Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
+-   [Targeting Windows](Targeting_Windows.md)
+-   [Targeting OS X](Targeting_OS_X.md)
+-   [Targeting Linux](Targeting_Linux.md)
+-   [Targeting iOS](Targeting_iOS.md)
+-   [Targeting Android](Targeting_Android.md) (coming with the beta 2...)
+-   [Targeting HTML5](Targeting_HTML5.md)
+-   [Targeting Flash](Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
 

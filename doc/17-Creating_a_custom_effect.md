@@ -42,7 +42,7 @@ As you can see, `\*.effect` files are declared using the JSON format. Here are a
 -   the `attributeBindings` field declares an object that will map our effect's shaders (vertex) attribute declarations to actual engine data properties
 -   the `passes` field declares an array of objects where each object is a rendering pass made mainly of a [vertex shader](https://en.wikipedia.org/wiki/Shader#Vertex_shaders) (the "vertexShader" field) and a [fragment shader](https://en.wikipedia.org/wiki/Shader#Pixel_shaders) (the "fragmentShader" field).
 
-You can learn more about the `\*.effect` files format in the [Effect files format reference](doc/Effect_files_format_reference.md) article.
+You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
 
 Step 2 : The vertex shader
 --------------------------
@@ -235,7 +235,7 @@ Where to go from there
 
 As you might have noticed, our `Effect` is not really easy to work with:
 
--   setting uniforms will affect all the objects rendered with that `Effect`; to solve this you can read the [Creating custom materials](doc/Creating_custom_materials.md) tutorial;
--   we have to deal with our model to world transform manually; to solve this you can read the [Binding the model to world transform](doc/Binding_the_model_to_world_transform.md) tutorial;
--   we are setting/updating the camera manually with a view and a project matrix; to solve this you can read the [Binding the camera](doc/Binding_the_camera.md) tutorial
+-   setting uniforms will affect all the objects rendered with that `Effect`; to solve this you can read the [Creating custom materials](Creating_custom_materials.md) tutorial;
+-   we have to deal with our model to world transform manually; to solve this you can read the [Binding the model to world transform](Binding_the_model_to_world_transform.md) tutorial;
+-   we are setting/updating the camera manually with a view and a project matrix; to solve this you can read the [Binding the camera](Binding_the_camera.md) tutorial
 

@@ -137,6 +137,6 @@ Where to go from there...
 
 Now that you know how to load effects, you should read one of the following tutorials:
 
--   [Create your first custom effect](doc/Create_your_first_custom_effect.md)
+-   [Create your first custom effect](Create_your_first_custom_effect.md)
 -   [Creating a simple post-processing effect](Creating a simple post-processing effect)
 

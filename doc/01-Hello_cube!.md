@@ -1,7 +1,7 @@
 Step 0: Bootstrap the application project
 -----------------------------------------
 
-The very first step is to follow the [Create a new application](doc/Create_a_new_application.md) tutorial to bootstrap your appliation project/solution.
+The very first step is to follow the [Create a new application](Create_a_new_application.md) tutorial to bootstrap your appliation project/solution.
 
 Step 1: Initialize the window
 -----------------------------
@@ -58,7 +58,7 @@ The `AssetLibrary::queue()` method will enlist all the file names that you want 
 
 The `Basic.effect` file itself is not in your application: it's in Minko's core framework. Minko's build system is made in such a way that this kind of required files are copied automatically using post-build commands. Thus, you don't have to worry about the actual location of the `Basic.effect` file for now.
 
-If you want to learn more about effects loading, you can read the [Loading effects](doc/Loading_effects.md) tutorial.
+If you want to learn more about effects loading, you can read the [Loading effects](Loading_effects.md) tutorial.
 
 Step 3: Initialize the scene
 ----------------------------
@@ -130,7 +130,7 @@ The `Basic.effect` expects the `diffuseColor` material value to be set to an RGB
  cubeMaterial-\>diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)); ```
 
 
-You can learn more about the `BasicMaterial` in the [Working with the BasicMaterial](doc/Working_with_the_BasicMaterial.md) tutorial.
+You can learn more about the `BasicMaterial` in the [Working with the BasicMaterial](Working_with_the_BasicMaterial.md) tutorial.
 
 ### Move the cube
 
@@ -140,7 +140,7 @@ By default, our `PerspectiveCamera` will be in (0, 0, 0) looking down the -Z axi
  cube-\>addComponent(Transform::create(Matrix4x4::create()-\>translation(0.f, 0.f, -5.f))); ```
 
 
-Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](doc/Moving_objects.md) tutorial
+Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](Moving_objects.md) tutorial
 
 ### Add the cube to the scene
 

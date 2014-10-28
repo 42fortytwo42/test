@@ -25,7 +25,7 @@ With this submenu, you can add one of the following types of lights :
 -   Spot light
 -   Point light
 
-For more details on each of these types of light, see the [Working with lights](doc/Working_with_lights.md) tutorial.
+For more details on each of these types of light, see the [Working with lights](Working_with_lights.md) tutorial.
 
 #### Add Primitive
 

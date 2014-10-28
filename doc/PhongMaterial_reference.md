@@ -7,7 +7,7 @@ To create a `phongMaterial`, we simply call `material::PhongMaterial::create` me
  auto phongMaterial = material::PhongMaterial::create(); ```
 
 
-You'll find more information about the `phongMaterial` in this tutorial [Working with the PhongMaterial](doc/Working_with_the_PhongMaterial.md)
+You'll find more information about the `phongMaterial` in this tutorial [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
 
 Properties of the phong material
 --------------------------------
@@ -16,12 +16,12 @@ We'll show the different properties of the `phongMaterial` on three different sc
 
 Each set of properties has a dedicated tutorial in the **tutorials** section:
 
--   [Working with the PhongMaterial](doc/Working_with_the_PhongMaterial.md), to create a PhongMaterial then change the `diffuseColor`, `diffuseMap`, `specularColor` and the `shininess`
+-   [Working with the PhongMaterial](Working_with_the_PhongMaterial.md), to create a PhongMaterial then change the `diffuseColor`, `diffuseMap`, `specularColor` and the `shininess`
 -   [[Working with normal maps | Working with normal maps]
--   [ Working with specular maps](doc/Working_with_specular_maps_.md)
--   [ Working with environment maps](doc/Working_with_environment_maps_.md)
+-   [ Working with specular maps](Working_with_specular_maps_.md)
+-   [ Working with environment maps](Working_with_environment_maps_.md)
 
-The `phongMaterial` has access to a `diffuseColor` and a `diffuseMap`. Those properties can be set in the same way than the `basicMaterial` ([Working with the BasicMaterial](doc/Working_with_the_BasicMaterial.md)).
+The `phongMaterial` has access to a `diffuseColor` and a `diffuseMap`. Those properties can be set in the same way than the `basicMaterial` ([Working with the BasicMaterial](Working_with_the_BasicMaterial.md)).
 
 | Right                                                    | Left                                       | Front                                        |
 |----------------------------------------------------------|--------------------------------------------|----------------------------------------------|
@@ -39,7 +39,7 @@ Specular color is the color of the light specular reflection. The default value 
 | 0xFF0000FF     | ![](RedSpecular1.PNG "RedSpecular1.PNG")     | ![](RedSpecular2.PNG "RedSpecular2.PNG")     | ![](RedSpecular3.PNG "RedSpecular3.PNG")     |
 | 0xC0FFC0FF     | ![](GreenSpecular1.PNG "GreenSpecular1.PNG") | ![](GreenSpecular2.PNG "GreenSpecular2.PNG") | ![](GreenSpecular3.PNG "GreenSpecular3.PNG") |
 
-To have more information about specular color : [Working with the PhongMaterial](doc/Working_with_the_PhongMaterial.md)
+To have more information about specular color : [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
 
 ### Shininess
 
@@ -55,7 +55,7 @@ Empirically, the shininess parameter controls how sharp specular reflections wil
 | 16        | ![](Shiniess16_1.PNG "Shiniess16_1.PNG")   | ![](Shiniess16_2.PNG "Shiniess16_2.PNG")   | ![](Shiniess16_3.PNG "Shiniess16_3.PNG")   |
 | 64        | ![](Shiniess64_1.PNG "Shiniess64_1.PNG")   | ![](Shiniess64_2.PNG "Shiniess64_2.PNG")   | ![](Shiniess64_3.PNG "Shiniess64_3.PNG")   |
 
-To have more information about shininess : [Working with the PhongMaterial](doc/Working_with_the_PhongMaterial.md)
+To have more information about shininess : [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
 
 ### Environment Map & Environment Alpha
 
@@ -75,7 +75,7 @@ phongMaterial-\>environmentMap(assets-\>texture("texture/envmap.png"), render::E
 |--------------------------------------------|--------------------------------|--------------------------------|--------------------------------|
 | ![](Ditchriverii9.jpg "Ditchriverii9.jpg") | ![](Envmap1.PNG "Envmap1.PNG") | ![](Envmap2.PNG "Envmap2.PNG") | ![](Envmap3.PNG "Envmap3.PNG") |
 
-If you need more information about environment map : [ Working with environment maps](doc/Working_with_environment_maps_.md)
+If you need more information about environment map : [ Working with environment maps](Working_with_environment_maps_.md)
 
 ### Normal Map
 
@@ -96,7 +96,7 @@ phongMaterial-\>normalMap(assets-\>texture("texture/normalmap.png")); ```
 | ![](TextureNormal3.jpg "TextureNormal3.jpg")    | ![](Normal3_1.PNG "Normal3_1.PNG") | ![](Normal3_2.PNG "Normal3_2.PNG") | ![](Normal3_3.PNG "Normal3_3.PNG") |
 ||
 
-If you need more information about normal mapping : [Working with normal maps](doc/Working_with_normal_maps_.md)
+If you need more information about normal mapping : [Working with normal maps](Working_with_normal_maps_.md)
 
 ### Specular Map
 
@@ -110,7 +110,7 @@ If you need more information about normal mapping : [Working with normal maps](d
 | ![](Texturespecular3.jpg "Texturespecular3.jpg")  | ![](SpecularMap3_1.PNG "SpecularMap3_1.PNG") | ![](SpecularMap3_2.PNG "SpecularMap3_2.PNG") | ![](SpecularMap3_3.PNG "SpecularMap3_3.PNG") |
 ||
 
-If you need more information about specular maps : [ Working with specular maps](doc/Working_with_specular_maps_.md)
+If you need more information about specular maps : [ Working with specular maps](Working_with_specular_maps_.md)
 
 Full Example
 ------------

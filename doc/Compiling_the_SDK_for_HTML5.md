@@ -122,5 +122,5 @@ Step 5: Enjoy!
 
 If you have compiled the examples/tutorials, you can try to launch them by opening the corresponding HTML file that will be located in the `bin/html5/release` directory of each project. **Make sure you open those files from an actual web server and not directly from your file system (do not use "<file:///>").**
 
-You can now use your SDK to [Create a new application](doc/Create_a_new_application.md).
+You can now use your SDK to [Create a new application](Create_a_new_application.md).
 

@@ -19,7 +19,7 @@ Next is the spacial reference for the gizmos. You can move them in `local` space
 
 Finally, you can choose the point used as pivot point for the rotations. `center` uses the center of the geometric center of the mesh/group, and `pivot` uses either the origin of the mesh/group, or the pivot point if you provided one. ![](gizmo5.png "fig:gizmo5.png")
 
-For more details on transform manipulation, see the [Manipulating transforms](doc/Manipulating_transforms.md) tutorial.
+For more details on transform manipulation, see the [Manipulating transforms](Manipulating_transforms.md) tutorial.
 
 Animations and physics control
 ==============================
@@ -98,7 +98,7 @@ Camera type
 
 This button allows you to switch between the `Arc Ball` camera (rotating around the selected node) and the `First Person` camera (moving freely in the scene).
 
-For more details on moving the camera in the scene, see the [Moving the camera in the scene](doc/Moving_the_camera_in_the_scene.md) tutorial.
+For more details on moving the camera in the scene, see the [Moving the camera in the scene](Moving_the_camera_in_the_scene.md) tutorial.
 
 Multi-selection
 ===============

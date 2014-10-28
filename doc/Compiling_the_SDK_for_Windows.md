@@ -62,5 +62,5 @@ This should produce an archive in the root of the SDK which contains all the bin
 Step 6: Enjoy!
 --------------
 
-Now use your SDK to [Create a new application](doc/Create_a_new_application.md).
+Now use your SDK to [Create a new application](Create_a_new_application.md).
 

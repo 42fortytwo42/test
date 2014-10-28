@@ -110,5 +110,5 @@ Then try the step 4 again. Your solution should contain a new SDL2 project that 
 Step 6: Enjoy!
 --------------
 
-Now use your SDK to [Create a new application](doc/Create_a_new_application.md).
+Now use your SDK to [Create a new application](Create_a_new_application.md).
 
