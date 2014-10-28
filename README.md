@@ -7,7 +7,7 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 
 
 
-ici : [la](README) 
+ici : [la](README.md "test") 
 
 ### Windows
 
