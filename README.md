@@ -1,94 +1,179 @@
-Step 1: Installing Emscripten
------------------------------
+This tutorial will introduce normal mapping and how to use it in your scene.
 
-[Emscripten](https://github.com/kripken/emscripten/) is an LLVM-to-JavaScript compiler. It takes LLVM bitcode - which can be generated from C/C++, using llvm-gcc or clang, or any other language that can be converted into LLVM - and compiles that into JavaScript, which can be run on the web (or anywhere else JavaScript can run).
+What is a normal map
+--------------------
 
-There are multiple approach to install Emscripten, all listed on the [SDK](https://github.com/kripken/emscripten/wiki/Emscripten-SDK) page of the project. We have made it easy for all platforms.
+Normal maps are images that store normal information directly in the RGB value of a pixel. It allows Minko to compute per pixel normal instead of per triangle normal inside the fragment shader. The first noticeable effect is it adds details on your 3D object that will look like there is much more triangles than reality.
 
+If you would like more information about normal mapping and normal map: <http://en.wikipedia.org/wiki/Normal_mapping>.
 
+Prerequisites
+-------------
 
-ici : [la](README.md "test") 
+To fully understand the rest of the tutorial, you need to know how to setup a scene with a phong material, and how to load textures:
 
-### Windows
+-   [Working with the PhongMaterial](doc/Working with the PhongMaterial.md)
+-   [Loading and using textures](doc/Loading_and_using_textures.md)
 
--   Install the full package of the [Emscripten SDK 1.22](http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#windows)
--   Double-click `tool\\win\\script\\install\_emscripten.bat`
+Step 0: Setup a scene
+---------------------
 
-
-
--   Run **Emscripten Command Prompt** (available in your applications)
--   Type `emsdk install mingw-4.6.2-32bit`
--   Type `emsdk activate mingw-4.6.2-32bit`
--   Type `emsdk install java-7.45-32bit`
--   Type `emsdk activate java-7.45-32bit`
--   Make sure you don't have any `sh.exe` in your `PATH` (msysgit for instance)
-
-
-
-### OS X
-
--   Run `tool/mac/script/install\_emscripten.sh` (this will install the [Emscripten SDK](https://github.com/kripken/emscripten/wiki/Emscripten-SDK#wiki-downloads))
-
-### Linux
-
--   Run `tool/lin/script/install\_emscripten.sh` (this will install Emscripten from the source automatically, tested on Ubuntu 14.04 only)
-
- The Emscripten SDK installer is not yet compatible with Linux, so you will have to install the components manually. Depending on the platform you're on, the procedure differs, but the components are the same:
-
--   Clang 3.2+
--   Node.js 0.8+
--   Python 2.7+
--   Emscripten 1.13+
-
-The procedure for Ubuntu 12.10 is detailled [here](https://github.com/kripken/emscripten/wiki/Getting-Started-on-Ubuntu-12.10), and should be fairly similar for other Linux flavors.
-
-Under Ubuntu 13.04+, the procedure is easier:
+The setup will be the same that the one at the end of the [Working with the PhongMaterial](doc/Working with the PhongMaterial.md) tutorial:
 
 ```
- sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}" \>\> ~/.profile ```
 
+1.  include "minko/Minko.hpp"
+2.  include "minko/MinkoPNG.hpp"
+3.  include "minko/MinkoSDL.hpp"
+
+using namespace minko; using namespace minko::component; using namespace minko::math;
+
+int main(int argc, char\*\* argv) {
+
+`   auto canvas = Canvas::create("", 800, 600);`
+`   auto sceneManager = SceneManager::create(canvas->context());`
+`   // add the png parser to load textures`
+`   // add the Phong effect`
+`   sceneManager->assets()`
+`       ->registerParser<`[`file::PNGParser>`](file::PNGParser>)`("png")`
+`       ->queue("texture/diffuseMap.png")`
+`   ->queue("effect/Phong.effect");`
+`   auto _ = sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptr assets)`
+`   {`
+`   auto root = scene::Node::create("root")`
+`       ->addComponent(sceneManager);`
+`       auto phongMaterial = material::PhongMaterial::create();`
+`       phongMaterial->diffuseMap(assets->texture("texture/diffuseMap.png"));`
+`       phongMaterial->shininess(2.f);`
+`       phongMaterial->specularColor(math::Vector4::create(0.4f, 0.8f, 1.f, 1.f));`
+`   auto mesh = scene::Node::create("mesh")`
+`       ->addComponent(Transform::create(Matrix4x4::create()->prependScale(1.1)))`
+`       ->addComponent(Surface::create(`
+`           geometry::SphereGeometry::create(sceneManager->assets()->context()),`
+`           phongMaterial,`
+`           assets->effect("effect/Phong.effect")`
+`       ));`
+`   auto camera = scene::Node::create("camera")`
+`           ->addComponent(Renderer::create(0x00000000))`
+`       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(0.0f, 1.f, 1.3f))`
+`           ))`
+`       ->addComponent(PerspectiveCamera::create(800.f / 600.f, (float)PI * 0.25f, .1f, 1000.f));`
+`   auto ambientLight = scene::Node::create("ambientLight")`
+`       ->addComponent(AmbientLight::create(0.25f));`
+`   ambientLight->component<AmbientLight>()->color(Vector4::create(1.0f, 1.0f, 1.0f, 1.0f));`
+`   root->addChild(ambientLight);`
+
+`   auto spotLight = scene::Node::create("SpotLight")`
+`       ->addComponent(SpotLight::create(0.6f, 0.78f, 20.f))`
+`       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(4.f, 6.f, 2.5f))));`
+`   spotLight->component<SpotLight>()->diffuse(0.4f);`
+
+`   root->addChild(camera);`
+`       root->addChild(mesh);`
+`   root->addChild(spotLight);`
+`   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)`
+`   {`
+`       sceneManager->nextFrame(t, dt);`
+`   });`
+`   canvas->run();`
+`   });`
+`   sceneManager->assets()->load();`
+`   return 0;`
+
+} ```
+
+
+Step 1: Setting a normal map
+----------------------------
+
+`normalMap` are images just like `diffuseMap`, so their loading workflow are identical
+
+``` sceneManager-\>assets()-\>queue("texture/normalmap.png"); ```
+
+
+Then, the normal texture will be available in the `[file::AssetsLibrary`](file::AssetsLibrary`) once all files are loaded.
+
+The `PhongMaterial` defines one method to set a `normalMap`:
+
+-   `PhongMaterial::normalMap(AbstractTexture::Ptr texture)`
+
+There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `TextureType` enum). Currently only 2D textures `normalMap` are supported.
+
+| scope="col" widt"100px"| DiffuseMap / NormalMap | Right                              | Left                               | Front                              |
+|-------------------------------------------------|------------------------------------|------------------------------------|------------------------------------|
+| ![ link=](TextureNormal1.jpg " link=")          | ![](Normal1_1.PNG "Normal1_1.PNG") | ![](Normal1_2.PNG "Normal1_2.PNG") | ![](Normal1_3.PNG "Normal1_3.PNG") |
+| ![ link=](TextureNormal2.jpg " link=")          | ![](Normal2_1.PNG "Normal2_1.PNG") | ![](Normal2_2.PNG "Normal2_2.PNG") | ![](Normal2_3.PNG "Normal2_3.PNG") |
+| ![](TextureNormal3.jpg "TextureNormal3.jpg")    | ![](Normal3_1.PNG "Normal3_1.PNG") | ![](Normal3_2.PNG "Normal3_2.PNG") | ![](Normal3_3.PNG "Normal3_3.PNG") |
+||
+
+Final Code
+----------
 
 ```
- sudo apt-get update sudo apt-get install -y python-software-properties python g++ make sudo add-apt-repository ppa:chris-lea/node.js sudo apt-get update ```
+
+1.  include "minko/Minko.hpp"
+2.  include "minko/MinkoPNG.hpp"
+3.  include "minko/MinkoSDL.hpp"
+
+using namespace minko; using namespace minko::component; using namespace minko::math;
+
+int main(int argc, char\*\* argv) {
+
+`   auto canvas = Canvas::create("Minko Tutorial - Working with normal maps", 800, 600);`
+`   auto sceneManager = SceneManager::create(canvas->context());`
+`   // add the png parser to load textures`
+`   // add the Phong effect`
+`   sceneManager->assets()`
+`       ->registerParser<`[`file::PNGParser>`](file::PNGParser>)`("png")`
+`       ->queue("texture/diffuseMap.png")`
+`       ->queue("texture/normalMap.png")`
+`   ->queue("effect/Phong.effect");`
+`   auto _ = sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptr assets)`
+`   {`
+`   auto root = scene::Node::create("root")`
+`       ->addComponent(sceneManager);`
+`       auto phongMaterial = material::PhongMaterial::create();`
+`       phongMaterial->diffuseColor(0xFFFFFFFF);`
+`       phongMaterial->diffuseMap(assets->texture("texture/diffuseMap.png"));`
+`       phongMaterial->normalMap(assets->texture("texture/normalMap.png"));`
+`   auto mesh = scene::Node::create("mesh")`
+`       ->addComponent(Transform::create(Matrix4x4::create()->prependScale(1.1)))`
+`       ->addComponent(Surface::create(`
+`           geometry::SphereGeometry::create(sceneManager->assets()->context()),`
+`           phongMaterial,`
+`           assets->effect("effect/Phong.effect")`
+`       ));`
+`   auto camera = scene::Node::create("camera")`
+`           ->addComponent(Renderer::create(0x00000000))`
+`       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(0.0f, 1.f, 1.3f))`
+`           ))`
+`       ->addComponent(PerspectiveCamera::create(800.f / 600.f, (float)PI * 0.25f, .1f, 1000.f));`
+`   auto ambientLight = scene::Node::create("ambientLight")`
+`       ->addComponent(AmbientLight::create(0.25f));`
+`   ambientLight->component<AmbientLight>()->color(Vector4::create(1.0f, 1.0f, 1.0f, 1.0f));`
+`   root->addChild(ambientLight);`
+
+`   auto spotLight = scene::Node::create("SpotLight")`
+`       ->addComponent(SpotLight::create(0.6f, 0.78f, 20.f))`
+`       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(4.f, 6.f, 2.5f))));`
+`   spotLight->component<SpotLight>()->diffuse(0.4f);`
+`   root->addChild(camera);`
+`       root->addChild(mesh);`
+`   root->addChild(spotLight);`
+`   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)`
+`   {`
+`       sceneManager->nextFrame(t, dt);`
+`   });`
+`   canvas->run();`
+`   });`
+`   sceneManager->assets()->load();`
+`   return 0;`
+
+} ```
 
 
-Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [Getting Fastcomp page of the Emscripten wiki](https://github.com/kripken/emscripten/wiki/LLVM-Backend#getting-fastcomp). 
+Where to go from here
+---------------------
 
-Note: Currently, Minko supports **Emscripten 1.25.0**.
-
-Step 2: Building an application
--------------------------------
-
-Building an HTML5 version of your application requires to open a terminal emulator and use a Makefile. Emscripten, in its current version, is unable to complete a real debug build, therefore **you should never use `html5\_debug`** until this is fixed (probably in the coming weeks). Also, unless your computer has an enormous amount of memory, you should not use parallel builds with Emscripten.
-
-### Linux
-
-```
- script/solution\_gmake\_gcc.sh make config=html5\_release ```
-
-
-### OS X
-
-```
- script/solution\_gmake\_gcc.sh make config=html5\_release ```
-
-
-### Windows
-
-On Windows, you will need to have a few programs provided by the Emscripten SDK in your path. We've embed a script, which will set up the Emscripten environment and run the build with the above commands.
-
-```
- script\\build\_html5.bat ```
-
-
-Or simply double-click on the script.
-
-Step 3: Running an application
-------------------------------
-
-Go to `bin/html5/release`, and open the generated HTML page with [Firefox](http://www.mozilla.org/en-US/firefox/new/). You should see the same result as your native application.
-
-In some cases, you will need to access the page through a web server running on your computer. Use your favorite ([Apache](http://httpd.apache.org/), [nginx](http://wiki.nginx.org/Main), [pow](http://pow.cx/), [IIS](http://www.iis.net/)) and set up your document root to point to `bin/html5/release`. You can now reach your application though you local domain as seamlessly as you would on the Internet.
-
-At this point, you should be interested in debugging your application. Have a look at [Debugging HTML5 applications](Debugging HTML5 applications "wikilink").
+`normalMap` can me mixed with `specularMap` ([Working with specular maps](doc/Working with specular maps .md)) and/or `environmentMap` ([Working with environment maps ](doc/Working with environment maps .md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial reference#Full_Example).
 
