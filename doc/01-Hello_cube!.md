@@ -26,7 +26,10 @@ int main(int argc, char\*\* argv) {
 
 ` return 0;`
 
-} ```
+} 
+
+
+```
 
 
 The call to `canvas-\>run()` will make the application loop until `canvas-\>quit()` is called or the window is closed.
@@ -51,7 +54,9 @@ sceneManager-\>assets()-\>queue("effect/Basic.effect"); auto complete = sceneMan
 
 });
 
-sceneManager-\>assets()-\>loader()-\>load(); ```
+sceneManager-\>assets()-\>loader()-\>load();
+
+```
 
 
 The `AssetLibrary::queue()` method will enlist all the file names that you want to load: you can call `AssetLibrary::queue()` as many times as you have different files to load. Loading will eventually start when `AssetLibrary::load()` will be called. Then, the `AssetLibrary::complete()` signal will be called when all the required files have been a) successfully loaded or b) caused an error.
@@ -119,7 +124,9 @@ The following code will do those 4 steps:
 ```
  auto cube = scene::Node::create("cube"); auto cubeMaterial = material::BasicMaterial::create(); auto cubeGeometry = geometry::CubeGeometry(assets-\>context()); auto cubeEffect = assets-\>effect("effect/Basic.effect");
 
-cube-\>addComponent(Surface::create(cubeGeometry, cubeMaterial, cubeEffect); ```
+cube-\>addComponent(Surface::create(cubeGeometry, cubeMaterial, cubeEffect);
+
+```
 
 
 ### Set the cube color
@@ -137,7 +144,9 @@ You can learn more about the `BasicMaterial` in the [Working with the BasicMater
 By default, our `PerspectiveCamera` will be in (0, 0, 0) looking down the -Z axis. To make sure our cube is visible, we must translate it down the the -Z axis to make sure our camera is not inside the cube. To do this, we simply add a `Transform` component to our cube scene node:
 
 ```
- cube-\>addComponent(Transform::create(Matrix4x4::create()-\>translation(0.f, 0.f, -5.f))); ```
+ cube-\>addComponent(Transform::create(Matrix4x4::create()-\>translation(0.f, 0.f, -5.f))); 
+ 
+ ```
 
 
 Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](Moving_objects.md) tutorial
@@ -147,7 +156,9 @@ Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) 
 We can then add our cube directly to the scene root using the `Node::addChild()` method:
 
 ```
- root-\>addChild(cube); ```
+ root-\>addChild(cube); 
+ 
+ ```
 
 
 Step 5: Render the scene
@@ -160,7 +171,9 @@ To render our scene, we will use the `SceneManager::nextFrame()` method. This me
 
 ` sceneManager->nextFrame(t, dt);`
 
-}); ```
+}); 
+
+```
 
 
 Step 6: Make the cube rotate
