@@ -107,9 +107,13 @@ We will then use this value at each frame to rotate our camera:
  auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
 ` camera->component<Transform>()->matrix()->appendRotationY(camerationRotationSpeed);`
-` camerationRotationSpeed *= .99f;`
+`
+camerationRotationSpeed *= .99f;
+`
 
-` sceneManager->nextFrame(t, dt);`
+`
+sceneManager->nextFrame(t, dt);
+`
 
 }); 
 ```
