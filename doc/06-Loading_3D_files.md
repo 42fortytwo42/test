@@ -61,7 +61,7 @@ using namespace minko; using namespace minko::component; using namespace minko::
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600; std::string SCENE\FILENAME = "model/myScene/myScene.scene";
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Loading .scene files", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = SceneManager::create(canvas->context());`
