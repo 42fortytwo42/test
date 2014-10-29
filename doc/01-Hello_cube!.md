@@ -22,7 +22,7 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 int main(int argc, char** argv) {
 
 autocanvas=Canvas::create("Hellocube!",WINDOW_WIDTH,WINDOW_HEIGHT);
-
+ 
 canvas->run();
 
 return0;
