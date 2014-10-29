@@ -9,6 +9,7 @@ Step 1: Initialize the window
 We will use the SDL plugin to initialize a window. The following code is a simple C++ main function that initialize such window:
 
 
+
 ```cpp
  
 #include "minko/Minko.hpp" 
@@ -20,14 +21,15 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Hello cube!", WINDOW_WIDTH, WINDOW_HEIGHT);
+autocanvas=Canvas::create("Hellocube!",WINDOW_WIDTH,WINDOW_HEIGHT);
 
- canvas->run();
+canvas->run();
 
- return 0;
+return0;
 
 } 
 ```
+
 
 
 The call to canvas->run() will make the application loop until canvas->quit() is called or the window is closed.
@@ -201,7 +203,7 @@ To make our cube rotate a bit more at each frame, we simply add this line to our
 ```cpp
  auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
- cube->component<Transform>()->matrix()->prependRotationY(.01f);
+                       cube->component<Transform>()->matrix()->prependRotationY(.01f);
  sceneManager->nextFrame(t, dt);
 
 }); 
