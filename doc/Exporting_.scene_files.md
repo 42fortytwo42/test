@@ -10,7 +10,7 @@ You can now export `.mks` files to the new serialized format used in Minko 3.
 
 You can choose between two exporting modes: files and embed. To export your scene, go into `Files \> Publish for Minko 3 \> Publish files / Publish embed`
 
-![](exportscenefiles01.png "exportscenefiles01.png")
+![](Exportscenefiles01.png "Exportscenefiles01.png")
 
 #### Files mode
 
