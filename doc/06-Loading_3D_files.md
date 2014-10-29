@@ -79,6 +79,7 @@ Final Code
 
 
 ```cpp
+
  #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp" #include "minko/MinkoASSIMP.hpp" #include "minko/MinkoJPEG.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
@@ -148,6 +149,7 @@ int main(int argc, char** argv) {
 `   return 0;`
 
 } 
+
 ```
 
 
