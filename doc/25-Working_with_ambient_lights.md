@@ -6,7 +6,7 @@ Ambient light emitting in all direction. no ground shadows are displayed
 
 The most important setting about ambient light is its diffuse level; in the following picture you can see the same scene with three different diffuse settings.
 
-![](ambientlightExample.png "ambientlightExample.png")
+![](images/AmbientlightExample.png "images/AmbientlightExample.png")
 
 Step 1: Instantiate an light
 ----------------------------

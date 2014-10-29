@@ -17,7 +17,7 @@ Open the `Assets` panel (second button on the left column) and click on the impo
 
 #### From the file menu
 
-Click `File \> Import` on the menu bar.
+Click `File-> Import` on the menu bar.
 
 ![](import1.png "import1.png")
 

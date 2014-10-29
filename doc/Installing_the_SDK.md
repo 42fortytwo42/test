@@ -17,18 +17,18 @@ You have to set an environment variable that will be used by Minko's build syste
 
 ### Windows
 
-Go to Control Panel \> System \> Advanced system settings and click on "Environment Variables"
+Go to Control Panel-> System-> Advanced system settings and click on "Environment Variables"
 
 ![](images/Minko_win_env_variables.jpg "images/Minko_win_env_variables.jpg")
 
 Then click on "New..." in the "System variables" panel (or in the "User variables" panel if you want to setup the SDK for your own user only)
 
-![](Minko win new env variable.jpg "Minko win new env variable.jpg")
+![](images/Minko_win_new_env_variable.jpg "images/Minko_win_new_env_variable.jpg")
 
 The "New System Variable" window will open, enter the following settings:
 
 -   Variable name : MINKO\HOME
--   Variable value : the path to the actual Minko SDK root folder on your file system (ex: "C:\\minko-sdk" without quotes)
+-   Variable value : the path to the actual Minko SDK root folder on your file system (ex: "C:\minko-sdk" without quotes)
 
 and press "OK". If it worked correctly the `MINKO\HOME` environment variable should now be in the list.
 
@@ -46,7 +46,7 @@ This will **temporarily** set the `MINKO\HOME` environment variable. **To make s
 
 
 ```bash
- echo "export MINKO\HOME=/path/to/the/minko/sdk" \>\> ~/.bashrc 
+ echo "export MINKO\HOME=/path/to/the/minko/sdk"->\> ~/.bashrc 
 ```
 
 

@@ -6,7 +6,7 @@ Let's start with something simple, a red spot light, emitting to the ground. as 
 
 This setup is a little more complex, it introduces multiple spot lights emitting on a complex object with shadows enabled. As you can see with the yellowish light, the light attenuate with the distance, the closer the object is from the spot light, the stronger the light light will be.
 
-![](spotlight2.png "spotlight2.png")
+![](images/Spotlight2.png "images/Spotlight2.png")
 
 Step 1: Instantiate a spot light
 --------------------------------

@@ -27,7 +27,7 @@ When it is back, you will see that **Default** changes to **Install** for the **
 ### Installing the Android SDK
 
 -   Define the environment variable `ANDROID` pointing to the following directory:
-    -   Windows: `C:\\android`
+    -   Windows: `C:\android`
     -   OS X / Linux: `/opt/android`
 -   Download the latest [ADT](http://developer.android.com/sdk/index.html) bundle
 -   Extract the archive to the `${ANDROID}` directory
@@ -37,7 +37,7 @@ When it is back, you will see that **Default** changes to **Install** for the **
 -   Download the latest [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) package
 -   Extract the archive to `${ANDROID}/NDK`
 -   Run the following script:
-    -   Windows: `tool\\win\\script\\install\jni.bat`
+    -   Windows: `tool\win\script\install\jni.bat`
     -   Linux: `tool/lin/script/install\jni.sh`
     -   OS X: `tool/mac/script/install\jni.sh`
 
@@ -76,7 +76,7 @@ Minko's SDK uses premake5, which is embed in the SDK, for its build system. The 
 
 To do this, open a command line prompt in the root directory of the SDK and run:
 
--   Windows: `tool\\win\\script\\solution\gmake.bat`
+-   Windows: `tool\win\script\solution\gmake.bat`
 -   Linux: `tool/lin/script/solution\gmake.sh`
 -   OS X: `tool/mac/script/solution\gmake.sh`
 

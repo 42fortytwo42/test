@@ -20,7 +20,7 @@ Step 2: Clone the Minko repository
 
 If you're working with GitHub for Windows/Mac, you can clone the repository simply by clicking on the "Clone in Windows" or "Clone in Mac" button on the repository start page:
 
-![](Minko github clone.jpg "Minko github clone.jpg")
+![](images/Minko_github_clone.jpg "images/Minko_github_clone.jpg")
 
 The URI of the GitHub repository is: `[https://github.com/aerys/minko.git`](https://github.com/aerys/minko.git`)
 
@@ -29,9 +29,9 @@ Step 3 (optional): Switching to the 'dev' branch
 
 If you want to try the latest features and additions, you will have to switch to the 'dev' branch. This branch is where updates and fixes and pushed everyday. To switch branches, you must use your Git client. It's usually a "switch" button:
 
-![Switching branches with GitHub for Windows/Mac](Aerys minko github1.jpg "Switching branches with GitHub for Windows/Mac")
+![Switching branches with GitHub for Windows/Mac](images/Aerys_minko_github1.jpg "Switching branches with GitHub for Windows/Mac")
 
-![Switching branches with SmartGit](Aerys minko smartgit1.jpg "Switching branches with SmartGit")
+![Switching branches with SmartGit](images/Aerys_minko_smartgit1.jpg "Switching branches with SmartGit")
 
 When you have found the "switch" button, you just have to select the 'dev' branch. Voilà, you have the latest sources of Minko and you can easily update them from the GitHub repository!
 

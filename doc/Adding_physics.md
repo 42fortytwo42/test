@@ -3,7 +3,7 @@ The Minko editor provides you with a way to add physic properties to your nodes,
 Adding a collider to a node
 ===========================
 
-Colliders can be added to any node of a scene : meshes, cameras, lights or groups. Select a node in the scene tree, then in the application menu go to `Controller \> Physics`. There, you can choose between `Primitive Collider` or `Triangle Mesh Collider`.
+Colliders can be added to any node of a scene : meshes, cameras, lights or groups. Select a node in the scene tree, then in the application menu go to `Controller-> Physics`. There, you can choose between `Primitive Collider` or `Triangle Mesh Collider`.
 
 ![](physicscollidermenu.png "physicscollidermenu.png")
 

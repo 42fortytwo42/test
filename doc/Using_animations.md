@@ -17,7 +17,7 @@ For other formats, you can import animations with the `.pc2` format.
 
 #### Adding a morphing controller to the node
 
-Once the node that will take the `pc2` animation in your scene, select that node, and add the morphing controler by selecting `Controller \> Morphing` from the menu bar.
+Once the node that will take the `pc2` animation in your scene, select that node, and add the morphing controler by selecting `Controller-> Morphing` from the menu bar.
 
 ![](morphingcontroller1.png "morphingcontroller1.png")
 

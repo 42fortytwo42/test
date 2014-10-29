@@ -8,7 +8,7 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 ### Windows
 
 -   Install the full package of the [Emscripten SDK 1.22](http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#windows)
--   Double-click `tool\\win\\script\\install\emscripten.bat`
+-   Double-click `tool\win\script\install\emscripten.bat`
 
 
 
@@ -42,7 +42,7 @@ Under Ubuntu 13.04+, the procedure is easier:
 
 
 ```bash
- sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}" \>\> ~/.profile 
+ sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->\> ~/.profile 
 ```
 
 
@@ -83,7 +83,7 @@ On Windows, you will need to have a few programs provided by the Emscripten SDK 
 
 
 ```bash
- script\\build\html5.bat 
+ script\build\html5.bat 
 ```
 
 

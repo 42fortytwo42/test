@@ -21,7 +21,7 @@ Minko's SDK uses premake5, which is embed in the SDK, for its build system. Prem
 
 To do this you can:
 
--   Run the following script from the "%MINKO\HOME%\\tools\\win\\scripts" directory
+-   Run the following script from the "%MINKO\HOME%\tools\win\scripts" directory
 
 
 ```bash
@@ -59,7 +59,7 @@ The SDK is now built, but you might want to share or copy it so you don't have t
 
 
 ```bash
- tool\\win\\bin\\premake5.exe dist 
+ tool\win\bin\premake5.exe dist 
 ```
 
 

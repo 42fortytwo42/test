@@ -8,7 +8,7 @@ Step 1: Export a .scene file from Minko Studio
 
 You can now export `.mks` files to the new serialized format used in Minko 3.
 
-You can choose between two exporting modes: files and embed. To export your scene, go into `Files \> Publish for Minko 3 \> Publish files / Publish embed`
+You can choose between two exporting modes: files and embed. To export your scene, go into `Files-> Publish for Minko 3-> Publish files / Publish embed`
 
 ![](exportscenefiles01.png "exportscenefiles01.png")
 

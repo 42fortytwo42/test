@@ -31,11 +31,11 @@ The generated solution file may generated outdated options, which is fine since 
 
 Just go to the warning tab in Xcode. You should see a warning for each project and plugin linked in the current open project.
 
-![](Xcode_project_update.png "Xcode_project_update.png")
+![](images/Xcode_project_update.png "images/Xcode_project_update.png")
 
 Just click on each warning. Xcode will prompt you to update, but before, you can perform a snapshot of the current project settings. Feel free to do so, even it doesn't have any incidence on the project.
 
-![](Xcode_project_snapshot.png "Xcode_project_snapshot.png")
+![](images/Xcode_project_snapshot.png "images/Xcode_project_snapshot.png")
 
 Just click "Perform Changes" and Xcode will upgrade the project.
 

@@ -6,7 +6,7 @@ Because a directional light represents a distant light source, its x,y,z coordin
 
 Directional light emitting from the left to the right
 
-![](directionallightExample.png "directionallightExample.png")
+![](images/DirectionallightExample.png "images/DirectionallightExample.png")
 
 As you can see in this more complex example, the directional light comes from a direction, not a specific location. it's particularly visible on the column shadow.
 

@@ -37,10 +37,10 @@ Specular color is the color of the light specular reflection. The default value 
 ```
 
 
-| specular color | Right                                        | Left                                         | Front                                        |
-|----------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
-| 0xFF0000FF     | ![](RedSpecular1.PNG "RedSpecular1.PNG")     | ![](RedSpecular2.PNG "RedSpecular2.PNG")     | ![](RedSpecular3.PNG "RedSpecular3.PNG")     |
-| 0xC0FFC0FF     | ![](GreenSpecular1.PNG "GreenSpecular1.PNG") | ![](GreenSpecular2.PNG "GreenSpecular2.PNG") | ![](GreenSpecular3.PNG "GreenSpecular3.PNG") |
+| specular color | Right                                                      | Left                                                       | Front                                                      |
+|----------------|------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+| 0xFF0000FF     | ![](images/RedSpecular1.PNG "images/RedSpecular1.PNG")     | ![](images/RedSpecular2.PNG "images/RedSpecular2.PNG")     | ![](images/RedSpecular3.PNG "images/RedSpecular3.PNG")     |
+| 0xC0FFC0FF     | ![](images/GreenSpecular1.PNG "images/GreenSpecular1.PNG") | ![](images/GreenSpecular2.PNG "images/GreenSpecular2.PNG") | ![](images/GreenSpecular3.PNG "images/GreenSpecular3.PNG") |
 
 To have more information about specular color : [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
 
@@ -54,11 +54,11 @@ Empirically, the shininess parameter controls how sharp specular reflections wil
 ```
 
 
-| shininess | Right                                      | Left                                       | Front                                      |
-|-----------|--------------------------------------------|--------------------------------------------|--------------------------------------------|
-| 2         | ![](Shiniess0_2_1.PNG "Shiniess0_2_1.PNG") | ![](Shiniess0_2_2.PNG "Shiniess0_2_2.PNG") | ![](Shiniess0_2_3.PNG "Shiniess0_2_3.PNG") |
-| 16        | ![](Shiniess16_1.PNG "Shiniess16_1.PNG")   | ![](Shiniess16_2.PNG "Shiniess16_2.PNG")   | ![](Shiniess16_3.PNG "Shiniess16_3.PNG")   |
-| 64        | ![](Shiniess64_1.PNG "Shiniess64_1.PNG")   | ![](Shiniess64_2.PNG "Shiniess64_2.PNG")   | ![](Shiniess64_3.PNG "Shiniess64_3.PNG")   |
+| shininess | Right                                                    | Left                                                     | Front                                                    |
+|-----------|----------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------|
+| 2         | ![](images/Shiniess0_2_1.PNG "images/Shiniess0_2_1.PNG") | ![](images/Shiniess0_2_2.PNG "images/Shiniess0_2_2.PNG") | ![](images/Shiniess0_2_3.PNG "images/Shiniess0_2_3.PNG") |
+| 16        | ![](images/Shiniess16_1.PNG "images/Shiniess16_1.PNG")   | ![](images/Shiniess16_2.PNG "images/Shiniess16_2.PNG")   | ![](images/Shiniess16_3.PNG "images/Shiniess16_3.PNG")   |
+| 64        | ![](images/Shiniess64_1.PNG "images/Shiniess64_1.PNG")   | ![](images/Shiniess64_2.PNG "images/Shiniess64_2.PNG")   | ![](images/Shiniess64_3.PNG "images/Shiniess64_3.PNG")   |
 
 To have more information about shininess : [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
 
@@ -78,9 +78,9 @@ phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::Env
 ```
 
 
-| Environment Alpha                          | 0.2                            | 0.5                            | 0.95                           |
-|--------------------------------------------|--------------------------------|--------------------------------|--------------------------------|
-| ![](Ditchriverii9.jpg "Ditchriverii9.jpg") | ![](Envmap1.PNG "Envmap1.PNG") | ![](Envmap2.PNG "Envmap2.PNG") | ![](Envmap3.PNG "Envmap3.PNG") |
+| Environment Alpha                                        | 0.2                                          | 0.5                                          | 0.95                                         |
+|----------------------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
+| ![](images/Ditchriverii9.jpg "images/Ditchriverii9.jpg") | ![](images/Envmap1.PNG "images/Envmap1.PNG") | ![](images/Envmap2.PNG "images/Envmap2.PNG") | ![](images/Envmap3.PNG "images/Envmap3.PNG") |
 
 If you need more information about environment map : [ Working with environment maps](Working_with_environment_maps_.md)
 
@@ -98,11 +98,11 @@ phongMaterial->normalMap(assets->texture("texture/normalmap.png"));
 ```
 
 
-| scope="col" widt"100px"| DiffuseMap / NormalMap | Right                              | Left                               | Front                              |
-|-------------------------------------------------|------------------------------------|------------------------------------|------------------------------------|
-| ![ link=](TextureNormal1.jpg " link=")          | ![](Normal1_1.PNG "Normal1_1.PNG") | ![](Normal1_2.PNG "Normal1_2.PNG") | ![](Normal1_3.PNG "Normal1_3.PNG") |
-| ![ link=](TextureNormal2.jpg " link=")          | ![](Normal2_1.PNG "Normal2_1.PNG") | ![](Normal2_2.PNG "Normal2_2.PNG") | ![](Normal2_3.PNG "Normal2_3.PNG") |
-| ![](TextureNormal3.jpg "TextureNormal3.jpg")    | ![](Normal3_1.PNG "Normal3_1.PNG") | ![](Normal3_2.PNG "Normal3_2.PNG") | ![](Normal3_3.PNG "Normal3_3.PNG") |
+| scope="col" widt"100px"| DiffuseMap / NormalMap            | Right                                            | Left                                             | Front                                            |
+|------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| ![ link=](images/TextureNormal1.jpg " link=")              | ![](images/Normal1_1.PNG "images/Normal1_1.PNG") | ![](images/Normal1_2.PNG "images/Normal1_2.PNG") | ![](images/Normal1_3.PNG "images/Normal1_3.PNG") |
+| ![ link=](images/TextureNormal2.jpg " link=")              | ![](images/Normal2_1.PNG "images/Normal2_1.PNG") | ![](images/Normal2_2.PNG "images/Normal2_2.PNG") | ![](images/Normal2_3.PNG "images/Normal2_3.PNG") |
+| ![](images/TextureNormal3.jpg "images/TextureNormal3.jpg") | ![](images/Normal3_1.PNG "images/Normal3_1.PNG") | ![](images/Normal3_2.PNG "images/Normal3_2.PNG") | ![](images/Normal3_3.PNG "images/Normal3_3.PNG") |
 ||
 
 If you need more information about normal mapping : [Working with normal maps](Working_with_normal_maps_.md)
@@ -115,11 +115,11 @@ If you need more information about normal mapping : [Working with normal maps](W
 ```
 
 
-| scope="col" widt"100px"| DiffuseMap / SpecularMap | Right                                        | Left                                         | Front                                        |
-|---------------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
-| ![ link=](Texturespecular1.jpg " link=")          | ![](SpecularMap1_1.PNG "SpecularMap1_1.PNG") | ![](SpecularMap1_2.PNG "SpecularMap1_2.PNG") | ![](SpecularMap1_3.PNG "SpecularMap1_3.PNG") |
-| ![ link=](Texturespecular22.jpg " link=")         | ![](SpecularMap2_1.PNG "SpecularMap2_1.PNG") | ![](SpecularMap2_2.PNG "SpecularMap2_2.PNG") | ![](SpecularMap2_3.PNG "SpecularMap2_3.PNG") |
-| ![](Texturespecular3.jpg "Texturespecular3.jpg")  | ![](SpecularMap3_1.PNG "SpecularMap3_1.PNG") | ![](SpecularMap3_2.PNG "SpecularMap3_2.PNG") | ![](SpecularMap3_3.PNG "SpecularMap3_3.PNG") |
+| scope="col" widt"100px"| DiffuseMap / SpecularMap              | Right                                                      | Left                                                       | Front                                                      |
+|----------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+| ![ link=](images/Texturespecular1.jpg " link=")                | ![](images/SpecularMap1_1.PNG "images/SpecularMap1_1.PNG") | ![](images/SpecularMap1_2.PNG "images/SpecularMap1_2.PNG") | ![](images/SpecularMap1_3.PNG "images/SpecularMap1_3.PNG") |
+| ![ link=](images/Texturespecular22.jpg " link=")               | ![](images/SpecularMap2_1.PNG "images/SpecularMap2_1.PNG") | ![](images/SpecularMap2_2.PNG "images/SpecularMap2_2.PNG") | ![](images/SpecularMap2_3.PNG "images/SpecularMap2_3.PNG") |
+| ![](images/Texturespecular3.jpg "images/Texturespecular3.jpg") | ![](images/SpecularMap3_1.PNG "images/SpecularMap3_1.PNG") | ![](images/SpecularMap3_2.PNG "images/SpecularMap3_2.PNG") | ![](images/SpecularMap3_3.PNG "images/SpecularMap3_3.PNG") |
 ||
 
 If you need more information about specular maps : [ Working with specular maps](Working_with_specular_maps_.md)
@@ -208,7 +208,7 @@ int main(int argc, char\*\* argv) {
 ```
 
 
-|--------------------------------------------|------------------------------------------|------------------------------------------|
-| ![](FinalResult11.PNG "FinalResult11.PNG") | ![](FinalResult2.PNG "FinalResult2.PNG") | ![](FinalResult3.PNG "FinalResult3.PNG") |
+|----------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+| ![](images/FinalResult11.PNG "images/FinalResult11.PNG") | ![](images/FinalResult2.PNG "images/FinalResult2.PNG") | ![](images/FinalResult3.PNG "images/FinalResult3.PNG") |
 
 

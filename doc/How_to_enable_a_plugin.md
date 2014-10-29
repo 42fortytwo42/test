@@ -91,7 +91,7 @@ For example, the following Windows command line will enable the "jpeg" plugin wh
 
 
 ```
- "%MINKO\HOME%"\\tools\\win\\bin\\premake5.exe --with-jpeg vs2013 
+ "%MINKO\HOME%"\tools\win\bin\premake5.exe --with-jpeg vs2013 
 ```
 
 

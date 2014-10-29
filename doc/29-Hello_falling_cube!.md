@@ -193,7 +193,7 @@ That should be enough for you to build physics simulations in your Minko scene.
 
 For a peek at the code in a slightly more elaborate example, please refer to the ['physics' example](ExamplePhysics) that directly comes with the Minko SDK.
 
-![physicsExampleThumbnail](physicsExample.jpeg "physicsExampleThumbnail")
+![physicsExampleThumbnail](images/PhysicsExample.jpeg "physicsExampleThumbnail")
 
 Closing comments
 ----------------

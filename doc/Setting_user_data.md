@@ -6,15 +6,15 @@ You can set your custom properties directly from the editor, and export them in 
 
 -   Open the User Data panel
 
-![](User Data - Open the User Data panel.png "User Data - Open the User Data panel.png")
+![](images/User_Data_-_Open_the_User_Data_panel.png "images/User_Data_-_Open_the_User_Data_panel.png")
 
 -   Click on the '+' button
 
-![](User Data - Add property.png "User Data - Add property.png")
+![](images/User_Data_-_Add_property.png "images/User_Data_-_Add_property.png")
 
 -   Set the property name and the property value
 
-![](User Data - Set the property name and value.png "User Data - Set the property name and value.png")
+![](images/User_Data_-_Set_the_property_name_and_value.png "images/User_Data_-_Set_the_property_name_and_value.png")
 
 This process is also detailed in the following video:
 

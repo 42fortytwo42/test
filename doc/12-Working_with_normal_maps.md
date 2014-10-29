@@ -105,11 +105,11 @@ The `PhongMaterial` defines one method to set a `normalMap`:
 
 There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `TextureType` enum). Currently only 2D textures `normalMap` are supported.
 
-| scope="col" widt"100px"| DiffuseMap / NormalMap | Right                              | Left                               | Front                              |
-|-------------------------------------------------|------------------------------------|------------------------------------|------------------------------------|
-| ![ link=](images/TextureNormal1.jpg " link=")   | ![](Normal1_1.PNG "Normal1_1.PNG") | ![](Normal1_2.PNG "Normal1_2.PNG") | ![](Normal1_3.PNG "Normal1_3.PNG") |
-| ![ link=](TextureNormal2.jpg " link=")          | ![](Normal2_1.PNG "Normal2_1.PNG") | ![](Normal2_2.PNG "Normal2_2.PNG") | ![](Normal2_3.PNG "Normal2_3.PNG") |
-| ![](TextureNormal3.jpg "TextureNormal3.jpg")    | ![](Normal3_1.PNG "Normal3_1.PNG") | ![](Normal3_2.PNG "Normal3_2.PNG") | ![](Normal3_3.PNG "Normal3_3.PNG") |
+| scope="col" widt"100px"| DiffuseMap / NormalMap            | Right                                            | Left                                             | Front                                            |
+|------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| ![ link=](images/TextureNormal1.jpg " link=")              | ![](images/Normal1_1.PNG "images/Normal1_1.PNG") | ![](images/Normal1_2.PNG "images/Normal1_2.PNG") | ![](images/Normal1_3.PNG "images/Normal1_3.PNG") |
+| ![ link=](images/TextureNormal2.jpg " link=")              | ![](images/Normal2_1.PNG "images/Normal2_1.PNG") | ![](images/Normal2_2.PNG "images/Normal2_2.PNG") | ![](images/Normal2_3.PNG "images/Normal2_3.PNG") |
+| ![](images/TextureNormal3.jpg "images/TextureNormal3.jpg") | ![](images/Normal3_1.PNG "images/Normal3_1.PNG") | ![](images/Normal3_2.PNG "images/Normal3_2.PNG") | ![](images/Normal3_3.PNG "images/Normal3_3.PNG") |
 ||
 
 Final Code

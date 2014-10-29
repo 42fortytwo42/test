@@ -173,7 +173,7 @@ Because a meaningful vertex attribute is only one that is actually used in compu
 
 If everything went smooth, you should obtain something like this (the vantage point has been slightly altered for better readability):
 
-![Cube with displaced vertex positions.](CubePositionOffsets.jpeg "Cube with displaced vertex positions.")
+![Cube with displaced vertex positions.](images/CubePositionOffsets.jpeg "Cube with displaced vertex positions.")
 
 Step 1/2: Add your attributes to your effect in Minko (for the lazy and the reckless)
 -------------------------------------------------------------------------------------
@@ -264,7 +264,7 @@ Follows the code of the updated GLSL vertex and fragment shaders stoed in the cu
 ```
 
 
-![The vertex colors are directly fed to the GPU via the custom effect.](CubeVertexColors.jpeg "The vertex colors are directly fed to the GPU via the custom effect.")
+![The vertex colors are directly fed to the GPU via the custom effect.](images/CubeVertexColors.jpeg "The vertex colors are directly fed to the GPU via the custom effect.")
 
 Final code
 ----------

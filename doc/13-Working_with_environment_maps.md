@@ -123,9 +123,9 @@ phongMaterial->environmentAlpha(0.2f);
 ```
 
 
-| Environment Alpha                                        | 0.2                            | 0.5                            | 0.95                           |
-|----------------------------------------------------------|--------------------------------|--------------------------------|--------------------------------|
-| ![](images/Ditchriverii9.jpg "images/Ditchriverii9.jpg") | ![](Envmap1.PNG "Envmap1.PNG") | ![](Envmap2.PNG "Envmap2.PNG") | ![](Envmap3.PNG "Envmap3.PNG") |
+| Environment Alpha                                        | 0.2                                          | 0.5                                          | 0.95                                         |
+|----------------------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
+| ![](images/Ditchriverii9.jpg "images/Ditchriverii9.jpg") | ![](images/Envmap1.PNG "images/Envmap1.PNG") | ![](images/Envmap2.PNG "images/Envmap2.PNG") | ![](images/Envmap3.PNG "images/Envmap3.PNG") |
 
 Final Code
 ----------

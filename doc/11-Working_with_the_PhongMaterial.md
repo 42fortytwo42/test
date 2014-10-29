@@ -134,10 +134,10 @@ The phong material class defines several methods to set the specular color:
 ```
 
 
-| Specular Color | Right                                        | Left                                         | Front                                        |
-|----------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
-| 0xFF0000FF     | ![](RedSpecular1.PNG "RedSpecular1.PNG")     | ![](RedSpecular2.PNG "RedSpecular2.PNG")     | ![](RedSpecular3.PNG "RedSpecular3.PNG")     |
-| 0xC0FFC0FF     | ![](GreenSpecular1.PNG "GreenSpecular1.PNG") | ![](GreenSpecular2.PNG "GreenSpecular2.PNG") | ![](GreenSpecular3.PNG "GreenSpecular3.PNG") |
+| Specular Color | Right                                                      | Left                                                       | Front                                                      |
+|----------------|------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+| 0xFF0000FF     | ![](images/RedSpecular1.PNG "images/RedSpecular1.PNG")     | ![](images/RedSpecular2.PNG "images/RedSpecular2.PNG")     | ![](images/RedSpecular3.PNG "images/RedSpecular3.PNG")     |
+| 0xC0FFC0FF     | ![](images/GreenSpecular1.PNG "images/GreenSpecular1.PNG") | ![](images/GreenSpecular2.PNG "images/GreenSpecular2.PNG") | ![](images/GreenSpecular3.PNG "images/GreenSpecular3.PNG") |
 
 Those images show one important thing: if one of the color components is zero, the specular color won't reach white.
 
@@ -158,11 +158,11 @@ Usually shininess is a power of two.
 ```
 
 
-| shininess | Right                                      | Left                                       | Front                                      |
-|-----------|--------------------------------------------|--------------------------------------------|--------------------------------------------|
-| 2         | ![](Shiniess0_2_1.PNG "Shiniess0_2_1.PNG") | ![](Shiniess0_2_2.PNG "Shiniess0_2_2.PNG") | ![](Shiniess0_2_3.PNG "Shiniess0_2_3.PNG") |
-| 16        | ![](Shiniess16_1.PNG "Shiniess16_1.PNG")   | ![](Shiniess16_2.PNG "Shiniess16_2.PNG")   | ![](Shiniess16_3.PNG "Shiniess16_3.PNG")   |
-| 64        | ![](Shiniess64_1.PNG "Shiniess64_1.PNG")   | ![](Shiniess64_2.PNG "Shiniess64_2.PNG")   | ![](Shiniess64_3.PNG "Shiniess64_3.PNG")   |
+| shininess | Right                                                    | Left                                                     | Front                                                    |
+|-----------|----------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------|
+| 2         | ![](images/Shiniess0_2_1.PNG "images/Shiniess0_2_1.PNG") | ![](images/Shiniess0_2_2.PNG "images/Shiniess0_2_2.PNG") | ![](images/Shiniess0_2_3.PNG "images/Shiniess0_2_3.PNG") |
+| 16        | ![](images/Shiniess16_1.PNG "images/Shiniess16_1.PNG")   | ![](images/Shiniess16_2.PNG "images/Shiniess16_2.PNG")   | ![](images/Shiniess16_3.PNG "images/Shiniess16_3.PNG")   |
+| 64        | ![](images/Shiniess64_1.PNG "images/Shiniess64_1.PNG")   | ![](images/Shiniess64_2.PNG "images/Shiniess64_2.PNG")   | ![](images/Shiniess64_3.PNG "images/Shiniess64_3.PNG")   |
 
 Final Code
 ----------

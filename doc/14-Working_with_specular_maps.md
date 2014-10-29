@@ -109,11 +109,11 @@ There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `Te
 ```
 
 
-| scope="col" widt"100px"| DiffuseMap / SpecularMap | Right                                        | Left                                         | Front                                        |
-|---------------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
-| ![ link=](images/Texturespecular1.jpg " link=")   | ![](SpecularMap1_1.PNG "SpecularMap1_1.PNG") | ![](SpecularMap1_2.PNG "SpecularMap1_2.PNG") | ![](SpecularMap1_3.PNG "SpecularMap1_3.PNG") |
-| ![ link=](Texturespecular22.jpg " link=")         | ![](SpecularMap2_1.PNG "SpecularMap2_1.PNG") | ![](SpecularMap2_2.PNG "SpecularMap2_2.PNG") | ![](SpecularMap2_3.PNG "SpecularMap2_3.PNG") |
-| ![](Texturespecular3.jpg "Texturespecular3.jpg")  | ![](SpecularMap3_1.PNG "SpecularMap3_1.PNG") | ![](SpecularMap3_2.PNG "SpecularMap3_2.PNG") | ![](SpecularMap3_3.PNG "SpecularMap3_3.PNG") |
+| scope="col" widt"100px"| DiffuseMap / SpecularMap              | Right                                                      | Left                                                       | Front                                                      |
+|----------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+| ![ link=](images/Texturespecular1.jpg " link=")                | ![](images/SpecularMap1_1.PNG "images/SpecularMap1_1.PNG") | ![](images/SpecularMap1_2.PNG "images/SpecularMap1_2.PNG") | ![](images/SpecularMap1_3.PNG "images/SpecularMap1_3.PNG") |
+| ![ link=](images/Texturespecular22.jpg " link=")               | ![](images/SpecularMap2_1.PNG "images/SpecularMap2_1.PNG") | ![](images/SpecularMap2_2.PNG "images/SpecularMap2_2.PNG") | ![](images/SpecularMap2_3.PNG "images/SpecularMap2_3.PNG") |
+| ![](images/Texturespecular3.jpg "images/Texturespecular3.jpg") | ![](images/SpecularMap3_1.PNG "images/SpecularMap3_1.PNG") | ![](images/SpecularMap3_2.PNG "images/SpecularMap3_2.PNG") | ![](images/SpecularMap3_3.PNG "images/SpecularMap3_3.PNG") |
 ||
 
 Final Code

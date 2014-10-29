@@ -214,15 +214,15 @@ When a `[data::Provider`](data::Provider`) is added to a `[data::Container`](dat
 ```cpp
  auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
-std::cout \<\< "provider->hasProperty(\\"foo\\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\\"foo\\"): " \<\< container->hasProperty("foo") \<\< std::endl;
+std::cout \<\< "provider->hasProperty(\"foo\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\"foo\"): " \<\< container->hasProperty("foo") \<\< std::endl;
 
 provider->set("foo", 42);
 
-std::cout \<\< "provider->hasProperty(\\"foo\\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\\"foo\\"): " \<\< container->hasProperty("foo") \<\< std::endl;
+std::cout \<\< "provider->hasProperty(\"foo\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\"foo\"): " \<\< container->hasProperty("foo") \<\< std::endl;
 
 container->addProvider(provider);
 
-std::cout \<\< "provider->hasProperty(\\"foo\\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\\"foo\\"): " \<\< container->hasProperty("foo") \<\< std::endl; 
+std::cout \<\< "provider->hasProperty(\"foo\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\"foo\"): " \<\< container->hasProperty("foo") \<\< std::endl; 
 ```
 
 

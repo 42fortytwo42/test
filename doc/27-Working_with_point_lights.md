@@ -4,7 +4,7 @@ A point light casts illumination in every direction from a single point in 3D sp
 
 As the point light is emitting in every directions, his reflection can be multiple places in the environment.
 
-![](pointlightexample.png "pointlightexample.png")
+![](images/Pointlightexample.png "images/Pointlightexample.png")
 
 In this more complex setup, you can see how multiple point lights render on a complex environment.
 
