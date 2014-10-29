@@ -62,7 +62,7 @@ Final code
 ----------
 
 
-```
+```c_cpp
 
 
 1.  include "minko/Minko.hpp"
