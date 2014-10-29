@@ -131,22 +131,19 @@ int main(int argc, char** argv) {
 `       // change position`
 `       objModel->component<Transform>()->matrix()->translation(-1.f, -1.f, 0.f);`
 `       daeModel->component<Transform>()->matrix()->translation(1.f, -1.f, 0.f);`
+       // add to the scene
+       root->addChild(objModel);
+       root->addChild(daeModel);
 
-`       // add to the scene`
-`       root->addChild(objModel);`
-`       root->addChild(daeModel);`
+       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
+           sceneManager->nextFrame(t, dt);
+       });
 
-`       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)`
-`       {`
-`           sceneManager->nextFrame(t, dt);`
-`       });`
+       canvas->run();`   });
 
-`       canvas->run();`
-`   });`
+   sceneManager->assets()->load();
 
-`   sceneManager->assets()->load();`
-
-`   return 0;`
+   return 0;
 
 } 
 
