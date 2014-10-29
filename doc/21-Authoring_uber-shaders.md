@@ -6,33 +6,18 @@
 
 In this tutorial, we will see how to create "über shaders". Über shaders are rendering programs that can handle many different rendering scenarios. For example, a lighting über shader will be able to handle many different counts and types of lights. An even simpler scenario is whether we want to render using the vertex color, a solid color or a texture.
 
-To learn how to create an über-shader, we will update the effect created in the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial to be able to render two scenarios:
-
-1.  rendering with a solid color;
-2.  rendering with a texture.
+To learn how to create an über-shader, we will update the effect created in the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial to be able to render two scenarios: # rendering with a solid color; # rendering with a texture.
 
 Step 0: Introduction to über shaders
 ------------------------------------
 
-What's important to understand is how critic it is to be able to write über shaders: all 3D scenes are different and - as each rendering program is fixed - each rendering scenario would require to write a specific shader to be rendered properly. As your scene gets more and more complex, the number of scenarios augments exponentially. For example, a scene with up to 10 lights with 4 different types (ambient, directional, spot or point) and normal mapping (on or off) can lead to up to (4 \* 10) ^ 2 = 1 600 different shaders! Writing each of them is not a scalable solution...
+What's important to understand is how critic it is to be able to write über shaders: all 3D scenes are different and - as each rendering program is fixed - each rendering scenario would require to write a specific shader to be rendered properly. As your scene gets more and more complex, the number of scenarios augments exponentially. For example, a scene with up to 10 lights with 4 different types (ambient, directional, spot or point) and normal mapping (on or off) can lead to up to (4 * 10) ^ 2 = 1 600 different shaders! Writing each of them is not a scalable solution...
 
 That's where über shaders kick in: an über shader is a single shader program that will adapt its operations according to whether some options are enabled or not. To do this, Minko leverages the GLSL pre-processor:
 
 
 ```c
-
-
-1.  ifdef SOME\OPTION
-
-// do something...
-
-1.  else
-
-// do something else...
-
-1.  endif
-
-
+ #ifdef SOME\OPTION // do something... #else // do something else... #endif 
 ```
 
 
@@ -41,17 +26,11 @@ In the case above, the actual behavior of the shader will depend on whether the 
 Step 1: Updating the fragment shader
 ------------------------------------
 
-We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](Create_your_first_custom_effect#Step_3:_The_fragment_shader) and update it to use a texture if the `DIFFUSE\MAP` macro is defined:
+We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](Create_your_first_custom_effect-#-Step_3:_The_fragment_shader) and update it to use a texture if the `DIFFUSE\MAP` macro is defined:
 
 
 ```c
-
-
-1.  ifdef GL\ES
-
-precision mediump float;
-
-1.  endif
+ #ifdef GL\ES precision mediump float; #endif
 
 uniform vec4 uDiffuseColor; uniform sampler2D uDiffuseMap;
 
@@ -59,11 +38,11 @@ varying vec2 vVertexUv;
 
 void main(void) {
 
-` #ifdef DIFFUSE_MAP`
+` -#-ifdef DIFFUSE_MAP`
 `   gl_FragColor = texture2D(uDiffuseMap, vVertexUv);`
-` #else`
+` -#-else`
 `   gl_FragColor = uDiffuseColor;`
-` #endif`
+` -#-endif`
 
 } 
 ```
@@ -73,13 +52,7 @@ To sample the `uDiffuseMap` texture, our fragment shader will also need the text
 
 
 ```c
-
-
-1.  ifdef GL\ES
-
-precision mediump float;
-
-1.  endif
+ #ifdef GL\ES precision mediump float; #endif
 
 attribute vec3 aPosition; attribute vec2 aUv;
 
@@ -89,9 +62,9 @@ varying vec2 vVertexUv;
 
 void main(void) {
 
-` #ifdef DIFFUSE_MAP`
+` -#-ifdef DIFFUSE_MAP`
 `   vVertexUv = aUv;`
-` #endif`
+` -#-endif`
 
 ` gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);`
 
@@ -136,19 +109,15 @@ We now have a fragment shader that can use a solid color or a texture depending 
 
 
 ```c
-
-
-1.  ifdef DIFFUSE\MAP
+ #ifdef DIFFUSE\MAP
 
 ` gl_FragColor = texture2D(uDiffuseMap, vVertexUv);`
 
-1.  else
+#else
 
 ` gl_FragColor = uDiffuseColor;`
 
-1.  endif
-
-
+#endif 
 ```
 
 
@@ -156,11 +125,7 @@ It works but it's still not really scalable: we would have to manually define th
 
 
 ```c
-
-
-1.  define DIFFUSE\MAP
-
-
+ #define DIFFUSE\MAP 
 ```
 
 
@@ -185,11 +150,11 @@ The behavior of a macro binding is described in the following pseudo-code:
  defineString = "" if propertyExists(propertyName) then
 
 ` if isInteger(data[propertyName]) then`
-`   defineString = "#define " + propertyName + " " + data[propertyName] // #define MACRO_NAME propertyValue`
+`   defineString = "-#-define " + propertyName + " " + data[propertyName] // -#-define MACRO_NAME propertyValue`
 ` else`
-`   defineString = "#define " + propertyName // #define MACRO_NAME`
+`   defineString = "-#-define " + propertyName // -#-define MACRO_NAME`
 
-// else no \#define 
+// else no #define 
 ```
 
 
@@ -220,9 +185,9 @@ asset/effect/MyCustomUberEffect.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     attribute vec2 aUv;`
 `     uniform mat4 uModelToWorldMatrix;`
@@ -230,26 +195,26 @@ asset/effect/MyCustomUberEffect.effect
 `     varying vec2 vVertexUv;`
 `     void main(void)`
 `     {`
-`       #ifdef DIFFUSE_MAP`
+`       -#-ifdef DIFFUSE_MAP`
 `         vVertexUv = aUv;`
-`       #endif`
+`       -#-endif`
 `       gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);`
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     uniform vec4 uDiffuseColor;`
 `     uniform sampler2D uDiffuseMap;`
 `     varying vec2 vVertexUv;`
 `     void main(void)`
 `     {`
-`       #ifdef DIFFUSE_MAP`
+`       -#-ifdef DIFFUSE_MAP`
 `         gl_FragColor = texture2D(uDiffuseMap, vVertexUv);`
-`       #else`
+`       -#-else`
 `         gl_FragColor = uDiffuseColor;`
-`       #endif`
+`       -#-endif`
 `     }`
 `   "`
 ` }]`
@@ -260,16 +225,13 @@ asset/effect/MyCustomUberEffect.effect
 
 src/main.cpp 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Authoring uber-shaders", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

@@ -59,9 +59,9 @@ The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is
 
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     uniform mat4 uModelToWorldMatrix;`
 `     uniform mat4 uWorldToScreenMatrix;`
@@ -77,7 +77,7 @@ The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is
 ```
 
 
-You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
 
 Step 2: Updating the application code
 -------------------------------------
@@ -126,9 +126,9 @@ asset/effect/MyCustomEffect.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     uniform mat4 uModelToWorldMatrix;`
 `     uniform mat4 uWorldToScreenMatrix;`
@@ -138,9 +138,9 @@ asset/effect/MyCustomEffect.effect
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     uniform vec4 uColor;`
 `     void main(void)`
 `     {`
@@ -155,20 +155,15 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
-
-<!-- -->
-
-1.  include "MyCustomMaterial.hpp"
+#include "MyCustomMaterial.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Binding the camera", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

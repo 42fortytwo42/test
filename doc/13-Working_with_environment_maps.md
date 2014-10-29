@@ -28,15 +28,11 @@ The setup will be the same that the one at the end of the [Working with the Phon
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoPNG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("", 800, 600);`
 `   auto sceneManager = SceneManager::create(canvas->context());`
@@ -107,7 +103,7 @@ To modulate the `environmentMap` another property of the `PhongMaterial` indicat
 
 The type of environment mapping must be set at the same time as the texture except for the cube maps (the type is set automatically).
 
-\<source lang="cpp\> phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell);
+<source lang="cpp\> phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell);
 
 // or
 
@@ -132,15 +128,11 @@ Final Code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoPNG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Working with environment maps", 800, 600);`
 `   auto sceneManager = SceneManager::create(canvas->context());`
@@ -199,5 +191,5 @@ int main(int argc, char\*\* argv) {
 Where to go from here
 ---------------------
 
-`environmentMap` can me mixed with `specularMap` ([Working with specular maps](Working_with_specular_maps_.md)) and/or `normalMap` ([Working with normal maps ](Working_with_normal_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial reference#Full_Example).
+`environmentMap` can me mixed with `specularMap` ([Working with specular maps](Working_with_specular_maps_.md)) and/or `normalMap` ([Working with normal maps ](Working_with_normal_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial reference-#-Full_Example).
 

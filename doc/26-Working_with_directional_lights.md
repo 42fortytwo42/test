@@ -17,11 +17,7 @@ The first very first thing you need to do is to include the following header to 
 
 
 ```cpp
-
-
-1.  include \<DirectionalLight.hpp\>
-
-
+ #include <DirectionalLight.hpp\> 
 ```
 
 
@@ -124,16 +120,13 @@ Final Code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Working with directional lights", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

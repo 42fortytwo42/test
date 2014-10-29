@@ -8,7 +8,7 @@ Make sure you have the source code of Minko on your filesystem. You can get them
 Step 2: Install the dependencies
 --------------------------------
 
-If you've never build a Minko application or the Minko SDK for Linux before, follow the [step 1 of the Targeting Linux tutorial](Targeting_Linux#Step_1:_Installing_the_toolchain).
+If you've never build a Minko application or the Minko SDK for Linux before, follow the [step 1 of the Targeting Linux tutorial](Targeting_Linux-#-Step_1:_Installing_the_toolchain).
 
 Step 3: Generate the solution
 -----------------------------

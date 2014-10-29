@@ -1,19 +1,19 @@
 In this tutorial you wil learn how to create your very own custom rendering effect. We will see three main things:
 
--   the anatomy of a simple `\*.effect` file;
+-   the anatomy of a simple `*.effect` file;
 -   how to write a simple GLSL shader;
 -   how to load and use such effect in your application.
 
-Understanding how effects work is very important because they control the final color of each pixel on the screen. The effects you use and how you use them will determine the very look of your application. Here, we will just create a very simple effect that renders a solid color. But with the following tutorials, reading Minko's core framework `\*.effect` files and learning GLSL should help you creating increasingly amazing effects.
+Understanding how effects work is very important because they control the final color of each pixel on the screen. The effects you use and how you use them will determine the very look of your application. Here, we will just create a very simple effect that renders a solid color. But with the following tutorials, reading Minko's core framework `*.effect` files and learning GLSL should help you creating increasingly amazing effects.
 
 Step 1: Creating the effect file
 --------------------------------
 
-In Minko, rendering effects are stored in separate `\*.effect` files. Indeed, Minko has what is called a "data driven" rendering pipeline: it means the rendering system is entirely configurable through external data or "declarative" files. Those files are `\*.effect` files.
+In Minko, rendering effects are stored in separate `*.effect` files. Indeed, Minko has what is called a "data driven" rendering pipeline: it means the rendering system is entirely configurable through external data or "declarative" files. Those files are `*.effect` files.
 
-`\*.effect` files store all the required data to configure the rendering pipeline. As such, they are the perfect way to create complex, rich and beautiful rendering programs that can easily be reused, shared and distributed.
+`*.effect` files store all the required data to configure the rendering pipeline. As such, they are the perfect way to create complex, rich and beautiful rendering programs that can easily be reused, shared and distributed.
 
-Here is a simple `\*.effect` file skeleton that will help us getting started:
+Here is a simple `*.effect` file skeleton that will help us getting started:
 
 
 ```javascript
@@ -38,33 +38,22 @@ Here is a simple `\*.effect` file skeleton that will help us getting started:
 
 Save this in a `MyCustomEffect.effect` file in the `asset/effect` folder of your app.
 
-As you can see, `\*.effect` files are declared using the JSON format. Here are a few details about the code sample above:
+As you can see, `*.effect` files are declared using the JSON format. Here are a few details about the code sample above:
 
 -   the `name` field declares the name of our effect; when loaded our effect will be referenced in the `AssetLibrary` by 1) the actual file name used for loading 2) the value of this "name" field
 -   the `attributeBindings` field declares an object that will map our effect's shaders (vertex) attribute declarations to actual engine data properties
--   the `passes` field declares an array of objects where each object is a rendering pass made mainly of a [vertex shader](https://en.wikipedia.org/wiki/Shader#Vertex_shaders) (the "vertexShader" field) and a [fragment shader](https://en.wikipedia.org/wiki/Shader#Pixel_shaders) (the "fragmentShader" field).
+-   the `passes` field declares an array of objects where each object is a rendering pass made mainly of a [<https://en.wikipedia.org/wiki/Shader>#Vertex\shaders vertex shader] (the "vertexShader" field) and a [<https://en.wikipedia.org/wiki/Shader>#Pixel\shaders fragment shader] (the "fragmentShader" field).
 
-You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
 
 Step 2 : The vertex shader
 --------------------------
 
-We can now define our vertex shader for the single and only pass of our effect. Our vertex shader will simply:
-
-1.  take the local 3D model-space position of vertex by declaring the `aPosition` atribute,
-2.  transform it to be in the global world-space by multiplying `aPosition` by `uModelToWorldMatrix`,
-3.  transform it again to be in the camera-relative view-space by multiplying the previous result by `uViewMatrix`,
-4.  project it on the 2D screen by multiplying the previous result by `uProjectionMatrix`.
+We can now define our vertex shader for the single and only pass of our effect. Our vertex shader will simply: # take the local 3D model-space position of vertex by declaring the `aPosition` atribute, # transform it to be in the global world-space by multiplying `aPosition` by `uModelToWorldMatrix`, # transform it again to be in the camera-relative view-space by multiplying the previous result by `uViewMatrix`, # project it on the 2D screen by multiplying the previous result by `uProjectionMatrix`.
 
 
 ```c
-
-
-1.  ifdef GL\ES
-
-precision mediump float;
-
-1.  endif
+ #ifdef GL\ES precision mediump float; #endif
 
 attribute vec3 aPosition;
 
@@ -80,7 +69,7 @@ void main(void) {
 
 Note how we declare a default `mediump` precision specifier if the `GL\ES` macro is defined: it is mandatory if we want to target OpenGL ES 2.0 (WebGL and mobile devices).
 
-Here, we've declared a (vertex) `attribute` and 3 `uniform`s. The `attribute` should be filled properly thanks to the `attributeBindings` declared in our `\*.effect` file. We don't know yet how it works exactly but it should work. Yet, our `uniform`s don't have a value and no bindings declared: we will have to set them at runtime when our effect is loaded.
+Here, we've declared a (vertex) `attribute` and 3 `uniform`s. The `attribute` should be filled properly thanks to the `attributeBindings` declared in our `*.effect` file. We don't know yet how it works exactly but it should work. Yet, our `uniform`s don't have a value and no bindings declared: we will have to set them at runtime when our effect is loaded.
 
 Step 3: The fragment shader
 ---------------------------
@@ -92,13 +81,7 @@ Our fragment shader will be even simpler:
 
 
 ```c
-
-
-1.  ifdef GL\ES
-
-precision mediump float;
-
-1.  endif
+ #ifdef GL\ES precision mediump float; #endif
 
 uniform vec4 uColor;
 
@@ -115,7 +98,7 @@ Step 4: Loading and using our custom effect
 
 We can now load our `MyCustomEffect.effect` effect in our application and use it for rendering! To do this, we just have to:
 
--   load the `\*.effect` file in the `AssetLibrary`
+-   load the `*.effect` file in the `AssetLibrary`
 -   fetch back the corresponding `Effect` object created upon loading
 -   use this very `Effect` object to initialize our `Surface`
 
@@ -141,7 +124,7 @@ But for our custom `Effect` to work, we need to fill properly all the `uniform` 
 
 
 ```cpp
- myCustomEffect->setUniform("uModelToWorldMatrix", Matrix4x4::create()->translation(0.f, 0.f, -5.f)); myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create()); myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)PI \* 0.25f, (float)WINDOW\WIDTH / (float)WINDOW\HEIGHT, .1f, 1000.f)); myCustomEffect->setUniform("uColor", Vector4::create(0.f, 0.f, 1.f, 1.f)); 
+ myCustomEffect->setUniform("uModelToWorldMatrix", Matrix4x4::create()->translation(0.f, 0.f, -5.f)); myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create()); myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)PI * 0.25f, (float)WINDOW\WIDTH / (float)WINDOW\HEIGHT, .1f, 1000.f)); myCustomEffect->setUniform("uColor", Vector4::create(0.f, 0.f, 1.f, 1.f)); 
 ```
 
 
@@ -158,9 +141,9 @@ asset/effect/MyCustomEffect.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 
 `     attribute vec3 aPosition;`
 
@@ -174,9 +157,9 @@ asset/effect/MyCustomEffect.effect
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 
 `     uniform vec4 uColor;`
 
@@ -193,16 +176,13 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Create your first custom effect", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

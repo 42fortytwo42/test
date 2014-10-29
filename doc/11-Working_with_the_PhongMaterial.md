@@ -21,15 +21,11 @@ Let's setup the scene:
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoPNG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("", 800, 600);`
 
@@ -130,7 +126,7 @@ The phong material class defines several methods to set the specular color:
 -   `PhongMaterial::specularColor(Vector4::Ptr color)`
 -   `PhongMaterial::specularColor(uint color)`
 
-\<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); 
+<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); 
 ```
 
 
@@ -169,15 +165,11 @@ Final Code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoPNG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Working with the PhongMaterial", 800, 600);`
 

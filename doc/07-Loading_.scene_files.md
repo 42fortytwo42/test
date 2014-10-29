@@ -16,11 +16,9 @@ In order to use .scene files, you will have to enable the `serializer` plugin. M
 
 Next, the `AssetManager` of your scene should register the `minko::[file::SceneParser`](file::SceneParser`) for .scene files : 
 ```cpp
+ #include "minko/MinkoSerializer.hpp"
 
-
-1.  include "minko/MinkoSerializer.hpp"
-
-sceneManager->assets()->registerParser\<minko::[file::SceneParser\>](file::SceneParser>)("scene"); 
+sceneManager->assets()->registerParser<minko::[file::SceneParser\>](file::SceneParser>)("scene"); 
 ```
 
 
@@ -57,17 +55,13 @@ Final Code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
-3.  include "minko/MinkoSerializer.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp" #include "minko/MinkoSerializer.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600; std::string SCENE\FILENAME = "model/myScene/myScene.scene";
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Loading .scene files", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = SceneManager::create(canvas->context());`

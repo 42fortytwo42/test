@@ -199,7 +199,7 @@ You can choose between two `normal mapping types`:
 -   `Normal`: the `normal map` will be used for normal mapping.
 -   `Parallax`: the `normal map` and `height map` will be used for normal mapping. This can only be enabled if both `normal map` and `height map` are set.
 
-<!-- -->
+ 
 
 -   Normal mapping type = None
 

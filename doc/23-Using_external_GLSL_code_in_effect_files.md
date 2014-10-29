@@ -1,16 +1,16 @@
-In this tutorial, we will see how to reference external GLSL files in `\*.effect` files. This mechanism is useful for two reasons:
+In this tutorial, we will see how to reference external GLSL files in `*.effect` files. This mechanism is useful for two reasons:
 
 -   it eases the integration of 3rd party GLSL code;
--   it makes your `\*.effect` files cleaner by externalizing the shader code.
+-   it makes your `*.effect` files cleaner by externalizing the shader code.
 
-To reference external GLSL code, we will use the `\#pragma include` directive within shader fields.
+To reference external GLSL code, we will use the `#pragma include` directive within shader fields.
 
-As an example, we will break apart the custom effect that we previously set up in the tutorial [Creating a custom effect](17-Creating_a_custom_effect).
+As an example, we will break apart the custom effect that we previously set up in the tutorial [Creating a custom effect](17-Creating_a_custom_effect.md).
 
 Step 1: Referencing the external GLSL files
 -------------------------------------------
 
-To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragment.glsl` files, we will use the `\#pragma include` directive within the respective shader fields:
+To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragment.glsl` files, we will use the `#pragma include` directive within the respective shader fields:
 
 
 ```javascript
@@ -18,8 +18,8 @@ To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragm
 
 ` "name" : "MyCustomEffect",`
 ` "passes" : [{`
-`   "vertexShader" : "#pragma include('MyCustomEffect.vertex.glsl')",`
-`   "fragmentShader" : "#pragma include('MyCustomEffect.fragment.glsl')"`
+`   "vertexShader" : "-#-pragma include('MyCustomEffect.vertex.glsl')",`
+`   "fragmentShader" : "-#-pragma include('MyCustomEffect.fragment.glsl')"`
 ` }]`
 
 } 
@@ -28,14 +28,14 @@ To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragm
 
 In the code above, `MyCustomShader.vertex.glsl` and `MyCustomShader.fragment.glsl` are expected to be located in the same directory as the `MyCustomEffect.effect` file.
 
-The effect of the `\#pragma include` directive is pretty much the same as the `\#include` C/C++ pre-processor macro: the code from the included file(s) are copy/pasted directly.
+The effect of the `#pragma include` directive is pretty much the same as the `#include` C/C++ pre-processor macro: the code from the included file(s) are copy/pasted directly.
 
 Step 2 (optional): Binding the uniforms
 ---------------------------------------
 
 As you can imagine, every GLSL code is different... so you'll want to adapt this part of the tutorial to the actual uniforms declared by the GLSL code/shader you're including in your effect.
 
-You also have to remember that you can always choose between declaring some `uniformBindings` in your `\*.effect` files or manually calling `Effect::setUniform()` in your application code.
+You also have to remember that you can always choose between declaring some `uniformBindings` in your `*.effect` files or manually calling `Effect::setUniform()` in your application code.
 
 To learn how to setup `uniformBindings`, you can read the following tutorials:
 
@@ -55,8 +55,8 @@ asset/effect/MyCustomEffect.effect
 `   "aPosition" : "geometry[${geometryId}].position"`
 ` },`
 ` "passes" : [{`
-`   "vertexShader" : "#pragma include('MyCustomEffect.vertex.glsl')",`
-`   "fragmentShader" : "#pragma include('MyCustomEffect.fragment.glsl')"`
+`   "vertexShader" : "-#-pragma include('MyCustomEffect.vertex.glsl')",`
+`   "fragmentShader" : "-#-pragma include('MyCustomEffect.fragment.glsl')"`
 ` }]`
 
 } 
@@ -65,13 +65,11 @@ asset/effect/MyCustomEffect.effect
 
 asset/effect/MyCustomEffect.vertex.glsl 
 ```c
-
-
-1.  ifdef GL\ES
+ #ifdef GL\ES
 
 `precision mediump float;`
 
-1.  endif
+#endif
 
 attribute vec3 aPosition;
 
@@ -87,13 +85,11 @@ void main(void) {
 
 asset/effect/MyCustomEffect.fragment.glsl 
 ```c
-
-
-1.  ifdef GL\ES
+ #ifdef GL\ES
 
 `precision mediump float;`
 
-1.  endif
+#endif
 
 uniform vec4 uColor;
 
@@ -107,16 +103,13 @@ void main(void) {
 
 src/main.cpp 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Using external GLSL code in effect files", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = component::SceneManager::create(canvas->context());`

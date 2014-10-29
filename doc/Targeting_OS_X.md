@@ -18,15 +18,9 @@ The Unix-based toolchain provided by the Command Line Tools includes Clang 3.2, 
 
 
 ```bash
+ # Clang sudo port install clang-3.4 sudo port select --set clang mp-clang-3.4
 
-
-1.  Clang
-
-sudo port install clang-3.4 sudo port select --set clang mp-clang-3.4
-
-1.  GCC
-
-sudo port install gcc48 sudo port select --set gcc mp-gcc48 
+# GCC sudo port install gcc48 sudo port select --set gcc mp-gcc48 
 ```
 
 

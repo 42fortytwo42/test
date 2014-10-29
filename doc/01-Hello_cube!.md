@@ -10,16 +10,13 @@ We will use the SDL plugin to initialize a window. The following code is a simpl
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Hello cube!", WINDOW_WIDTH, WINDOW_HEIGHT);`
 
@@ -212,5 +209,5 @@ To make our cube rotate a bit more at each frame, we simply add this line to our
 Final code
 ----------
 
-{{\#github:tutorial/01-hello-cube/src/main.cpp}}
+{{#github:tutorial/01-hello-cube/src/main.cpp}}
 

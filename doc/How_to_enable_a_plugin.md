@@ -1,4 +1,4 @@
-Plugins are projects separate from Minko's SDK. They bring new features by extending the code framework classes or providing external assets such as `\*.effect` files. Because plugins provide external C++ code and assets, they imply some modifications on how to compile and link your applications.
+Plugins are projects separate from Minko's SDK. They bring new features by extending the code framework classes or providing external assets such as `*.effect` files. Because plugins provide external C++ code and assets, they imply some modifications on how to compile and link your applications.
 
 Hopefully, Minko's build system provide a very simple and easy way to not only create plugins but also link them with your application project.
 
@@ -70,7 +70,7 @@ You can, of course, enable as many plugins as you need.
 Step 2: Generate the solution
 -----------------------------
 
-Now that our solution configuration is up to date, we have to re-generate the actual solution file for our IDE/build system. To do this, please refer to the [step 3 of the "Create a new application" tutorial](Create_a_new_application#Step_3:_Generate_the_solution_file).
+Now that our solution configuration is up to date, we have to re-generate the actual solution file for our IDE/build system. To do this, please refer to the [step 3 of the "Create a new application" tutorial](Create_a_new_application-#-Step_3:_Generate_the_solution_file).
 
 Step 2 (alternative): Enable a plugin in the command line
 ---------------------------------------------------------
@@ -85,7 +85,7 @@ For example, if we want to enabled the "jpeg" plugin, we will have to add the fo
 ```
 
 
-The command line itself is documented in the [step 3 of the "Create a new application" tutorial](Create_a_new_application#Step_3:_Generate_the_solution_file).
+The command line itself is documented in the [step 3 of the "Create a new application" tutorial](Create_a_new_application-#-Step_3:_Generate_the_solution_file).
 
 For example, the following Windows command line will enable the "jpeg" plugin when generating the Visual Studio 2013 solution file for our project:
 
@@ -104,15 +104,7 @@ In the following code, we will enable the JPEG image files parser only if the `M
 
 
 ```cpp
-
-
-1.  ifdef MINKO\PLUGIN\JPEG
-
-sceneManager->assets()->registerParser\<JPEGParser\>("jpg");
-
-1.  endif
-
-
+ #ifdef MINKO\PLUGIN\JPEG sceneManager->assets()->registerParser<JPEGParser\>("jpg"); #endif 
 ```
 
 

@@ -48,7 +48,7 @@ sceneManager->assets()->load();
 Step 2: Create a render target
 ------------------------------
 
-The anti-aliasing effect is a post processing effect, so we need to create a render target to render the scene into it. I would strongly advise you to read the [tutorial that explains how to create a simple post-processing effect](22-Creating a simple post-processing effect).
+The anti-aliasing effect is a post processing effect, so we need to create a render target to render the scene into it. I would strongly advise you to read the [tutorial that explains how to create a simple post-processing effect](22-Creating_a_simple_post-processing_effect.md).
 
 
 ```cpp
@@ -146,16 +146,13 @@ Final code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Applying anti-aliasing effect", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = SceneManager::create(canvas->context());`

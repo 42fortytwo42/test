@@ -22,15 +22,11 @@ The setup will be the same that the one at the end of the [Working with the Phon
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoPNG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("", 800, 600);`
 `   auto sceneManager = SceneManager::create(canvas->context());`
@@ -117,15 +113,11 @@ Final Code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoPNG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Working with normal maps", 800, 600);`
 `   auto sceneManager = SceneManager::create(canvas->context());`
@@ -184,5 +176,5 @@ int main(int argc, char\*\* argv) {
 Where to go from here
 ---------------------
 
-`normalMap` can me mixed with `specularMap` ([Working with specular maps](Working_with_specular_maps_.md)) and/or `environmentMap` ([Working with environment maps ](Working_with_environment_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial reference#Full_Example).
+`normalMap` can me mixed with `specularMap` ([Working with specular maps](Working_with_specular_maps_.md)) and/or `environmentMap` ([Working with environment maps ](Working_with_environment_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial reference-#-Full_Example).
 

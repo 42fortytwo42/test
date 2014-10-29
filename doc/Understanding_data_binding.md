@@ -21,9 +21,9 @@ asset/effect/MyCustomEffect.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `       precision mediump float;`
-`     #endif`
+`     -#-endif`
 
 `     attribute vec3 aPosition;`
 
@@ -37,9 +37,9 @@ asset/effect/MyCustomEffect.effect
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `       precision mediump float;`
-`     #endif`
+`     -#-endif`
 
 `     uniform vec4 uColor;`
 
@@ -56,16 +56,13 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Hello cube!", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`
@@ -132,12 +129,7 @@ The problem is the use of the `Effect::setUniform()` method. The method itself i
 ```
 
 
-This pseudo-code raises multiple questions:
-
-1.  How efficient is it to set all uniforms for all objects?
-2.  How can we handle values coming from other nodes in the scene, such as lights or cameras?
-3.  What happens when we change the name of an uniform in the GLSL code?
-4.  How could we integrate third party GLSL code and plug it to the properties already available in the engine?
+This pseudo-code raises multiple questions: # How efficient is it to set all uniforms for all objects? # How can we handle values coming from other nodes in the scene, such as lights or cameras? # What happens when we change the name of an uniform in the GLSL code? # How could we integrate third party GLSL code and plug it to the properties already available in the engine?
 
 Another problem is to allow our application to adapt its behavior when one of the properties of a scene node changes. For example, when the 3D position of a node changes we might want to check its position relative to the mouse cursor or whether the object is actually visible at all or not. Most application scripts will actually base their behavior according to how the properties of our scene node change over time. If we store our uniforms in a simple map, we will have a hard time tracking the corresponding values and act accordingly when they change.
 
@@ -214,15 +206,15 @@ When a `[data::Provider`](data::Provider`) is added to a `[data::Container`](dat
 ```cpp
  auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
-std::cout \<\< "provider->hasProperty(\"foo\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\"foo\"): " \<\< container->hasProperty("foo") \<\< std::endl;
+std::cout << "provider->hasProperty(\"foo\"): " << provider->hasProperty("foo") << std::endl; std::cout << "container->hasProperty(\"foo\"): " << container->hasProperty("foo") << std::endl;
 
 provider->set("foo", 42);
 
-std::cout \<\< "provider->hasProperty(\"foo\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\"foo\"): " \<\< container->hasProperty("foo") \<\< std::endl;
+std::cout << "provider->hasProperty(\"foo\"): " << provider->hasProperty("foo") << std::endl; std::cout << "container->hasProperty(\"foo\"): " << container->hasProperty("foo") << std::endl;
 
 container->addProvider(provider);
 
-std::cout \<\< "provider->hasProperty(\"foo\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\"foo\"): " \<\< container->hasProperty("foo") \<\< std::endl; 
+std::cout << "provider->hasProperty(\"foo\"): " << provider->hasProperty("foo") << std::endl; std::cout << "container->hasProperty(\"foo\"): " << container->hasProperty("foo") << std::endl; 
 ```
 
 
@@ -285,7 +277,7 @@ There are 4 different kinds of bindings:
 
 **A binding is declared with at least a property name and a source.** The property name will be used to get the corresponding value from a `[data::Container`](data::Container`). The "source" will tell which container should be read. The source of a binding can be set to `<data::BindingSource>::TARGET` ("target"), `<data::BindingSource>::RENDERER` ("renderer") or `<data::BindingSource>::ROOT` ("root").
 
-Here is an example of how uniform bindings can be declared in an `\*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](Effect_files_format_reference.md)):
+Here is an example of how uniform bindings can be declared in an `*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](Effect_files_format_reference.md)):
 
 
 ```javascript

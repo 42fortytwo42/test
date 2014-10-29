@@ -1,6 +1,6 @@
 In this tutorial, we will see how to load textures and use them in materials. This tutorial focus on loading RGBA diffuse textures, but the very same technique is used to load just about any texture (normal maps, specular maps, etc...).
 
-The code for this tutorial is based on the one described in the [Hello cube!](Hello cube!) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](Hello_cube!.md) tutorial.
 
 Just like any asset, texture are loaded through the `AssetLibrary`. Here, we will use the library available from our `SceneManager::assets()` property, but you can also create your own `AssetLibrary` objects to fit your needs.
 
@@ -20,7 +20,7 @@ To enable one (or both) of those plugins, we will have to update our project con
 ```
 
 
-Uncommenting one of those lines will enable the corresponding plugin. Now we have to regenerate the project/solution files to take those changes into account. To do this, please refer to the [Step 3 of the "Create a new application" tutorial](Create_a_new_application#Step_3:_Generate_the_solution_file).
+Uncommenting one of those lines will enable the corresponding plugin. Now we have to regenerate the project/solution files to take those changes into account. To do this, please refer to the [Step 3 of the "Create a new application" tutorial](Create_a_new_application-#-Step_3:_Generate_the_solution_file).
 
 If you want to support more texture file formats, feel free to create a new plugin based on those already available. It's usually quite simple to integrate 3rd party parsing libraries to handle new file formats.
 
@@ -31,7 +31,7 @@ Before we can load anything, we have to make sure Minko will know how to handle 
 
 
 ```cpp
- sceneManager->assets()->registerParser\<[file::JPEGParser\>](file::JPEGParser>)("jpg"); 
+ sceneManager->assets()->registerParser<[file::JPEGParser\>](file::JPEGParser>)("jpg"); 
 ```
 
 
@@ -109,17 +109,13 @@ Final code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoJPEG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoJPEG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Loading and using textures", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

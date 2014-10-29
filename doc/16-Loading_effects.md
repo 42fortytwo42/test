@@ -1,10 +1,6 @@
-In this tutorial we will see how to load external `\*.effect` files. Loading effects is a mandatory procedure since any pixel rendered in our application is computed using those precious effects. They are handled as external assets for the following reasons:
+In this tutorial we will see how to load external `*.effect` files. Loading effects is a mandatory procedure since any pixel rendered in our application is computed using those precious effects. They are handled as external assets for the following reasons: # They are easily redistributable. # They can easily be swapped at runtime. # The rendering engine is "data driven": the effect files provide all the required data to setup the rendering process, making it very modular and flexible.
 
-1.  They are easily redistributable.
-2.  They can easily be swapped at runtime.
-3.  The rendering engine is "data driven": the effect files provide all the required data to setup the rendering process, making it very modular and flexible.
-
-**Attention!** To make sure your `\*.effect` are easily accessible at runtime on all platforms, we recommend storing them in the `asset/effect` directory located in the root folder of your application project. The content of the `asset` directory is automatically copied after a successful build.
+**Attention!** To make sure your `*.effect` are easily accessible at runtime on all platforms, we recommend storing them in the `asset/effect` directory located in the root folder of your application project. The content of the `asset` directory is automatically copied after a successful build.
 
 Step 1: Loading a single effect
 -------------------------------
@@ -36,7 +32,7 @@ when all the file passed to the `AssetLibrary::load()` method has been successfu
 Step 1 (alternative): Loading multiple effects/assets
 -----------------------------------------------------
 
-To load multiple effects - or if the `\*.effect` file(s) you want to load is just one asset among others - we can use the `AssetLibrary::queue()` method. This method expects the same arguments as the `AssetLibrary::load()` method except it will enlist all the files to load. It will then eventually load then in a batch when `AssetLibrary::load()` is actually called:
+To load multiple effects - or if the `*.effect` file(s) you want to load is just one asset among others - we can use the `AssetLibrary::queue()` method. This method expects the same arguments as the `AssetLibrary::load()` method except it will enlist all the files to load. It will then eventually load then in a batch when `AssetLibrary::load()` is actually called:
 
 
 ```cpp
@@ -69,9 +65,9 @@ when all the assets listed by the successive calls to the `AssetLibrary::queue()
 Step 2: Fetching the Effect object
 ----------------------------------
 
-When our `\*.effect` is loaded, it is automatically made available in the `AssetLibrary` and can be fetched using the `AssetLibrary::effect()` method. This method expects a single `const std::string&` argument that will point to the loaded `Effect` object using:
+When our `*.effect` is loaded, it is automatically made available in the `AssetLibrary` and can be fetched using the `AssetLibrary::effect()` method. This method expects a single `const std::string&` argument that will point to the loaded `Effect` object using:
 
--   the value of the "name" field in the `\*.effect` file, if any;
+-   the value of the "name" field in the `*.effect` file, if any;
 -   or the actual file name used upon loading (the `std::string` passed to either `AssetLibrary::load()` or `AssetLibrary::queue()`).
 
 
@@ -89,16 +85,13 @@ Final code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - Loading effects", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = component::SceneManager::create(canvas->context());`
@@ -150,5 +143,5 @@ Where to go from there...
 Now that you know how to load effects, you should read one of the following tutorials:
 
 -   [Create your first custom effect](Create_your_first_custom_effect.md)
--   [Creating a simple post-processing effect](Creating a simple post-processing effect)
+-   [Creating a simple post-processing effect](Creating_a_simple_post-processing_effect.md)
 

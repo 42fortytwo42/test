@@ -1,16 +1,11 @@
 In this tutorial we will see how to author post-processing effects and how to setup our application/scene to use them. Before you read this tutorial, you should read:
 
--   [Create your first custom effect](Create_your_first_custom_effect.md) to learn about `\*.effect` files authoring basics;
+-   [Create your first custom effect](Create_your_first_custom_effect.md) to learn about `*.effect` files authoring basics;
 -   [Binding the camera](Binding_the_camera.md) and/or [Binding the model to world transform](Binding_the_model_to_world_transform.md) to learn about `uniformBindings`.
 
 As a practical example, this tutorial will guide you through the creation of a "black and white" or "desaturate" post-processing effect. Its purpose is quite obvious: it will post-process your rendering to get a black and white final picture.
 
-Post-processing is done in two steps:
-
-1.  The scene is rendered as usual but in a texture.
-2.  This texture is used to render a fullscreen quad and each pixel can be modified using the fragment shader.
-
-enterFrame The second step implies writing at least one shader. But you might also have to write multiple shaders for multi-pass post-processing effects.
+Post-processing is done in two steps: # The scene is rendered as usual but in a texture. # This texture is used to render a fullscreen quad and each pixel can be modified using the fragment shader. enterFrame The second step implies writing at least one shader. But you might also have to write multiple shaders for multi-pass post-processing effects.
 
 Step 1: The vertex shader
 -------------------------
@@ -21,7 +16,7 @@ The `geometry::QuadGeometry` class provides the geometry for a unit sized quad l
 
 
 ```c
- gl\Position = vec4(aPosition, 1) \* vec4(1., 1., 1., .5); 
+ gl\Position = vec4(aPosition, 1) * vec4(1., 1., 1., .5); 
 ```
 
 
@@ -31,13 +26,7 @@ Because OpenGL performs render to texture using an inverted y axis, we also have
 
 
 ```c
-
-
-1.  ifdef GL\ES
-
-precision mediump float;
-
-1.  endif
+ #ifdef GL\ES precision mediump float; #endif
 
 attribute vec3 aPosition; attribute vec2 aUv;
 
@@ -62,13 +51,7 @@ Here, we will simply sample the backbuffer and use an average of its `RGB` value
 
 
 ```c
-
-
-1.  ifdef GL\ES
-
-precision mediump float;
-
-1.  endif
+ #ifdef GL\ES precision mediump float; #endif
 
 uniform sampler2D uBackbuffer;
 
@@ -190,9 +173,9 @@ asset/effect/Desaturate.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     attribute vec2 aUv;`
 `     varying vec4 vVertexUv;`
@@ -203,9 +186,9 @@ asset/effect/Desaturate.effect
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     uniform sampler2D uBackbuffer;`
 `     varying vec2 vVertexUv;`
 `     void main()`
@@ -223,16 +206,13 @@ asset/effect/Desaturate.effect
 
 src/main.cpp 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Creating a simple post-processing effect", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

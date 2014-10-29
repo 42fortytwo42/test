@@ -10,7 +10,7 @@ Scripting in Lua is very cool because you get the best of both worlds:
 Before we start, you should read the following tutorials:
 
 -   [Create a new application](Create_a_new_application.md)
--   [Hello cube!](Hello cube!)
+-   [Hello cube!](Hello_cube!.md)
 -   [How to enable a plugin](How_to_enable_a_plugin.md)
 
 Step 0: Enabling the Lua plugin
@@ -42,7 +42,7 @@ minko.project.solution(PROJECT\NAME)
 ```
 
 
-Don't forget to [regenerate your solution file](Create a new application#Step_3:_Generate_the_solution_file) when you're done.
+Don't forget to [regenerate your solution file](Create a new application-#-Step_3:_Generate_the_solution_file) when you're done.
 
 Step 1: My first script file
 ----------------------------
@@ -94,11 +94,7 @@ The first thing to do in our C++ application code is to load the main header for
 
 
 ```cpp
-
-
-1.  include "minko/MinkoLua.hpp"
-
-
+ #include "minko/MinkoLua.hpp" 
 ```
 
 
@@ -119,12 +115,11 @@ Step 3: Loading a script
 
 We can then use all the classes related to Lua scripting. Next we need to actually load our script. This should not be a surprise by now: we are going to use the `AssetLibrary`. Just like for any kind of assets, we need to:
 
-1.  make sure the `LuaScriptParser` is registered for the "lua" file extension;
-2.  actually load our script(s) using `AssetLibrary::queue()` and/or `AssetLibrary::load()`.
+# make sure the `LuaScriptParser` is registered for the "lua" file extension; # actually load our script(s) using `AssetLibrary::queue()` and/or `AssetLibrary::load()`.
 
 
 ```cpp
- // register the LuaScriptParser sceneManager->assets()->registerParser\<[file::LuaScriptParser\>](file::LuaScriptParser>)("lua");
+ // register the LuaScriptParser sceneManager->assets()->registerParser<[file::LuaScriptParser\>](file::LuaScriptParser>)("lua");
 
 // queue the "script/my\script.lua" script file sceneManager->assets()->queue("script/my\script.lua");
 
@@ -197,17 +192,13 @@ Final code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
-3.  include "minko/MinkoLua.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp" #include "minko/MinkoLua.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Minko Tutorial - My first script", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = component::SceneManager::create(canvas->context());`

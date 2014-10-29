@@ -9,7 +9,7 @@ An ambient light will affect all objects in the scene and light them equally on 
 -   `Ambient`: changes the intensity of the light. All materials can accentuate this intensity with the `Ambient Multiply` parameter.
 -   `Emission`: sets the emission mask for the light. Any material with a layer enabled in its `reception` mask will be affected by the light if this same layer is enabled in the `emission` mask
 
-<!-- -->
+ 
 
 -   Ambient = 0
 
@@ -45,7 +45,7 @@ Light parameters
 -   `Shininess`: this will affect the spread of the specular spot. A bigger value will result in a smaller spot.
 -   `Specular`: this will affect the intensity and radius of the light specular spot. A bigger value will result in a bigger size and intensity.
 
-<!-- -->
+ 
 
 -   Diffuse = 0.1
 
@@ -97,7 +97,7 @@ Shadows
 -   `Map width`: width on which the shadows will be computed. Will be represented on screen by the light frustum. The position of this frustum will depend on the light `position`.
 -   `Z-far`: maximum distance on which the shadows will be produced. Will be represented on screen by the light frustum.
 
-<!-- -->
+ 
 
 -   Small `map width`: the shadows of the cube and torus are cut.
 
@@ -145,7 +145,7 @@ The ESM filters the shadow map by approximating the shadow test with an exponent
 -   `Bias`
 -   `Spread`: how much the shadow will spread when it is far from the light
 
-<!-- -->
+ 
 
 -   `Spread` = `0`, the shadow edges are sharp.
 
@@ -169,7 +169,7 @@ Transform properties
 Light properties
 ----------------
 
--   `Color\</color\>: changes the light color.
+-   `Color</color\>: changes the light color.
 -   `Attenuation Distance`: distance at which the light intensity will fade out.
 -   `Inner radius`, `Outer radius`: the `outer radius` gives the radius of the cone, the light will be more intense inside of the `inner radius` and will fade from the `inner radius` to the `outer radius`.
 -   `Diffuse`: changes the intensity of the light. All materials can accentuate this intensity with the `Diffuse Multiplier` parameter.

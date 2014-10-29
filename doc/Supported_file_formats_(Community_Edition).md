@@ -1,2 +1,2 @@
-1.  REDIRECT [Supported file formats (Minko Engine)](Supported file formats (Minko Engine))
+#REDIRECT [Supported file formats (Minko Engine)](Supported file formats (Minko Engine))
 

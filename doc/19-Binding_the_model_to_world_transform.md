@@ -45,9 +45,9 @@ If we add this to the code from the [Creating custom materials](Creating_custom_
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     uniform mat4 uModelToWorldMatrix;`
 `     uniform mat4 uViewMatrix;`
@@ -58,9 +58,9 @@ If we add this to the code from the [Creating custom materials](Creating_custom_
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     uniform vec4 uColor;`
 `     void main(void)`
 `     {`
@@ -73,7 +73,7 @@ If we add this to the code from the [Creating custom materials](Creating_custom_
 ```
 
 
-You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article. To learn more about data binding, please read the [Understanding data binding](Understanding_data_binding.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article. To learn more about data binding, please read the [Understanding data binding](Understanding_data_binding.md) article.
 
 Step 2: Udpating the application code
 -------------------------------------
@@ -121,9 +121,9 @@ asset/effect/MyCustomEffect.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     uniform mat4 uModelToWorldMatrix;`
 `     uniform mat4 uViewMatrix;`
@@ -134,9 +134,9 @@ asset/effect/MyCustomEffect.effect
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     uniform vec4 uColor;`
 `     void main(void)`
 `     {`
@@ -151,20 +151,15 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
-
-<!-- -->
-
-1.  include "MyCustomMaterial.hpp"
+#include "MyCustomMaterial.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Binding the model to world transform", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

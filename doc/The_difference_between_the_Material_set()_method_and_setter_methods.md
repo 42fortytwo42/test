@@ -37,7 +37,7 @@ It makes `Material::set()` de facto more suitable for dynamic code such as compl
 
 Because material properties are not actually statically declared in a class but just referenced as string values, it also makes it possible to setup a `Material` object that will declare all the properties expected by any `Effect` without much work. Thus, you can create new rendering effects without having to write any C++ code to plug them to the engine/application.
 
-Yet, this approach is a lot less user friendly if you actually know the name of the properties you want to set at author time. Indeed, developers don't have access to code-hinting since properties are referenced by simple string values. Setting all the required properties of a material is then a lot harder because you have to find their actual name from the documentation or - even worse - read the code of the corresponding `\*.effect` file.
+Yet, this approach is a lot less user friendly if you actually know the name of the properties you want to set at author time. Indeed, developers don't have access to code-hinting since properties are referenced by simple string values. Setting all the required properties of a material is then a lot harder because you have to find their actual name from the documentation or - even worse - read the code of the corresponding `*.effect` file.
 
 The static approach
 -------------------

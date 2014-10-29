@@ -14,7 +14,7 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 
 ### Windows
 
--   Install the full package of the [Emscripten SDK 1.16](https://github.com/kripken/emscripten/wiki/Emscripten-SDK#wiki-downloads)
+-   Install the full package of the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK 1.16]
 -   Double-click `tool\win\script\install\emscripten.bat`
 
 
@@ -30,7 +30,7 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 
 ### OS X
 
--   Run `tool/mac/script/install\emscripten.sh` (this will install the [Emscripten SDK](https://github.com/kripken/emscripten/wiki/Emscripten-SDK#wiki-downloads))
+-   Run `tool/mac/script/install\emscripten.sh` (this will install the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK])
 
 ### Linux
 
@@ -49,7 +49,7 @@ Under Ubuntu 13.04+, the procedure is easier:
 
 
 ```bash
- sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->\> ~/.profile 
+ sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 # Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->\> ~/.profile 
 ```
 
 
@@ -59,7 +59,7 @@ Under Ubuntu 13.04+, the procedure is easier:
 ```
 
 
-Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [Getting Fastcomp page of the Emscripten wiki](https://github.com/kripken/emscripten/wiki/LLVM-Backend#getting-fastcomp). 
+Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [<https://github.com/kripken/emscripten/wiki/LLVM-Backend>#getting-fastcomp Getting Fastcomp page of the Emscripten wiki]. 
 
 Note: Currently, Minko supports **Emscripten 1.16.0**.
 

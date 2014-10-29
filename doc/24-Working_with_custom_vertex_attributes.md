@@ -1,4 +1,4 @@
-As you should have learned in the tutorials dedicated to the binding of your objects' [model-to-world transforms](Binding_the_model_to_world_transform) and your [camera](Binding_the_camera.md), you can easily pass uniform properties to the GPU by editing effect files. In this tutorial, we will dwell on a slightly different, albeit crucial sort of data you can hand over to your graphics card.
+As you should have learned in the tutorials dedicated to the binding of your objects' [model-to-world transforms](Binding_the_model_to_world_transform.md) and your [camera](Binding_the_camera.md), you can easily pass uniform properties to the GPU by editing effect files. In this tutorial, we will dwell on a slightly different, albeit crucial sort of data you can hand over to your graphics card.
 
 Principle
 ---------
@@ -21,11 +21,11 @@ Step 1: Add your attributes to your geometry in Minko
 
 Let us assume you want to add a 3D displacement vector to each vertex of your mesh's geometry. Clearly, you cannot resort to uniforms and shall use a vertex attribute instead. The first step to follow is thus to encapsulate this additional data into your `geometry::Geometry` and hand it over to the GPU as before. You can perfectly entirely redefine your own custom geometry, but since we will stick with the cube (and hence the `geometry::CubeGeometry`) the easiest way to go is to add another *vertex buffer* to it via the `geometry::Geometry::addVertexBuffer(render::VertexBuffer::Ptr)` method.
 
-A `render::VertexBuffer` instance can simply be considered as a convenient wrapper around your vertex-based data (represented by a `std::vector\<float\>`) that only stores the information necessary for the rendering context to process your data. Besides the data itself, a vertex buffer also specifies:
+A `render::VertexBuffer` instance can simply be considered as a convenient wrapper around your vertex-based data (represented by a `std::vector<float\>`) that only stores the information necessary for the rendering context to process your data. Besides the data itself, a vertex buffer also specifies:
 
 -   the *property name* bound to the attribute (here, `positionOffset`),
 -   the *size* of each attribute in terms of floats (here, 3 as each corresponds to a `vec3` GLSL type),
--   the *offset* inside the `std::vector\<float\>` of the attribute in terms of floats (here, 0 as the attribute is alone within the vertex buffer).
+-   the *offset* inside the `std::vector<float\>` of the attribute in terms of floats (here, 0 as the attribute is alone within the vertex buffer).
 
 In the following code, we exploit the simplicity of the cube geometry (six separate vertices for the six faces of the cube) in order to create a vertex buffer, the data of which is used to slightly move the vertex positions along the face normals (the actual vertex displacement is done in the vertex shader program as shown below).
 
@@ -87,7 +87,7 @@ This vertex buffer is added to the geometry and finally, in the `main` procedure
 
 
 ```cpp
- int main(int argc, char\*\* argv) {
+ int main(int argc, char** argv) {
 
 ` ...`
 ` auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)`
@@ -150,9 +150,9 @@ Because a meaningful vertex attribute is only one that is actually used in compu
 ` ...`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     attribute vec3 aPositionOffset;`
 `     uniform mat4 uModelToWorldMatrix;`
@@ -201,7 +201,7 @@ But this time, we will not bind our new `aVertexColor` vertex attribute via the 
 
 }
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` ...`
 ` auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)`
@@ -286,9 +286,9 @@ asset/effect/MyCustomEffect.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     attribute vec3 aPositionOffset;`
 `     attribute vec4 aVertexColor;`
@@ -306,9 +306,9 @@ asset/effect/MyCustomEffect.effect
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 ` `
 `     varying vec4 vVertexColor; // interpolated across triangular face`
 
@@ -327,14 +327,9 @@ src/main.cpp
 
 
 ```cpp
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
-
-<!-- -->
-
-1.  include "MyCustomMaterial.hpp"
+#include "MyCustomMaterial.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -344,7 +339,7 @@ geometry::Geometry::Ptr createGeometryWithAttribute(render::AbstractContext::Ptr
 
 render::Effect::Ptr getEffectWithAttribute(file::AssetLibrary::Ptr);
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Working with custom vertex attributes", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

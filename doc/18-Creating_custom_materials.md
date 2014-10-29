@@ -44,9 +44,9 @@ This `uniformBinding` field can be declared in the pass object or directly at th
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     uniform mat4 uModelToWorldMatrix;`
 `     uniform mat4 uViewMatrix;`
@@ -57,9 +57,9 @@ This `uniformBinding` field can be declared in the pass object or directly at th
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     uniform vec4 uColor;`
 `     void main(void)`
 `     {`
@@ -79,7 +79,7 @@ The `uniformBindings` will affect:
 
 In this case, our effect as a single pass so declaring the `uniformBindings` at the effect root on in the pass object will make no difference. But if you write an effect with multiple passes, you might want to take this into consideration to have per-pass `uniformBindings`.
 
-You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
 
 Step 2: Setting up our custom material
 --------------------------------------
@@ -89,7 +89,7 @@ Now that we've updated our `Effect` bindings, it will expect to find a "material
 In the very case of our `material.color` uniform binding, the rendering pipeline will expect:
 
 -   a call to `sceneNode->data()->hasProperty("material.color")` to return `true`;
--   and a call to `sceneNode->data()->get\<Vector4::Ptr\>("material.color")` to return the Vector4 object to set for the `uColor` uniform.
+-   and a call to `sceneNode->data()->get<Vector4::Ptr\>("material.color")` to return the Vector4 object to set for the `uColor` uniform.
 
 To make sure the rendering engine works as expected, we just have to make sure our `Material` object will indeed provide a `color` property:
 
@@ -106,16 +106,13 @@ Note that we set the `color` property using the `Material::set()` method: this m
 Step 3 (optional) : Creating a custom material class
 ----------------------------------------------------
 
-Setting all the properties of a material can be quite difficult since developers have to open the corresponding `\*.effect` file to read find all the relevant `uniformBindings` declarations. It would be much simpler to have an actual `Material`-derived class that eventually declare static setter methods for all those properties.
+Setting all the properties of a material can be quite difficult since developers have to open the corresponding `*.effect` file to read find all the relevant `uniformBindings` declarations. It would be much simpler to have an actual `Material`-derived class that eventually declare static setter methods for all those properties.
 
 In our very case, we will create a `MyCustomMaterial` class that extends `Material` and declares a `color` setter in a `MyCustomMaterial.hpp` file:
 
 
 ```cpp
-
-
-1.  include "minko/Common.hpp"
-2.  include "minko/material/Material.hpp"
+ #include "minko/Common.hpp" #include "minko/material/Material.hpp"
 
 namespace minko {
 
@@ -182,9 +179,9 @@ asset/effect/MyCustomEffect.effect
 ` },`
 ` "passes" : [{`
 `   "vertexShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     attribute vec3 aPosition;`
 `     uniform mat4 uModelToWorldMatrix;`
 `     uniform mat4 uViewMatrix;`
@@ -195,9 +192,9 @@ asset/effect/MyCustomEffect.effect
 `     }`
 `   ",`
 `   "fragmentShader" : "`
-`     #ifdef GL_ES`
+`     -#-ifdef GL_ES`
 `     precision mediump float;`
-`     #endif`
+`     -#-endif`
 `     uniform vec4 uColor;`
 `     void main(void)`
 `     {`
@@ -212,20 +209,15 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
-
-<!-- -->
-
-1.  include "MyCustomMaterial.hpp"
+#include "MyCustomMaterial.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 ` auto canvas = Canvas::create("Minko Tutorial - Creating custom materials", WINDOW_WIDTH, WINDOW_HEIGHT);`
 ` auto sceneManager = component::SceneManager::create(canvas->context());`

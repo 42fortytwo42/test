@@ -1,6 +1,6 @@
 In this tutorial, we will see how to move objects programmatically. This tutorial will teach you both how to translate objects and how to set their position directly.
 
-The code for this tutorial is based on the one described in the [Hello cube!](Hello cube!) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](Hello_cube!.md) tutorial.
 
 Step 1: Creating a 3D transform
 -------------------------------
@@ -32,7 +32,7 @@ Note that you cannot add two `Transform` on the same component because it doesn'
 
 
 ```cpp
- if (!node->hasComponent\<Transform\>())
+ if (!node->hasComponent<Transform\>())
 
 ` node->addComponent(component::Transform::create());`
 
@@ -44,7 +44,7 @@ When it is assigned, our `Transform` component can also be accessed from the sce
 
 
 ```cpp
- auto transform = node->component\<Transform\>(); 
+ auto transform = node->component<Transform\>(); 
 ```
 
 
@@ -59,7 +59,7 @@ We can then use the `Matrix4x4::appendTranslation()` method to translate our obj
 
 
 ```cpp
- node->component\<Transform\>()->matrix()->appendTranslation(42.f, 0.f, 0.f); 
+ node->component<Transform\>()->matrix()->appendTranslation(42.f, 0.f, 0.f); 
 ```
 
 
@@ -71,7 +71,7 @@ You can also "reset" the translation or set it to an absolute value using the `M
 
 
 ```cpp
- node->component\<Transform\>()->matrix()->translation(42.f, 0.f, 0.f); 
+ node->component<Transform\>()->matrix()->translation(42.f, 0.f, 0.f); 
 ```
 
 
@@ -80,16 +80,13 @@ Final code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Tutorial - Moving objets", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = component::SceneManager::create(canvas->context());`

@@ -1,6 +1,6 @@
 In this tutorial, we will see how to catch mouse inputs in order to rotate our camera.
 
-The code for this tutorial is based on the one described in the [Hello cube!](Hello cube!) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](Hello_cube!.md) tutorial.
 
 Step 1: Catching mouse inputs
 -----------------------------
@@ -21,7 +21,7 @@ Moving something everytime the mouse move is not really user friendly. A nicer b
 
 
 ```cpp
- Signal\<input::Mouse::Ptr, int, int\>::Slot mouseMove;
+ Signal<input::Mouse::Ptr, int, int\>::Slot mouseMove;
 
 auto mouseDown = canvas->mouse()->leftButtonDown()->connect([&](input::Mouse::Ptr mouse) {
 
@@ -122,16 +122,13 @@ Final code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
 const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("Tutorial - Rotating the camera around an object with the mouse", WINDOW_WIDTH, WINDOW_HEIGHT);`
 `   auto sceneManager = component::SceneManager::create(canvas->context());`

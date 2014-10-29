@@ -33,7 +33,7 @@ The `phongMaterial` has access to a `diffuseColor` and a `diffuseMap`. Those pro
 
 Specular color is the color of the light specular reflection. The default value is white.
 
-\<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); 
+<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); 
 ```
 
 
@@ -129,15 +129,11 @@ Full Example
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoPNG.hpp"
-3.  include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
-int main(int argc, char\*\* argv) {
+int main(int argc, char** argv) {
 
 `   auto canvas = Canvas::create("My title", 800, 600);`
 

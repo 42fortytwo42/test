@@ -26,11 +26,11 @@ Or Clang:
 ```
 
 
-For older (\< 13.10) versions of Ubuntu, you may have to add some PPAs first:
+For older (< 13.10) versions of Ubuntu, you may have to add some PPAs first:
 
 
 ```bash
- sudo apt-get install python-software-properties sudo add-apt-repository ppa:ubuntu-toolchain-r/test \# GCC 4.8 wget -O - <http://llvm.org/apt/llvm-snapshot.gpg.key> | sudo apt-key add - \# Clang sudo apt-get update 
+ sudo apt-get install python-software-properties sudo add-apt-repository ppa:ubuntu-toolchain-r/test # GCC 4.8 wget -O - <http://llvm.org/apt/llvm-snapshot.gpg.key> | sudo apt-key add - # Clang sudo apt-get update 
 ```
 
 
@@ -58,27 +58,15 @@ Install them:
 
 
 ```bash
+ # Install the PPA for libsdl2 sudo apt-get install software-properties-common sudo add-apt-repository ppa:zoogie/sdl2-snapshots sudo apt-get update
 
+# SDL2 sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev libglew-dev libsdl2-dev
 
-1.  Install the PPA for libsdl2
+# HTTP (optional) sudo apt-get install libcurl4-openssl-dev
 
-sudo apt-get install software-properties-common sudo add-apt-repository ppa:zoogie/sdl2-snapshots sudo apt-get update
+# Oculus (optional) sudo apt-get install libudev-dev libxinerama-dev
 
-1.  SDL2
-
-sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev libglew-dev libsdl2-dev
-
-1.  HTTP (optional)
-
-sudo apt-get install libcurl4-openssl-dev
-
-1.  Oculus (optional)
-
-sudo apt-get install libudev-dev libxinerama-dev
-
-1.  HTML overlay (optional)
-
-sudo apt-get install libgtk2.0-dev libgtkglext1-dev libudevpath=$([ \`uname -m\` = x86\64 ] && echo "/lib/x86\64-linux-gnu" || echo "/lib/i386-linux-gnu") sudo test -e $libudevpath/libudev.so.0 || sudo ln -s $libudevpath/libudev.so.1 $libudevpath/libudev.so.0 
+# HTML overlay (optional) sudo apt-get install libgtk2.0-dev libgtkglext1-dev libudevpath=$([ \`uname -m\` = x86\64 ] && echo "/lib/x86\64-linux-gnu" || echo "/lib/i386-linux-gnu") sudo test -e $libudevpath/libudev.so.0 || sudo ln -s $libudevpath/libudev.so.1 $libudevpath/libudev.so.0 
 ```
 
 

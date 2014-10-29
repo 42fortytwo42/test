@@ -13,23 +13,9 @@ Here are some advice on debugging your applications in HTML5.
 
 In your application, if you need some code to be executed solely when running in HTML5, you can use the `EMSCRIPTEN` macro 
 ```cpp
+ #if defined(EMSCRIPTEN) //my code for HTML5 #endif
 
-
-1.  if defined(EMSCRIPTEN)
-
-//my code for HTML5
-
-1.  endif
-
-<!-- -->
-
-1.  if !defined(EMSCRIPTEN)
-
-//my code for any target but HTML5
-
-1.  endif
-
-
+#if !defined(EMSCRIPTEN) //my code for any target but HTML5 #endif 
 ```
 
 
@@ -37,7 +23,7 @@ In your application, if you need some code to be executed solely when running in
 
 In debug, you can display messages in the textarea below the canvas. Just output the message to the standard output to have them displayed there. Be sure to end your message with an end of line character so that it is displayed. 
 ```cpp
- std::cout \<\< "my message" \<\< std::endl 
+ std::cout << "my message" << std::endl 
 ```
  This is a good way to know if your application goes inside a particular function.
 
@@ -55,7 +41,7 @@ In native, reaching a `return` instruction in the `main` would result in the pro
 
 
 ```cpp
- void main(int argc, char\* argv) {
+ void main(int argc, char* argv) {
 
 `   //some code`
 `   std::cout << "application returned" << std::endl;`

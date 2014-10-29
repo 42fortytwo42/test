@@ -1,7 +1,7 @@
 Effect File Format
 ==================
 
-Effect files (\*.effect) are JSON formated text files used to describe rendering effects.
+Effect files (*.effect) are JSON formated text files used to describe rendering effects.
 
 Default Bindings
 ----------------
@@ -39,7 +39,7 @@ Bindings are used to declare how each property of each pass of the effect will b
 ```
 
 
-The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](#Pass_Bindings)).
+The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](-#-Pass_Bindings)).
 
 Passes
 ------

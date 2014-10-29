@@ -12,7 +12,7 @@ Make sure you have the source code of Minko on your filesystem. You can get them
 Step 2: Install the dependencies
 --------------------------------
 
-If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](Targeting_Windows#Step_1:_Install_the_toolchain).
+If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](Targeting_Windows-#-Step_1:_Install_the_toolchain).
 
 Step 3: Generating the Visual Studio Solution
 ---------------------------------------------
@@ -45,7 +45,7 @@ In both cases, you should have the following result in the console:
 
 ![](images/PremakeVisualStudio2013.png "images/PremakeVisualStudio2013.png")
 
-The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (\*.sln) and projects (\*.vcxproj) files have been properly generated. If this operation was successful, you should have `minko.sln` at the root of the SDK directory and a `\*.vcxproj` in each projet.
+The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (*.sln) and projects (*.vcxproj) files have been properly generated. If this operation was successful, you should have `minko.sln` at the root of the SDK directory and a `*.vcxproj` in each projet.
 
 Step 4: Compile the SDK
 -----------------------

@@ -15,11 +15,7 @@ The first very first thing you need to do is to include the following header to 
 
 
 ```cpp
-
-
-1.  include \<AmbientLight.hpp\>
-
-
+ #include <AmbientLight.hpp\> 
 ```
 
 
@@ -109,9 +105,9 @@ Final Code
 ```cpp
 
 
-` #include "minko/Minko.hpp"`
-` #include "minko/MinkoPNG.hpp"`
-` #include "minko/MinkoSDL.hpp"`
+` -#-include "minko/Minko.hpp"`
+` -#-include "minko/MinkoPNG.hpp"`
+` -#-include "minko/MinkoSDL.hpp"`
 ` using namespace minko;`
 ` using namespace minko::math;`
 ` using namespace minko::component;`

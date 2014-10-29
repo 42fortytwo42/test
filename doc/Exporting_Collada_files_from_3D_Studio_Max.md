@@ -41,10 +41,7 @@ Recommendations
 
 Disabling backface culling should always be avoided when working for real-time applications. It is computationally expensive and can easily be avoided at asset production time by flipping triangles properly. Some elements might look “inside out” when using backface culling. In order to make sure faces have the proper winding, select the corresponding mesh and use the "ResetXForm" tool in the utilities tab:
 
-1.  Select the mesh
-2.  Go to the utilities tab
-3.  Select the "Reset XForm" tool
-4.  Click on "Reset Selected" button
+#Select the mesh #Go to the utilities tab #Select the "Reset XForm" tool #Click on "Reset Selected" button
 
 ![](images/3dsmax2011_reset_xform.jpg "images/3dsmax2011_reset_xform.jpg")
 
@@ -66,9 +63,7 @@ The more meshes, the more computationally expensive the rendering. Working with 
 
 When creating bones using the "Mirror" tool or the "Mirror" button in the "Bone Tools" (Animation-> Bone Tools...), make sure their scale is reset:
 
-1.  Select the mirrored bones (selecting all the bones of the skeleton should work fine too)
-2.  Open the "Bone Tools" in Animation-> Bone Tools...
-3.  Click on the "Reset Scale" button in the "Object Properties" panel
+#Select the mirrored bones (selecting all the bones of the skeleton should work fine too) #Open the "Bone Tools" in Animation-> Bone Tools... #Click on the "Reset Scale" button in the "Object Properties" panel
 
 ![](images/3dsmax2011_bone_tools.jpg "images/3dsmax2011_bone_tools.jpg")
 
