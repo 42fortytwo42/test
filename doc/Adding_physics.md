@@ -12,11 +12,11 @@ Colliders can be added to any node of a scene : meshes, cameras, lights or group
 
 Here is a mesh with a cylinder `primitive collider`:
 
-![](primitivecollider.png "Images/Primitivecollider.png")
+![](images/Primitivecollider.png "Images/Primitivecollider.png")
 
 Here is the same mesh with a `triangle mesh collider`:
 
-![](trianglemeshcollider.png "images/Trianglemeshcollider.png")
+![](images/Trianglemeshcollider.png "images/Trianglemeshcollider.png")
 
 Collider properties
 ===================
