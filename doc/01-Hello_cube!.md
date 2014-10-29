@@ -17,7 +17,7 @@ We will use the SDL plugin to initialize a window. The following code is a simpl
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
-const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
+const uint WINDOW\\WIDTH = 800; const uint WINDOW\\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
