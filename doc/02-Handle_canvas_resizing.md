@@ -62,7 +62,7 @@ Final code
 ----------
 
 
-```ruby
+```cpp
 
 
 1.  include "minko/Minko.hpp"
