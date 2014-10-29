@@ -5,19 +5,19 @@ With the three left buttons, you can switch between the transform gizmos. These 
 
 -   Translation
 
-![](gizmo1.png "gizmo1.png")
+![](images/Gizmo1.png "images/Gizmo1.png")
 
 -   Rotation
 
-![](gizmo2.png "gizmo2.png")
+![](images/Gizmo2.png "images/Gizmo2.png")
 
 -   Scale
 
-![](gizmo3.png "gizmo3.png")
+![](images/Gizmo3.png "images/Gizmo3.png")
 
-Next is the spacial reference for the gizmos. You can move them in `local` space or `world` space ![](gizmo4.png "fig:gizmo4.png")
+Next is the spacial reference for the gizmos. You can move them in `local` space or `world` space ![](images/Gizmo4.png "fig:images/Gizmo4.png")
 
-Finally, you can choose the point used as pivot point for the rotations. `center` uses the center of the geometric center of the mesh/group, and `pivot` uses either the origin of the mesh/group, or the pivot point if you provided one. ![](gizmo5.png "fig:gizmo5.png")
+Finally, you can choose the point used as pivot point for the rotations. `center` uses the center of the geometric center of the mesh/group, and `pivot` uses either the origin of the mesh/group, or the pivot point if you provided one. ![](images/Gizmo5.png "fig:images/Gizmo5.png")
 
 For more details on transform manipulation, see the [Manipulating transforms](Manipulating_transforms.md) tutorial.
 
@@ -49,33 +49,33 @@ The drop-down list in the middle of the bar allows you to choose between differe
 Basic
 -----
 
-This mode will render everything with a basic effect, not taking any light into account. ![](render basic.png "fig:render basic.png")
+This mode will render everything with a basic effect, not taking any light into account. ![](images/Render_basic.png "fig:images/Render_basic.png")
 
 Realistic
 ---------
 
 This mode will render everything with a phong effect. All lights phong related properties will be taken into account. Note that without any light on your scene, everything will be rendered black.
 
-![](renderrealistic.png "renderrealistic.png")
+![](images/Renderrealistic.png "images/Renderrealistic.png")
 
 Greybox
 -------
 
 This mode will render everything in different levels of grey.
 
-![](rendergreybox.png "rendergreybox.png")
+![](images/Rendergreybox.png "images/Rendergreybox.png")
 
 UVs
 ---
 
-This mode will show how UVs are mapped on each mesh. This is useful for debugging texture mapping problems. ![](render uv.png "fig:render uv.png")
+This mode will show how UVs are mapped on each mesh. This is useful for debugging texture mapping problems. ![](images/Render_uv.png "fig:images/Render_uv.png")
 
 Normals
 -------
 
 This mode will show the normals on each mesh.
 
-![](render normals.png "render normals.png")
+![](images/Render_normals.png "images/Render_normals.png")
 
 Visual elements checklist
 =========================
@@ -91,7 +91,7 @@ This checklist allows you to enable and to disable visual elements on the scene 
 -   Skeleton (a visualisation of animation skeletons)
 -   Joints (visual representation of physics joints)
 
-![](visual elements.png "visual elements.png")
+![](images/Visual_elements.png "images/Visual_elements.png")
 
 Camera type
 ===========
@@ -105,5 +105,5 @@ Multi-selection
 
 The last button allows you to enable and disable multi-selection. When enabled, you can select multiple nodes on the scene by just clicking and dragging your mouse over the nodes you want to select.
 
-![](selection.png "selection.png")
+![](images/Selection.png "images/Selection.png")
 

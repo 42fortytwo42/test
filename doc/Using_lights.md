@@ -13,15 +13,15 @@ An ambient light will affect all objects in the scene and light them equally on 
 
 -   Ambient = 0
 
-![](ambient0.png "ambient0.png")
+![](images/Ambient0.png "images/Ambient0.png")
 
 -   Ambient = 0.5
 
-![](ambient0.5.png "ambient0.5.png")
+![](images/Ambient0.5.png "images/Ambient0.5.png")
 
 -   Ambient = 1
 
-![](ambient1.png "ambient1.png")
+![](images/Ambient1.png "images/Ambient1.png")
 
 A scene with a single `ambient light` with white color and `ambient` set to 1 will look just like it would in `Basic` rendering mode.
 
@@ -49,43 +49,43 @@ Light parameters
 
 -   Diffuse = 0.1
 
-![](dirdiffuse0.1.png "dirdiffuse0.1.png")
+![](images/Dirdiffuse0.1.png "images/Dirdiffuse0.1.png")
 
 -   Diffuse = 0.3
 
-![](dirdiffuse0.3.png "dirdiffuse0.3.png")
+![](images/Dirdiffuse0.3.png "images/Dirdiffuse0.3.png")
 
 -   Diffuse = 0.6
 
-![](dirdiffuse0.6.png "dirdiffuse0.6.png")
+![](images/Dirdiffuse0.6.png "images/Dirdiffuse0.6.png")
 
 -   Shininess = 1024
 
-![](dirshininess1024.png "dirshininess1024.png")
+![](images/Dirshininess1024.png "images/Dirshininess1024.png")
 
 -   Shininess = 128
 
-![](dirshininess128.png "dirshininess128.png")
+![](images/Dirshininess128.png "images/Dirshininess128.png")
 
 -   Shininess = 40
 
-![](dirshininess40.png "dirshininess40.png")
+![](images/Dirshininess40.png "images/Dirshininess40.png")
 
 -   Specular = 0
 
-![](dirspecular0.png "dirspecular0.png")
+![](images/Dirspecular0.png "images/Dirspecular0.png")
 
 -   Specular = 0.3
 
-![](dirspecular0.3.png "dirspecular0.3.png")
+![](images/Dirspecular0.3.png "images/Dirspecular0.3.png")
 
 -   Specular = 0.8
 
-![](dirspecular0.8.png "dirspecular0.8.png")
+![](images/Dirspecular0.8.png "images/Dirspecular0.8.png")
 
 -   Specular = 2
 
-![](dirspecular2.png "dirspecular2.png")
+![](images/Dirspecular2.png "images/Dirspecular2.png")
 
 Shadows
 -------
@@ -101,19 +101,19 @@ Shadows
 
 -   Small `map width`: the shadows of the cube and torus are cut.
 
-![](dirshadowsmallfrustum.png "dirshadowsmallfrustum.png")
+![](images/Dirshadowsmallfrustum.png "images/Dirshadowsmallfrustum.png")
 
 -   Larger `map width`: the shadows of the cube and torus are fully visible.
 
-![](dirshadowlargerfrustum.png "dirshadowlargerfrustum.png")
+![](images/Dirshadowlargerfrustum.png "images/Dirshadowlargerfrustum.png")
 
 -   `Map size` = `64` `Quality` = Hard
 
-![](dirshadowhard64.png "dirshadowhard64.png")
+![](images/Dirshadowhard64.png "images/Dirshadowhard64.png")
 
 -   `Map size` = `512` `Quality` = Medium
 
-![](dirshadowmedium512.png "dirshadowmedium512.png")
+![](images/Dirshadowmedium512.png "images/Dirshadowmedium512.png")
 
 ### Shadow mapping types
 
@@ -132,11 +132,11 @@ The ESM filters the shadow map by approximating the shadow test with an exponent
 
 -   `Exponential factor` = `1.5`, the two cube shadows have a slightly different color
 
-![](esmexp1.5.png "esmexp1.5.png")
+![](images/Esmexp1.5.png "images/Esmexp1.5.png")
 
 -   `Exponential factor` = `10`, the two cube shadows have the same color and blend in an uniform shadow
 
-![](esmexp10.png "esmexp10.png")
+![](images/Esmexp10.png "images/Esmexp10.png")
 
 #### PCF
 
@@ -149,11 +149,11 @@ The ESM filters the shadow map by approximating the shadow test with an exponent
 
 -   `Spread` = `0`, the shadow edges are sharp.
 
-![](pcfspread.png "pcfspread.png")
+![](images/Pcfspread.png "images/Pcfspread.png")
 
 -   `Spread` = `0`, the shadow edges are smoothed.
 
-![](pcfspread15.png "pcfspread15.png")
+![](images/Pcfspread15.png "images/Pcfspread15.png")
 
 Spot Light
 ==========
@@ -180,39 +180,39 @@ For `Shininess` and `Specular` examples, see above in the `Directional Light` se
 
 -   `Diffuse` = `0.5`
 
-![](spotdif0.5.png "spotdif0.5.png")
+![](images/Spotdif0.5.png "images/Spotdif0.5.png")
 
 -   `Diffuse` = `1`
 
-![](spotdif1.png "spotdif1.png")
+![](images/Spotdif1.png "images/Spotdif1.png")
 
 -   `Diffuse` = `5`
 
-![](spotdif5.png "spotdif5.png")
+![](images/Spotdif5.png "images/Spotdif5.png")
 
 -   Small `outer radius` and `inner radius`
 
-![](spotsmallradius.png "spotsmallradius.png")
+![](images/Spotsmallradius.png "images/Spotsmallradius.png")
 
 -   Bigger `outer radius`
 
-![](spotmediumradius.png "spotmediumradius.png")
+![](images/Spotmediumradius.png "images/Spotmediumradius.png")
 
 -   Bigger `outer radius` and `inner radius` close to the `outer radius`
 
-![](spotbigradius.png "spotbigradius.png")
+![](images/Spotbigradius.png "images/Spotbigradius.png")
 
 -   Small `Attenuation distance`
 
-![](spotsmallattenuation.png "spotsmallattenuation.png")
+![](images/Spotsmallattenuation.png "images/Spotsmallattenuation.png")
 
 -   Medium `Attenuation distance`
 
-![](spotmediumattenuation.png "spotmediumattenuation.png")
+![](images/Spotmediumattenuation.png "images/Spotmediumattenuation.png")
 
 -   Larger `Attenuation distance`
 
-![](spotbigattenuation.png "spotbigattenuation.png")
+![](images/Spotbigattenuation.png "images/Spotbigattenuation.png")
 
 Point Light
 ===========
@@ -237,29 +237,29 @@ For `Shininess` and `Specular` examples, see above in the `Directional Light` se
 
 -   `Diffuse` = `0.2`
 
-![](point diffuse 0.2.png "point diffuse 0.2.png")
+![](images/Point_diffuse_0.2.png "images/Point_diffuse_0.2.png")
 
 -   `Diffuse` = `0.5`
 
-![](pointdiffuse0.5.png "pointdiffuse0.5.png")
+![](images/Pointdiffuse0.5.png "images/Pointdiffuse0.5.png")
 
 -   `Diffuse` = `1`
 
-![](pointdiffuse1.png "pointdiffuse1.png")
+![](images/Pointdiffuse1.png "images/Pointdiffuse1.png")
 
 -   `Diffuse` = `2`
 
-![](pointdiffuse2.png "pointdiffuse2.png")
+![](images/Pointdiffuse2.png "images/Pointdiffuse2.png")
 
 -   `Attenuation distance` = `5`
 
-![](pointattenuation5.png "pointattenuation5.png")
+![](images/Pointattenuation5.png "images/Pointattenuation5.png")
 
 -   `Attenuation distance` = `10`
 
-![](pointattenuation10.png "pointattenuation10.png")
+![](images/Pointattenuation10.png "images/Pointattenuation10.png")
 
 -   `Attenuation distance` = `18`
 
-![](pointattenuation18.png "pointattenuation18.png")
+![](images/Pointattenuation18.png "images/Pointattenuation18.png")
 

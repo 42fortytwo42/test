@@ -10,7 +10,7 @@ Adding nodes
 
 Right click anywhere on the tree to add different types of nodes to the scene.
 
-![](empty menu.png "empty menu.png")
+![](images/Empty_menu.png "images/Empty_menu.png")
 
 #### Add Group
 

@@ -7,11 +7,11 @@ This will invert all normals of your geometry. Normals will impact the light eff
 
 -   Default normals
 
-![Default normals](flip normals1.png "Default normals")
+![Default normals](images/Flip_normals1.png "Default normals")
 
 -   Flipped normals
 
-![Flipped normals](flip normals2.png "Flipped normals")
+![Flipped normals](images/Flip_normals2.png "Flipped normals")
 
 Flip Tangents
 =============
@@ -20,11 +20,11 @@ This will invert the tangents of your geometry. Tangents are used with the norma
 
 -   Default tangents
 
-![](flip tangents1.png "flip tangents1.png")
+![](images/Flip_tangents1.png "images/Flip_tangents1.png")
 
 -   Flipped tangents
 
-![](flip tangents2.png "flip tangents2.png")
+![](images/Flip_tangents2.png "images/Flip_tangents2.png")
 
 Invert winding
 ==============
@@ -33,11 +33,11 @@ This will invert the winding of each triangle of the geometry.
 
 -   Default winding
 
-![](windings1.png "windings1.png")
+![](images/Windings1.png "images/Windings1.png")
 
 -   Inverted winding
 
-![](windings2.png "windings2.png")
+![](images/Windings2.png "images/Windings2.png")
 
 Compute Normals
 ===============
@@ -56,11 +56,11 @@ If you select a mesh node, you can apply its transform to the geometry it uses. 
 
 -   Default cube geometry
 
-![](applytransform1.png "applytransform1.png")
+![](images/Applytransform1.png "images/Applytransform1.png")
 
 -   Cube geometry with the mesh tranform applied to it
 
-![](applytransform2.png "applytransform2.png")
+![](images/Applytransform2.png "images/Applytransform2.png")
 
 Center Geometry
 ===============
@@ -69,9 +69,9 @@ This will set the geometry origin to the center of its bounding box. If a mesh u
 
 -   Offseted geometry
 
-![](centergeometry1.png "centergeometry1.png")
+![](images/Centergeometry1.png "images/Centergeometry1.png")
 
 -   Centered geometry
 
-![](centergeometry2.png "centergeometry2.png")
+![](images/Centergeometry2.png "images/Centergeometry2.png")
 
