@@ -7,27 +7,29 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 
 ### Windows
 
--   Install the full package of the [<http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html>#windows Emscripten SDK 1.22]
--   Double-click `tool\win\script\install\emscripten.bat`
+-   Install the full package of the [<http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html>
+#windows Emscripten SDK 1.22]
+-   Double-click tool\win\script\install\emscripten.bat
 
 
 
 -   Run **Emscripten Command Prompt** (available in your applications)
--   Type `emsdk install mingw-4.6.2-32bit`
--   Type `emsdk activate mingw-4.6.2-32bit`
--   Type `emsdk install java-7.45-32bit`
--   Type `emsdk activate java-7.45-32bit`
--   Make sure you don't have any `sh.exe` in your `PATH` (msysgit for instance)
+-   Type emsdk install mingw-4.6.2-32bit
+-   Type emsdk activate mingw-4.6.2-32bit
+-   Type emsdk install java-7.45-32bit
+-   Type emsdk activate java-7.45-32bit
+-   Make sure you don't have any sh.exe in your PATH (msysgit for instance)
 
 
 
 ### OS X
 
--   Run `tool/mac/script/install\emscripten.sh` (this will install the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK])
+-   Run tool/mac/script/install\emscripten.sh (this will install the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>
+#wiki-downloads Emscripten SDK])
 
 ### Linux
 
--   Run `tool/lin/script/install\emscripten.sh` (this will install Emscripten from the source automatically, tested on Ubuntu 14.04 only)
+-   Run tool/lin/script/install\emscripten.sh (this will install Emscripten from the source automatically, tested on Ubuntu 14.04 only)
 
  The Emscripten SDK installer is not yet compatible with Linux, so you will have to install the components manually. Depending on the platform you're on, the procedure differs, but the components are the same:
 
@@ -42,7 +44,8 @@ Under Ubuntu 13.04+, the procedure is easier:
 
 
 ```bash
- sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 # Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->\> ~/.profile 
+ sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 
+# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->\> ~/.profile 
 ```
 
 
@@ -52,14 +55,15 @@ Under Ubuntu 13.04+, the procedure is easier:
 ```
 
 
-Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [<https://github.com/kripken/emscripten/wiki/LLVM-Backend>#getting-fastcomp Getting Fastcomp page of the Emscripten wiki]. 
+Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [<https://github.com/kripken/emscripten/wiki/LLVM-Backend>
+#getting-fastcomp Getting Fastcomp page of the Emscripten wiki]. 
 
 Note: Currently, Minko supports **Emscripten 1.25.0**.
 
 Step 2: Building an application
 -------------------------------
 
-Building an HTML5 version of your application requires to open a terminal emulator and use a Makefile. Emscripten, in its current version, is unable to complete a real debug build, therefore **you should never use `html5\debug`** until this is fixed (probably in the coming weeks). Also, unless your computer has an enormous amount of memory, you should not use parallel builds with Emscripten.
+Building an HTML5 version of your application requires to open a terminal emulator and use a Makefile. Emscripten, in its current version, is unable to complete a real debug build, therefore **you should never use html5\debug** until this is fixed (probably in the coming weeks). Also, unless your computer has an enormous amount of memory, you should not use parallel builds with Emscripten.
 
 ### Linux
 
@@ -92,9 +96,9 @@ Or simply double-click on the script.
 Step 3: Running an application
 ------------------------------
 
-Go to `bin/html5/release`, and open the generated HTML page with [Firefox](http://www.mozilla.org/en-US/firefox/new/). You should see the same result as your native application.
+Go to bin/html5/release, and open the generated HTML page with [Firefox](http://www.mozilla.org/en-US/firefox/new/). You should see the same result as your native application.
 
-In some cases, you will need to access the page through a web server running on your computer. Use your favorite ([Apache](http://httpd.apache.org/), [nginx](http://wiki.nginx.org/Main), [pow](http://pow.cx/), [IIS](http://www.iis.net/)) and set up your document root to point to `bin/html5/release`. You can now reach your application though you local domain as seamlessly as you would on the Internet.
+In some cases, you will need to access the page through a web server running on your computer. Use your favorite ([Apache](http://httpd.apache.org/), [nginx](http://wiki.nginx.org/Main), [pow](http://pow.cx/), [IIS](http://www.iis.net/)) and set up your document root to point to bin/html5/release. You can now reach your application though you local domain as seamlessly as you would on the Internet.
 
 At this point, you should be interested in debugging your application. Have a look at [Debugging HTML5 applications](Debugging_HTML5_applications.md).
 

@@ -1,4 +1,4 @@
-This tutorial requires that your have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named `my-project`.
+This tutorial requires that your have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named my-project.
 
 Step 1: Installing the toolchain
 --------------------------------
@@ -30,11 +30,13 @@ For older (< 13.10) versions of Ubuntu, you may have to add some PPAs first:
 
 
 ```bash
- sudo apt-get install python-software-properties sudo add-apt-repository ppa:ubuntu-toolchain-r/test # GCC 4.8 wget -O - <http://llvm.org/apt/llvm-snapshot.gpg.key> | sudo apt-key add - # Clang sudo apt-get update 
+ sudo apt-get install python-software-properties sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
+# GCC 4.8 wget -O - <http://llvm.org/apt/llvm-snapshot.gpg.key> | sudo apt-key add - 
+# Clang sudo apt-get update 
 ```
 
 
-Optionally, you can install `gcc-multilib` to allow cross-compilation between 32 and 64-bit Linux:
+Optionally, you can install gcc-multilib to allow cross-compilation between 32 and 64-bit Linux:
 
 
 ```bash
@@ -58,19 +60,24 @@ Install them:
 
 
 ```bash
- # Install the PPA for libsdl2 sudo apt-get install software-properties-common sudo add-apt-repository ppa:zoogie/sdl2-snapshots sudo apt-get update
+ 
+# Install the PPA for libsdl2 sudo apt-get install software-properties-common sudo add-apt-repository ppa:zoogie/sdl2-snapshots sudo apt-get update
+
 
 # SDL2 sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev libglew-dev libsdl2-dev
 
+
 # HTTP (optional) sudo apt-get install libcurl4-openssl-dev
+
 
 # Oculus (optional) sudo apt-get install libudev-dev libxinerama-dev
 
-# HTML overlay (optional) sudo apt-get install libgtk2.0-dev libgtkglext1-dev libudevpath=$([ \`uname -m\` = x86\64 ] && echo "/lib/x86\64-linux-gnu" || echo "/lib/i386-linux-gnu") sudo test -e $libudevpath/libudev.so.0 || sudo ln -s $libudevpath/libudev.so.1 $libudevpath/libudev.so.0 
+
+# HTML overlay (optional) sudo apt-get install libgtk2.0-dev libgtkglext1-dev libudevpath=$([ \uname -m\ = x86\64 ] && echo "/lib/x86\64-linux-gnu" || echo "/lib/i386-linux-gnu") sudo test -e $libudevpath/libudev.so.0 || sudo ln -s $libudevpath/libudev.so.1 $libudevpath/libudev.so.0 
 ```
 
 
-If you need to do offscreen rendering (available through the `offscreen` plugin), you should also install another bunch of libraries:
+If you need to do offscreen rendering (available through the offscreen plugin), you should also install another bunch of libraries:
 
 
 ```bash
@@ -81,7 +88,7 @@ If you need to do offscreen rendering (available through the `offscreen` plugin)
 Step 3: Generate the solution
 -----------------------------
 
-On Linux, only `Makefile`s are supported. A script is provided to generate a GNU Make-compatible solution with default options:
+On Linux, only Makefiles are supported. A script is provided to generate a GNU Make-compatible solution with default options:
 
 
 ```bash
@@ -97,7 +104,7 @@ Or, if we prefer Clang:
 ```
 
 
-If we want to customise our solution, we can call `premake` directly. For instance, when selecting the compiler, the `cc` option is passed (supported values are `gcc` and `clang`):
+If we want to customise our solution, we can call premake directly. For instance, when selecting the compiler, the cc option is passed (supported values are gcc and clang):
 
 
 ```bash
@@ -126,14 +133,14 @@ To target native command line applications, run:
 
 There are 4 supported Linux configuration:
 
--   `linux32\release`
--   `linux32\debug`
--   `linux64\release`
--   `linux64\debug`
+-   linux32\release
+-   linux32\debug
+-   linux64\release
+-   linux64\debug
 
 As expected, they allow you to select optimized or debuggable binaries, along with the target architecture (cross-compiling might require additional packages, see [MultiArch](https://help.ubuntu.com/community/MultiArch)).
 
-We can get more information about the building process by setting the `verbose` variable:
+We can get more information about the building process by setting the verbose variable:
 
 
 ```bash
@@ -141,7 +148,7 @@ We can get more information about the building process by setting the `verbose` 
 ```
 
 
-To leverage multi-core systems, you can also use `make -j`. The following example will use 4 cores and will compile much faster as a result:
+To leverage multi-core systems, you can also use make -j. The following example will use 4 cores and will compile much faster as a result:
 
 
 ```bash
@@ -165,7 +172,7 @@ That should open a rendering window with your application running inside.
 Step 6: Clean the solution (optional)
 -------------------------------------
 
-To clean the build, pass the `clean` target to `make`. For instance:
+To clean the build, pass the clean target to make. For instance:
 
 
 ```bash
@@ -173,9 +180,9 @@ To clean the build, pass the `clean` target to `make`. For instance:
 ```
 
 
-This will basically remove any target file (`bin` and `obj` folders) for the specific configuration.
+This will basically remove any target file (bin and obj folders) for the specific configuration.
 
-If you also want to erase generated solution files (`Makefile`), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`):
+If you also want to erase generated solution files (Makefile), you can use a stronger command which will erase any ignored file (files matched by a pattern in .gitignore):
 
 
 ```bash

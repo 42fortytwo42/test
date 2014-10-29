@@ -27,7 +27,7 @@ To do this you can:
 ```bash
 
 
-`premake_vs2013.bat`
+premake_vs2013.bat
 
 
 ```
@@ -45,12 +45,12 @@ In both cases, you should have the following result in the console:
 
 ![](images/PremakeVisualStudio2013.png "images/PremakeVisualStudio2013.png")
 
-The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (*.sln) and projects (*.vcxproj) files have been properly generated. If this operation was successful, you should have `minko.sln` at the root of the SDK directory and a `*.vcxproj` in each projet.
+The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (*.sln) and projects (*.vcxproj) files have been properly generated. If this operation was successful, you should have minko.sln at the root of the SDK directory and a *.vcxproj in each projet.
 
 Step 4: Compile the SDK
 -----------------------
 
-The Minko SDK is now ready. Open the solution file `minko.sln` generated at the root of the SDK and then just hit F7 to build the solution or F5 to build and start the default example project.
+The Minko SDK is now ready. Open the solution file minko.sln generated at the root of the SDK and then just hit F7 to build the solution or F5 to build and start the default example project.
 
 Step 5: Package (optional)
 --------------------------

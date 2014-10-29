@@ -13,7 +13,7 @@ If you've never build a Minko application or the Minko SDK for Linux before, fol
 Step 3: Generate the solution
 -----------------------------
 
-Minko uses Premake for its build system. Premake is a nice solution to have a cross-platform build system that can work across multiple IDEs such as Xcode, Visual Studio and even GNU Make. In order to build the SDK, we will generate a solution for `gmake`. We need to use a terminal to generate a `Makefile`-compatible solution:
+Minko uses Premake for its build system. Premake is a nice solution to have a cross-platform build system that can work across multiple IDEs such as Xcode, Visual Studio and even GNU Make. In order to build the SDK, we will generate a solution for gmake. We need to use a terminal to generate a Makefile-compatible solution:
 
 
 ```bash
@@ -21,7 +21,7 @@ Minko uses Premake for its build system. Premake is a nice solution to have a cr
 ```
 
 
-If we want to select your compiler, we can pass the `cc` option. Supported values are `gcc` and `clang`:
+If we want to select your compiler, we can pass the cc option. Supported values are gcc and clang:
 
 
 ```bash
@@ -39,12 +39,12 @@ To learn more about premake commands, run:
 
 ![](images/Minko_linux_premake_gmake.jpg "images/Minko_linux_premake_gmake.jpg")
 
-The list of the projects may vary according to the actual version of the SDK. What's important is to make sure that you have a `Makefile` at the root of the SDK and in each project directory.
+The list of the projects may vary according to the actual version of the SDK. What's important is to make sure that you have a Makefile at the root of the SDK and in each project directory.
 
 Step 4: Compile the SDK
 -----------------------
 
-From the root directory of the SDK, simply run `make` with a valid configuration for your platform:
+From the root directory of the SDK, simply run make with a valid configuration for your platform:
 
 
 ```bash
@@ -52,14 +52,14 @@ From the root directory of the SDK, simply run `make` with a valid configuration
 ```
 
 
-Valid configurations for `gmake` are:
+Valid configurations for gmake are:
 
--   `linux32\release`
--   `linux32\debug`
--   `linux64\release`
--   `linux64\debug`
+-   linux32\release
+-   linux32\debug
+-   linux64\release
+-   linux64\debug
 
-To leverage multi-core systems, you can also use `make -j`. The following example will use 4 cores and will compile the SDK much faster as a result:
+To leverage multi-core systems, you can also use make -j. The following example will use 4 cores and will compile the SDK much faster as a result:
 
 
 ```bash

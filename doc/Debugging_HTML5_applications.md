@@ -11,11 +11,15 @@ Here are some advice on debugging your applications in HTML5.
 
 ### HTML5 specific code
 
-In your application, if you need some code to be executed solely when running in HTML5, you can use the `EMSCRIPTEN` macro 
+In your application, if you need some code to be executed solely when running in HTML5, you can use the EMSCRIPTEN macro 
 ```cpp
- #if defined(EMSCRIPTEN) //my code for HTML5 #endif
+ 
+#if defined(EMSCRIPTEN) //my code for HTML5 
+#endif
 
-#if !defined(EMSCRIPTEN) //my code for any target but HTML5 #endif 
+
+#if !defined(EMSCRIPTEN) //my code for any target but HTML5 
+#endif 
 ```
 
 
@@ -29,7 +33,7 @@ In debug, you can display messages in the textarea below the canvas. Just output
 
 ### Executing javascript code
 
-Emscripten provides a way to execute javascript code via the `emscripten\run\script` function 
+Emscripten provides a way to execute javascript code via the emscripten\run\script function 
 ```cpp
  emscripten\run\script("alert('foo');console.log('bar');"); 
 ```
@@ -37,15 +41,15 @@ Emscripten provides a way to execute javascript code via the `emscripten\run\scr
 
 ### Watch out for return !
 
-In native, reaching a `return` instruction in the `main` would result in the program to close. In HTML5, it is not as visible. When the `main` returns, the page is not closed, but your application will no longer be executed. If your application doesn't run normally and you can't find an obvious reason, try displaying a message right before any `main` `return` instruction, that way you will see instantly if the program returns.
+In native, reaching a return instruction in the main would result in the program to close. In HTML5, it is not as visible. When the main returns, the page is not closed, but your application will no longer be executed. If your application doesn't run normally and you can't find an obvious reason, try displaying a message right before any main return instruction, that way you will see instantly if the program returns.
 
 
 ```cpp
  void main(int argc, char* argv) {
 
-`   //some code`
-`   std::cout << "application returned" << std::endl;`
-`   return 0;`
+   //some code
+   std::cout << "application returned" << std::endl;
+   return 0;
 
 } 
 ```
@@ -56,12 +60,12 @@ Lower level techniques
 
 If you're running into a more complex problem, you might need to have a better insight at what is going on. For optimization reasons, the generated Javascript code is greatly minified and impossible to read. If you need to have a better look at which functions are called, and what function caused an exception, you can tweak some parameters in emscripten.
 
-In `%EMSCRIPTEN\HOME%/src/settings.js`, there are a lot of parameters you can tweak to have more or less optimizations on the generated code, and more or less information displayed in the console. Every parameter comes with a quite detailed description of its use and effect. Here are some useful parameters :
+In %EMSCRIPTEN\HOME%/src/settings.js, there are a lot of parameters you can tweak to have more or less optimizations on the generated code, and more or less information displayed in the console. Every parameter comes with a quite detailed description of its use and effect. Here are some useful parameters :
 
--   `EXCEPTION\DEBUG`: when set to 1, exceptions will be outputed in the console, with a more or less readable callstack
--   `LABEL\DEBUG`: when set to 1, prints function names as you enter them
--   `RUNNING\JS\OPTS`: when set to 0, the Javascript code will not be optimized and will keep comprehensive function names
--   `EXECUTION\TIMEOUT`: throw an exception after X seconds - useful to debug infinite loops
+-   EXCEPTION\DEBUG: when set to 1, exceptions will be outputed in the console, with a more or less readable callstack
+-   LABEL\DEBUG: when set to 1, prints function names as you enter them
+-   RUNNING\JS\OPTS: when set to 0, the Javascript code will not be optimized and will keep comprehensive function names
+-   EXECUTION\TIMEOUT: throw an exception after X seconds - useful to debug infinite loops
 
 You will need to recompile your application for those paramters to take effect. Keep in mind that less optimized javascript will result in a bigger file and might lead to more problems with your browser.
 

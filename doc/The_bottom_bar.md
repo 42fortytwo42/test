@@ -15,9 +15,9 @@ With the three left buttons, you can switch between the transform gizmos. These 
 
 ![](images/Gizmo3.png "images/Gizmo3.png")
 
-Next is the spacial reference for the gizmos. You can move them in `local` space or `world` space ![](images/Gizmo4.png "fig:images/Gizmo4.png")
+Next is the spacial reference for the gizmos. You can move them in local space or world space ![](images/Gizmo4.png "fig:images/Gizmo4.png")
 
-Finally, you can choose the point used as pivot point for the rotations. `center` uses the center of the geometric center of the mesh/group, and `pivot` uses either the origin of the mesh/group, or the pivot point if you provided one. ![](images/Gizmo5.png "fig:images/Gizmo5.png")
+Finally, you can choose the point used as pivot point for the rotations. center uses the center of the geometric center of the mesh/group, and pivot uses either the origin of the mesh/group, or the pivot point if you provided one. ![](images/Gizmo5.png "fig:images/Gizmo5.png")
 
 For more details on transform manipulation, see the [Manipulating transforms](Manipulating_transforms.md) tutorial.
 
@@ -96,7 +96,7 @@ This checklist allows you to enable and to disable visual elements on the scene 
 Camera type
 ===========
 
-This button allows you to switch between the `Arc Ball` camera (rotating around the selected node) and the `First Person` camera (moving freely in the scene).
+This button allows you to switch between the Arc Ball camera (rotating around the selected node) and the First Person camera (moving freely in the scene).
 
 For more details on moving the camera in the scene, see the [Moving the camera in the scene](Moving_the_camera_in_the_scene.md) tutorial.
 

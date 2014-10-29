@@ -1,4 +1,4 @@
-This tutorial requires that you have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named `my-project`.
+This tutorial requires that you have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named my-project.
 
 Step 1: Installing the toolchain
 --------------------------------
@@ -21,7 +21,7 @@ A script is provided to generate Xcode projects for iOS targets.
 Step 3: Build the solution
 --------------------------
 
-Open the `my-project.xcworkspace` by double-clicking on it.
+Open the my-project.xcworkspace by double-clicking on it.
 
 The solution should immediately be ready to build. Select the product and the target (iOS Simulator iPad for instance), press the Play button and the build should start.
 
@@ -37,7 +37,7 @@ Step 5: Clean the solution (optional)
 
 To clean the build, you can use the built-in feature in Xcode.
 
-If you also want to erase generated solution files (`Makefile`s), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`:
+If you also want to erase generated solution files (Makefiles), you can use a stronger command which will erase any ignored file (files matched by a pattern in .gitignore:
 
 
 ```bash

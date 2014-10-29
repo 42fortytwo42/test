@@ -1,4 +1,4 @@
-You can set your custom properties directly from the editor, and export them in your .mk file, so they can be automatically loaded in the `userData` property.
+You can set your custom properties directly from the editor, and export them in your .mk file, so they can be automatically loaded in the userData property.
 
 -   Select a node
 
@@ -18,5 +18,6 @@ You can set your custom properties directly from the editor, and export them in 
 
 This process is also detailed in the following video:
 
-{{#ev:youtube|kxx6ZthK3V8}}
+{{
+#ev:youtube|kxx6ZthK3V8}}
 

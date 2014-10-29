@@ -14,27 +14,29 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 
 ### Windows
 
--   Install the full package of the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK 1.16]
--   Double-click `tool\win\script\install\emscripten.bat`
+-   Install the full package of the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>
+#wiki-downloads Emscripten SDK 1.16]
+-   Double-click tool\win\script\install\emscripten.bat
 
 
 
 -   Run **Emscripten Command Prompt** (available in your applications)
--   Type `emsdk install mingw-4.6.2-32bit`
--   Type `emsdk activate mingw-4.6.2-32bit`
--   Type `emsdk install java-7.45-32bit`
--   Type `emsdk activate java-7.45-32bit`
--   Make sure you don't have any `sh.exe` in your `PATH` (msysgit for instance)
+-   Type emsdk install mingw-4.6.2-32bit
+-   Type emsdk activate mingw-4.6.2-32bit
+-   Type emsdk install java-7.45-32bit
+-   Type emsdk activate java-7.45-32bit
+-   Make sure you don't have any sh.exe in your PATH (msysgit for instance)
 
 
 
 ### OS X
 
--   Run `tool/mac/script/install\emscripten.sh` (this will install the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK])
+-   Run tool/mac/script/install\emscripten.sh (this will install the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>
+#wiki-downloads Emscripten SDK])
 
 ### Linux
 
--   Run `tool/lin/script/install\emscripten.sh` (this will install Emscripten from the source automatically, tested on Ubuntu 14.04 only)
+-   Run tool/lin/script/install\emscripten.sh (this will install Emscripten from the source automatically, tested on Ubuntu 14.04 only)
 
  The Emscripten SDK installer is not yet compatible with Linux, so you will have to install the components manually. Depending on the platform you're on, the procedure differs, but the components are the same:
 
@@ -49,7 +51,8 @@ Under Ubuntu 13.04+, the procedure is easier:
 
 
 ```bash
- sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 # Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->\> ~/.profile 
+ sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 
+# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->\> ~/.profile 
 ```
 
 
@@ -59,7 +62,8 @@ Under Ubuntu 13.04+, the procedure is easier:
 ```
 
 
-Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [<https://github.com/kripken/emscripten/wiki/LLVM-Backend>#getting-fastcomp Getting Fastcomp page of the Emscripten wiki]. 
+Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [<https://github.com/kripken/emscripten/wiki/LLVM-Backend>
+#getting-fastcomp Getting Fastcomp page of the Emscripten wiki]. 
 
 Note: Currently, Minko supports **Emscripten 1.16.0**.
 
@@ -88,10 +92,10 @@ For example, to compile only the framework, the plugins and the examples, you ca
 
 ### Linux / OSX
 
-For all the command lines below, `$MINKO\BIN` is either:
+For all the command lines below, $MINKO\BIN is either:
 
--   `$MINKO\HOME/tool/lin/bin/` if you are using Linux;
--   or `$MINKO\HOME/tool/mac/bin/` if you are using OSX.
+-   $MINKO\HOME/tool/lin/bin/ if you are using Linux;
+-   or $MINKO\HOME/tool/mac/bin/ if you are using OSX.
 
 The first step is to create the required solution/project Makefiles:
 
@@ -138,7 +142,7 @@ It should speed up the compilation process significantly.
 Step 5: Enjoy!
 --------------
 
-If you have compiled the examples/tutorials, you can try to launch them by opening the corresponding HTML file that will be located in the `bin/html5/release` directory of each project. **Make sure you open those files from an actual web server and not directly from your file system (do not use "<file:///>").**
+If you have compiled the examples/tutorials, you can try to launch them by opening the corresponding HTML file that will be located in the bin/html5/release directory of each project. **Make sure you open those files from an actual web server and not directly from your file system (do not use "<file:///>").**
 
 You can now use your SDK to [Create a new application](Create_a_new_application.md).
 

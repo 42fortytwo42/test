@@ -12,14 +12,14 @@ It's really fast and simple. But if it's the first time you're doing it, please 
 Step 1: Create the application directory
 ----------------------------------------
 
-The SDK provides a directory you can simply copy/paste wherever you want to bootstrap your application. This directory is called "skeleton" and it's located in the root folder of the SDK (`$MINKO\HOME/skeleton`). Just copy paste this folder wherever you want and rename it to have the name of your project.
+The SDK provides a directory you can simply copy/paste wherever you want to bootstrap your application. This directory is called "skeleton" and it's located in the root folder of the SDK ($MINKO\HOME/skeleton). Just copy paste this folder wherever you want and rename it to have the name of your project.
 
-For instance, if you want your project to be called "Minko Hello World", copy/paste the `$MINKO\HOME/skeleton` directory wherever you want on your file system and then rename it "Minko Hello World". The name of the folder will be used as the name of the solution/project.
+For instance, if you want your project to be called "Minko Hello World", copy/paste the $MINKO\HOME/skeleton directory wherever you want on your file system and then rename it "Minko Hello World". The name of the folder will be used as the name of the solution/project.
 
 Step 2: Enable plugins (optional)
 ---------------------------------
 
-It's more than likely that your application will actually require some Minko plugins to work properly. To do this, simply open the `premake5.lua` file located in your application folder and uncomment the line for the plugin you want to use. For example, if you want to use a JPEG image file parser, uncomment the following line:
+It's more than likely that your application will actually require some Minko plugins to work properly. To do this, simply open the premake5.lua file located in your application folder and uncomment the line for the plugin you want to use. For example, if you want to use a JPEG image file parser, uncomment the following line:
 
 
 ```lua
@@ -35,7 +35,7 @@ If the plugin you want to use is not listed (see [Plugin compatibility matrix](P
 ```
 
 
-where "my-plugin" is a registered plugin of the SDK (typically listed in the `plugins` directory of the SDK). This will add the plugin to the project solution and link it properly with the application.
+where "my-plugin" is a registered plugin of the SDK (typically listed in the plugins directory of the SDK). This will add the plugin to the project solution and link it properly with the application.
 
 **The SDL plugin is enabled by default** because it is required to build the default application. Most of the examples in the SDK use the SDL Minko plugin which requires the SDL2 library. Yet, the framework itself, and all of its plugins (except the SDL one of course) should compile just fine without SDL. You are free to use your own context/window manager library, but we recommend to use SDL as it works out of the box on most platforms and allows you to write 100% cross-platform code. If you want to use your own context/window manager, disable it by commenting out the corresponding line.
 
@@ -46,10 +46,10 @@ Step 3: Target your platform
 
 The basic procedure here is to generate the solution for your project and your environment. We use a nice tool named Premake to do this job, and we've embedded it nicely in the SDK.
 
-In your application root, you will find a `script` directory containing scripts to call the generator. Typically:
+In your application root, you will find a script directory containing scripts to call the generator. Typically:
 
--   `solution\vs2013.bat` to generate a Visual Studio-compatible solution
--   `solution\gmake\gcc.sh` to generate a GNU Make-compatible solution
+-   solution\vs2013.bat to generate a Visual Studio-compatible solution
+-   solution\gmake\gcc.sh to generate a GNU Make-compatible solution
 
 To learn more about this step, take some time to read the tutorials for each platform:
 
