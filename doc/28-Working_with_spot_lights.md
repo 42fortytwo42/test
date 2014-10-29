@@ -14,7 +14,7 @@ Step 1: Instantiate a spot light
 The first very first thing you need to do is to include the following header to your .cpp file.
 
 
-```
+```cpp
 
 
 1.  include \<SpotLight.hpp\>
@@ -39,7 +39,7 @@ To add a point light to a scene, you have to understand that a `Scene` is a grap
 As a `SpotLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
 
-```
+```cpp
 
 
 ` // Creating the Node`
@@ -58,7 +58,7 @@ As a `SpotLight` is a `Component` you'll have to follow this logic to create and
 As you can see in the code above, we first create a node named "spotLight" to which we add an instance of a spot light. Of course you can chain those methods to perform all in one line of code
 
 
-```
+```cpp
 
 
 ` // Creating the Node & adding the Component SpotLight`
@@ -72,7 +72,7 @@ Step 3: Change spot light properties
 ------------------------------------
 
 you can directly change way the light appears by modifying it's public parameters, for example : 
-```
+```cpp
 
 
 ` auto spotLight = SpotLight::create(.15f, .4f);`
@@ -88,7 +88,7 @@ Step 4: Adjust a spot light
 Once the light is created you might want to turn the spot light toward a direction. To do this you need to add a transformation matrix to the Node holding your spot light.
 
 
-```
+```cpp
  auto spotLight = scene::Node::create("spotLight")
 
 `       ->addComponent(SpotLight::create(.15f, .4f))`
@@ -104,7 +104,7 @@ Step 5: Remove a spot light from the scene
 You may sometime need to remove a light from a scene, to do this you simply need to remove the spot light from the `Node` it has been added to before.
 
 
-```
+```cpp
 
 
 ` // Adding an spot light`
@@ -126,7 +126,7 @@ Final code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

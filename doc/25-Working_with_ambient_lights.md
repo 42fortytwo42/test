@@ -14,7 +14,7 @@ Step 1: Instantiate an light
 The first very first thing you need to do is to include the following header to your .cpp file.
 
 
-```
+```cpp
 
 
 1.  include \<AmbientLight.hpp\>
@@ -33,7 +33,7 @@ To add a light to the scene, you have to understand that a `Scene` is a graph co
 As an `AmbientLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
 
-```
+```cpp
 
 
 ` // Creating the Node`
@@ -52,7 +52,7 @@ As an `AmbientLight` is a `Component` you'll have to follow this logic to create
 As you can see in the code above, we first create a node named "ambientLight" to which we add an instance of an ambient light, then we can add this node to the scene graph. Of course you can chain methods to perform all in one line of code
 
 
-```
+```cpp
 
 
 ` // Creating the Node & adding the Component AmbientLight`
@@ -66,7 +66,7 @@ Step 3: Change ambient light properties
 ---------------------------------------
 
 you can directly change way the light appears by modifying it's public parameters, for example : 
-```
+```cpp
 
 
 ` auto ambientLight = AmbientLight::create(0.5f);`
@@ -84,7 +84,7 @@ Step 4: Removing a light from the scene
 You may sometime need to remove a light from a scene, to do this you simply need to remove the ambient light from the `Node` it has been added to before.
 
 
-```
+```cpp
 
 
 ` // Adding an ambient light`
@@ -106,7 +106,7 @@ Final Code
 ----------
 
 
-```
+```cpp
 
 
 ` #include "minko/Minko.hpp"`

@@ -4,7 +4,7 @@ Creating the material
 To create a `phongMaterial`, we simply call `material::PhongMaterial::create` method that returns a `material::PhongMaterial::Ptr`.
 
 
-```
+```cpp
  auto phongMaterial = material::PhongMaterial::create(); 
 ```
 
@@ -49,7 +49,7 @@ To have more information about specular color : [Working with the PhongMaterial]
 Empirically, the shininess parameter controls how sharp specular reflections will look across the surface of the object. The default value is 8.
 
 
-```
+```cpp
  phongMaterial->shininess(32.f); 
 ```
 
@@ -67,7 +67,7 @@ To have more information about shininess : [Working with the PhongMaterial](Work
 The environment alpha indicates the percentage of environment map that should be mixed with the computed color. The environment map is a texture that represents the environment around your scene.
 
 
-```
+```cpp
  // first of all, we need a environment map. We add a new asset to the loading queue.
 
 sceneManager->assets()->queue("texture/envmap.png");
@@ -87,7 +87,7 @@ If you need more information about environment map : [ Working with environment 
 ### Normal Map
 
 
-```
+```cpp
  // first of all, we need a normal map. We add a new asset to the loading queue.
 
 sceneManager->assets()->queue("texture/normalmap.png");
@@ -110,7 +110,7 @@ If you need more information about normal mapping : [Working with normal maps](W
 ### Specular Map
 
 
-```
+```cpp
  phongMaterial->shininess(2); phongMaterial->specularMap(assets->texture("texture/specularmap.png")); 
 ```
 
@@ -128,7 +128,7 @@ Full Example
 ------------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

@@ -15,7 +15,7 @@ There are three types of bindings:
 Bindings are used to declare how each property of each pass of the effect will be bound to a property available in the node <data::Container> object.
 
 
-```
+```javascript
  "attributeBindings" : {
 
 `   "position"      : "geometry/vertex/attribute/position"`
@@ -61,7 +61,7 @@ The name of the rendering pass. Names can be used to declare passes that can be 
 Each pass can re-declare attribute, uniform and state bindings. The goal is to be able to have different binding values for a property that might have the same name among different passes. The blending state is a good example:
 
 
-```
+```javascript
  // some effect {
 
 `   // by default, the "blendMode" state is bound to the "material/blendMode" property`
@@ -94,7 +94,7 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 | Name      | width=130 | Type                | width=500 | Description                                                                                                                                                                                                                                         | Example                                                                                                                             |
 |-----------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | priority  | float                           | The priority of the render pass: passes with higher priority are rendered first.                                                                                                                                                                                | |
-```
+```javascript
 "priority" : 42.5
 ```
                                                                            |
@@ -125,11 +125,11 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                -   "default"                                                                                                                                                                                                                                                    
                                                -   "alpha"                                                                                                                                                                                                                                                      
                                                -   "additive"                                                                                                                                                                                                                                                   | 
-```
+```javascript
 "blendMode" : ["one", "zero"]
 ```
  
-```
+```javascript
 "blendMode" : "default"
 ```
  |
@@ -143,7 +143,7 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                -   "less\equal"                                                                                                                                                                                                                                                
                                                -   "never"                                                                                                                                                                                                                                                      
                                                -   "not\equal"                                                                                                                                                                                                                                                 | |
-```
+```javascript
 "depthTest" : [true, "less"]
 ```
                                                                 |
@@ -151,7 +151,7 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 Here is an example that will set the first pass rendering states:
 
 
-```
+```javascript
  "passes" : [{
 
 `   "priority"  : 0,`
@@ -167,7 +167,7 @@ Here is an example that will set the first pass rendering states:
 The GLSL code for the vertex shader.
 
 Example: 
-```
+```javascript
  "vertexShader" : "
 
 `   attribute vec3 position;`
@@ -189,7 +189,7 @@ Example:
 The GLSL code for the fragment shader.
 
 Example: 
-```
+```javascript
  "fragmentShader" : "
 
 `   uniform vec4 diffuseColor;`
@@ -207,7 +207,7 @@ Complete Example
 ----------------
 
 
-```
+```javascript
  // basic effect {
 
 `   "name"  : "basic",`

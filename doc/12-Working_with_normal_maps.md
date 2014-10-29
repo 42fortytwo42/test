@@ -21,7 +21,7 @@ Step 0: Setup a scene
 The setup will be the same that the one at the end of the [Working with the PhongMaterial](Working_with_the_PhongMaterial.md) tutorial:
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"
@@ -92,7 +92,7 @@ Step 1: Setting a normal map
 `normalMap` are images just like `diffuseMap`, so their loading workflow are identical
 
 
-```
+```cpp
  sceneManager->assets()->queue("texture/normalmap.png"); 
 ```
 
@@ -116,7 +116,7 @@ Final Code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

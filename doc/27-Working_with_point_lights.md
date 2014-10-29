@@ -14,7 +14,7 @@ Step 1: Instantiate a point light
 The first very first thing you need to do is to include the following header to your .cpp file.
 
 
-```
+```cpp
 
 
 1.  include \<PointLight.hpp\>
@@ -33,7 +33,7 @@ To add a point light to a scene, you have to understand that a `Scene` is a grap
 As a `PointLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
 
-```
+```cpp
 
 
 ` // Creating the Node`
@@ -52,7 +52,7 @@ As a `PointLight` is a `Component` you'll have to follow this logic to create an
 As you can see in the code above, we first create a node named "pointLight" to which we add an instance of a point light. Of course you can chain those methods to perform actions in one line of code
 
 
-```
+```cpp
 
 
 ` // Creating the Node & adding the Component PointLight`
@@ -68,7 +68,7 @@ Step 3: Change point light properties
 you can directly change way the light appears by modifying it's public parameters, for example :
 
 
-```
+```cpp
 
 
 `auto pointLight = PointLight::create();`
@@ -83,7 +83,7 @@ Step 4: Remove a point light from the scene
 You may sometime need to remove a light from a scene, to do this you simply need to remove the point light from the `Node` it has been added to before.
 
 
-```
+```cpp
 
 
 ` // Adding an point light`
@@ -105,7 +105,7 @@ Final code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

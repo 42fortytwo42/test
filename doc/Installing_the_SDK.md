@@ -37,7 +37,7 @@ and press "OK". If it worked correctly the `MINKO\HOME` environment variable sho
 Open a terminal and type or copy/paste the following command line
 
 
-```
+```bash
  export MINKO\HOME=/path/to/the/minko/sdk 
 ```
 
@@ -45,7 +45,7 @@ Open a terminal and type or copy/paste the following command line
 This will **temporarily** set the `MINKO\HOME` environment variable. **To make sure this change permanent, add it to your shell .rc file** (ex: `~/.bashrc` if you are using bash). To do this, type or copy/paste the following command line in the terminal:
 
 
-```
+```bash
  echo "export MINKO\HOME=/path/to/the/minko/sdk" \>\> ~/.bashrc 
 ```
 

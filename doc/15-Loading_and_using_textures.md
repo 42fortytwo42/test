@@ -15,7 +15,7 @@ By default, no texture file formats are supported. This kind of features are pro
 To enable one (or both) of those plugins, we will have to update our project configuration and regenerate our solution. To do this, open the `premake4.lua` file in the root folder of your project in your favorite text editor and uncomment the following lines:
 
 
-```
+```lua
  minko.plugin.enable("jpeg") minko.plugin.enable("png") 
 ```
 
@@ -30,7 +30,7 @@ Step 1: Registering parsers
 Before we can load anything, we have to make sure Minko will know how to handle the loaded data. To do this, we must register some data parsers to some specific file extensions. The parsers are registered on the `AssetLibrary` directly using the `AssetLibrary::registerParser()` method:
 
 
-```
+```cpp
  sceneManager->assets()->registerParser\<[file::JPEGParser\>](file::JPEGParser>)("jpg"); 
 ```
 
@@ -43,7 +43,7 @@ Step 1: Loading a texture
 To load a texture, we call the `AssetLibrary::load()` method passing the file name of our texture as the single argument:
 
 
-```
+```cpp
  sceneManager->assets()->load("texture/my\texture.jpg"); 
 ```
 
@@ -51,7 +51,7 @@ To load a texture, we call the `AssetLibrary::load()` method passing the file na
 Loading textures can be an asynchronous task depending on how the internal loader will actually work. To be notified when our loading operation is done, we listen to the `AssetLibrary::complete()` signal. The following code will output the loaded texture width and height in the console:
 
 
-```
+```cpp
  sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
 ` auto texture = assets->texture("texture/my_texture.jpg");`
@@ -77,7 +77,7 @@ Step 2: Setting the texture
 To use our texture upon loading, we simply use the `BasicMaterial::diffuseMap()` method to set the right property:
 
 
-```
+```cpp
  sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
 ` auto basicMaterial = std::dynamic_pointer_cast<material::BasicMaterial>(cube->component<Surface>()->material());`
@@ -91,7 +91,7 @@ To use our texture upon loading, we simply use the `BasicMaterial::diffuseMap()`
 You can also avoid the dynamic cast by using the `Material::set()` method:
 
 
-```
+```cpp
  sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
 ` cube->component<Surface>()->material()->set("diffuseMap", assets->texture("texture/my_texture.jpg"));`
@@ -108,7 +108,7 @@ Final code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

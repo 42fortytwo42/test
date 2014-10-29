@@ -19,7 +19,7 @@ What's important to understand is how critic it is to be able to write über sha
 That's where über shaders kick in: an über shader is a single shader program that will adapt its operations according to whether some options are enabled or not. To do this, Minko leverages the GLSL pre-processor:
 
 
-```
+```c
 
 
 1.  ifdef SOME\OPTION
@@ -44,7 +44,7 @@ Step 1: Updating the fragment shader
 We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](Create_your_first_custom_effect#Step_3:_The_fragment_shader) and update it to use a texture if the `DIFFUSE\MAP` macro is defined:
 
 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -72,7 +72,7 @@ void main(void) {
 To sample the `uDiffuseMap` texture, our fragment shader will also need the texture coordinates interpolated from the vertex data. Thus, we have to make sure the `vVertexUv` varying is properly filled by our vertex shader:
 
 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -102,7 +102,7 @@ void main(void) {
 We've made some modifications in the fragment shader that required a minor update of our vertex shader. We will have to update our effect's `attributeBindings` to make sure the `aUv` vertex attribute is properly set:
 
 
-```
+```javascript
  "attributeBindings" : {
 
 ` "aPosition" : "geometry[${geometryId}].position",`
@@ -115,7 +115,7 @@ We've made some modifications in the fragment shader that required a minor updat
 and the `uniformBindings` to make sure our `uDiffuseMap` property is properly bound too:
 
 
-```
+```javascript
  "uniformBindings" : {
 
 ` "uDiffuseColor" : "material[${materialId}].diffuseColor",`
@@ -135,7 +135,7 @@ Step 2: Über shaders automation with macro bindings
 We now have a fragment shader that can use a solid color or a texture depending on whether the `DIFFUSE\MAP` macro is set:
 
 
-```
+```c
 
 
 1.  ifdef DIFFUSE\MAP
@@ -155,7 +155,7 @@ We now have a fragment shader that can use a solid color or a texture depending 
 It works but it's still not really scalable: we would have to manually define the `DIFFUSE\MAP` macro by adding:
 
 
-```
+```c
 
 
 1.  define DIFFUSE\MAP
@@ -169,7 +169,7 @@ at the begining of our vertex/fragment shader if we want to use a texture. Manua
 Using `macroBindings`, we can bind a macro definition to a data property provided by the engine/our application:
 
 
-```
+```javascript
  "macroBindings" : {
 
 ` "DIFFUSE_MAP" : "material[${materialId}].diffuseMap"`
@@ -181,7 +181,7 @@ Using `macroBindings`, we can bind a macro definition to a data property provide
 The behavior of a macro binding is described in the following pseudo-code:
 
 
-```
+```lua
  defineString = "" if propertyExists(propertyName) then
 
 ` if isInteger(data[propertyName]) then`
@@ -201,7 +201,7 @@ Final code
 ----------
 
 asset/effect/MyCustomUberEffect.effect 
-```
+```javascript
  {
 
 ` "name" : "MyCustomUberEffect",`
@@ -259,7 +259,7 @@ asset/effect/MyCustomUberEffect.effect
 
 
 src/main.cpp 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

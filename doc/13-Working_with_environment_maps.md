@@ -27,7 +27,7 @@ Step 0: Setup a scene
 The setup will be the same that the one at the end of the [Working with the PhongMaterial](Working_with_the_PhongMaterial.md) tutorial:
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"
@@ -95,7 +95,7 @@ Step 1: Setting a environment map
 ---------------------------------
 
 Environment map are images just like diffuse maps, so their loading workflow are identical: 
-```
+```cpp
  sceneManager->assets()->queue("texture/envmap.png"); 
 ```
 
@@ -131,7 +131,7 @@ Final Code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

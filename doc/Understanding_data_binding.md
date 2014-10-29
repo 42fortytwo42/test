@@ -12,7 +12,7 @@ Use case
 To understand how our CPU side code collaborates with the GPU side program, let's take a simple example. The following code belongs to the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial:
 
 asset/effect/MyCustomEffect.effect 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -55,7 +55,7 @@ asset/effect/MyCustomEffect.effect
 
 
 src/main.cpp 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"
@@ -169,7 +169,7 @@ Yet, they are more than just simple maps. Indeed, each `[data::Provider`](data::
 Those three signals can be used to adapt the behavior of the application according to how the values in the provider changes.
 
 
-```
+```cpp
  auto provider = <data::Provider>::create();
 
 container->addProvider(provider);
@@ -211,7 +211,7 @@ A `[data::Container`](data::Container`) will store a collection of `[data::Provi
 When a `[data::Provider`](data::Provider`) is added to a `[data::Container`](data::Container`), all its properties are "added" to the container. To better understand the relationship between providers and containers, please consider the following code snippet:
 
 
-```
+```cpp
  auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
 std::cout \<\< "provider->hasProperty(\\"foo\\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\\"foo\\"): " \<\< container->hasProperty("foo") \<\< std::endl;
@@ -243,7 +243,7 @@ Just like data providers, `[data::Container`](data::Container`) objects provide 
 **When a provider is added to a container, their signals are piped** to make sure a single `[data::Container`](data::Container`) can act a the single entry point for all the `[data::Provider`](data::Provider`) objects it holds. This is true for both the properties - as explained above - and the signals. When the `<data::Provider>::propertyAdded()` signal is executed, the `<data::Container>::propertyAdded()` signal will be executed on all the containers that hold the provider that executed the signal in the first place.
 
 
-```
+```cpp
  auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
 container->addProvider(provider);
@@ -288,7 +288,7 @@ There are 4 different kinds of bindings:
 Here is an example of how uniform bindings can be declared in an `\*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](Effect_files_format_reference.md)):
 
 
-```
+```javascript
  "uniformBindings" : {
 
 ` "diffuseColor"   : { "property" : "material.diffuseColor", "source" : "target" },`
@@ -306,7 +306,7 @@ Here is an example of how uniform bindings can be declared in an `\*.effect` fil
 To better understand what "target", "renderer" and "root" might mean in this context, let's take a simple scene with a camera, a mesh and a light:
 
 
-```
+```cpp
  auto root = scene::Node::create()
 
 ` ->addComponent(component::SceneManager::create(context));`

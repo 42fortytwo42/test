@@ -1,6 +1,6 @@
 Whether the `Canvas` represents a simple drawing area or a complete window, you'll have to deal with the eventuality of its resizal. In this tutorial, we will learn how to catch the resizal of the `Canvas` and how to adapt the projection of our camera(s) to fit its new aspect ratio.
 
-The code for this tutorial is based on the one described in the [Hello cube!](Hello cube!.md) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](Hello cube!) tutorial.
 
 Step 1: Catch the resize Signal
 -------------------------------
@@ -8,7 +8,7 @@ Step 1: Catch the resize Signal
 Once our `Canvas` is created, we can listen to its `Canvas::resized()` signal:
 
 
-```
+```cpp
  auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
 ` // do something here...`
@@ -29,7 +29,7 @@ Step 2: Adapting the projection
 Assuming we have a direct access to our camera scene `Node`, we can adapt it's projection by accessing its `PerspectiveCamera` component and setting its `aspectRatio()` property:
 
 
-```
+```cpp
  auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
 ` camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);`
@@ -41,7 +41,7 @@ Assuming we have a direct access to our camera scene `Node`, we can adapt it's p
 If we only have access to the root `Node` of our scene, we can fetch all the nodes with a `PerspectiveCamera` component to update them:
 
 
-```
+```cpp
  auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
 ` auto cameras = scene::NodeSet::create(root)->descendants(true)->where([](scene::Node::Ptr node)`

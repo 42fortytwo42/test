@@ -15,7 +15,7 @@ Minko's SDK uses premake5, which is embed in the SDK, for its build system. Prem
 To do this, open a command line prompt in the root directory of the SDK and run:
 
 
-```
+```bash
  $ tool/mac/script/solution\xcode.sh 
 ```
 
@@ -50,7 +50,7 @@ Step 5: Package (optional)
 The SDK is now built, but you might want to share or copy it so you don't have to deal with the sources again. We use a script to produce a distributable SDK. Open a terminal at the SDK root and run:
 
 
-```
+```bash
  $ tool/mac/script/dist.sh 
 ```
 

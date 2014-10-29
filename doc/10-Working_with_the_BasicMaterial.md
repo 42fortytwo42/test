@@ -6,7 +6,7 @@ Step 1: Creating the material
 To create a new `BasicMaterial` object, we simply create the `BasicMaterial::create()` static method:
 
 
-```
+```cpp
  auto material = material::BasicMaterial::create(); 
 ```
 
@@ -41,7 +41,7 @@ It is important to understand that the first two methods are just syntaxic sugar
 Therefore, this code:
 
 
-```
+```cpp
  material->diffuseColor(Vector4::create(1.f, 0.f, 0.f, 1.f)); 
 ```
 
@@ -49,7 +49,7 @@ Therefore, this code:
 is strictly equivalent to:
 
 
-```
+```cpp
  material->set("diffuseColor", Vector4::create(1.f, 0.f, 0.f, 1.f)); 
 ```
 
@@ -66,7 +66,7 @@ Step 3: Setting a diffuse map (or texture)
 The `BasicMaterial` can also sample an RGBA texture as the final color of the pixel. To do this, we just have to set the `diffuseMap` property using the `BasicMaterial::diffuseMap()` setter:
 
 
-```
+```cpp
  material->diffuseMap(texture); 
 ```
 
@@ -74,7 +74,7 @@ The `BasicMaterial` can also sample an RGBA texture as the final color of the pi
 or the `BasicMaterial::set()` dynamic method directly:
 
 
-```
+```cpp
  material->set("diffuseMap", texture); 
 ```
 
@@ -87,7 +87,7 @@ Final code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

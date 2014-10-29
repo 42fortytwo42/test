@@ -13,7 +13,7 @@ Step 2: Generate the solution
 A script is provided to generate Xcode projects for iOS targets.
 
 
-```
+```bash
  script/solution\xcode.sh 
 ```
 
@@ -40,7 +40,7 @@ To clean the build, you can use the built-in feature in Xcode.
 If you also want to erase generated solution files (`Makefile`s), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`:
 
 
-```
+```bash
  script/clean.sh 
 ```
 

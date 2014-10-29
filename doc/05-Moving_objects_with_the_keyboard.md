@@ -4,7 +4,7 @@ Step 1: Catching keyboards inputs
 ---------------------------------
 
 
-```
+```cpp
  auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
 ` std::cout << "key down!" << std::endl;`
@@ -16,7 +16,7 @@ Step 1: Catching keyboards inputs
 The argument passed to the callbacks of the `Canvas::keyDown()` signal is an array where each cell indicates whether a specific key is down or not.
 
 
-```
+```cpp
  auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
 ` std::cout << "The 'up' key is" << (k->keyIsDown(input::Keyboard::ScanCode::SPACE) ? "" : " not") << " down" << std::endl;`
@@ -31,7 +31,7 @@ Step 2: Moving objects
 To move our object, we will simply use the `Matrix4x4::appendTranslation()` method with argument values depending on which key is actually down:
 
 
-```
+```cpp
  auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
 `   if (k->keyIsDown(input::Keyboard::ScanCode::LEFT))`
@@ -47,7 +47,7 @@ Final code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

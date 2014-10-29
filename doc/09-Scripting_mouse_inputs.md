@@ -6,7 +6,7 @@ The following section introduces the two different ways to deal with mouse input
 ### Listening to mouse signals
 
 
-```
+```lua
  -- my\mouse\script.lua function my\mouse\script:start(node)
 
 ` local mouse = getCanvas().mouse`
@@ -26,7 +26,7 @@ Coroutines are a great way to work with an asynchronous API using a synchronous 
 The following code will "wait" for the `mouse.leftButtonDown` signal before continuing:
 
 
-```
+```lua
  function my\mouse\script:start(node)
 
 ` self.co = coroutine.create(my_mouse_script.handleMouseDown)`
@@ -50,7 +50,7 @@ Final code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

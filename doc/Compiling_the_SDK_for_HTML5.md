@@ -48,13 +48,13 @@ The procedure for Ubuntu 12.10 is detailled [here](https://github.com/kripken/em
 Under Ubuntu 13.04+, the procedure is easier:
 
 
-```
+```bash
  sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}" \>\> ~/.profile 
 ```
 
 
 
-```
+```bash
  sudo apt-get update sudo apt-get install -y python-software-properties python g++ make sudo add-apt-repository ppa:chris-lea/node.js sudo apt-get update 
 ```
 
@@ -71,7 +71,7 @@ Step 2: Building the SDK
 To make things easy, just run the following batch script:
 
 
-```
+```bash
  \> %MINKO\HOME%/tool/win/script/build\html5.bat 
 ```
 
@@ -81,7 +81,7 @@ It will generate the required Makefiles and run Emscripten for you. By default, 
 For example, to compile only the framework, the plugins and the examples, you can run the following script:
 
 
-```
+```bash
  \> %MINKO\HOME%/tool/win/script/build\html5\no\tutorial.bat 
 ```
 
@@ -96,7 +96,7 @@ For all the command lines below, `$MINKO\BIN` is either:
 The first step is to create the required solution/project Makefiles:
 
 
-```
+```bash
  $ $MINKO\BIN/premake5.sh gmake 
 ```
 
@@ -104,7 +104,7 @@ The first step is to create the required solution/project Makefiles:
 To learn more about the available options and how to disable the compilation of the examples or the tutorials to save some time, just read the help:
 
 
-```
+```bash
  $ $MINKO\BIN/premake5.sh gmake --help 
 ```
 
@@ -112,7 +112,7 @@ To learn more about the available options and how to disable the compilation of 
 If you just want to compile the SDK to link your own applications, you don't need to compile the examples or the tutorials. The following command line will create the solution files excluding the tutorials and the examples:
 
 
-```
+```bash
  $ $MINKO\BIN/premake5.sh gmake --no-tutorial --no-example 
 ```
 
@@ -120,7 +120,7 @@ If you just want to compile the SDK to link your own applications, you don't nee
 When you're done, you should have a bunch of Makefiles. You can build the solution using the following command line:
 
 
-```
+```bash
  $ make config=html5\release 
 ```
 
@@ -128,7 +128,7 @@ When you're done, you should have a bunch of Makefiles. You can build the soluti
 If you want to leverage multicore processors, you can use the following command line (replace '4' by your actual number of cores):
 
 
-```
+```bash
  $ make -j 4 config=html5\release 
 ```
 

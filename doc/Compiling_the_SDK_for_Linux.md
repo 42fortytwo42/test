@@ -16,7 +16,7 @@ Step 3: Generate the solution
 Minko uses Premake for its build system. Premake is a nice solution to have a cross-platform build system that can work across multiple IDEs such as Xcode, Visual Studio and even GNU Make. In order to build the SDK, we will generate a solution for `gmake`. We need to use a terminal to generate a `Makefile`-compatible solution:
 
 
-```
+```bash
  cd ${MINKO\HOME} tool/lin/script/premake5.sh gmake 
 ```
 
@@ -24,7 +24,7 @@ Minko uses Premake for its build system. Premake is a nice solution to have a cr
 If we want to select your compiler, we can pass the `cc` option. Supported values are `gcc` and `clang`:
 
 
-```
+```bash
  tool/lin/script/premake5.sh --cc=clang gmake 
 ```
 
@@ -32,7 +32,7 @@ If we want to select your compiler, we can pass the `cc` option. Supported value
 To learn more about premake commands, run:
 
 
-```
+```bash
  tool/lin/script/premake5.sh --help 
 ```
 
@@ -47,7 +47,7 @@ Step 4: Compile the SDK
 From the root directory of the SDK, simply run `make` with a valid configuration for your platform:
 
 
-```
+```bash
  make config=linux32\release 
 ```
 
@@ -62,7 +62,7 @@ Valid configurations for `gmake` are:
 To leverage multi-core systems, you can also use `make -j`. The following example will use 4 cores and will compile the SDK much faster as a result:
 
 
-```
+```bash
  make -j4 config=linux32\release verbose=1 
 ```
 
@@ -73,7 +73,7 @@ Step 5: Package
 The SDK is now built, but you might want to share or copy it so you don't have to deal with the sources again. We use a script to produce a distributable SDK.
 
 
-```
+```bash
  tool/lin/scripts/premake5.sh dist 
 ```
 

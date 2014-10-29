@@ -19,7 +19,7 @@ Step 0: Setup a scene
 The setup will be the same that the one at the end of the [Working with the PhongMaterial](Working_with_the_PhongMaterial.md) tutorial:
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"
@@ -90,7 +90,7 @@ Step 1: Setting a SpecularMap
 `specularMap` are images just like `diffuseMap`, so their loading workflow are identical.
 
 
-```
+```cpp
  sceneManager->assets()->queue("texture/specularmap.png"); 
 ```
 
@@ -104,7 +104,7 @@ The `PhongMaterial` defines one method to set a `specularMap`:
 There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `TextureType` enum). Currently only flat textures are supported as a value for `PhongMaterial::specularMap()`.
 
 
-```
+```cpp
  phongMaterial->specularMap(assets->texture("texture/specularmap.png")); 
 ```
 
@@ -120,7 +120,7 @@ Final Code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

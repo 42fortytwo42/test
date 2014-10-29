@@ -16,7 +16,7 @@ Step 1: Instantiate a directional light
 The first very first thing you need to do is to include the following header to your .cpp file.
 
 
-```
+```cpp
 
 
 1.  include \<DirectionalLight.hpp\>
@@ -35,7 +35,7 @@ To add a point light to a scene, you have to understand that a `Scene` is a grap
 As `DirectionalLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
 
-```
+```cpp
 
 
 ` // Creating the Node`
@@ -54,7 +54,7 @@ As `DirectionalLight` is a `Component` you'll have to follow this logic to creat
 As you can see in the code above, we first create a node named "directionalLight" to which we add an instance of a directional light. Of course you can chain those methods to perform all in one line of code
 
 
-```
+```cpp
 
 
 ` // Creating the Node & adding the Component DirectionalLight`
@@ -68,7 +68,7 @@ Step 3: Change directional light properties
 -------------------------------------------
 
 you can directly change way the light appears by modifying it's public parameters, for example : 
-```
+```cpp
 
 
 ` auto directionalLight = DirectionalLight::create();`
@@ -85,7 +85,7 @@ Step 4: Adjust a directional light
 Once the light is created you might want to give a direction to your directional light. To do this you need to add a transformation matrix to the Node holding your light.
 
 
-```
+```cpp
  auto directionalLightNode= scene::Node::create("directionalLight")
 
 `       ->addComponent(DirectionalLight::create())`
@@ -101,7 +101,7 @@ Step 5: Remove a directional light from the scene
 You may sometime need to remove a light from a scene, to do this you simply need to remove the directional light from the `Node` it has been added to before.
 
 
-```
+```cpp
 
 
 ` // Adding an directional light`
@@ -123,7 +123,7 @@ Final Code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

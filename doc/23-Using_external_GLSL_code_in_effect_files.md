@@ -13,7 +13,7 @@ Step 1: Referencing the external GLSL files
 To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragment.glsl` files, we will use the `\#pragma include` directive within the respective shader fields:
 
 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -47,7 +47,7 @@ Final code
 ----------
 
 asset/effect/MyCustomEffect.effect 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -64,7 +64,7 @@ asset/effect/MyCustomEffect.effect
 
 
 asset/effect/MyCustomEffect.vertex.glsl 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -86,7 +86,7 @@ void main(void) {
 
 
 asset/effect/MyCustomEffect.fragment.glsl 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -106,7 +106,7 @@ void main(void) {
 
 
 src/main.cpp 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

@@ -10,7 +10,7 @@ To make sure our plugin linkage and other required operations are automated by M
 The default solution file looks like this:
 
 
-```
+```lua
  dofile(os.getenv("MINKO\HOME") .. "/sdk.lua")
 
 PROJECT\NAME = path.getname(os.getcwd())
@@ -42,7 +42,7 @@ As you can see, some plugins are referenced by default in the solution file. But
 For example, to enable the "jpeg" plugin that provides a JPEG image files parser, uncomment the following line:
 
 
-```
+```lua
  --minko.plugin.enable("jpeg") 
 ```
 
@@ -50,7 +50,7 @@ For example, to enable the "jpeg" plugin that provides a JPEG image files parser
 To uncomment a line in LUA, simply remove the "--" at the begining of the line. You should then have:
 
 
-```
+```lua
  minko.plugin.enable("jpeg") 
 ```
 
@@ -58,7 +58,7 @@ To uncomment a line in LUA, simply remove the "--" at the begining of the line. 
 If the plugin you want to enable is not in the list, you can call the `minko.plugin.enable()` function and pass the name of the plugin you need:
 
 
-```
+```lua
  minko.plugin.enable("myplugin") 
 ```
 
@@ -103,7 +103,7 @@ Each plugin should define a custom dedicated C++ pre-processor macro that will h
 In the following code, we will enable the JPEG image files parser only if the `MINKO\PLUGIN\JPEG` is defined (ie only if the corresponding plugin is actually enabled):
 
 
-```
+```cpp
 
 
 1.  ifdef MINKO\PLUGIN\JPEG

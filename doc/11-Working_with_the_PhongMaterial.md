@@ -12,7 +12,7 @@ First of all, a `PhongMaterial` needs at least one light in the scene, otherwise
 Secondly the `Phong.effect` must be added to the assets loading queue:
 
 
-```
+```cpp
  sceneManager->assets()->queue("effect/Phong.effect"); 
 ```
 
@@ -20,7 +20,7 @@ Secondly the `Phong.effect` must be added to the assets loading queue:
 Let's setup the scene:
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"
@@ -75,7 +75,7 @@ int main(int argc, char\*\* argv) {
 
 
 To create a phong material you must use the `material::PhongMaterial::create()` method: 
-```
+```cpp
  auto phongMaterial = material::PhongMaterial::create(); 
 ```
 
@@ -96,7 +96,7 @@ As the `BasicMaterial`, a `PhongMaterial` defines `diffuseColor` and `diffuseMap
 The `PhongMaterial` is a `[data::ArrayProvider`](data::ArrayProvider`) with a set of user-friendly inlined getter/setters for the properties expected by the corresponding effect.
 
 
-```
+```cpp
 
 
 assets->queue("myTexture.png");
@@ -153,7 +153,7 @@ To set the shininess, the `PhongMaterial` defines one method :
 Usually shininess is a power of two.
 
 
-```
+```cpp
  phongMaterial->shininess(32.f); 
 ```
 
@@ -168,7 +168,7 @@ Final Code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

@@ -30,7 +30,7 @@ A `render::VertexBuffer` instance can simply be considered as a convenient wrapp
 In the following code, we exploit the simplicity of the cube geometry (six separate vertices for the six faces of the cube) in order to create a vertex buffer, the data of which is used to slightly move the vertex positions along the face normals (the actual vertex displacement is done in the vertex shader program as shown below).
 
 
-```
+```cpp
  geometry::Geometry::Ptr createGeometryWithAttribute(render::AbstractContext::Ptr context) {
 
 ` auto cubeGeometry = geometry::CubeGeometry::create(context); // original cube geometry`
@@ -86,7 +86,7 @@ In the following code, we exploit the simplicity of the cube geometry (six separ
 This vertex buffer is added to the geometry and finally, in the `main` procedure, we simply hand over this newly augmented geometry to the existing `component::Surface` in order to visualize the changes caused by our new vertex shader and its custom attribute inputs.
 
 
-```
+```cpp
  int main(int argc, char\*\* argv) {
 
 ` ...`
@@ -121,7 +121,7 @@ Pretty similarly to what we did for the uniform inputs for our effect (in order 
 The vertex attribute binding between the geometry's data provider and our GLSL attribute is straightforwardly done by simply adding a single line in the effect file's `attributeBindings` dictionary, where the key corresponds to the name of the GLSL attribute and the value to the matching property name manipulated by the Minko engine's data providers.
 
 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -143,7 +143,7 @@ Step 3: Use your vertex attributes in GLSL
 Because a meaningful vertex attribute is only one that is actually used in computations of the shader program, we now update the source code of our custom effect's vertex shader in order to use our additional `aOffsetPosition` attribute and move the position of our vertices in local space according to its values.
 
 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -230,7 +230,7 @@ As highlighted in the complete code listed below, the pitfall here is to careful
 Follows the code of the updated GLSL vertex and fragment shaders stoed in the custom effect file.
 
 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -272,7 +272,7 @@ Final code
 asset/effect/MyCustomEffect.effect
 
 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -326,7 +326,7 @@ asset/effect/MyCustomEffect.effect
 src/main.cpp
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

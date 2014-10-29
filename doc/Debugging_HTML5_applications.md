@@ -12,7 +12,7 @@ Here are some advice on debugging your applications in HTML5.
 ### HTML5 specific code
 
 In your application, if you need some code to be executed solely when running in HTML5, you can use the `EMSCRIPTEN` macro 
-```
+```cpp
 
 
 1.  if defined(EMSCRIPTEN)
@@ -36,7 +36,7 @@ In your application, if you need some code to be executed solely when running in
 ### Outputting messages in the console
 
 In debug, you can display messages in the textarea below the canvas. Just output the message to the standard output to have them displayed there. Be sure to end your message with an end of line character so that it is displayed. 
-```
+```cpp
  std::cout \<\< "my message" \<\< std::endl 
 ```
  This is a good way to know if your application goes inside a particular function.
@@ -44,7 +44,7 @@ In debug, you can display messages in the textarea below the canvas. Just output
 ### Executing javascript code
 
 Emscripten provides a way to execute javascript code via the `emscripten\run\script` function 
-```
+```cpp
  emscripten\run\script("alert('foo');console.log('bar');"); 
 ```
  You can visit the [Interacting with code](https://github.com/kripken/emscripten/wiki/Interacting-with-code) page on the Emscripten wiki for more detailed techniques to interact with Javascript code.
@@ -54,7 +54,7 @@ Emscripten provides a way to execute javascript code via the `emscripten\run\scr
 In native, reaching a `return` instruction in the `main` would result in the program to close. In HTML5, it is not as visible. When the `main` returns, the page is not closed, but your application will no longer be executed. If your application doesn't run normally and you can't find an obvious reason, try displaying a message right before any `main` `return` instruction, that way you will see instantly if the program returns.
 
 
-```
+```cpp
  void main(int argc, char\* argv) {
 
 `   //some code`

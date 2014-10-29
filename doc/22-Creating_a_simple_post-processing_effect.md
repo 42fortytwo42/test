@@ -20,7 +20,7 @@ For post-processing to work, we have to render a fullscreen quad and then apply 
 The `geometry::QuadGeometry` class provides the geometry for a unit sized quad lying in the (x, y) plane. Thus, its top left corner is in (-0.5, 0.5, 0.0) and its bottom right corner is in (0.5, -0.5, 0.0). Our vertex shader is supposed to output normalized device coordinates in the [-1 .. 1] bounds. So we just have to scale our quad to make it fill the entire screen:
 
 
-```
+```c
  gl\Position = vec4(aPosition, 1) \* vec4(1., 1., 1., .5); 
 ```
 
@@ -30,7 +30,7 @@ Note how we actually divide `w` by 2 instead of multiplying `x` and `y` by 2. It
 Because OpenGL performs render to texture using an inverted y axis, we also have modify the original UVs to make sure our backbuffer will be sampled properly. Here is the final code for our post-processing vertex shader:
 
 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -61,7 +61,7 @@ The vertex shader is pretty standard and should be pretty much the same for most
 Here, we will simply sample the backbuffer and use an average of its `RGB` value to get a greyscale result color:
 
 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -91,7 +91,7 @@ Step 3: Setting up the scene
 The first thing to do is to create the `Texture` that will be used as a replacement for our backbuffer:
 
 
-```
+```cpp
  auto ppTarget = render::Texture::create(assets->context(), 1024, 1024, false, true);
 
 ppTarget->upload(); 
@@ -105,7 +105,7 @@ Just like any `Effect`, our post-processing file should be loaded using the `Ass
 When our `Effect` has been successfully loaded, we can fetch it from the library using the `AssetLibrary::effect()` method. The following code makes sure the effect has been properly loaded and throws an exception otherwise:
 
 
-```
+```cpp
  auto ppFx = sceneManager->assets()->effect("effect/Desaturate.effect");
 
 if (!ppFx)
@@ -121,7 +121,7 @@ As you can see, we also set the `uBackbuffer` uniform to be our `ppTarget` which
 The final initialization step is to create a second scene - completely different from your actual 3D scene - that will only hold a single surface made from the quad geometry that it supposed to represent our screen, a dummy `Material` and our post-processing effect:
 
 
-```
+```cpp
  auto ppRenderer = Renderer::create(); auto ppScene = scene::Node::create()
 
 ` ->addComponent(ppRenderer)`
@@ -143,7 +143,7 @@ Now that all we need for post-processing is intialized, we just have to make sur
 We just have to update what we do in our `Canvas::enterFrame()` callback:
 
 
-```
+```cpp
  auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
 ` sceneManager->nextFrame(t, dt, ppTarget);`
@@ -161,7 +161,7 @@ If we want our post-processing to have a good quality, we have to make sure the 
 We will do this in our `Canvas::resized()` callback:
 
 
-```
+```cpp
  auto resized = canvas->resized()->connect([&](Canvas::Ptr canvas, unsigned int width, unsigned int height) {
 
 ` camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);`
@@ -180,7 +180,7 @@ Final code
 ----------
 
 asset/effect/Desaturate.effect 
-```
+```javascript
  {
 
 ` "name" : "desaturate",`
@@ -222,7 +222,7 @@ asset/effect/Desaturate.effect
 
 
 src/main.cpp 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

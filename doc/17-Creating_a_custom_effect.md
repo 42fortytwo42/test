@@ -16,7 +16,7 @@ In Minko, rendering effects are stored in separate `\*.effect` files. Indeed, Mi
 Here is a simple `\*.effect` file skeleton that will help us getting started:
 
 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -57,7 +57,7 @@ We can now define our vertex shader for the single and only pass of our effect. 
 4.  project it on the 2D screen by multiplying the previous result by `uProjectionMatrix`.
 
 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -91,7 +91,7 @@ Our fragment shader will be even simpler:
 -   we set this color to be the final color of our pixel by assigning it to `gl\FragColor`.
 
 
-```
+```c
 
 
 1.  ifdef GL\ES
@@ -120,7 +120,7 @@ We can now load our `MyCustomEffect.effect` effect in our application and use it
 -   use this very `Effect` object to initialize our `Surface`
 
 
-```
+```cpp
  sceneManager->assets()->queue("effect/MyCustomEffect.effect");
 
 sceneManager->assets()->complete()->connect([&](file::AssetLibrary:Ptr assets) {
@@ -140,7 +140,7 @@ sceneManager->assets()->complete()->connect([&](file::AssetLibrary:Ptr assets) {
 But for our custom `Effect` to work, we need to fill properly all the `uniform` values it expects. To do this, we will use the `Effect::setUniform()` method:
 
 
-```
+```cpp
  myCustomEffect->setUniform("uModelToWorldMatrix", Matrix4x4::create()->translation(0.f, 0.f, -5.f)); myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create()); myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)PI \* 0.25f, (float)WINDOW\WIDTH / (float)WINDOW\HEIGHT, .1f, 1000.f)); myCustomEffect->setUniform("uColor", Vector4::create(0.f, 0.f, 1.f, 1.f)); 
 ```
 
@@ -149,7 +149,7 @@ Final code
 ----------
 
 asset/effect/MyCustomEffect.effect 
-```
+```javascript
  {
 
 ` "name" : "MyCustomEffect",`
@@ -192,7 +192,7 @@ asset/effect/MyCustomEffect.effect
 
 
 src/main.cpp 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

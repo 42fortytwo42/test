@@ -41,13 +41,13 @@ The procedure for Ubuntu 12.10 is detailled [here](https://github.com/kripken/em
 Under Ubuntu 13.04+, the procedure is easier:
 
 
-```
+```bash
  sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}" \>\> ~/.profile 
 ```
 
 
 
-```
+```bash
  sudo apt-get update sudo apt-get install -y python-software-properties python g++ make sudo add-apt-repository ppa:chris-lea/node.js sudo apt-get update 
 ```
 
@@ -64,7 +64,7 @@ Building an HTML5 version of your application requires to open a terminal emulat
 ### Linux
 
 
-```
+```bash
  script/solution\gmake\gcc.sh make config=html5\release 
 ```
 
@@ -72,7 +72,7 @@ Building an HTML5 version of your application requires to open a terminal emulat
 ### OS X
 
 
-```
+```bash
  script/solution\gmake\gcc.sh make config=html5\release 
 ```
 
@@ -82,7 +82,7 @@ Building an HTML5 version of your application requires to open a terminal emulat
 On Windows, you will need to have a few programs provided by the Emscripten SDK in your path. We've embed a script, which will set up the Emscripten environment and run the build with the above commands.
 
 
-```
+```bash
  script\\build\html5.bat 
 ```
 

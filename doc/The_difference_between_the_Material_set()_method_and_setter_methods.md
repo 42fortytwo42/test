@@ -8,7 +8,7 @@ Before we can discuss this matter, we will first see a little example. The two f
 The "static" approach, using a class derived from Material and an actuall `diffuseColor()` setter method:
 
 
-```
+```cpp
  auto basicMaterial = BasicMaterial::create();
 
 basicMaterial->diffuseColor(Vector4::create(1.f, 0.f, 0.f, 1.f)); // red 
@@ -18,7 +18,7 @@ basicMaterial->diffuseColor(Vector4::create(1.f, 0.f, 0.f, 1.f)); // red
 The "dynamic" approach, using the `Material` generic base class and the `set()` method with the property name as a string argument:
 
 
-```
+```cpp
  auto material = Material::create();
 
 material->set("diffuseColor", Vector4::create(1.f, 0.f, 0.f, 1.f)); // red 
@@ -56,7 +56,7 @@ If you actually read the implementation of `Material`-derived classes - such as 
 For example, `BasicMaterial::diffuseColor()` is implemented like this:
 
 
-```
+```cpp
  class BasicMaterial :
 
 ` public Material`
@@ -81,7 +81,7 @@ Thus, setter methods will actully call `Material::set()` internally.
 Manually declaring specialized setter method in `Material`-derived classes is also a good opportunity to provide overloads. Thanks to this mechanism, you can implement data conversion when appropriate. For example, the `BasicMaterial` declares the `diffuseColor(Vector4::Ptr)` method because the `Basic.effect` expects an (x, y, z, w) float 4 tuple value. As colors are also often represented as RGBA integer values, the `BasicMaterial` class also provide the following overload:
 
 
-```
+```cpp
  inline Ptr diffuseColor(const uint rgba) {
 
 ` return diffuseColor(math::Vector4::create(`

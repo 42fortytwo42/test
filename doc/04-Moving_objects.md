@@ -10,7 +10,7 @@ In order to move a scene `Node` in the 3D space, we must first make sure this ve
 Minko stores the 3D transform of a scene `Node` in a `Transform` component. Such component can easily be created using the `Transform::create()` static method:
 
 
-```
+```cpp
  auto transform = component::Transform::create(); 
 ```
 
@@ -21,7 +21,7 @@ Step 2: Assigning the transform to a node
 We can then assign the `Transform` to any scene node using the `Node::addComponent()` method:
 
 
-```
+```cpp
  auto transform = component::Transform::create();
 
 node->addComponent(transform) 
@@ -31,7 +31,7 @@ node->addComponent(transform)
 Note that you cannot add two `Transform` on the same component because it doesn't make sense. You might want to check the target node does not already have a `Transform` component before adding the new one. The `Node::hasComponent()` method will do exactly that:
 
 
-```
+```cpp
  if (!node->hasComponent\<Transform\>())
 
 ` node->addComponent(component::Transform::create());`
@@ -43,7 +43,7 @@ Note that you cannot add two `Transform` on the same component because it doesn'
 When it is assigned, our `Transform` component can also be accessed from the scene `Node` itself using the `Node::component()` method:
 
 
-```
+```cpp
  auto transform = node->component\<Transform\>(); 
 ```
 
@@ -58,7 +58,7 @@ Now that our node has a `Transform`, we can modify it to translate the node in o
 We can then use the `Matrix4x4::appendTranslation()` method to translate our object. The following code will translate ou node on the x axis:
 
 
-```
+```cpp
  node->component\<Transform\>()->matrix()->appendTranslation(42.f, 0.f, 0.f); 
 ```
 
@@ -70,7 +70,7 @@ For instance, if `node` was located in (0, 0, 0), it should now be in (42, 0, 0)
 You can also "reset" the translation or set it to an absolute value using the `Matrix4x4::translation()` method. The following code will actually move our node directly to the (42, 0, 0) coordinates:
 
 
-```
+```cpp
  node->component\<Transform\>()->matrix()->translation(42.f, 0.f, 0.f); 
 ```
 
@@ -79,7 +79,7 @@ Final code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

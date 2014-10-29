@@ -8,7 +8,7 @@ Enable ASSIMP
 Assimp is the asset import library used by Minko to load asset files, we have to enable it into the `premake5.lua` with these lines:
 
 
-```
+```lua
  minko.plugin.enable("assimp") -- this plugin can be useful for assets that need to load jpeg files minko.plugin.enable("jpeg") 
 ```
 
@@ -16,7 +16,7 @@ Assimp is the asset import library used by Minko to load asset files, we have to
 The next step is to include the correct header into your C++ application source code.
 
 
-```
+```cpp
 
 
 1.  include "minko/MinkoASSIMP.hpp"
@@ -34,7 +34,7 @@ Every supported file format is available through a plugin. Each parser must be r
 In order to enable a data parser, you have to tell Minko it exists using the `AssetLibrary::registerParse` method.
 
 
-```
+```cpp
  sceneManager->assets()
 
 `   ->registerParser<`[`file::ASSIMPParser>`](file::ASSIMPParser>)`("obj")`
@@ -55,7 +55,7 @@ Access loaded files
 Once the loaded complete signal of the assetLibrary is triggered you can access the different model with the `AssetLibrary::symbol(name)` method
 
 
-```
+```cpp
  auto objModel = assets->symbol("model/model.obj"); auto daeModel = assets->symbol("model/model.dae"); 
 ```
 
@@ -74,7 +74,7 @@ Most of the time, your model does not know the effect that its surfaces are supp
 You can also choose a default material
 
 
-```
+```cpp
  sceneManager->assets()->defaultOptions()->material()->set("diffuseColor", Vector4::create(0.8f, 0.1f, 0.1f, 1.0f)); 
 ```
 
@@ -83,7 +83,7 @@ Final Code
 ----------
 
 
-```
+```cpp
 
 
 1.  include "minko/Minko.hpp"

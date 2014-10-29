@@ -86,7 +86,7 @@ Step 4: Compile the SDK
 Now, you should have a bunch of Makefiles. You can build the solution using the following command line:
 
 
-```
+```bash
  $ make config=android\release 
 ```
 
@@ -94,7 +94,7 @@ Now, you should have a bunch of Makefiles. You can build the solution using the 
 If you want to leverage multicore processors, you can use the following command line (replace '4' by your actual number of cores):
 
 
-```
+```bash
  $ make -j 4 config=android\release 
 ```
 
