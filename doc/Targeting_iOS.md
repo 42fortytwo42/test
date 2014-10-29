@@ -25,7 +25,7 @@ Open the `my-project.xcworkspace` by double-clicking on it.
 
 The solution should immediately be ready to build. Select the product and the target (iOS Simulator iPad for instance), press the Play button and the build should start.
 
-![](images/Targetting iOS.png "images/Targetting iOS.png")
+![](images/Targetting_iOS.png "images/Targetting_iOS.png")
 
 Step 4: Run the application
 ---------------------------

@@ -2,7 +2,7 @@ Spot lights are rather similar to their real-world counterparts. A spot light em
 
 Let's start with something simple, a red spot light, emitting to the ground. as the widget imply, the light is only spread in one direction.
 
-![](images/spotlight.png "images/spotlight.png")
+![](images/Spotlight.png "images/Spotlight.png")
 
 This setup is a little more complex, it introduces multiple spot lights emitting on a complex object with shadows enabled. As you can see with the yellowish light, the light attenuate with the distance, the closer the object is from the spot light, the stronger the light light will be.
 

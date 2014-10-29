@@ -2,7 +2,7 @@ You can set your custom properties directly from the editor, and export them in 
 
 -   Select a node
 
-![](images/User Data - Select a node.png "images/User Data - Select a node.png")
+![](images/User_Data_-_Select_a_node.png "images/User_Data_-_Select_a_node.png")
 
 -   Open the User Data panel
 

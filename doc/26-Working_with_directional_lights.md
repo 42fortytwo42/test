@@ -2,7 +2,7 @@ Unlike [point lights](Working_with_point_lights.md), which occupy a specific loc
 
 Because a directional light represents a distant light source, its x,y,z coordinate means nothing—only its rotational attribute has any bearing on how the scene will be illuminated.
 
-![](images/directionallight.png "images/directionallight.png")
+![](images/Directionallight.png "images/Directionallight.png")
 
 Directional light emitting from the left to the right
 

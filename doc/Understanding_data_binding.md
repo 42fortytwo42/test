@@ -342,7 +342,7 @@ root->addChild(light);
 
 Here is the diagram of a simple 3D scene and its attached components:
 
-![](images/Minko data binding scene.png "images/Minko data binding scene.png")
+![](images/Minko_data_binding_scene.png "images/Minko_data_binding_scene.png")
 
 On the diagram, you can see that:
 

@@ -19,7 +19,7 @@ You have to set an environment variable that will be used by Minko's build syste
 
 Go to Control Panel \> System \> Advanced system settings and click on "Environment Variables"
 
-![](images/Minko win env variables.jpg "images/Minko win env variables.jpg")
+![](images/Minko_win_env_variables.jpg "images/Minko_win_env_variables.jpg")
 
 Then click on "New..." in the "System variables" panel (or in the "User variables" panel if you want to setup the SDK for your own user only)
 

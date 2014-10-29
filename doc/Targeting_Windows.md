@@ -42,7 +42,7 @@ Typically, we want to target `windows32` / `release`. Note that on Windows, the 
 
 Right-click on your solution and run Build Solution.
 
-![](images/vs2013_build.png "images/vs2013_build.png")
+![](images/Vs2013_build.png "images/Vs2013_build.png")
 
 Step 4: Run the application
 ---------------------------

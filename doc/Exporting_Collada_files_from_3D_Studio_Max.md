@@ -24,7 +24,7 @@ Then, click on the "Save" button.
 
 ### Options for the OpenCOLLADA exporter
 
-![](images/3dsmax export opencollada.jpg "images/3dsmax export opencollada.jpg")
+![](images/3dsmax_export_opencollada.jpg "images/3dsmax_export_opencollada.jpg")
 
 -   In the Standard Options panel, make sure that the "Bake Matrices" checkbox is selected. If your file uses textures and you want to ease their loading at runtime or in the editor, make sure the "Relative Paths" and "Copy Images" checkboxes are selected.
 -   In the Geometry panel, make sure the "Triangulate" checkbox is selected for better performances at runtime.

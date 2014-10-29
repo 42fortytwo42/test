@@ -1,6 +1,6 @@
 A point light casts illumination in every direction from a single point in 3D space. Point lights are useful for simulating any omnidirectional light source: Light-bulbs, candles, Christmas tree lights, gun-fire etc.
 
-![](images/pointlight.png "images/pointlight.png")
+![](images/Pointlight.png "images/Pointlight.png")
 
 As the point light is emitting in every directions, his reflection can be multiple places in the environment.
 

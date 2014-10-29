@@ -95,7 +95,7 @@ Simply adding your collider-bearing node to the scene:
 
 is now enough to trigger the simulation, and watch our poor cube fall under the effect of gravity.
 
-![Above are several captures of the physics simulation at different frames.](images/fallingCube.png "Above are several captures of the physics simulation at different frames.")
+![Above are several captures of the physics simulation at different frames.](images/FallingCube.png "Above are several captures of the physics simulation at different frames.")
 
 **Important** When adding a new child node to your scene, a `minko::component::bullet::PhysicsWorld` must already be present in the set of its newly-defined parent nodes. If not, this added node will simply be ignored from the simulation regardless of the validity of its attached collider.
 

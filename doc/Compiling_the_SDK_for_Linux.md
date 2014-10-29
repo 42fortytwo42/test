@@ -37,7 +37,7 @@ To learn more about premake commands, run:
 ```
 
 
-![](images/Minko linux premake gmake.jpg "images/Minko linux premake gmake.jpg")
+![](images/Minko_linux_premake_gmake.jpg "images/Minko_linux_premake_gmake.jpg")
 
 The list of the projects may vary according to the actual version of the SDK. What's important is to make sure that you have a `Makefile` at the root of the SDK and in each project directory.
 

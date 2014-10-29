@@ -109,7 +109,9 @@ If you need more information about normal mapping : [Working with normal maps](W
 
 ### Specular Map
 
-\<source lang="cpp\> phongMaterial->shininess(2); phongMaterial->specularMap(assets->texture("texture/specularmap.png")); 
+
+```
+ phongMaterial->shininess(2); phongMaterial->specularMap(assets->texture("texture/specularmap.png")); 
 ```
 
 

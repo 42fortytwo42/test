@@ -20,7 +20,7 @@ To do this, open a command line prompt in the root directory of the SDK and run:
 ```
 
 
-You should have the following result in the console: ![](images/solution_minko_xcode.png "fig:images/solution_minko_xcode.png")
+You should have the following result in the console: ![](images/Solution_minko_xcode.png "fig:images/Solution_minko_xcode.png")
 
 Make sure a `minko.xcworkspace` solution file has been properly generated. If this operation was successful, you should have a `\*.xcodeproj` project file in each project directory.
 
