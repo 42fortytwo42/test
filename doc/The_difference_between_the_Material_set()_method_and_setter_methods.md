@@ -7,18 +7,22 @@ Before we can discuss this matter, we will first see a little example. The two f
 
 The "static" approach, using a class derived from Material and an actuall `diffuseColor()` setter method:
 
+
 ```
  auto basicMaterial = BasicMaterial::create();
 
-basicMaterial-\>diffuseColor(Vector4::create(1.f, 0.f, 0.f, 1.f)); // red ```
+basicMaterial->diffuseColor(Vector4::create(1.f, 0.f, 0.f, 1.f)); // red 
+```
 
 
 The "dynamic" approach, using the `Material` generic base class and the `set()` method with the property name as a string argument:
 
+
 ```
  auto material = Material::create();
 
-material-\>set("diffuseColor", Vector4::create(1.f, 0.f, 0.f, 1.f)); // red ```
+material->set("diffuseColor", Vector4::create(1.f, 0.f, 0.f, 1.f)); // red 
+```
 
 
 The dynamic approach
@@ -51,6 +55,7 @@ If you actually read the implementation of `Material`-derived classes - such as 
 
 For example, `BasicMaterial::diffuseColor()` is implemented like this:
 
+
 ```
  class BasicMaterial :
 
@@ -67,12 +72,14 @@ For example, `BasicMaterial::diffuseColor()` is implemented like this:
 `   return std::dynamic_pointer_cast<BasicMaterial>(shared_from_this());`
 ` }`
 
-} ```
+} 
+```
 
 
 Thus, setter methods will actully call `Material::set()` internally.
 
 Manually declaring specialized setter method in `Material`-derived classes is also a good opportunity to provide overloads. Thanks to this mechanism, you can implement data conversion when appropriate. For example, the `BasicMaterial` declares the `diffuseColor(Vector4::Ptr)` method because the `Basic.effect` expects an (x, y, z, w) float 4 tuple value. As colors are also often represented as RGBA integer values, the `BasicMaterial` class also provide the following overload:
+
 
 ```
  inline Ptr diffuseColor(const uint rgba) {
@@ -84,7 +91,8 @@ Manually declaring specialized setter method in `Material`-derived classes is al
 `   (rgba & 0xff) / 255.f`
 ` ));`
 
-} ```
+} 
+```
 
 
 Such mechanism provides the developer with more semantic options for his code. Yet this is still mostly syntaxic sugar since `Material::set()` is always called in the end.

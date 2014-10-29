@@ -14,6 +14,7 @@ There are three types of bindings:
 
 Bindings are used to declare how each property of each pass of the effect will be bound to a property available in the node <data::Container> object.
 
+
 ```
  "attributeBindings" : {
 
@@ -34,7 +35,8 @@ Bindings are used to declare how each property of each pass of the effect will b
 `   "blendMode"     : "material/blendMode",`
 `   "depthTest"     : "material/depthTest"`
 
-} ```
+} 
+```
 
 
 The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](#Pass_Bindings)).
@@ -57,6 +59,7 @@ The name of the rendering pass. Names can be used to declare passes that can be 
 ### Pass Bindings
 
 Each pass can re-declare attribute, uniform and state bindings. The goal is to be able to have different binding values for a property that might have the same name among different passes. The blending state is a good example:
+
 
 ```
  // some effect {
@@ -82,15 +85,18 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 `       // ...`
 `   }]`
 
-} ```
+} 
+```
 
 
 ### Rendering States
 
 | Name      | width=130 | Type                | width=500 | Description                                                                                                                                                                                                                                         | Example                                                                                                                             |
 |-----------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| priority  | float                           | The priority of the render pass: passes with higher priority are rendered first.                                                                                                                                                                                | |```
-"priority" : 42.5```
+| priority  | float                           | The priority of the render pass: passes with higher priority are rendered first.                                                                                                                                                                                | |
+```
+"priority" : 42.5
+```
                                                                            |
 | blendMode | array[string, string] or string | The source and destination blend factors to use in the equation blending the pixels rendered by this pass and the pixels already drawn in the frame buffer. The first value of the array is the blending source factor and must be one of the following values: 
                                                                                                                                                                                                                                                                                                                 
@@ -118,10 +124,14 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                                                                                                                                                                                                                                                                                 
                                                -   "default"                                                                                                                                                                                                                                                    
                                                -   "alpha"                                                                                                                                                                                                                                                      
-                                               -   "additive"                                                                                                                                                                                                                                                   | ```
-"blendMode" : ["one", "zero"]```
- ```
-"blendMode" : "default"```
+                                               -   "additive"                                                                                                                                                                                                                                                   | 
+```
+"blendMode" : ["one", "zero"]
+```
+ 
+```
+"blendMode" : "default"
+```
  |
 | depthTest | array[boolean, string]          | The depth mask and depth function to be used for this rendering pass. The first value is the depth mask and can be either true or false. The second value is the depth function and must be one of the following:                                               
                                                                                                                                                                                                                                                                                                                 
@@ -132,11 +142,14 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                -   "less"                                                                                                                                                                                                                                                       
                                                -   "less\equal"                                                                                                                                                                                                                                                
                                                -   "never"                                                                                                                                                                                                                                                      
-                                               -   "not\equal"                                                                                                                                                                                                                                                 | |```
-"depthTest" : [true, "less"]```
+                                               -   "not\equal"                                                                                                                                                                                                                                                 | |
+```
+"depthTest" : [true, "less"]
+```
                                                                 |
 
 Here is an example that will set the first pass rendering states:
+
 
 ```
  "passes" : [{
@@ -145,14 +158,16 @@ Here is an example that will set the first pass rendering states:
 `   "blendMode" : ["one", "zero"],`
 `   "depthTest" : [false, "less"],`
 
-// ... ```
+// ... 
+```
 
 
 ### Vertex Shader
 
 The GLSL code for the vertex shader.
 
-Example: ```
+Example: 
+```
  "vertexShader" : "
 
 `   attribute vec3 position;`
@@ -165,14 +180,16 @@ Example: ```
 `       gl_Position =  worldToScreenMatrix * modelToWorldMatrix * vec4(position, 1.0);`
 `   }`
 
-" ```
+" 
+```
 
 
 ### Fragment Shader
 
 The GLSL code for the fragment shader.
 
-Example: ```
+Example: 
+```
  "fragmentShader" : "
 
 `   uniform vec4 diffuseColor;`
@@ -182,11 +199,13 @@ Example: ```
 `       gl_FragColor = diffuseColor;`
 `   }`
 
-" ```
+" 
+```
 
 
 Complete Example
 ----------------
+
 
 ```
  // basic effect {
@@ -233,6 +252,7 @@ Complete Example
 `       "`
 `   }]`
 
-} ```
+} 
+```
 
 

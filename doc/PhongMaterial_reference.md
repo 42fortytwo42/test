@@ -3,8 +3,10 @@ Creating the material
 
 To create a `phongMaterial`, we simply call `material::PhongMaterial::create` method that returns a `material::PhongMaterial::Ptr`.
 
+
 ```
- auto phongMaterial = material::PhongMaterial::create(); ```
+ auto phongMaterial = material::PhongMaterial::create(); 
+```
 
 
 You'll find more information about the `phongMaterial` in this tutorial [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
@@ -23,15 +25,16 @@ Each set of properties has a dedicated tutorial in the **tutorials** section:
 
 The `phongMaterial` has access to a `diffuseColor` and a `diffuseMap`. Those properties can be set in the same way than the `basicMaterial` ([Working with the BasicMaterial](Working_with_the_BasicMaterial.md)).
 
-| Right                                                    | Left                                       | Front                                        |
-|----------------------------------------------------------|--------------------------------------------|----------------------------------------------|
-| ![](InitSceneDirectional.png "InitSceneDirectional.png") | ![](InitSceneSpot.png "InitSceneSpot.png") | ![](InitScenePoint.png "InitScenePoint.png") |
+| Right                                                                  | Left                                                     | Front                                                      |
+|------------------------------------------------------------------------|----------------------------------------------------------|------------------------------------------------------------|
+| ![](images/InitSceneDirectional.png "images/InitSceneDirectional.png") | ![](images/InitSceneSpot.png "images/InitSceneSpot.png") | ![](images/InitScenePoint.png "images/InitScenePoint.png") |
 
 ### Specular Color
 
 Specular color is the color of the light specular reflection. The default value is white.
 
-\<source lang="cpp\> phongMaterial-\>specularColor(0xFF0000FF); ```
+\<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); 
+```
 
 
 | specular color | Right                                        | Left                                         | Front                                        |
@@ -45,8 +48,10 @@ To have more information about specular color : [Working with the PhongMaterial]
 
 Empirically, the shininess parameter controls how sharp specular reflections will look across the surface of the object. The default value is 8.
 
+
 ```
- phongMaterial-\>shininess(32.f); ```
+ phongMaterial->shininess(32.f); 
+```
 
 
 | shininess | Right                                      | Left                                       | Front                                      |
@@ -61,14 +66,16 @@ To have more information about shininess : [Working with the PhongMaterial](Work
 
 The environment alpha indicates the percentage of environment map that should be mixed with the computed color. The environment map is a texture that represents the environment around your scene.
 
+
 ```
  // first of all, we need a environment map. We add a new asset to the loading queue.
 
-sceneManager-\>assets()-\>queue("texture/envmap.png");
+sceneManager->assets()->queue("texture/envmap.png");
 
 // when all assets are loaded
 
-phongMaterial-\>environmentMap(assets-\>texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell); phongMaterial-\>environmentAlpha(0.2f); ```
+phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell); phongMaterial->environmentAlpha(0.2f); 
+```
 
 
 | Environment Alpha                          | 0.2                            | 0.5                            | 0.95                           |
@@ -79,14 +86,16 @@ If you need more information about environment map : [ Working with environment 
 
 ### Normal Map
 
+
 ```
  // first of all, we need a normal map. We add a new asset to the loading queue.
 
-sceneManager-\>assets()-\>queue("texture/normalmap.png");
+sceneManager->assets()->queue("texture/normalmap.png");
 
-// when all assets are loaded in the handler function of assets-\>complete()
+// when all assets are loaded in the handler function of assets->complete()
 
-phongMaterial-\>normalMap(assets-\>texture("texture/normalmap.png")); ```
+phongMaterial->normalMap(assets->texture("texture/normalmap.png")); 
+```
 
 
 | scope="col" widt"100px"| DiffuseMap / NormalMap | Right                              | Left                               | Front                              |
@@ -100,7 +109,8 @@ If you need more information about normal mapping : [Working with normal maps](W
 
 ### Specular Map
 
-\<source lang="cpp\> phongMaterial-\>shininess(2); phongMaterial-\>specularMap(assets-\>texture("texture/specularmap.png")); ```
+\<source lang="cpp\> phongMaterial->shininess(2); phongMaterial->specularMap(assets->texture("texture/specularmap.png")); 
+```
 
 
 | scope="col" widt"100px"| DiffuseMap / SpecularMap | Right                                        | Left                                         | Front                                        |
@@ -114,6 +124,7 @@ If you need more information about specular maps : [ Working with specular maps]
 
 Full Example
 ------------
+
 
 ```
 
@@ -191,7 +202,8 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 
 |--------------------------------------------|------------------------------------------|------------------------------------------|

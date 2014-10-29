@@ -12,8 +12,10 @@ Step 2: Generate the solution
 
 A script is provided to generate Xcode projects for iOS targets.
 
+
 ```
- script/solution\xcode.sh ```
+ script/solution\xcode.sh 
+```
 
 
 Step 3: Build the solution
@@ -23,7 +25,7 @@ Open the `my-project.xcworkspace` by double-clicking on it.
 
 The solution should immediately be ready to build. Select the product and the target (iOS Simulator iPad for instance), press the Play button and the build should start.
 
-![](Targetting iOS.png "Targetting iOS.png")
+![](images/Targetting iOS.png "images/Targetting iOS.png")
 
 Step 4: Run the application
 ---------------------------
@@ -37,8 +39,10 @@ To clean the build, you can use the built-in feature in Xcode.
 
 If you also want to erase generated solution files (`Makefile`s), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`:
 
+
 ```
- script/clean.sh ```
+ script/clean.sh 
+```
 
 
 Step 6: Support more targets (optional)

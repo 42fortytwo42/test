@@ -20,6 +20,7 @@ Step 0: Setup a scene
 
 The setup will be the same that the one at the end of the [Working with the PhongMaterial](Working_with_the_PhongMaterial.md) tutorial:
 
+
 ```
 
 
@@ -81,7 +82,8 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Step 1: Setting a normal map
@@ -89,8 +91,10 @@ Step 1: Setting a normal map
 
 `normalMap` are images just like `diffuseMap`, so their loading workflow are identical
 
+
 ```
- sceneManager-\>assets()-\>queue("texture/normalmap.png"); ```
+ sceneManager->assets()->queue("texture/normalmap.png"); 
+```
 
 
 Then, the normal texture will be available in the `[file::AssetsLibrary`](file::AssetsLibrary`) once all files are loaded.
@@ -103,13 +107,14 @@ There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `Te
 
 | scope="col" widt"100px"| DiffuseMap / NormalMap | Right                              | Left                               | Front                              |
 |-------------------------------------------------|------------------------------------|------------------------------------|------------------------------------|
-| ![ link=](TextureNormal1.jpg " link=")          | ![](Normal1_1.PNG "Normal1_1.PNG") | ![](Normal1_2.PNG "Normal1_2.PNG") | ![](Normal1_3.PNG "Normal1_3.PNG") |
+| ![ link=](images/TextureNormal1.jpg " link=")   | ![](Normal1_1.PNG "Normal1_1.PNG") | ![](Normal1_2.PNG "Normal1_2.PNG") | ![](Normal1_3.PNG "Normal1_3.PNG") |
 | ![ link=](TextureNormal2.jpg " link=")          | ![](Normal2_1.PNG "Normal2_1.PNG") | ![](Normal2_2.PNG "Normal2_2.PNG") | ![](Normal2_3.PNG "Normal2_3.PNG") |
 | ![](TextureNormal3.jpg "TextureNormal3.jpg")    | ![](Normal3_1.PNG "Normal3_1.PNG") | ![](Normal3_2.PNG "Normal3_2.PNG") | ![](Normal3_3.PNG "Normal3_3.PNG") |
 ||
 
 Final Code
 ----------
+
 
 ```
 
@@ -172,7 +177,8 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Where to go from here

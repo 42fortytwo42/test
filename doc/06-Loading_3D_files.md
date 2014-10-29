@@ -7,17 +7,21 @@ Enable ASSIMP
 
 Assimp is the asset import library used by Minko to load asset files, we have to enable it into the `premake5.lua` with these lines:
 
+
 ```
- minko.plugin.enable("assimp") -- this plugin can be useful for assets that need to load jpeg files minko.plugin.enable("jpeg") ```
+ minko.plugin.enable("assimp") -- this plugin can be useful for assets that need to load jpeg files minko.plugin.enable("jpeg") 
+```
 
 
 The next step is to include the correct header into your C++ application source code.
+
 
 ```
 
 
 1.  include "minko/MinkoASSIMP.hpp"
 2.  include "minko/MinkoJPEG.hpp"
+
 
 ```
 
@@ -29,12 +33,14 @@ Every supported file format is available through a plugin. Each parser must be r
 
 In order to enable a data parser, you have to tell Minko it exists using the `AssetLibrary::registerParse` method.
 
+
 ```
- sceneManager-\>assets()
+ sceneManager->assets()
 
 `   ->registerParser<`[`file::ASSIMPParser>`](file::ASSIMPParser>)`("obj")`
 `   ->registerParser<`[`file::ASSIMPParser>`](file::ASSIMPParser>)`("dae")`
 `       ->registerParser<`[`file::JPEGParser>`](file::JPEGParser>)`("jpg")`
+
 
 ```
 
@@ -48,8 +54,10 @@ Access loaded files
 
 Once the loaded complete signal of the assetLibrary is triggered you can access the different model with the `AssetLibrary::symbol(name)` method
 
+
 ```
- auto objModel = assets-\>symbol("model/model.obj"); auto daeModel = assets-\>symbol("model/model.dae"); ```
+ auto objModel = assets->symbol("model/model.obj"); auto daeModel = assets->symbol("model/model.dae"); 
+```
 
 
 Also, all geometry, textures, material and effects needed by your model is automaticly added to the assetLibrary. So, if you know the name of one of them you can have a access throw the `AssetLibrary::texture(name)`, `AssetLibrary::geometry(name)`, `AssetLibrary::material(name)` and `AssetLibrary::effect(name)` methods.
@@ -59,17 +67,21 @@ Use default Effect
 
 Most of the time, your model does not know the effect that its surfaces are supposed to be linked with. In order to indicate an effect, you must use the defaultOptions of the `AssetLibrary`.
 
-\<source lang="cpp\> sceneManager-\>assets()-\>defaultOptions()-\>effect(sceneManager-\>assets()-\>effect(DEFAULT\EFFECT)); ```
+\<source lang="cpp\> sceneManager->assets()->defaultOptions()->effect(sceneManager->assets()->effect(DEFAULT\EFFECT)); 
+```
 
 
 You can also choose a default material
 
+
 ```
- sceneManager-\>assets()-\>defaultOptions()-\>material()-\>set("diffuseColor", Vector4::create(0.8f, 0.1f, 0.1f, 1.0f)); ```
+ sceneManager->assets()->defaultOptions()->material()->set("diffuseColor", Vector4::create(0.8f, 0.1f, 0.1f, 1.0f)); 
+```
 
 
 Final Code
 ----------
+
 
 ```
 
@@ -145,7 +157,8 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 
 <Category:Tutorials>

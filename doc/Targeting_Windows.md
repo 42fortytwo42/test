@@ -12,16 +12,20 @@ Step 2: Generate the solution
 
 To generate a solution, run the following script:
 
+
 ```
- script\\solution\vs2013ctp.bat ```
+ script\\solution\vs2013ctp.bat 
+```
 
 
 This should generate a `.sln` Visual Studio solution file. Double-click on it to open the solution in Visual Studio 2013.
 
 Note that you can also run the command from a terminal in your application directory (\<kbd\>Shift\</kbd\> + Right click on the folder \> `Open command window here`), which will allow you to customize your solution, such as [enabling specific plugins using the command line](How to enable a plugin#Step_2_.28alternative.29:_Enable_a_plugin_in_the_command_line):
 
+
 ```
- "%MINKO\HOME%"\\tool\\win\\bin\\premake5.exe vs2013ctp ```
+ "%MINKO\HOME%"\\tool\\win\\bin\\premake5.exe vs2013ctp 
+```
 
 
 Step 3: Build the solution
@@ -38,7 +42,7 @@ Typically, we want to target `windows32` / `release`. Note that on Windows, the 
 
 Right-click on your solution and run Build Solution.
 
-![](vs2013_build.png "vs2013_build.png")
+![](images/vs2013_build.png "images/vs2013_build.png")
 
 Step 4: Run the application
 ---------------------------
@@ -54,8 +58,10 @@ To clean the build, right-click on the solution and run Clean Solution.
 
 If you also want to erase generated solution files (`.sln`, `.vcxproj` files), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`):
 
+
 ```
- script\\clean.bat ```
+ script\\clean.bat 
+```
 
 
 Step 6: Support more targets (optional)

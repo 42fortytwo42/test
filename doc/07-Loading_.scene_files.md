@@ -8,44 +8,53 @@ Step 1: Enable the serializer plugin
 
 In order to use .scene files, you will have to enable the `serializer` plugin. Make sure the `premake5.lua` file of your project includes the following line :
 
+
 ```
- minko.plugin.enable("serializer") ```
+ minko.plugin.enable("serializer") 
+```
 
 
-Next, the `AssetManager` of your scene should register the `minko::[file::SceneParser`](file::SceneParser`) for .scene files : ```
+Next, the `AssetManager` of your scene should register the `minko::[file::SceneParser`](file::SceneParser`) for .scene files : 
+```
 
 
 1.  include "minko/MinkoSerializer.hpp"
 
-sceneManager-\>assets()-\>registerParser\<minko::[file::SceneParser\>](file::SceneParser>)("scene"); ```
+sceneManager->assets()->registerParser\<minko::[file::SceneParser\>](file::SceneParser>)("scene"); 
+```
 
 
 Step 2: Loading the file
 ========================
 
-You then have to add your .scene file to the `AssetManager`. You only need to import the .scene file, all eventual dependency will be loaded. ```
- sceneManager-\>assets()-\>queue("model/myScene/myScene.scene"); ```
+You then have to add your .scene file to the `AssetManager`. You only need to import the .scene file, all eventual dependency will be loaded. 
+```
+ sceneManager->assets()->queue("model/myScene/myScene.scene"); 
+```
 
 
 Step 3: Adding the loaded asset to the scene
 ============================================
 
-Once the assets have been loaded, your then deserialized symbol can be added to the scene. ```
- auto root = scene::Node::create("root")-\>addComponent(sceneManager);
+Once the assets have been loaded, your then deserialized symbol can be added to the scene. 
+```
+ auto root = scene::Node::create("root")->addComponent(sceneManager);
 
-auto complete = sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary::Ptr assets) {
+auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
 `   root->addChild(assets->symbol("model/myScene/myScene.scene"));`
 
 });
 
-sceneManager-\>assets()-\>load(); ```
+sceneManager->assets()->load(); 
+```
 
 
 You can look at the [serializer example](ExampleSerializer.md) for a more detailed example of importing a .scene file.
 
 Final Code
 ==========
+
 
 ```
 
@@ -95,6 +104,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

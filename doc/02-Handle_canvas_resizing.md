@@ -7,12 +7,14 @@ Step 1: Catch the resize Signal
 
 Once our `Canvas` is created, we can listen to its `Canvas::resized()` signal:
 
+
 ```
- auto resized = canvas-\>resized()-\>connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
+ auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
 ` // do something here...`
 
-}); ```
+}); 
+```
 
 
 The `Canvas::resized()` signal callbacks expect three arguments:
@@ -26,18 +28,21 @@ Step 2: Adapting the projection
 
 Assuming we have a direct access to our camera scene `Node`, we can adapt it's projection by accessing its `PerspectiveCamera` component and setting its `aspectRatio()` property:
 
+
 ```
- auto resized = canvas-\>resized()-\>connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
+ auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
 ` camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);`
 
-}); ```
+}); 
+```
 
 
 If we only have access to the root `Node` of our scene, we can fetch all the nodes with a `PerspectiveCamera` component to update them:
 
+
 ```
- auto resized = canvas-\>resized()-\>connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
+ auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
 ` auto cameras = scene::NodeSet::create(root)->descendants(true)->where([](scene::Node::Ptr node)`
 ` {`
@@ -47,13 +52,15 @@ If we only have access to the root `Node` of our scene, we can fetch all the nod
 ` for (auto& camera : cameras->nodes())`
 `   camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);`
 
-}); ```
+}); 
+```
 
 
 The `NodeSet` class and its `descendants()` and `where()` operators help us fetching all the descendants of `root` and filter them using a custom function.
 
 Final code
 ----------
+
 
 ```
 
@@ -110,6 +117,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

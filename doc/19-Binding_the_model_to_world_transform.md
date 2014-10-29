@@ -5,6 +5,7 @@ Step 1: Binding the model to world matrix
 
 In the [Moving objects](Moving_objects.md) tutorial, we've seen that we can add custom 3D transforms to our scene nodes using the `Transform` component. If you take a look at the code for the `Transform::initialize()` method, you'll notice that this very component declares the `transform.modelToWorldMatrix` in it's `[data::Provider`](data::Provider`):
 
+
 ```
  // Transform.cpp void Transform::initialize() {
 
@@ -12,20 +13,24 @@ In the [Moving objects](Moving_objects.md) tutorial, we've seen that we can add 
 
 ` _data->set<Matrix4x4::Ptr>("transform.modelToWorldMatrix", _modelToWorld);`
 
-} ```
+} 
+```
 
 
 When the `Transform` component is added to some target `Node`, it will add its `[data::Provider`](data::Provider`) to this `Node`'s `[data::Container`](data::Container`). The immediate result is that the `transform.modelToWorldMatrix` is then available and can be bound in the `uniformBindings` of our effect:
+
 
 ```
  "uniformBindings" : {
 
 ` "uModelToWorldMatrix" : "transform.modelToWorldMatrix"`
 
-} ```
+} 
+```
 
 
 If we add this to the code from the [Creating custom materials](Creating_custom_materials.md) tutorial, we end up with the following code for our effect:
+
 
 ```
  {
@@ -64,7 +69,8 @@ If we add this to the code from the [Creating custom materials](Creating_custom_
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
 You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article. To learn more about data binding, please read the [Understanding data binding](Understanding_data_binding.md) article.
@@ -76,6 +82,7 @@ Because our `uModelToWorldMatrix` property is now bound to `transform.modelToWor
 
 -   avoid setting `uModelToWorldMatrix` directly: it will be set automatically by data binding;
 -   make sure our scene `Node` actually has a `Transform` component, otherwise the `uModelToWorldMatrix` will not be bound and rendering might be broken.
+
 
 ```
  auto cube = scene::Node::create()
@@ -89,6 +96,7 @@ Because our `uModelToWorldMatrix` property is now bound to `transform.modelToWor
 `   myCustomEffect`
 ` ));`
 
+
 ```
 
 
@@ -99,7 +107,8 @@ You can read more about the `Transform` component in the [Moving objects](Moving
 Final code
 ----------
 
-asset/effect/MyCustomEffect.effect ```
+asset/effect/MyCustomEffect.effect 
+```
  {
 
 ` "name" : "MyCustomEffect",`
@@ -136,10 +145,12 @@ asset/effect/MyCustomEffect.effect ```
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -189,6 +200,7 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

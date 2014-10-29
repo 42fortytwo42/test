@@ -14,11 +14,13 @@ Minko's SDK uses premake5, which is embed in the SDK, for its build system. Prem
 
 To do this, open a command line prompt in the root directory of the SDK and run:
 
+
 ```
- $ tool/mac/script/solution\xcode.sh ```
+ $ tool/mac/script/solution\xcode.sh 
+```
 
 
-You should have the following result in the console: ![](solution_minko_xcode.png "fig:solution_minko_xcode.png")
+You should have the following result in the console: ![](images/solution_minko_xcode.png "fig:images/solution_minko_xcode.png")
 
 Make sure a `minko.xcworkspace` solution file has been properly generated. If this operation was successful, you should have a `\*.xcodeproj` project file in each project directory.
 
@@ -47,8 +49,10 @@ Step 5: Package (optional)
 
 The SDK is now built, but you might want to share or copy it so you don't have to deal with the sources again. We use a script to produce a distributable SDK. Open a terminal at the SDK root and run:
 
+
 ```
- $ tool/mac/script/dist.sh ```
+ $ tool/mac/script/dist.sh 
+```
 
 
 This should produce an archive in the root of the SDK which contains all the binaries built for your platform.

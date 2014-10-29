@@ -40,12 +40,16 @@ The procedure for Ubuntu 12.10 is detailled [here](https://github.com/kripken/em
 
 Under Ubuntu 13.04+, the procedure is easier:
 
-```
- sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}" \>\> ~/.profile ```
-
 
 ```
- sudo apt-get update sudo apt-get install -y python-software-properties python g++ make sudo add-apt-repository ppa:chris-lea/node.js sudo apt-get update ```
+ sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 \# Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}" \>\> ~/.profile 
+```
+
+
+
+```
+ sudo apt-get update sudo apt-get install -y python-software-properties python g++ make sudo add-apt-repository ppa:chris-lea/node.js sudo apt-get update 
+```
 
 
 Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on the [Getting Fastcomp page of the Emscripten wiki](https://github.com/kripken/emscripten/wiki/LLVM-Backend#getting-fastcomp). 
@@ -59,22 +63,28 @@ Building an HTML5 version of your application requires to open a terminal emulat
 
 ### Linux
 
+
 ```
- script/solution\gmake\gcc.sh make config=html5\release ```
+ script/solution\gmake\gcc.sh make config=html5\release 
+```
 
 
 ### OS X
 
+
 ```
- script/solution\gmake\gcc.sh make config=html5\release ```
+ script/solution\gmake\gcc.sh make config=html5\release 
+```
 
 
 ### Windows
 
 On Windows, you will need to have a few programs provided by the Emscripten SDK in your path. We've embed a script, which will set up the Emscripten environment and run the build with the above commands.
 
+
 ```
- script\\build\html5.bat ```
+ script\\build\html5.bat 
+```
 
 
 Or simply double-click on the script.

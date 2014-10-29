@@ -14,7 +14,7 @@ Where to start
 
 This tutorial expects you already read how to bind uniforms and will start form the code you must have obtained at the end of the [binding of the camera properties](Binding_the_camera.md). You are strongly invited to at least grab the code you will find there and then proceed to the following sections.
 
-![What you should have so far.](StartingScreen.jpeg "What you should have so far.")
+![What you should have so far.](images/StartingScreen.jpeg "What you should have so far.")
 
 Step 1: Add your attributes to your geometry in Minko
 -----------------------------------------------------
@@ -28,6 +28,7 @@ A `render::VertexBuffer` instance can simply be considered as a convenient wrapp
 -   the *offset* inside the `std::vector\<float\>` of the attribute in terms of floats (here, 0 as the attribute is alone within the vertex buffer).
 
 In the following code, we exploit the simplicity of the cube geometry (six separate vertices for the six faces of the cube) in order to create a vertex buffer, the data of which is used to slightly move the vertex positions along the face normals (the actual vertex displacement is done in the vertex shader program as shown below).
+
 
 ```
  geometry::Geometry::Ptr createGeometryWithAttribute(render::AbstractContext::Ptr context) {
@@ -78,10 +79,12 @@ In the following code, we exploit the simplicity of the cube geometry (six separ
 
 ` return cubeGeometry;`
 
-} ```
+} 
+```
 
 
 This vertex buffer is added to the geometry and finally, in the `main` procedure, we simply hand over this newly augmented geometry to the existing `component::Surface` in order to visualize the changes caused by our new vertex shader and its custom attribute inputs.
+
 
 ```
  int main(int argc, char\*\* argv) {
@@ -104,7 +107,8 @@ This vertex buffer is added to the geometry and finally, in the `main` procedure
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 
 What we did here is simply enhance the former cube geometry with an additional `positionOffset` vertex attribute. However, the vertex attribute values are yet to be sent over to the GPU and your GLSL code. We will see how to proceed in an instant.
@@ -116,6 +120,7 @@ Pretty similarly to what we did for the uniform inputs for our effect (in order 
 
 The vertex attribute binding between the geometry's data provider and our GLSL attribute is straightforwardly done by simply adding a single line in the effect file's `attributeBindings` dictionary, where the key corresponds to the name of the GLSL attribute and the value to the matching property name manipulated by the Minko engine's data providers.
 
+
 ```
  {
 
@@ -126,7 +131,8 @@ The vertex attribute binding between the geometry's data provider and our GLSL a
 ` },`
 ` ...`
 
-} ```
+} 
+```
 
 
 From now on, we can actually use the values we stored in the geometry on the CPU side, within the code of our shaders executed on the GPU.
@@ -135,6 +141,7 @@ Step 3: Use your vertex attributes in GLSL
 ------------------------------------------
 
 Because a meaningful vertex attribute is only one that is actually used in computations of the shader program, we now update the source code of our custom effect's vertex shader in order to use our additional `aOffsetPosition` attribute and move the position of our vertices in local space according to its values.
+
 
 ```
  {
@@ -160,7 +167,8 @@ Because a meaningful vertex attribute is only one that is actually used in compu
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
 If everything went smooth, you should obtain something like this (the vantage point has been slightly altered for better readability):
@@ -175,6 +183,7 @@ While it is currently strongly advised to embed your vertex attribute into an in
 Here, we will ditch our old `uColor` uniform variable and replace it with per vertex color sent to the GPU as the `aVertexColor` attribute. It will be output as the final fragment's color after hardware bilinear interpolation (via the `vVertexColor` varying fragment shader input).
 
 But this time, we will not bind our new `aVertexColor` vertex attribute via the `attributeBindings` section of the effect file. Instead, we will directly pass over our vertex color data (stored in the `colorData` container in the following) to our custom effect instance.
+
 
 ```
  render::Effect::Ptr getEffectWithAttribute(file::AssetLibrary::Ptr assets) {
@@ -212,12 +221,14 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 
 As highlighted in the complete code listed below, the pitfall here is to carefully initialize the vertex attribute data in such a way that the manually specified attribute values match vertices in a relevant manner.
 
 Follows the code of the updated GLSL vertex and fragment shaders stoed in the custom effect file.
+
 
 ```
  {
@@ -249,7 +260,8 @@ Follows the code of the updated GLSL vertex and fragment shaders stoed in the cu
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
 ![The vertex colors are directly fed to the GPU via the custom effect.](CubeVertexColors.jpeg "The vertex colors are directly fed to the GPU via the custom effect.")
@@ -258,6 +270,7 @@ Final code
 ----------
 
 asset/effect/MyCustomEffect.effect
+
 
 ```
  {
@@ -306,10 +319,12 @@ asset/effect/MyCustomEffect.effect
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
 src/main.cpp
+
 
 ```
 
@@ -472,6 +487,7 @@ render::Effect::Ptr getEffectWithAttribute(file::AssetLibrary::Ptr assets) {
 
 `   return myCustomEffect;`
 
-} ```
+} 
+```
 
 

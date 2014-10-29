@@ -15,6 +15,7 @@ In Minko, rendering effects are stored in separate `\*.effect` files. Indeed, Mi
 
 Here is a simple `\*.effect` file skeleton that will help us getting started:
 
+
 ```
  {
 
@@ -31,7 +32,8 @@ Here is a simple `\*.effect` file skeleton that will help us getting started:
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
 Save this in a `MyCustomEffect.effect` file in the `asset/effect` folder of your app.
@@ -54,6 +56,7 @@ We can now define our vertex shader for the single and only pass of our effect. 
 3.  transform it again to be in the camera-relative view-space by multiplying the previous result by `uViewMatrix`,
 4.  project it on the 2D screen by multiplying the previous result by `uProjectionMatrix`.
 
+
 ```
 
 
@@ -71,7 +74,8 @@ void main(void) {
 
 ` gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);`
 
-} ```
+} 
+```
 
 
 Note how we declare a default `mediump` precision specifier if the `GL\ES` macro is defined: it is mandatory if we want to target OpenGL ES 2.0 (WebGL and mobile devices).
@@ -85,6 +89,7 @@ Our fragment shader will be even simpler:
 
 -   we declare a single `uniform` that will hold an RGBA color;
 -   we set this color to be the final color of our pixel by assigning it to `gl\FragColor`.
+
 
 ```
 
@@ -101,7 +106,8 @@ void main(void) {
 
 ` gl_FragColor = uColor;`
 
-} ```
+} 
+```
 
 
 Step 4: Loading and using our custom effect
@@ -113,10 +119,11 @@ We can now load our `MyCustomEffect.effect` effect in our application and use it
 -   fetch back the corresponding `Effect` object created upon loading
 -   use this very `Effect` object to initialize our `Surface`
 
-```
- sceneManager-\>assets()-\>queue("effect/MyCustomEffect.effect");
 
-sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary:Ptr assets) {
+```
+ sceneManager->assets()->queue("effect/MyCustomEffect.effect");
+
+sceneManager->assets()->complete()->connect([&](file::AssetLibrary:Ptr assets) {
 
 ` auto myCustomEffect = assets->effect("effect/MyCustomEffect.effect");`
 
@@ -126,19 +133,23 @@ sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary:Ptr assets
 `   myCustomEffect`
 ` ));`
 
-}); ```
+}); 
+```
 
 
 But for our custom `Effect` to work, we need to fill properly all the `uniform` values it expects. To do this, we will use the `Effect::setUniform()` method:
 
+
 ```
- myCustomEffect-\>setUniform("uModelToWorldMatrix", Matrix4x4::create()-\>translation(0.f, 0.f, -5.f)); myCustomEffect-\>setUniform("uViewMatrix", Matrix4x4::create()); myCustomEffect-\>setUniform("uProjectionMatrix", Matrix4x4::create()-\>perspective((float)PI \* 0.25f, (float)WINDOW\WIDTH / (float)WINDOW\HEIGHT, .1f, 1000.f)); myCustomEffect-\>setUniform("uColor", Vector4::create(0.f, 0.f, 1.f, 1.f)); ```
+ myCustomEffect->setUniform("uModelToWorldMatrix", Matrix4x4::create()->translation(0.f, 0.f, -5.f)); myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create()); myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)PI \* 0.25f, (float)WINDOW\WIDTH / (float)WINDOW\HEIGHT, .1f, 1000.f)); myCustomEffect->setUniform("uColor", Vector4::create(0.f, 0.f, 1.f, 1.f)); 
+```
 
 
 Final code
 ----------
 
-asset/effect/MyCustomEffect.effect ```
+asset/effect/MyCustomEffect.effect 
+```
  {
 
 ` "name" : "MyCustomEffect",`
@@ -176,10 +187,12 @@ asset/effect/MyCustomEffect.effect ```
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -227,7 +240,8 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 
 Where to go from there

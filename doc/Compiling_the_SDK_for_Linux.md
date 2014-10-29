@@ -15,23 +15,29 @@ Step 3: Generate the solution
 
 Minko uses Premake for its build system. Premake is a nice solution to have a cross-platform build system that can work across multiple IDEs such as Xcode, Visual Studio and even GNU Make. In order to build the SDK, we will generate a solution for `gmake`. We need to use a terminal to generate a `Makefile`-compatible solution:
 
+
 ```
- cd ${MINKO\HOME} tool/lin/script/premake5.sh gmake ```
+ cd ${MINKO\HOME} tool/lin/script/premake5.sh gmake 
+```
 
 
 If we want to select your compiler, we can pass the `cc` option. Supported values are `gcc` and `clang`:
 
+
 ```
- tool/lin/script/premake5.sh --cc=clang gmake ```
+ tool/lin/script/premake5.sh --cc=clang gmake 
+```
 
 
 To learn more about premake commands, run:
 
+
 ```
- tool/lin/script/premake5.sh --help ```
+ tool/lin/script/premake5.sh --help 
+```
 
 
-![](Minko linux premake gmake.jpg "Minko linux premake gmake.jpg")
+![](images/Minko linux premake gmake.jpg "images/Minko linux premake gmake.jpg")
 
 The list of the projects may vary according to the actual version of the SDK. What's important is to make sure that you have a `Makefile` at the root of the SDK and in each project directory.
 
@@ -40,8 +46,10 @@ Step 4: Compile the SDK
 
 From the root directory of the SDK, simply run `make` with a valid configuration for your platform:
 
+
 ```
- make config=linux32\release ```
+ make config=linux32\release 
+```
 
 
 Valid configurations for `gmake` are:
@@ -53,8 +61,10 @@ Valid configurations for `gmake` are:
 
 To leverage multi-core systems, you can also use `make -j`. The following example will use 4 cores and will compile the SDK much faster as a result:
 
+
 ```
- make -j4 config=linux32\release verbose=1 ```
+ make -j4 config=linux32\release verbose=1 
+```
 
 
 Step 5: Package
@@ -62,8 +72,10 @@ Step 5: Package
 
 The SDK is now built, but you might want to share or copy it so you don't have to deal with the sources again. We use a script to produce a distributable SDK.
 
+
 ```
- tool/lin/scripts/premake5.sh dist ```
+ tool/lin/scripts/premake5.sh dist 
+```
 
 
 This should produce an archive in the root of the SDK which contains all the binaries built for your platform.

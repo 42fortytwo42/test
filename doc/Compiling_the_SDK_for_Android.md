@@ -20,7 +20,7 @@ Once you have downloaded the installer, run it. Choose **Install from Internet**
 
 By default, only the base packages are installed. We, however, need the development packages. Rather than picking the packages we think we need, and then struggling with missing dependencies and other typical Unix nightmares, I suggest that we install the entire **Devel** branch. Click (once) on the word **Default** next to the root Devel node and wait few seconds while the setup hangs.
 
-![](Cygwin setup packages.jpg "Cygwin setup packages.jpg")
+![](images/Cygwin setup packages.jpg "images/Cygwin setup packages.jpg")
 
 When it is back, you will see that **Default** changes to **Install** for the **Devel** node. Install and wait. This may take a while.
 
@@ -49,6 +49,7 @@ When it is back, you will see that **Default** changes to **Install** for the **
 
 The final folder hierarchy should be as follow:
 
+
 ```
  ${ANDROID}
 
@@ -61,6 +62,7 @@ The final folder hierarchy should be as follow:
 ` /platform-tools`
 ` /toolchains`
 ` /tools`
+
 
 ```
 
@@ -83,14 +85,18 @@ Step 4: Compile the SDK
 
 Now, you should have a bunch of Makefiles. You can build the solution using the following command line:
 
+
 ```
- $ make config=android\release ```
+ $ make config=android\release 
+```
 
 
 If you want to leverage multicore processors, you can use the following command line (replace '4' by your actual number of cores):
 
+
 ```
- $ make -j 4 config=android\release ```
+ $ make -j 4 config=android\release 
+```
 
 
 It should speed up the compilation process significantly.

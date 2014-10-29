@@ -5,6 +5,7 @@ The following section introduces the two different ways to deal with mouse input
 
 ### Listening to mouse signals
 
+
 ```
  -- my\mouse\script.lua function my\mouse\script:start(node)
 
@@ -14,7 +15,8 @@ The following section introduces the two different ways to deal with mouse input
 ` mouse.leftButtonUp:connect(function(m) print('left button up!') end)`
 ` mouse.move:connect(function(m, dx, dy) print('mouse move!') end)`
 
-end ```
+end 
+```
 
 
 ### Alternative: Waiting for mouse signals
@@ -22,6 +24,7 @@ end ```
 Coroutines are a great way to work with an asynchronous API using a synchronous syntax. Instead of listening to a specific signal and act accordingly in the corresponding callback, we will simply pause the script and wait for "something to happen" before resuming.
 
 The following code will "wait" for the `mouse.leftButtonDown` signal before continuing:
+
 
 ```
  function my\mouse\script:start(node)
@@ -39,11 +42,13 @@ function my\mouse\script:handleMouseDown()
 ` -- execution will resume here when the mouse.leftButtonDown has been executed`
 ` print("left button down!")`
 
-end ```
+end 
+```
 
 
 Final code
 ----------
+
 
 ```
 
@@ -88,6 +93,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

@@ -16,7 +16,7 @@ Step 2: Clone the Minko repository
 
 "Cloning" our repository means creating a local copy of our code base. To do this, you just need to use the the "clone" feature of your Git client and use the URI provided on the github repository page:
 
-![](Minko_github_uri.jpg "Minko_github_uri.jpg")
+![](images/Minko_github_uri.jpg "images/Minko_github_uri.jpg")
 
 If you're working with GitHub for Windows/Mac, you can clone the repository simply by clicking on the "Clone in Windows" or "Clone in Mac" button on the repository start page:
 

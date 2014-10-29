@@ -19,13 +19,16 @@ For post-processing to work, we have to render a fullscreen quad and then apply 
 
 The `geometry::QuadGeometry` class provides the geometry for a unit sized quad lying in the (x, y) plane. Thus, its top left corner is in (-0.5, 0.5, 0.0) and its bottom right corner is in (0.5, -0.5, 0.0). Our vertex shader is supposed to output normalized device coordinates in the [-1 .. 1] bounds. So we just have to scale our quad to make it fill the entire screen:
 
+
 ```
- gl\Position = vec4(aPosition, 1) \* vec4(1., 1., 1., .5); ```
+ gl\Position = vec4(aPosition, 1) \* vec4(1., 1., 1., .5); 
+```
 
 
 Note how we actually divide `w` by 2 instead of multiplying `x` and `y` by 2. It's exactly the same result in the end since the value will be normalized by the hardware.
 
 Because OpenGL performs render to texture using an inverted y axis, we also have modify the original UVs to make sure our backbuffer will be sampled properly. Here is the final code for our post-processing vertex shader:
+
 
 ```
 
@@ -46,7 +49,8 @@ void main(void) {
 
 ` gl_Position = vec4(aPosition, 1) * vec4(1., 1., 1., .5);`
 
-} ```
+} 
+```
 
 
 Step 2: The fragment shader
@@ -55,6 +59,7 @@ Step 2: The fragment shader
 The vertex shader is pretty standard and should be pretty much the same for most of your post-processing effects. But the fragment shader is where you can customize your pixel function to get the effect you want.
 
 Here, we will simply sample the backbuffer and use an average of its `RGB` value to get a greyscale result color:
+
 
 ```
 
@@ -76,7 +81,8 @@ void main() {
 
 ` gl_FragColor = vec4(average, average, average, 1);`
 
-} ```
+} 
+```
 
 
 Step 3: Setting up the scene
@@ -84,10 +90,12 @@ Step 3: Setting up the scene
 
 The first thing to do is to create the `Texture` that will be used as a replacement for our backbuffer:
 
-```
- auto ppTarget = render::Texture::create(assets-\>context(), 1024, 1024, false, true);
 
-ppTarget-\>upload(); ```
+```
+ auto ppTarget = render::Texture::create(assets->context(), 1024, 1024, false, true);
+
+ppTarget->upload(); 
+```
 
 
 **Attention!** Don't forget to call `Texture::upload()`: even if the texture has no actual data, it needs to be allocated on the GPU.
@@ -96,19 +104,22 @@ Just like any `Effect`, our post-processing file should be loaded using the `Ass
 
 When our `Effect` has been successfully loaded, we can fetch it from the library using the `AssetLibrary::effect()` method. The following code makes sure the effect has been properly loaded and throws an exception otherwise:
 
+
 ```
- auto ppFx = sceneManager-\>assets()-\>effect("effect/Desaturate.effect");
+ auto ppFx = sceneManager->assets()->effect("effect/Desaturate.effect");
 
 if (!ppFx)
 
 ` throw std::logic_error("The post-processing effect has not been loaded.");`
 
-ppFx-\>setUniform("uBackbuffer", ppTarget); ```
+ppFx->setUniform("uBackbuffer", ppTarget); 
+```
 
 
 As you can see, we also set the `uBackbuffer` uniform to be our `ppTarget` which will - indeed - be used as the backbuffer replacement for the first stage of post-processing.
 
 The final initialization step is to create a second scene - completely different from your actual 3D scene - that will only hold a single surface made from the quad geometry that it supposed to represent our screen, a dummy `Material` and our post-processing effect:
+
 
 ```
  auto ppRenderer = Renderer::create(); auto ppScene = scene::Node::create()
@@ -120,6 +131,7 @@ The final initialization step is to create a second scene - completely different
 `   ppFx`
 ` ));`
 
+
 ```
 
 
@@ -130,13 +142,15 @@ Now that all we need for post-processing is intialized, we just have to make sur
 
 We just have to update what we do in our `Canvas::enterFrame()` callback:
 
+
 ```
- auto enterFrame = canvas-\>enterFrame()-\>connect([&](Canvas::Ptr canvas, float t, float dt) {
+ auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
 ` sceneManager->nextFrame(t, dt, ppTarget);`
 ` ppRenderer->render(assets->context());`
 
-} ```
+} 
+```
 
 
 Step 4 (optional): Managing the size of the backbuffer
@@ -146,8 +160,9 @@ If we want our post-processing to have a good quality, we have to make sure the 
 
 We will do this in our `Canvas::resized()` callback:
 
+
 ```
- auto resized = canvas-\>resized()-\>connect([&](Canvas::Ptr canvas, unsigned int width, unsigned int height) {
+ auto resized = canvas->resized()->connect([&](Canvas::Ptr canvas, unsigned int width, unsigned int height) {
 
 ` camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);`
 
@@ -155,7 +170,8 @@ We will do this in our `Canvas::resized()` callback:
 ` ppTarget->upload();`
 ` ppFx->setUniform("uBackbuffer", ppTarget);`
 
-}); ```
+}); 
+```
 
 
 By assigning a new value to `ppTarget`, we remove the only reference to the original render target `render::Texture` object. Thus, Minko will automatically dispose the corresponding GPU memory texture for you.
@@ -163,7 +179,8 @@ By assigning a new value to `ppTarget`, we remove the only reference to the orig
 Final code
 ----------
 
-asset/effect/Desaturate.effect ```
+asset/effect/Desaturate.effect 
+```
  {
 
 ` "name" : "desaturate",`
@@ -200,10 +217,12 @@ asset/effect/Desaturate.effect ```
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -279,6 +298,7 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

@@ -14,8 +14,10 @@ By default, no texture file formats are supported. This kind of features are pro
 
 To enable one (or both) of those plugins, we will have to update our project configuration and regenerate our solution. To do this, open the `premake4.lua` file in the root folder of your project in your favorite text editor and uncomment the following lines:
 
+
 ```
- minko.plugin.enable("jpeg") minko.plugin.enable("png") ```
+ minko.plugin.enable("jpeg") minko.plugin.enable("png") 
+```
 
 
 Uncommenting one of those lines will enable the corresponding plugin. Now we have to regenerate the project/solution files to take those changes into account. To do this, please refer to the [Step 3 of the "Create a new application" tutorial](Create_a_new_application#Step_3:_Generate_the_solution_file).
@@ -27,8 +29,10 @@ Step 1: Registering parsers
 
 Before we can load anything, we have to make sure Minko will know how to handle the loaded data. To do this, we must register some data parsers to some specific file extensions. The parsers are registered on the `AssetLibrary` directly using the `AssetLibrary::registerParser()` method:
 
+
 ```
- sceneManager-\>assets()-\>registerParser\<[file::JPEGParser\>](file::JPEGParser>)("jpg"); ```
+ sceneManager->assets()->registerParser\<[file::JPEGParser\>](file::JPEGParser>)("jpg"); 
+```
 
 
 Note that you have to call `registerParser()` for each file extension you want to be able to load.
@@ -38,14 +42,17 @@ Step 1: Loading a texture
 
 To load a texture, we call the `AssetLibrary::load()` method passing the file name of our texture as the single argument:
 
+
 ```
- sceneManager-\>assets()-\>load("texture/my\texture.jpg"); ```
+ sceneManager->assets()->load("texture/my\texture.jpg"); 
+```
 
 
 Loading textures can be an asynchronous task depending on how the internal loader will actually work. To be notified when our loading operation is done, we listen to the `AssetLibrary::complete()` signal. The following code will output the loaded texture width and height in the console:
 
+
 ```
- sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary assets) {
+ sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
 ` auto texture = assets->texture("texture/my_texture.jpg");`
 
@@ -54,7 +61,8 @@ Loading textures can be an asynchronous task depending on how the internal loade
 
 });
 
-sceneManager-\>assets()-\>load("texture/my\texture.jpg"); ```
+sceneManager->assets()->load("texture/my\texture.jpg"); 
+```
 
 
 Note how the `AssetLibrary` is used as somekind of an application file system. It will not only perform load operations but also store their result and make them available to the rest of the program.
@@ -68,24 +76,28 @@ Step 2: Setting the texture
 
 To use our texture upon loading, we simply use the `BasicMaterial::diffuseMap()` method to set the right property:
 
+
 ```
- sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary assets) {
+ sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
 ` auto basicMaterial = std::dynamic_pointer_cast<material::BasicMaterial>(cube->component<Surface>()->material());`
 
 ` basicMaterial->diffuseMap(assets->texture("texture/my_texture.jpg"));`
 
-}); ```
+}); 
+```
 
 
 You can also avoid the dynamic cast by using the `Material::set()` method:
 
+
 ```
- sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary assets) {
+ sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
 ` cube->component<Surface>()->material()->set("diffuseMap", assets->texture("texture/my_texture.jpg"));`
 
-}); ```
+}); 
+```
 
 
 Both methods have the exact same behavior since `Material::set()` is actually called by `BasicMaterial::diffuseMap()` internally. The second method is a bit harder to write because its dynamic and code-hinting won't work, but it should be a bit faster since it avoids a dynamic pointer cast at runtime. Working with `Material::set()` is also more generic since it will work on any `Material` no matter its actual type and it will have the desired effect as long as you use the right string property name. Therfore, you might want to use `Material::set()` if you are writting your own scenes parser or some complex assets dynamic loading code. To learn more on this subject, please read the [The difference between the Material::set() method and setter methods](The_difference_between_the_Material::set()_method_and_setter_methods) article.
@@ -94,6 +106,7 @@ Of course, if you want to use your texture for something else that the diffuse m
 
 Final code
 ----------
+
 
 ```
 
@@ -143,6 +156,7 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

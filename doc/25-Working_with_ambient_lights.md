@@ -1,6 +1,6 @@
 An ambient light emits soft light rays in every direction, it can be used to elevate the overall level of diffuse illumination in a scene. It's important to understand that it has no specific directionality, and therefore casts no ground shadow.
 
-![](ambientlight.png "ambientlight.png")
+![](images/ambientlight.png "images/ambientlight.png")
 
 Ambient light emitting in all direction. no ground shadows are displayed
 
@@ -13,10 +13,12 @@ Step 1: Instantiate an light
 
 The first very first thing you need to do is to include the following header to your .cpp file.
 
+
 ```
 
 
 1.  include \<AmbientLight.hpp\>
+
 
 ```
 
@@ -30,6 +32,7 @@ To add a light to the scene, you have to understand that a `Scene` is a graph co
 
 As an `AmbientLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
+
 ```
 
 
@@ -42,10 +45,12 @@ As an `AmbientLight` is a `Component` you'll have to follow this logic to create
 `// Adding the Node containing the light component to the scene graph`
 ` root->addChild(ambientLightNode);`
 
+
 ```
 
 
 As you can see in the code above, we first create a node named "ambientLight" to which we add an instance of an ambient light, then we can add this node to the scene graph. Of course you can chain methods to perform all in one line of code
+
 
 ```
 
@@ -53,19 +58,22 @@ As you can see in the code above, we first create a node named "ambientLight" to
 ` // Creating the Node & adding the Component AmbientLight`
 ` auto ambientLight = scene::Node::create("ambientLight")->addComponent(AmbientLight::create(0.5f));`
 
+
 ```
 
 
 Step 3: Change ambient light properties
 ---------------------------------------
 
-you can directly change way the light appears by modifying it's public parameters, for example : ```
+you can directly change way the light appears by modifying it's public parameters, for example : 
+```
 
 
 ` auto ambientLight = AmbientLight::create(0.5f);`
 
 ` // Set the light diffuse color`
 ` ambientLight->color()->setTo(0,0,0);`
+
 
 ```
 
@@ -74,6 +82,7 @@ Step 4: Removing a light from the scene
 ---------------------------------------
 
 You may sometime need to remove a light from a scene, to do this you simply need to remove the ambient light from the `Node` it has been added to before.
+
 
 ```
 
@@ -87,6 +96,7 @@ You may sometime need to remove a light from a scene, to do this you simply need
 ` // Remove the component from the node`
 ` ambientLightNode->removeComponent(ambientLight);`
 
+
 ```
 
 
@@ -94,6 +104,7 @@ As you can see above, the first step is to retrieve the light component with pre
 
 Final Code
 ----------
+
 
 ```
 
@@ -150,6 +161,7 @@ Final Code
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

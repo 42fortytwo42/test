@@ -11,7 +11,8 @@ Use case
 
 To understand how our CPU side code collaborates with the GPU side program, let's take a simple example. The following code belongs to the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial:
 
-asset/effect/MyCustomEffect.effect ```
+asset/effect/MyCustomEffect.effect 
+```
  {
 
 ` "name" : "MyCustomEffect",`
@@ -49,10 +50,12 @@ asset/effect/MyCustomEffect.effect ```
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -101,7 +104,8 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 
 As you can see in this example:
@@ -116,12 +120,14 @@ This code is fine and should compile/work fine. But as you might have guessed, t
 
 The problem is the use of the `Effect::setUniform()` method. The method itself is perfectly fine. But it will affect all the objects that use this very `Effect`. To render multiple objects with different settings (position, color, etc...), we would have to follow this pseudo-code:
 
+
 ```
  for each object in objectToRender
 
 ` for each uniformName in object.uniformNames`
 `   object.effect.setUniform(uniformName, object.uniformValues[uniformName]);`
 `   render();`
+
 
 ```
 
@@ -162,36 +168,40 @@ Yet, they are more than just simple maps. Indeed, each `[data::Provider`](data::
 
 Those three signals can be used to adapt the behavior of the application according to how the values in the provider changes.
 
+
 ```
  auto provider = <data::Provider>::create();
 
-container-\>addProvider(provider);
+container->addProvider(provider);
 
-auto propertyAdded = provider-\>propertyAdded()-\>connect([&](data::Provider::Ptr p, const std::string& name) {
+auto propertyAdded = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
 ` std::cout << "property '" << name << "' added to provider" << std::endl;`
 
 });
 
-auto propertyChanged = provider-\>propertyAdded()-\>connect([&](data::Provider::Ptr p, const std::string& name) {
+auto propertyChanged = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
 ` std::cout << "property changed: " << name << " = " << p->get<int>(name) << std::endl;`
 
 });
 
-auto propertyAdded = provider-\>propertyAdded()-\>connect([&](data::Provider::Ptr p, const std::string& name) {
+auto propertyAdded = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
 ` std::cout << "property '" << name << "' removed from provider" << std::endl;`
 
 });
 
-provider-\>set("foo", 42); provider-\>set("foo", 24); provider-\>set("foo", 23); provider-\>unset(); ```
+provider->set("foo", 42); provider->set("foo", 24); provider->set("foo", 23); provider->unset(); 
+```
 
 
 Compiling and running this code should give the following output in the console:
 
+
 ```
- property 'foo' added to provider property changed: foo = 42 property changed: foo = 24 property changed: foo = 23 property 'foo' removed from provider ```
+ property 'foo' added to provider property changed: foo = 42 property changed: foo = 24 property changed: foo = 23 property 'foo' removed from provider 
+```
 
 
 ### Data containers
@@ -200,24 +210,28 @@ A `[data::Container`](data::Container`) will store a collection of `[data::Provi
 
 When a `[data::Provider`](data::Provider`) is added to a `[data::Container`](data::Container`), all its properties are "added" to the container. To better understand the relationship between providers and containers, please consider the following code snippet:
 
+
 ```
  auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
-std::cout \<\< "provider-\>hasProperty(\\"foo\\"): " \<\< provider-\>hasProperty("foo") \<\< std::endl; std::cout \<\< "container-\>hasProperty(\\"foo\\"): " \<\< container-\>hasProperty("foo") \<\< std::endl;
+std::cout \<\< "provider->hasProperty(\\"foo\\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\\"foo\\"): " \<\< container->hasProperty("foo") \<\< std::endl;
 
-provider-\>set("foo", 42);
+provider->set("foo", 42);
 
-std::cout \<\< "provider-\>hasProperty(\\"foo\\"): " \<\< provider-\>hasProperty("foo") \<\< std::endl; std::cout \<\< "container-\>hasProperty(\\"foo\\"): " \<\< container-\>hasProperty("foo") \<\< std::endl;
+std::cout \<\< "provider->hasProperty(\\"foo\\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\\"foo\\"): " \<\< container->hasProperty("foo") \<\< std::endl;
 
-container-\>addProvider(provider);
+container->addProvider(provider);
 
-std::cout \<\< "provider-\>hasProperty(\\"foo\\"): " \<\< provider-\>hasProperty("foo") \<\< std::endl; std::cout \<\< "container-\>hasProperty(\\"foo\\"): " \<\< container-\>hasProperty("foo") \<\< std::endl; ```
+std::cout \<\< "provider->hasProperty(\\"foo\\"): " \<\< provider->hasProperty("foo") \<\< std::endl; std::cout \<\< "container->hasProperty(\\"foo\\"): " \<\< container->hasProperty("foo") \<\< std::endl; 
+```
 
 
 Here is the corresponding console output you should get:
 
+
 ```
- provider-\>hasProperty("foo") = false container-\>hasProperty("foo") = false provider-\>hasProperty("foo") = true container-\>hasProperty("foo") = false provider-\>hasProperty("foo") = true container-\>hasProperty("foo") = truee ```
+ provider->hasProperty("foo") = false container->hasProperty("foo") = false provider->hasProperty("foo") = true container->hasProperty("foo") = false provider->hasProperty("foo") = true container->hasProperty("foo") = truee 
+```
 
 
 Just like data providers, `[data::Container`](data::Container`) objects provide signals to track how properties change:
@@ -228,30 +242,34 @@ Just like data providers, `[data::Container`](data::Container`) objects provide 
 
 **When a provider is added to a container, their signals are piped** to make sure a single `[data::Container`](data::Container`) can act a the single entry point for all the `[data::Provider`](data::Provider`) objects it holds. This is true for both the properties - as explained above - and the signals. When the `<data::Provider>::propertyAdded()` signal is executed, the `<data::Container>::propertyAdded()` signal will be executed on all the containers that hold the provider that executed the signal in the first place.
 
+
 ```
  auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
-container-\>addProvider(provider);
+container->addProvider(provider);
 
-auto propertyAddedToProvider = provider-\>propertyAdded()-\>connect([&](data::Provider::Ptr p, const std::string& name) {
+auto propertyAddedToProvider = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
 ` std::cout << "property '" << name << "' added to provider" << std::endl;`
 
 });
 
-auto propertyAddedToContainer = container-\>propertyAdded()-\>connect([&](data::Container::Ptr c, const std::string& name) {
+auto propertyAddedToContainer = container->propertyAdded()->connect([&](data::Container::Ptr c, const std::string& name) {
 
 ` std::cout << "property '" << name << "' added to container" << std::endl;`
 
 });
 
-provider-\>set("foo", 42); ```
+provider->set("foo", 42); 
+```
 
 
 Compiling and running this code should give the following output in the console:
 
+
 ```
- property 'foo' added to provider property 'foo' added to container ```
+ property 'foo' added to provider property 'foo' added to container 
+```
 
 
 ### Bindings
@@ -269,6 +287,7 @@ There are 4 different kinds of bindings:
 
 Here is an example of how uniform bindings can be declared in an `\*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](Effect_files_format_reference.md)):
 
+
 ```
  "uniformBindings" : {
 
@@ -276,7 +295,8 @@ Here is an example of how uniform bindings can be declared in an `\*.effect` fil
 ` "cameraPosition" : { "property" : "camera.position",       "source" : "renderer" },`
 ` "spotLights"     : { "property" : "spotLights",            "source" : "root" }`
 
-} ```
+} 
+```
 
 
 -   The "target" binding source indicates that the property should be read from the data container of the node that is the actual object being rendered (the node where the `Surface` component in most cases). This source is used for local properties such as the object material or its geometry.
@@ -284,6 +304,7 @@ Here is an example of how uniform bindings can be declared in an `\*.effect` fil
 -   The "root" binding source indicates that the property should be read from the data container of the root node of the scene. This source is used for properties that are global to the whole scene such as lights.
 
 To better understand what "target", "renderer" and "root" might mean in this context, let's take a simple scene with a camera, a mesh and a light:
+
 
 ```
  auto root = scene::Node::create()
@@ -295,7 +316,7 @@ auto camera = scene::Node::create()
 ` ->addComponent(component::PerspectiveCamera::create((float)PI / 4.f, (float)WIDTH / (float)HEIGHT))`
 ` ->addComponent(component::Transform());`
 
-root-\>addChild(camera);
+root->addChild(camera);
 
 auto mesh = scene::Node::create()
 
@@ -308,19 +329,20 @@ auto mesh = scene::Node::create()
 `   Matrix4x4::create()->appendTranslation(0.f, 0.f, -5.f)`
 ` ));`
 
-root-\>addChild(mesh);
+root->addChild(mesh);
 
 auto light = scene::Node::create()
 
 ` ->addComponent(component::SpotLight::create())`
 ` ->addComponent(component::Transform::create());`
 
-root-\>addChild(light); ```
+root->addChild(light); 
+```
 
 
 Here is the diagram of a simple 3D scene and its attached components:
 
-![](Minko data binding scene.png "Minko data binding scene.png")
+![](images/Minko data binding scene.png "images/Minko data binding scene.png")
 
 On the diagram, you can see that:
 

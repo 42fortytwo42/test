@@ -5,8 +5,10 @@ Step 0: Invoke the 'fx' Minko plugin
 
 The first thing you have to do is anything else than [enable the 'fx' plugin](How_to_enable_a_plugin) adding this line at the end of your project's premake file:
 
+
 ```
- minko.plugin.enable("fx") ```
+ minko.plugin.enable("fx") 
+```
 
 
 Doing this will automatically copy the advanced effect files in the project output directory before compiling.
@@ -16,16 +18,19 @@ Step 1: Load the anti-aliasing effect
 
 The next step is to load the effect that we want to use. For us, it's the FXAA one:
 
-```
- auto sceneManager = SceneManager::create(canvas-\>context());
 
-sceneManager-\>assets()-\>queue("effect/FXAA/FXAA.effect"); ```
+```
+ auto sceneManager = SceneManager::create(canvas->context());
+
+sceneManager->assets()->queue("effect/FXAA/FXAA.effect"); 
+```
 
 
 We can check that our anti-aliasing effect is correctly loaded like that:
 
+
 ```
- auto complete = sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary::Ptr assets) {
+ auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
 `   auto effect = sceneManager->assets()->effect("effect/FXAA/FXAA.effect");`
 
@@ -34,7 +39,8 @@ We can check that our anti-aliasing effect is correctly loaded like that:
 
 });
 
-sceneManager-\>assets()-\>load();
+sceneManager->assets()->load();
+
 
 ```
 
@@ -44,14 +50,18 @@ Step 2: Create a render target
 
 The anti-aliasing effect is a post processing effect, so we need to create a render target to render the scene into it. I would strongly advise you to read the [tutorial that explains how to create a simple post-processing effect](22-Creating a simple post-processing effect).
 
+
 ```
- auto renderTarget = render::Texture::create(assets-\>context(), clp2(WINDOW\WIDTH), clp2(WINDOW\HEIGHT), false, true); ```
+ auto renderTarget = render::Texture::create(assets->context(), clp2(WINDOW\WIDTH), clp2(WINDOW\HEIGHT), false, true); 
+```
 
 
 Don't forget to call the *upload()* method to really allocate GPU memory for the render target:
 
+
 ```
- renderTarget-\>upload(); ```
+ renderTarget->upload(); 
+```
 
 
 Step 3 : Set anti-aliasing effect mandatory parameters
@@ -62,8 +72,10 @@ Most effects needs some properties to be set to work properly. For the anti-alia
 -   **textureSampler**: that represent the texture into the render target
 -   **texcoordOffset**: that is the inverse of the texture dimensions along X and Y of the render target.
 
+
 ```
- effect-\>setUniform("textureSampler", renderTarget); effect-\>setUniform("texcoordOffset", Vector2::create(1.0f / renderTarget-\>width(), 1.0f / renderTarget-\>height())); ```
+ effect->setUniform("textureSampler", renderTarget); effect->setUniform("texcoordOffset", Vector2::create(1.0f / renderTarget->width(), 1.0f / renderTarget->height())); 
+```
 
 
 Step 4 : Draw the scene
@@ -71,8 +83,9 @@ Step 4 : Draw the scene
 
 The final initialization step is to create a second scene - completely different from your actual 3D scene - that will only hold a single surface made from the quad geometry that it supposed to represent our screen, a dummy Material and our post-processing effect:
 
+
 ```
- auto renderer = Renderer::create(); auto postProcessingScene = scene::Node::create() -\>addComponent(renderer) -\>addComponent(
+ auto renderer = Renderer::create(); auto postProcessingScene = scene::Node::create() ->addComponent(renderer) ->addComponent(
 
 `   Surface::create(`
 `       geometry::QuadGeometry::create(sceneManager->assets()->context()),`
@@ -80,7 +93,8 @@ The final initialization step is to create a second scene - completely different
 `       effect`
 `   )`
 
-); ```
+); 
+```
 
 
 Now that all we need for anti-aliasing is intialized, we just have to make sure that:
@@ -90,13 +104,15 @@ Now that all we need for anti-aliasing is intialized, we just have to make sure 
 
 We just have to update what we do in our `Canvas::enterFrame()` callback:
 
+
 ```
- auto enterFrame = canvas-\>enterFrame()-\>connect([&](Canvas::Ptr canvas, float t, float dt) {
+ auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
 ` sceneManager->nextFrame(t, dt, renderTarget);`
 ` renderer->render(assets->context());`
 
-} ```
+} 
+```
 
 
 Step 5 (optionnal): Managing the size of the backbuffer
@@ -106,8 +122,9 @@ If we want our post-processing to have a good quality, we have to make sure the 
 
 We will do this in our `Canvas::resized()` callback:
 
+
 ```
- auto resized = canvas-\>resized()-\>connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
+ auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
 `   camera->component<PerspectiveCamera>()->aspectRatio((float) width / (float) height);`
 
@@ -118,13 +135,15 @@ We will do this in our `Canvas::resized()` callback:
 `   effect->setUniform("texcoordOffset",`
 `       Vector2::create(1.0f / renderTarget->width(), 1.0f / renderTarget->height()));`
 
-}); ```
+}); 
+```
 
 
 By assigning a new value to `renderTarget`, we remove the only reference to the original render target `render::Texture` object. Thus, Minko will automatically dispose the corresponding GPU memory texture for you.
 
 Final code
 ----------
+
 
 ```
 
@@ -245,6 +264,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

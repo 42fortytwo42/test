@@ -2,7 +2,7 @@ Spot lights are rather similar to their real-world counterparts. A spot light em
 
 Let's start with something simple, a red spot light, emitting to the ground. as the widget imply, the light is only spread in one direction.
 
-![](spotlight.png "spotlight.png")
+![](images/spotlight.png "images/spotlight.png")
 
 This setup is a little more complex, it introduces multiple spot lights emitting on a complex object with shadows enabled. As you can see with the yellowish light, the light attenuate with the distance, the closer the object is from the spot light, the stronger the light light will be.
 
@@ -13,10 +13,12 @@ Step 1: Instantiate a spot light
 
 The first very first thing you need to do is to include the following header to your .cpp file.
 
+
 ```
 
 
 1.  include \<SpotLight.hpp\>
+
 
 ```
 
@@ -36,6 +38,7 @@ To add a point light to a scene, you have to understand that a `Scene` is a grap
 
 As a `SpotLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
+
 ```
 
 
@@ -48,10 +51,12 @@ As a `SpotLight` is a `Component` you'll have to follow this logic to create and
 `  // Adding the Node to the root of the scene graph`
 ` root->addChild(spotLightNode);`
 
+
 ```
 
 
 As you can see in the code above, we first create a node named "spotLight" to which we add an instance of a spot light. Of course you can chain those methods to perform all in one line of code
+
 
 ```
 
@@ -59,17 +64,20 @@ As you can see in the code above, we first create a node named "spotLight" to wh
 ` // Creating the Node & adding the Component SpotLight`
 ` auto spotLightNode = scene::Node::create("spotLight")->addComponent(SpotLight::create(.15f, .4f));`
 
+
 ```
 
 
 Step 3: Change spot light properties
 ------------------------------------
 
-you can directly change way the light appears by modifying it's public parameters, for example : ```
+you can directly change way the light appears by modifying it's public parameters, for example : 
+```
 
 
 ` auto spotLight = SpotLight::create(.15f, .4f);`
 ` spotLight->diffuse(.4f);`
+
 
 ```
 
@@ -79,11 +87,13 @@ Step 4: Adjust a spot light
 
 Once the light is created you might want to turn the spot light toward a direction. To do this you need to add a transformation matrix to the Node holding your spot light.
 
+
 ```
  auto spotLight = scene::Node::create("spotLight")
 
 `       ->addComponent(SpotLight::create(.15f, .4f))`
 `       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(15.f, 20.f, 0.f))));`
+
 
 ```
 
@@ -92,6 +102,7 @@ Step 5: Remove a spot light from the scene
 ------------------------------------------
 
 You may sometime need to remove a light from a scene, to do this you simply need to remove the spot light from the `Node` it has been added to before.
+
 
 ```
 
@@ -105,6 +116,7 @@ You may sometime need to remove a light from a scene, to do this you simply need
 ` // Remove the component from the node`
 ` spotLightNode->removeComponent(spotLight);`
 
+
 ```
 
 
@@ -112,6 +124,7 @@ As you can see above, the first step is to retrieve the light component with pre
 
 Final code
 ----------
+
 
 ```
 
@@ -188,6 +201,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

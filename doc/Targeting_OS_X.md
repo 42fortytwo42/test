@@ -16,6 +16,7 @@ Even though Minko doesn't support Xcode projects at the moment, we need to insta
 
 The Unix-based toolchain provided by the Command Line Tools includes Clang 3.2, which is enough to build Minko, we strongly recommend to install a more recent compiler. The most straightforward way to do it is to use a package manager ([Homebrew](http://brew.sh/), [MacPort](http://www.macports.org/)). With MacPort installed, simply run:
 
+
 ```
 
 
@@ -25,7 +26,8 @@ sudo port install clang-3.4 sudo port select --set clang mp-clang-3.4
 
 1.  GCC
 
-sudo port install gcc48 sudo port select --set gcc mp-gcc48 ```
+sudo port install gcc48 sudo port select --set gcc mp-gcc48 
+```
 
 
 Step 2: Generate the solution
@@ -33,29 +35,38 @@ Step 2: Generate the solution
 
 While Xcode project support is part of the short-term roadmap (it's already available for [iOS](Targetting_iOS.md)), only \`Makefile\`s are supported at the moment. A script is provided to generate a GNU Make-compatible solution with default options:
 
+
 ```
- script/solution\gmake\gcc.sh ```
+ script/solution\gmake\gcc.sh 
+```
 
 
 Or, if we prefer Clang":
 
+
 ```
- script/solution\gmake\clang.sh ```
+ script/solution\gmake\clang.sh 
+```
 
 
 If we want to customise our solution, we can call `premake` directly. For instance, when selecting the compiler, the `cc` option is passed (supported values are `gcc` and `clang`):
 
+
 ```
- ${MINKO\HOME}/tool/mac/script/premake5.sh --cc=clang gmake ```
+ ${MINKO\HOME}/tool/mac/script/premake5.sh --cc=clang gmake 
+```
 
 
 To learn more about premake commands, run:
 
+
 ```
- ${MINKO\HOME}/tool/mac/script/premake5.sh help ```
+ ${MINKO\HOME}/tool/mac/script/premake5.sh help 
+```
 
 
 Note that by default a simple binary will be built. No .app is generated. We can create a simple .app by switch the application `kind` to `WindowedApp` in the `premake5.lua` file of the project:
+
 
 ```
  include "script"
@@ -69,6 +80,7 @@ minko.project.solution(PROJECT\NAME)
 `       kind "WindowedApp"`
 `       -- rest of the project file...`
 
+
 ```
 
 
@@ -77,20 +89,26 @@ Step 3: Build the solution
 
 For a while now, Macs have only been 64-bit stations, so Minko does not support any old generation Mac (PPC or 32-bit Intel). To target native command line applications, run:
 
+
 ```
- make config=osx64\release ```
+ make config=osx64\release 
+```
 
 
 or
 
+
 ```
- make config=osx64\debug ```
+ make config=osx64\debug 
+```
 
 
 We can get more information about the building process by setting the `verbose` variable:
 
+
 ```
- make config=osx64\release verbose=1 ```
+ make config=osx64\release verbose=1 
+```
 
 
 Step 4: Run the application
@@ -98,8 +116,10 @@ Step 4: Run the application
 
 Let's run the application. Open a terminal in the application directory and type:
 
+
 ```
- cd bin/osx64/release ./my-project ```
+ cd bin/osx64/release ./my-project 
+```
 
 
 That should open a rendering window with your application running inside.
@@ -109,16 +129,20 @@ Step 5: Clean the solution (optional)
 
 To clean the build, run:
 
+
 ```
- make config=osx64\release clean ```
+ make config=osx64\release clean 
+```
 
 
 This will basically remove any target file (`bin` and `obj` folders).
 
 If you also want to erase generated solution files (`Makefile`s), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`:
 
+
 ```
- script/clean.sh ```
+ script/clean.sh 
+```
 
 
 Step 6: Support more targets (optional)

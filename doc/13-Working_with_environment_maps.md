@@ -9,9 +9,9 @@ Environment maps are textures that Minko uses to simulate reflection on a 3D obj
 -   2D Texture for Probe technique
 -   Cube Texture
 
-| Blinn Newell                               | Probe                                      | Cube Texture                                                         |
-|--------------------------------------------|--------------------------------------------|----------------------------------------------------------------------|
-| ![](Ditchriverii9.jpg "Ditchriverii9.jpg") | ![](Galileo_probe.jpg "Galileo_probe.jpg") | ![](F6-example_horizontalcross.png "F6-example_horizontalcross.png") |
+| Blinn Newell                                             | Probe                                                    | Cube Texture                                                                       |
+|----------------------------------------------------------|----------------------------------------------------------|------------------------------------------------------------------------------------|
+| ![](images/Ditchriverii9.jpg "images/Ditchriverii9.jpg") | ![](images/Galileo_probe.jpg "images/Galileo_probe.jpg") | ![](images/F6-example_horizontalcross.png "images/F6-example_horizontalcross.png") |
 
 Prerequisites
 -------------
@@ -25,6 +25,7 @@ Step 0: Setup a scene
 ---------------------
 
 The setup will be the same that the one at the end of the [Working with the PhongMaterial](Working_with_the_PhongMaterial.md) tutorial:
+
 
 ```
 
@@ -86,14 +87,17 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Step 1: Setting a environment map
 ---------------------------------
 
-Environment map are images just like diffuse maps, so their loading workflow are identical: ```
- sceneManager-\>assets()-\>queue("texture/envmap.png"); ```
+Environment map are images just like diffuse maps, so their loading workflow are identical: 
+```
+ sceneManager->assets()->queue("texture/envmap.png"); 
+```
 
 
 To modulate the `environmentMap` another property of the `PhongMaterial` indicates the percentage of environment map that should be mixed with the computed color: EnvironmentAlpha.
@@ -103,27 +107,29 @@ To modulate the `environmentMap` another property of the `PhongMaterial` indicat
 
 The type of environment mapping must be set at the same time as the texture except for the cube maps (the type is set automatically).
 
-\<source lang="cpp\> phongMaterial-\>environmentMap(assets-\>texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell);
+\<source lang="cpp\> phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell);
 
 // or
 
-phongMaterial-\>environmentMap(assets-\>texture("texture/envmap.png"), render::EnvironmentMap2dType::PROBE);
+phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::EnvironmentMap2dType::PROBE);
 
 // or
 
-phongMaterial-\>environmentMap(assets-\>texture("texture/cubeMap.png"))
+phongMaterial->environmentMap(assets->texture("texture/cubeMap.png"))
 
 // 20% of environment for 80% of computed color
 
-phongMaterial-\>environmentAlpha(0.2f); ```
+phongMaterial->environmentAlpha(0.2f); 
+```
 
 
-| Environment Alpha                          | 0.2                            | 0.5                            | 0.95                           |
-|--------------------------------------------|--------------------------------|--------------------------------|--------------------------------|
-| ![](Ditchriverii9.jpg "Ditchriverii9.jpg") | ![](Envmap1.PNG "Envmap1.PNG") | ![](Envmap2.PNG "Envmap2.PNG") | ![](Envmap3.PNG "Envmap3.PNG") |
+| Environment Alpha                                        | 0.2                            | 0.5                            | 0.95                           |
+|----------------------------------------------------------|--------------------------------|--------------------------------|--------------------------------|
+| ![](images/Ditchriverii9.jpg "images/Ditchriverii9.jpg") | ![](Envmap1.PNG "Envmap1.PNG") | ![](Envmap2.PNG "Envmap2.PNG") | ![](Envmap3.PNG "Envmap3.PNG") |
 
 Final Code
 ----------
+
 
 ```
 
@@ -186,7 +192,8 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Where to go from here

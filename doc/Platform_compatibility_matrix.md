@@ -8,7 +8,7 @@ Platforms officially targeted
 
 |                                                                         |                                | Premake configuration name       |
 |-------------------------------------------------------------------------|--------------------------------|----------------------------------|
-| align=left|![](html5_min.png "fig:html5_min.png") HTML5                 | ![](checked.png "checked.png") | html5                            |
+| align=left|![](images/html5_min.png "fig:images/html5_min.png") HTML5   | ![](checked.png "checked.png") | html5                            |
 | align=left|![](winmini.png "fig:winmini.png") Windows                   | ![](checked.png "checked.png") | windows32\<br/\>windows64        |
 | align=left|![](mac_min.png "fig:mac_min.png") OS X                      | ![](checked.png "checked.png") | osx64                            |
 | align=left|![](linux_min.png "fig:linux_min.png") Linux                 | ![](checked.png "checked.png") | linux32\<br/\>linux64            |
@@ -27,7 +27,7 @@ For each platform, support may vary depending of the host version, the possible 
 -   ![](error.png "fig:error.png"): Not supported
 -   ![](help_16.png "fig:help_16.png"): Not supported yet
 
-### ![](html5_min.png "fig:html5_min.png") HTML5
+### ![](images/html5_min.png "fig:images/html5_min.png") HTML5
 
 Minko for HTML5 relies only on WebGL, the HTML5 standard API to create 3D web applications. For more details about WebGL availability, please consult the corresponding ["Can I use..." page](http://caniuse.com/#search=webgl).
 

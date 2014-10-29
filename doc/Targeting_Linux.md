@@ -12,26 +12,34 @@ We'll document the procedure for Ubuntu. Please refer to your Linux distribution
 
 You can install either GCC:
 
+
 ```
- sudo apt-get install gcc-4.8 g++-4.8 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50 ```
+ sudo apt-get install gcc-4.8 g++-4.8 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50 
+```
 
 
 Or Clang:
 
+
 ```
- sudo apt-get install clang-3.4 ```
+ sudo apt-get install clang-3.4 
+```
 
 
 For older (\< 13.10) versions of Ubuntu, you may have to add some PPAs first:
 
+
 ```
- sudo apt-get install python-software-properties sudo add-apt-repository ppa:ubuntu-toolchain-r/test \# GCC 4.8 wget -O - <http://llvm.org/apt/llvm-snapshot.gpg.key> | sudo apt-key add - \# Clang sudo apt-get update ```
+ sudo apt-get install python-software-properties sudo add-apt-repository ppa:ubuntu-toolchain-r/test \# GCC 4.8 wget -O - <http://llvm.org/apt/llvm-snapshot.gpg.key> | sudo apt-key add - \# Clang sudo apt-get update 
+```
 
 
 Optionally, you can install `gcc-multilib` to allow cross-compilation between 32 and 64-bit Linux:
 
+
 ```
- sudo apt-get install gcc-multilib g++-multilib ```
+ sudo apt-get install gcc-multilib g++-multilib 
+```
 
 
 Step 2: Install libraries
@@ -47,6 +55,7 @@ No library is necessary to run a basic Minko application. However, most applicat
 -   probably a proprietary driver for your graphics card (refer to you graphics chip vendor)
 
 Install them:
+
 
 ```
 
@@ -69,13 +78,16 @@ sudo apt-get install libudev-dev libxinerama-dev
 
 1.  HTML overlay (optional)
 
-sudo apt-get install libgtk2.0-dev libgtkglext1-dev libudevpath=$([ \`uname -m\` = x86\64 ] && echo "/lib/x86\64-linux-gnu" || echo "/lib/i386-linux-gnu") sudo test -e $libudevpath/libudev.so.0 || sudo ln -s $libudevpath/libudev.so.1 $libudevpath/libudev.so.0 ```
+sudo apt-get install libgtk2.0-dev libgtkglext1-dev libudevpath=$([ \`uname -m\` = x86\64 ] && echo "/lib/x86\64-linux-gnu" || echo "/lib/i386-linux-gnu") sudo test -e $libudevpath/libudev.so.0 || sudo ln -s $libudevpath/libudev.so.1 $libudevpath/libudev.so.0 
+```
 
 
 If you need to do offscreen rendering (available through the `offscreen` plugin), you should also install another bunch of libraries:
 
+
 ```
- sudo apt-get install libosmesa6-dev ```
+ sudo apt-get install libosmesa6-dev 
+```
 
 
 Step 3: Generate the solution
@@ -83,26 +95,34 @@ Step 3: Generate the solution
 
 On Linux, only `Makefile`s are supported. A script is provided to generate a GNU Make-compatible solution with default options:
 
+
 ```
- script/solution\gmake\gcc.sh ```
+ script/solution\gmake\gcc.sh 
+```
 
 
 Or, if we prefer Clang:
 
+
 ```
- script/solution\gmake\clang.sh ```
+ script/solution\gmake\clang.sh 
+```
 
 
 If we want to customise our solution, we can call `premake` directly. For instance, when selecting the compiler, the `cc` option is passed (supported values are `gcc` and `clang`):
 
+
 ```
- ${MINKO\HOME}/tool/lin/script/premake5.sh --cc=clang gmake ```
+ ${MINKO\HOME}/tool/lin/script/premake5.sh --cc=clang gmake 
+```
 
 
 To learn more about premake commands, run:
 
+
 ```
- ${MINKO\HOME}/tool/lin/script/premake5.sh help ```
+ ${MINKO\HOME}/tool/lin/script/premake5.sh help 
+```
 
 
 Step 4: Build the solution
@@ -110,8 +130,10 @@ Step 4: Build the solution
 
 To target native command line applications, run:
 
+
 ```
- make config=linux32\release ```
+ make config=linux32\release 
+```
 
 
 There are 4 supported Linux configuration:
@@ -125,14 +147,18 @@ As expected, they allow you to select optimized or debuggable binaries, along wi
 
 We can get more information about the building process by setting the `verbose` variable:
 
+
 ```
- make config=linux32\release verbose=1 ```
+ make config=linux32\release verbose=1 
+```
 
 
 To leverage multi-core systems, you can also use `make -j`. The following example will use 4 cores and will compile much faster as a result:
 
+
 ```
- make -j4 config=linux32\release verbose=1 ```
+ make -j4 config=linux32\release verbose=1 
+```
 
 
 Step 5: Run one of the examples
@@ -140,8 +166,10 @@ Step 5: Run one of the examples
 
 Let's run the application under a 32-bit Linux. Open a terminal in the application directory and type:
 
+
 ```
- cd bin/linux32/release ./my-project ```
+ cd bin/linux32/release ./my-project 
+```
 
 
 That should open a rendering window with your application running inside.
@@ -151,16 +179,20 @@ Step 6: Clean the solution (optional)
 
 To clean the build, pass the `clean` target to `make`. For instance:
 
+
 ```
- make config=linux32\release clean ```
+ make config=linux32\release clean 
+```
 
 
 This will basically remove any target file (`bin` and `obj` folders) for the specific configuration.
 
 If you also want to erase generated solution files (`Makefile`), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`):
 
+
 ```
- script/clean.sh ```
+ script/clean.sh 
+```
 
 
 Step 7: Support more targets (optional)

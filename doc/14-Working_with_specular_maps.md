@@ -18,6 +18,7 @@ Step 0: Setup a scene
 
 The setup will be the same that the one at the end of the [Working with the PhongMaterial](Working_with_the_PhongMaterial.md) tutorial:
 
+
 ```
 
 
@@ -79,7 +80,8 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Step 1: Setting a SpecularMap
@@ -87,8 +89,10 @@ Step 1: Setting a SpecularMap
 
 `specularMap` are images just like `diffuseMap`, so their loading workflow are identical.
 
+
 ```
- sceneManager-\>assets()-\>queue("texture/specularmap.png"); ```
+ sceneManager->assets()->queue("texture/specularmap.png"); 
+```
 
 
 Then, the specular texture will be available in the `[file::AssetsLibrary`](file::AssetsLibrary`) once all files are loaded.
@@ -99,19 +103,22 @@ The `PhongMaterial` defines one method to set a `specularMap`:
 
 There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `TextureType` enum). Currently only flat textures are supported as a value for `PhongMaterial::specularMap()`.
 
+
 ```
- phongMaterial-\>specularMap(assets-\>texture("texture/specularmap.png")); ```
+ phongMaterial->specularMap(assets->texture("texture/specularmap.png")); 
+```
 
 
 | scope="col" widt"100px"| DiffuseMap / SpecularMap | Right                                        | Left                                         | Front                                        |
 |---------------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
-| ![ link=](Texturespecular1.jpg " link=")          | ![](SpecularMap1_1.PNG "SpecularMap1_1.PNG") | ![](SpecularMap1_2.PNG "SpecularMap1_2.PNG") | ![](SpecularMap1_3.PNG "SpecularMap1_3.PNG") |
+| ![ link=](images/Texturespecular1.jpg " link=")   | ![](SpecularMap1_1.PNG "SpecularMap1_1.PNG") | ![](SpecularMap1_2.PNG "SpecularMap1_2.PNG") | ![](SpecularMap1_3.PNG "SpecularMap1_3.PNG") |
 | ![ link=](Texturespecular22.jpg " link=")         | ![](SpecularMap2_1.PNG "SpecularMap2_1.PNG") | ![](SpecularMap2_2.PNG "SpecularMap2_2.PNG") | ![](SpecularMap2_3.PNG "SpecularMap2_3.PNG") |
 | ![](Texturespecular3.jpg "Texturespecular3.jpg")  | ![](SpecularMap3_1.PNG "SpecularMap3_1.PNG") | ![](SpecularMap3_2.PNG "SpecularMap3_2.PNG") | ![](SpecularMap3_3.PNG "SpecularMap3_3.PNG") |
 ||
 
 Final Code
 ----------
+
 
 ```
 
@@ -173,7 +180,8 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Where to go from here

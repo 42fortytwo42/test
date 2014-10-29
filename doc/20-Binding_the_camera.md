@@ -19,13 +19,15 @@ Those properties are declared in the `PerspectiveCamera::data()` provider, which
 
 Here is how we can bind the camera transform and projection in our effect using `uniformBindings`:
 
+
 ```
  "uniformBindings" : {
 
 ` "uViewMatrix" : { "property" : "camera.viewMatrix", "source" : "renderer" },`
 ` "uProjectionMatrix" : { "property" : "camera.projectionMatrix", "source" : "renderer" }`
 
-} ```
+} 
+```
 
 
 If you read the [Binding the model to world transform](Binding_the_model_to_world_transform.md) tutorial, you'll notice that the `uniformBindings` we declare here are a bit different. This is because we have to declare where our bindings properties should be read from. Our `uniformBindings` declare the following fields:
@@ -42,6 +44,7 @@ The `source` declaration can have three values:
 By default, the `source` field is set to `target`. But in the case of our camera, the `PerspectiveCamera` is located on the same node than the `Renderer`. Thus, we set the `source` field to `renderer`. To learn more about data binding and binding sources, please read the [Understanding data binding](Understanding_data_binding.md) article.
 
 The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is the result of the view matrix mutiplied with the projection. Using this property will save us some computation in our vertex shader:
+
 
 ```
  {
@@ -70,7 +73,8 @@ The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is
 
 `   // ...`
 
-} ```
+} 
+```
 
 
 You can learn more about the `\*.effect` files format in the [Effect files format reference](Effect_files_format_reference.md) article.
@@ -80,6 +84,7 @@ Step 2: Updating the application code
 
 Now that our view matrix is bound, we don't have to set it manually. But we have to make sure the property it's bound to is actually available! As this property is declared by the `PerspectiveCamera` component, we have to make sure it is available somewhere in our scene.
 
+
 ```
  auto camera = scene::Node::create()
 
@@ -87,7 +92,8 @@ Now that our view matrix is bound, we don't have to set it manually. But we have
 ` ->addComponent(Renderer::create())`
 ` ->addComponent(PerspectiveCamera::create((float)WINDOW_WIDTH / (float)WINDOW_HEIGHT));`
 
-root-\>addChild(camera); ```
+root->addChild(camera); 
+```
 
 
 Note that because we will likely need to move and orient our camera, we also add a `Transform` component to our `camera` scene node. To learn more about this component, you can read the [Moving objects](Moving_objects.md) tutorial.
@@ -96,14 +102,17 @@ Note that because we will likely need to move and orient our camera, we also add
 
 Because all of our camera-related properties are now handled by data binding, we also have to update our code to comment (or simply remove) any corresponding `Effect::setUniform()`:
 
+
 ```
- //myCustomEffect-\>setUniform("uViewMatrix", Matrix4x4::create()); //myCustomEffect-\>setUniform("uProjectionMatrix", Matrix4x4::create()-\>perspective((float)WINDOW\WIDTH / (float)WINDOW\HEIGHT)); ```
+ //myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create()); //myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)WINDOW\WIDTH / (float)WINDOW\HEIGHT)); 
+```
 
 
 Final code
 ----------
 
-asset/effect/MyCustomEffect.effect ```
+asset/effect/MyCustomEffect.effect 
+```
  {
 
 ` "name" : "MyCustomEffect",`
@@ -140,10 +149,12 @@ asset/effect/MyCustomEffect.effect ```
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -195,6 +206,7 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

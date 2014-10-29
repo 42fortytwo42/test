@@ -9,6 +9,7 @@ To make sure our plugin linkage and other required operations are automated by M
 
 The default solution file looks like this:
 
+
 ```
  dofile(os.getenv("MINKO\HOME") .. "/sdk.lua")
 
@@ -32,6 +33,7 @@ minko.project.solution(PROJECT\NAME)
 `       --minko.plugin.enable("particles")`
 `       --minko.plugin.enable("png")`
 
+
 ```
 
 
@@ -39,20 +41,26 @@ As you can see, some plugins are referenced by default in the solution file. But
 
 For example, to enable the "jpeg" plugin that provides a JPEG image files parser, uncomment the following line:
 
+
 ```
- --minko.plugin.enable("jpeg") ```
+ --minko.plugin.enable("jpeg") 
+```
 
 
 To uncomment a line in LUA, simply remove the "--" at the begining of the line. You should then have:
 
+
 ```
- minko.plugin.enable("jpeg") ```
+ minko.plugin.enable("jpeg") 
+```
 
 
 If the plugin you want to enable is not in the list, you can call the `minko.plugin.enable()` function and pass the name of the plugin you need:
 
+
 ```
- minko.plugin.enable("myplugin") ```
+ minko.plugin.enable("myplugin") 
+```
 
 
 The "name" of a plugin is the name of its folder in the `%MINKO\SDK%/plugins` directory.
@@ -71,16 +79,20 @@ If a plugin is not mandatory but rather just "supported" by the application, you
 
 For example, if we want to enabled the "jpeg" plugin, we will have to add the following option:
 
+
 ```
- --with-jpeg ```
+ --with-jpeg 
+```
 
 
 The command line itself is documented in the [step 3 of the "Create a new application" tutorial](Create_a_new_application#Step_3:_Generate_the_solution_file).
 
 For example, the following Windows command line will enable the "jpeg" plugin when generating the Visual Studio 2013 solution file for our project:
 
+
 ```
- "%MINKO\HOME%"\\tools\\win\\bin\\premake5.exe --with-jpeg vs2013 ```
+ "%MINKO\HOME%"\\tools\\win\\bin\\premake5.exe --with-jpeg vs2013 
+```
 
 
 Step 3: Check that the plugin is enabled
@@ -90,14 +102,16 @@ Each plugin should define a custom dedicated C++ pre-processor macro that will h
 
 In the following code, we will enable the JPEG image files parser only if the `MINKO\PLUGIN\JPEG` is defined (ie only if the corresponding plugin is actually enabled):
 
+
 ```
 
 
 1.  ifdef MINKO\PLUGIN\JPEG
 
-sceneManager-\>assets()-\>registerParser\<JPEGParser\>("jpg");
+sceneManager->assets()->registerParser\<JPEGParser\>("jpg");
 
 1.  endif
+
 
 ```
 

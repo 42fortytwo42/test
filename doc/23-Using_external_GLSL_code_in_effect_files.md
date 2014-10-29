@@ -12,6 +12,7 @@ Step 1: Referencing the external GLSL files
 
 To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragment.glsl` files, we will use the `\#pragma include` directive within the respective shader fields:
 
+
 ```
  {
 
@@ -21,7 +22,8 @@ To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragm
 `   "fragmentShader" : "#pragma include('MyCustomEffect.fragment.glsl')"`
 ` }]`
 
-} ```
+} 
+```
 
 
 In the code above, `MyCustomShader.vertex.glsl` and `MyCustomShader.fragment.glsl` are expected to be located in the same directory as the `MyCustomEffect.effect` file.
@@ -44,7 +46,8 @@ To learn how to setup `uniformBindings`, you can read the following tutorials:
 Final code
 ----------
 
-asset/effect/MyCustomEffect.effect ```
+asset/effect/MyCustomEffect.effect 
+```
  {
 
 ` "name" : "MyCustomEffect",`
@@ -56,10 +59,12 @@ asset/effect/MyCustomEffect.effect ```
 `   "fragmentShader" : "#pragma include('MyCustomEffect.fragment.glsl')"`
 ` }]`
 
-} ```
+} 
+```
 
 
-asset/effect/MyCustomEffect.vertex.glsl ```
+asset/effect/MyCustomEffect.vertex.glsl 
+```
 
 
 1.  ifdef GL\ES
@@ -76,10 +81,12 @@ void main(void) {
 
 ` gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);`
 
-} ```
+} 
+```
 
 
-asset/effect/MyCustomEffect.fragment.glsl ```
+asset/effect/MyCustomEffect.fragment.glsl 
+```
 
 
 1.  ifdef GL\ES
@@ -94,10 +101,12 @@ void main(void) {
 
 ` gl_FragColor = uColor;`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -153,6 +162,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

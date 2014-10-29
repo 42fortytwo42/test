@@ -16,10 +16,12 @@ Step 0: Invoke the 'bullet' Minko plugin
 
 But first things first, you must before anything else [enable the 'bullet' plugin](How_to_enable_a_plugin) and then include the 'bullet' plugin's main header file into your project source code:
 
+
 ```
 
 
 1.  include "minko/MinkoBullet.hpp"
+
 
 ```
 
@@ -33,11 +35,13 @@ For your simulation to work, you thus need to add a `minko::component::bullet::P
 
 **Note** Please remember that for the simulation to be updated at the end of each frame, the addition of a `minko::component::Renderer` somewhere in your scene node hierarchy is mandatory.
 
+
 ```
  auto root = scene::Node::create("root")
 
 `   ->addComponent(sceneManager)`
 `   ->addComponent(bullet::PhysicsWorld::create());`
+
 
 ```
 
@@ -58,6 +62,7 @@ Of paramount importance are the following properties of a collider data instance
 
 Follows the example of a simple falling cube, the corresponding node of which is added a box-shaped collider weighting 5 kg:
 
+
 ```
  auto boxColliderData = bullet::ColliderData::create(
 
@@ -73,6 +78,7 @@ Follows the example of a simple falling cube, the corresponding node of which is
 `       assets->effect("effect/Basic.effect")`
 `   ));`
 
+
 ```
 
 
@@ -81,13 +87,15 @@ Step 3: Run your simulation
 
 Simply adding your collider-bearing node to the scene:
 
+
 ```
- root-\>addChild(boxNode); ```
+ root->addChild(boxNode); 
+```
 
 
 is now enough to trigger the simulation, and watch our poor cube fall under the effect of gravity.
 
-![Above are several captures of the physics simulation at different frames.](fallingCube.png "Above are several captures of the physics simulation at different frames.")
+![Above are several captures of the physics simulation at different frames.](images/fallingCube.png "Above are several captures of the physics simulation at different frames.")
 
 **Important** When adding a new child node to your scene, a `minko::component::bullet::PhysicsWorld` must already be present in the set of its newly-defined parent nodes. If not, this added node will simply be ignored from the simulation regardless of the validity of its attached collider.
 
@@ -97,6 +105,7 @@ Also note that even though `boxNode` has not been explicitly added a `minko::com
 
 Final code
 ----------
+
 
 ```
 
@@ -166,7 +175,8 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 
 About the transforms' scaling components

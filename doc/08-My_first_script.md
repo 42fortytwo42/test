@@ -18,6 +18,7 @@ Step 0: Enabling the Lua plugin
 
 The very first step is to make sure we can use Lua scripts in our applications. To do this, we're going to follow the [Create a new application](Create_a_new_application.md) tutorial and then the [How to enable a plugin](How_to_enable_a_plugin.md) tutorial to enable the "lua" plugin. Your `premake5.lua` file should look like this:
 
+
 ```
  dofile(os.getenv("MINKO\HOME") .. "/sdk.lua")
 
@@ -36,6 +37,7 @@ minko.project.solution(PROJECT\NAME)
 `       -- plugins`
 `       minko.plugin.enable("sdl")`
 `       minko.plugin.enable("lua")`
+
 
 ```
 
@@ -63,6 +65,7 @@ You should also keep in mind that:
 
 Here is an example of script that will simply output debug messages in the console using the `print()` global Lua function:
 
+
 ```
  -- /asset/script/my\script.lua function my\script:start(node)
 
@@ -80,7 +83,8 @@ function my\script:stop(node)
 
 ` print('stop')`
 
-end ```
+end 
+```
 
 
 Step 2: Initialization of LUA
@@ -88,22 +92,26 @@ Step 2: Initialization of LUA
 
 The first thing to do in our C++ application code is to load the main header for the "lua" plugin:
 
+
 ```
 
 
 1.  include "minko/MinkoLua.hpp"
+
 
 ```
 
 
 Now, we have to initialize the Lua context to give it access to our canvas and root node without forget to add a `LuaScriptManager` thereto:
 
+
 ```
- auto canvas = Canvas::create("Minko Tutorial - My first script", 800, 600); auto sceneManager = component::SceneManager::create(canvas-\>context()); auto root = scene::Node::create("root")-\>addComponent(sceneManager);
+ auto canvas = Canvas::create("Minko Tutorial - My first script", 800, 600); auto sceneManager = component::SceneManager::create(canvas->context()); auto root = scene::Node::create("root")->addComponent(sceneManager);
 
 // initialization of Lua context LuaContext::initialize(argc, argv, root, canvas);
 
-// add a LuaScriptManager to the root node root-\>addComponent(LuaScriptManager::create()); ```
+// add a LuaScriptManager to the root node root->addComponent(LuaScriptManager::create()); 
+```
 
 
 Step 3: Loading a script
@@ -114,16 +122,18 @@ We can then use all the classes related to Lua scripting. Next we need to actual
 1.  make sure the `LuaScriptParser` is registered for the "lua" file extension;
 2.  actually load our script(s) using `AssetLibrary::queue()` and/or `AssetLibrary::load()`.
 
+
 ```
- // register the LuaScriptParser sceneManager-\>assets()-\>registerParser\<[file::LuaScriptParser\>](file::LuaScriptParser>)("lua");
+ // register the LuaScriptParser sceneManager->assets()->registerParser\<[file::LuaScriptParser\>](file::LuaScriptParser>)("lua");
 
-// queue the "script/my\script.lua" script file sceneManager-\>assets()-\>queue("script/my\script.lua");
+// queue the "script/my\script.lua" script file sceneManager->assets()->queue("script/my\script.lua");
 
-if (assets-\>script("script/my\script.lua"))
+if (assets->script("script/my\script.lua"))
 
 `   std::cout << "script loaded!" << std::endl;`
 
-// actually begin loading operations sceneManager-\>assets()-\>load(); ```
+// actually begin loading operations sceneManager->assets()->load(); 
+```
 
 
 Step 4: Assigning a script
@@ -133,8 +143,9 @@ Scripts are components. When loaded, each script file will be available as an `A
 
 In this case, we will simply add our script to the root of our scene:
 
+
 ```
- auto complete = sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary::Ptr assets) {
+ auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
 `   root->addComponent(assets->script("script/my_script.lua"));`
 
@@ -145,19 +156,23 @@ In this case, we will simply add our script to the root of our scene:
 
 `   canvas->run();`
 
-}); ```
+}); 
+```
 
 
 You can define, load and assigns as many scripts as you want on any kind of scene nodes. If the script has been successfully added to our node, you should see this in the console:
 
+
 ```
- start update update update update update update ... ```
+ start update update update update update update ... 
+```
 
 
 In our case, `my\script:stop()` will never be called because it is never removed from its target node. You can make sure the method works by removing the script after a few frames:
 
+
 ```
- auto numFrames = 0; auto enterFrame = canvas-\>enterFrame()-\>connect([&](Canvas::Ptr c, float t, float dt) {
+ auto numFrames = 0; auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr c, float t, float dt) {
 
 `   ++numFrames;`
 `   if (numFrames == 5)`
@@ -165,17 +180,21 @@ In our case, `my\script:stop()` will never be called because it is never removed
 
 `   sceneManager->nextFrame(t, dt);`
 
-}); ```
+}); 
+```
 
 
 So you should get this in the console:
 
+
 ```
- start update update update update stop ```
+ start update update update update stop 
+```
 
 
 Final code
 ----------
+
 
 ```
 
@@ -225,6 +244,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

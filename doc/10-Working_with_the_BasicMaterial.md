@@ -5,8 +5,10 @@ Step 1: Creating the material
 
 To create a new `BasicMaterial` object, we simply create the `BasicMaterial::create()` static method:
 
+
 ```
- auto material = material::BasicMaterial::create(); ```
+ auto material = material::BasicMaterial::create(); 
+```
 
 
 Don't forget to use the `material::` prefix since the `BasicMaterial` class is defined in the `minko::material` namespace (and assuming you are already using the `minko` namespace).
@@ -38,14 +40,18 @@ It is important to understand that the first two methods are just syntaxic sugar
 
 Therefore, this code:
 
+
 ```
- material-\>diffuseColor(Vector4::create(1.f, 0.f, 0.f, 1.f)); ```
+ material->diffuseColor(Vector4::create(1.f, 0.f, 0.f, 1.f)); 
+```
 
 
 is strictly equivalent to:
 
+
 ```
- material-\>set("diffuseColor", Vector4::create(1.f, 0.f, 0.f, 1.f)); ```
+ material->set("diffuseColor", Vector4::create(1.f, 0.f, 0.f, 1.f)); 
+```
 
 
 This approach is very useful because it mixes the flexibility of dynamic properties referenced by simple string values and the user-friendliness of code-hinting for statically declared methods. According to what you're trying to do, you can chose the method that best fits your needs.
@@ -59,14 +65,18 @@ Step 3: Setting a diffuse map (or texture)
 
 The `BasicMaterial` can also sample an RGBA texture as the final color of the pixel. To do this, we just have to set the `diffuseMap` property using the `BasicMaterial::diffuseMap()` setter:
 
+
 ```
- material-\>diffuseMap(texture); ```
+ material->diffuseMap(texture); 
+```
 
 
 or the `BasicMaterial::set()` dynamic method directly:
 
+
 ```
- material-\>set("diffuseMap", texture); ```
+ material->set("diffuseMap", texture); 
+```
 
 
 If you set the `diffuseMap`, the `diffuseColor` property will not be used anymore. This is done thanks to Minko's support for "über-shaders". This feature allows the rendering engine to use rendering programs - or shaders - that can handle many different situations such as in this case rendering with a texture or a solid color. This is a very efficient solution to make it easy to customize rendering with little effort.
@@ -75,6 +85,7 @@ You can read more about textures in the [Loading and using textures](Loading_and
 
 Final code
 ----------
+
 
 ```
 
@@ -132,6 +143,7 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

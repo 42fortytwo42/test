@@ -1,6 +1,6 @@
 A point light casts illumination in every direction from a single point in 3D space. Point lights are useful for simulating any omnidirectional light source: Light-bulbs, candles, Christmas tree lights, gun-fire etc.
 
-![](pointlight.png "pointlight.png")
+![](images/pointlight.png "images/pointlight.png")
 
 As the point light is emitting in every directions, his reflection can be multiple places in the environment.
 
@@ -13,10 +13,12 @@ Step 1: Instantiate a point light
 
 The first very first thing you need to do is to include the following header to your .cpp file.
 
+
 ```
 
 
 1.  include \<PointLight.hpp\>
+
 
 ```
 
@@ -30,6 +32,7 @@ To add a point light to a scene, you have to understand that a `Scene` is a grap
 
 As a `PointLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
+
 ```
 
 
@@ -42,16 +45,19 @@ As a `PointLight` is a `Component` you'll have to follow this logic to create an
 `// Adding the Node to the root of the scene graph`
 ` root->addChild(pointLightNode);`
 
+
 ```
 
 
 As you can see in the code above, we first create a node named "pointLight" to which we add an instance of a point light. Of course you can chain those methods to perform actions in one line of code
+
 
 ```
 
 
 ` // Creating the Node & adding the Component PointLight`
 ` auto pointLightNode = scene::Node::create("pointLight")->addComponent(PointLight::create(0.1f));`
+
 
 ```
 
@@ -61,18 +67,21 @@ Step 3: Change point light properties
 
 you can directly change way the light appears by modifying it's public parameters, for example :
 
+
 ```
 
 
 `auto pointLight = PointLight::create();`
 
-pointLight-\>diffuse(.4f); ```
+pointLight->diffuse(.4f); 
+```
 
 
 Step 4: Remove a point light from the scene
 -------------------------------------------
 
 You may sometime need to remove a light from a scene, to do this you simply need to remove the point light from the `Node` it has been added to before.
+
 
 ```
 
@@ -86,6 +95,7 @@ You may sometime need to remove a light from a scene, to do this you simply need
 ` // Remove the component from the node`
 ` pointLightNode->removeComponent(pointLight);`
 
+
 ```
 
 
@@ -93,6 +103,7 @@ As you can see above, the first step is to retrieve the light component with pre
 
 Final code
 ----------
+
 
 ```
 
@@ -209,6 +220,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

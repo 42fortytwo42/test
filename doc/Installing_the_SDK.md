@@ -19,7 +19,7 @@ You have to set an environment variable that will be used by Minko's build syste
 
 Go to Control Panel \> System \> Advanced system settings and click on "Environment Variables"
 
-![](Minko win env variables.jpg "Minko win env variables.jpg")
+![](images/Minko win env variables.jpg "images/Minko win env variables.jpg")
 
 Then click on "New..." in the "System variables" panel (or in the "User variables" panel if you want to setup the SDK for your own user only)
 
@@ -36,14 +36,18 @@ and press "OK". If it worked correctly the `MINKO\HOME` environment variable sho
 
 Open a terminal and type or copy/paste the following command line
 
+
 ```
- export MINKO\HOME=/path/to/the/minko/sdk ```
+ export MINKO\HOME=/path/to/the/minko/sdk 
+```
 
 
 This will **temporarily** set the `MINKO\HOME` environment variable. **To make sure this change permanent, add it to your shell .rc file** (ex: `~/.bashrc` if you are using bash). To do this, type or copy/paste the following command line in the terminal:
 
+
 ```
- echo "export MINKO\HOME=/path/to/the/minko/sdk" \>\> ~/.bashrc ```
+ echo "export MINKO\HOME=/path/to/the/minko/sdk" \>\> ~/.bashrc 
+```
 
 
 Of course, you have to adapt this command line using the actual path of the Minko SDK on your system and the right target .rc file for your shell.

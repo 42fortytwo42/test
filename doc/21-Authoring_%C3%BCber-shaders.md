@@ -18,6 +18,7 @@ What's important to understand is how critic it is to be able to write über sha
 
 That's where über shaders kick in: an über shader is a single shader program that will adapt its operations according to whether some options are enabled or not. To do this, Minko leverages the GLSL pre-processor:
 
+
 ```
 
 
@@ -31,6 +32,7 @@ That's where über shaders kick in: an über shader is a single shader program t
 
 1.  endif
 
+
 ```
 
 
@@ -40,6 +42,7 @@ Step 1: Updating the fragment shader
 ------------------------------------
 
 We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](Create_your_first_custom_effect#Step_3:_The_fragment_shader) and update it to use a texture if the `DIFFUSE\MAP` macro is defined:
+
 
 ```
 
@@ -62,10 +65,12 @@ void main(void) {
 `   gl_FragColor = uDiffuseColor;`
 ` #endif`
 
-} ```
+} 
+```
 
 
 To sample the `uDiffuseMap` texture, our fragment shader will also need the texture coordinates interpolated from the vertex data. Thus, we have to make sure the `vVertexUv` varying is properly filled by our vertex shader:
+
 
 ```
 
@@ -90,10 +95,12 @@ void main(void) {
 
 ` gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);`
 
-} ```
+} 
+```
 
 
 We've made some modifications in the fragment shader that required a minor update of our vertex shader. We will have to update our effect's `attributeBindings` to make sure the `aUv` vertex attribute is properly set:
+
 
 ```
  "attributeBindings" : {
@@ -101,10 +108,12 @@ We've made some modifications in the fragment shader that required a minor updat
 ` "aPosition" : "geometry[${geometryId}].position",`
 ` "aUv" : "geometry[${geometryId}].uv"`
 
-} ```
+} 
+```
 
 
 and the `uniformBindings` to make sure our `uDiffuseMap` property is properly bound too:
+
 
 ```
  "uniformBindings" : {
@@ -114,7 +123,8 @@ and the `uniformBindings` to make sure our `uDiffuseMap` property is properly bo
 ` "uModelToWorldMatrix" : "transform.modelToWorldMatrix",`
 ` "uWorldToScreenMatrix" : { "property" : "camera.worldToScreenMatrix", "source" : "renderer" }`
 
-} ```
+} 
+```
 
 
 This last step is optional, but you'll likely want to use the `uDiffuseMap` as a material property since it's already the case for the `uDiffuseColor` one.
@@ -123,6 +133,7 @@ Step 2: Über shaders automation with macro bindings
 ---------------------------------------------------
 
 We now have a fragment shader that can use a solid color or a texture depending on whether the `DIFFUSE\MAP` macro is set:
+
 
 ```
 
@@ -137,15 +148,18 @@ We now have a fragment shader that can use a solid color or a texture depending 
 
 1.  endif
 
+
 ```
 
 
 It works but it's still not really scalable: we would have to manually define the `DIFFUSE\MAP` macro by adding:
 
+
 ```
 
 
 1.  define DIFFUSE\MAP
+
 
 ```
 
@@ -154,15 +168,18 @@ at the begining of our vertex/fragment shader if we want to use a texture. Manua
 
 Using `macroBindings`, we can bind a macro definition to a data property provided by the engine/our application:
 
+
 ```
  "macroBindings" : {
 
 ` "DIFFUSE_MAP" : "material[${materialId}].diffuseMap"`
 
-} ```
+} 
+```
 
 
 The behavior of a macro binding is described in the following pseudo-code:
+
 
 ```
  defineString = "" if propertyExists(propertyName) then
@@ -172,7 +189,8 @@ The behavior of a macro binding is described in the following pseudo-code:
 ` else`
 `   defineString = "#define " + propertyName // #define MACRO_NAME`
 
-// else no \#define ```
+// else no \#define 
+```
 
 
 In our case, `propertyName` would be "material.diffuseMap".
@@ -182,7 +200,8 @@ In this case, the `material.diffuseMap` should be a texture so the second case a
 Final code
 ----------
 
-asset/effect/MyCustomUberEffect.effect ```
+asset/effect/MyCustomUberEffect.effect 
+```
  {
 
 ` "name" : "MyCustomUberEffect",`
@@ -235,10 +254,12 @@ asset/effect/MyCustomUberEffect.effect ```
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -290,6 +311,7 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

@@ -11,11 +11,14 @@ First of all, a `PhongMaterial` needs at least one light in the scene, otherwise
 
 Secondly the `Phong.effect` must be added to the assets loading queue:
 
+
 ```
- sceneManager-\>assets()-\>queue("effect/Phong.effect"); ```
+ sceneManager->assets()->queue("effect/Phong.effect"); 
+```
 
 
 Let's setup the scene:
+
 
 ```
 
@@ -67,11 +70,14 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
-To create a phong material you must use the `material::PhongMaterial::create()` method: ```
- auto phongMaterial = material::PhongMaterial::create(); ```
+To create a phong material you must use the `material::PhongMaterial::create()` method: 
+```
+ auto phongMaterial = material::PhongMaterial::create(); 
+```
 
 
 Don't forget to use the `material::` prefix since the `PhongMaterial` class is defined in the `minko::material` namespace (and assuming you are already using the `minko` namespace).
@@ -89,23 +95,25 @@ As the `BasicMaterial`, a `PhongMaterial` defines `diffuseColor` and `diffuseMap
 
 The `PhongMaterial` is a `[data::ArrayProvider`](data::ArrayProvider`) with a set of user-friendly inlined getter/setters for the properties expected by the corresponding effect.
 
+
 ```
 
 
-assets-\>queue("myTexture.png");
+assets->queue("myTexture.png");
 
-// inside the handler of assets-\>complete signal
+// inside the handler of assets->complete signal
 
 auto phongMaterial = material::PhongMaterial::create();
 
-phongMaterial-\>diffuseColor(0xFF0000FF); phongMaterial-\>diffuseMap(assets-\>texture("myTexture.png")); ```
+phongMaterial->diffuseColor(0xFF0000FF); phongMaterial->diffuseMap(assets->texture("myTexture.png")); 
+```
 
 
 Once a `diffuseMap` is set, it overwrites the `diffuseColor`.
 
-| Right                                                    | Left                                       | Front                                        |
-|----------------------------------------------------------|--------------------------------------------|----------------------------------------------|
-| ![](InitSceneDirectional.png "InitSceneDirectional.png") | ![](InitSceneSpot.png "InitSceneSpot.png") | ![](InitScenePoint.png "InitScenePoint.png") |
+| Right                                                                  | Left                                                     | Front                                                      |
+|------------------------------------------------------------------------|----------------------------------------------------------|------------------------------------------------------------|
+| ![](images/InitSceneDirectional.png "images/InitSceneDirectional.png") | ![](images/InitSceneSpot.png "images/InitSceneSpot.png") | ![](images/InitScenePoint.png "images/InitScenePoint.png") |
 
 Step 2: Setting a specular color
 --------------------------------
@@ -122,7 +130,8 @@ The phong material class defines several methods to set the specular color:
 -   `PhongMaterial::specularColor(Vector4::Ptr color)`
 -   `PhongMaterial::specularColor(uint color)`
 
-\<source lang="cpp\> phongMaterial-\>specularColor(0xFF0000FF); // or phongMaterial-\>specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); ```
+\<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); 
+```
 
 
 | Specular Color | Right                                        | Left                                         | Front                                        |
@@ -143,8 +152,10 @@ To set the shininess, the `PhongMaterial` defines one method :
 
 Usually shininess is a power of two.
 
+
 ```
- phongMaterial-\>shininess(32.f); ```
+ phongMaterial->shininess(32.f); 
+```
 
 
 | shininess | Right                                      | Left                                       | Front                                      |
@@ -155,6 +166,7 @@ Usually shininess is a power of two.
 
 Final Code
 ----------
+
 
 ```
 
@@ -223,7 +235,8 @@ int main(int argc, char\*\* argv) {
 `   sceneManager->assets()->load();`
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Where to go from there

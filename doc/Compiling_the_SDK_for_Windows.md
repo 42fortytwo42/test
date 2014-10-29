@@ -23,23 +23,27 @@ To do this you can:
 
 -   Run the following script from the "%MINKO\HOME%\\tools\\win\\scripts" directory
 
+
 ```
 
 
 `premake_vs2013.bat`
+
 
 ```
 
 
 -   **Or** open a command line prompt in the root directory of the SDK and run:
 
+
 ```
- tool/win/bin/premake5.exe --no-tests vs2013 ```
+ tool/win/bin/premake5.exe --no-tests vs2013 
+```
 
 
 In both cases, you should have the following result in the console:
 
-![](PremakeVisualStudio2013.png "PremakeVisualStudio2013.png")
+![](images/PremakeVisualStudio2013.png "images/PremakeVisualStudio2013.png")
 
 The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (\*.sln) and projects (\*.vcxproj) files have been properly generated. If this operation was successful, you should have `minko.sln` at the root of the SDK directory and a `\*.vcxproj` in each projet.
 
@@ -53,8 +57,10 @@ Step 5: Package (optional)
 
 The SDK is now built, but you might want to share or copy it so you don't have to deal with the sources again. We use a script to produce a distributable SDK. Open a terminal at the SDK root and run:
 
+
 ```
- tool\\win\\bin\\premake5.exe dist ```
+ tool\\win\\bin\\premake5.exe dist 
+```
 
 
 This should produce an archive in the root of the SDK which contains all the binaries built for your platform.

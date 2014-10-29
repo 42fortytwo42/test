@@ -3,22 +3,26 @@ In this tutorial, we will see how to catch keyboard inputs and use them to move 
 Step 1: Catching keyboards inputs
 ---------------------------------
 
+
 ```
- auto keyDown = canvas-\>keyboard()-\>keyDown()-\>connect([&](input::Keyboard::Ptr k) {
+ auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
 ` std::cout << "key down!" << std::endl;`
 
-}); ```
+}); 
+```
 
 
 The argument passed to the callbacks of the `Canvas::keyDown()` signal is an array where each cell indicates whether a specific key is down or not.
 
+
 ```
- auto keyDown = canvas-\>keyboard()-\>keyDown()-\>connect([&](input::Keyboard::Ptr k) {
+ auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
 ` std::cout << "The 'up' key is" << (k->keyIsDown(input::Keyboard::ScanCode::SPACE) ? "" : " not") << " down" << std::endl;`
 
-}); ```
+}); 
+```
 
 
 Step 2: Moving objects
@@ -26,19 +30,22 @@ Step 2: Moving objects
 
 To move our object, we will simply use the `Matrix4x4::appendTranslation()` method with argument values depending on which key is actually down:
 
+
 ```
- auto keyDown = canvas-\>keyboard()-\>keyDown()-\>connect([&](input::Keyboard::Ptr k) {
+ auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
 `   if (k->keyIsDown(input::Keyboard::ScanCode::LEFT))`
 `       cube->component<Transform>()->matrix()->appendTranslation(-0.1f);`
 `   if (k->keyIsDown(input::Keyboard::ScanCode::RIGHT))`
 `       cube->component<Transform>()->matrix()->appendTranslation(0.1f);`
 
-}); ```
+}); 
+```
 
 
 Final code
 ----------
+
 
 ```
 
@@ -97,6 +104,7 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 

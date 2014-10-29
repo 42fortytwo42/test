@@ -19,15 +19,18 @@ Step 1: Updating our effect
 
 As is, our effect only declares per-effect `uniform`s that we have to set/update manually. To fix this, we will use `uniformBindings` in order to map each `uniform` name to a data binding property (in this case, available in the material):
 
+
 ```
  "uniformBindings" : {
 
 ` "uColor" : "material.color"`
 
-} ```
+} 
+```
 
 
 This `uniformBinding` field can be declared in the pass object or directly at the root of our effect. Here is the complete code for our updated `MyCustomEffect.effect` file:
+
 
 ```
  {
@@ -65,7 +68,8 @@ This `uniformBinding` field can be declared in the pass object or directly at th
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
 The `uniformBindings` will affect:
@@ -84,15 +88,17 @@ Now that we've updated our `Effect` bindings, it will expect to find a "material
 
 In the very case of our `material.color` uniform binding, the rendering pipeline will expect:
 
--   a call to `sceneNode-\>data()-\>hasProperty("material.color")` to return `true`;
--   and a call to `sceneNode-\>data()-\>get\<Vector4::Ptr\>("material.color")` to return the Vector4 object to set for the `uColor` uniform.
+-   a call to `sceneNode->data()->hasProperty("material.color")` to return `true`;
+-   and a call to `sceneNode->data()->get\<Vector4::Ptr\>("material.color")` to return the Vector4 object to set for the `uColor` uniform.
 
 To make sure the rendering engine works as expected, we just have to make sure our `Material` object will indeed provide a `color` property:
+
 
 ```
  auto myCustomMaterial = material::Material::create();
 
-// set "color" to red myCustomMaterial-\>set("color", Vector4::create(1.f, 0.f, 0.f, 1.f)); ```
+// set "color" to red myCustomMaterial->set("color", Vector4::create(1.f, 0.f, 0.f, 1.f)); 
+```
 
 
 Note that we set the `color` property using the `Material::set()` method: this method will take care of adding the `material.` prefix all by itself.
@@ -103,6 +109,7 @@ Step 3 (optional) : Creating a custom material class
 Setting all the properties of a material can be quite difficult since developers have to open the corresponding `\*.effect` file to read find all the relevant `uniformBindings` declarations. It would be much simpler to have an actual `Material`-derived class that eventually declare static setter methods for all those properties.
 
 In our very case, we will create a `MyCustomMaterial` class that extends `Material` and declares a `color` setter in a `MyCustomMaterial.hpp` file:
+
 
 ```
 
@@ -137,29 +144,33 @@ namespace minko {
 `   };`
 ` }`
 
-} ```
+} 
+```
 
 
 Developers can now use your material as follow:
 
+
 ```
  auto myCustomMaterial = material::MyCustomMaterial::create();
 
-myCustomMaterial-\>color(Vector4::create(1.f, 0.f, 0.f, 1.f));
+myCustomMaterial->color(Vector4::create(1.f, 0.f, 0.f, 1.f));
 
-auto cube = scene::Node::create()-\>addComponent(Surface::create(
+auto cube = scene::Node::create()->addComponent(Surface::create(
 
 ` geometry::CubeGeometry::create(),`
 ` myCustomMaterial,`
 ` myCustomEffect`
 
-)); ```
+)); 
+```
 
 
 Final code
 ----------
 
-asset/effect/MyCustomEffect.effect ```
+asset/effect/MyCustomEffect.effect 
+```
  {
 
 ` "name" : "MyCustomEffect",`
@@ -195,10 +206,12 @@ asset/effect/MyCustomEffect.effect ```
 `   "`
 ` }]`
 
-} ```
+} 
+```
 
 
-src/main.cpp ```
+src/main.cpp 
+```
 
 
 1.  include "minko/Minko.hpp"
@@ -248,6 +261,7 @@ int main(int argc, char\*\* argv) {
 ` sceneManager->assets()->load();`
 ` return 0;`
 
-} ```
+} 
+```
 
 

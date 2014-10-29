@@ -11,20 +11,24 @@ Step 1: Loading a single effect
 
 To load a single effect, we will use the `AssetLibrary::load()` method:
 
+
 ```
- sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary::Ptr assets) {
+ sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
 ` std::cout << "all assets have been loaded!" << std::endl;`
 
 });
 
-sceneManager-\>assets()-\>load("MyEffect.effect"); ```
+sceneManager->assets()->load("MyEffect.effect"); 
+```
 
 
 This code snippet should output:
 
+
 ```
- all assets have been loaded! ```
+ all assets have been loaded! 
+```
 
 
 when all the file passed to the `AssetLibrary::load()` method has been successfully loaded and is available in the `AssetLibrary`.
@@ -34,26 +38,30 @@ Step 1 (alternative): Loading multiple effects/assets
 
 To load multiple effects - or if the `\*.effect` file(s) you want to load is just one asset among others - we can use the `AssetLibrary::queue()` method. This method expects the same arguments as the `AssetLibrary::load()` method except it will enlist all the files to load. It will then eventually load then in a batch when `AssetLibrary::load()` is actually called:
 
+
 ```
- sceneManager-\>assets()
+ sceneManager->assets()
 
 ` ->queue("MyEffect1.effect")`
 ` ->queue("MyEffect2.effect")`
 ` ->queue("MyEffect3.effect");`
 
-sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary::Ptr assets) {
+sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
 ` std::cout << "all assets have been loaded!" << std::endl;`
 
 });
 
-sceneManager-\>assets()-\>load(); ```
+sceneManager->assets()->load(); 
+```
 
 
 This code snippet should output:
 
+
 ```
- all assets have been loaded! ```
+ all assets have been loaded! 
+```
 
 
 when all the assets listed by the successive calls to the `AssetLibrary::queue()` method have been successfully loaded and are available in the `AssetLibrary`.
@@ -66,16 +74,19 @@ When our `\*.effect` is loaded, it is automatically made available in the `Asset
 -   the value of the "name" field in the `\*.effect` file, if any;
 -   or the actual file name used upon loading (the `std::string` passed to either `AssetLibrary::load()` or `AssetLibrary::queue()`).
 
+
 ```
- sceneManager-\>assets()-\>complete()-\>connect([&](file::AssetLibrary::Ptr assets) {
+ sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
 ` auto fx = assets()->effect("MyEffect.effect");`
 
-} ```
+} 
+```
 
 
 Final code
 ----------
+
 
 ```
 
@@ -129,7 +140,8 @@ int main(int argc, char\*\* argv) {
 
 `   return 0;`
 
-} ```
+} 
+```
 
 
 Where to go from there...
