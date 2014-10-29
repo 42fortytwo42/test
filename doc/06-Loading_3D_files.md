@@ -17,12 +17,7 @@ The next step is to include the correct header into your C++ application source 
 
 
 ```cpp
-
-
-1.  include "minko/MinkoASSIMP.hpp"
-2.  include "minko/MinkoJPEG.hpp"
-
-
+ \#include "minko/MinkoASSIMP.hpp" \#include "minko/MinkoJPEG.hpp" 
 ```
 
 
@@ -67,7 +62,7 @@ Use default Effect
 
 Most of the time, your model does not know the effect that its surfaces are supposed to be linked with. In order to indicate an effect, you must use the defaultOptions of the `AssetLibrary`.
 
-\<source lang="cpp\> sceneManager->assets()->defaultOptions()->effect(sceneManager->assets()->effect(DEFAULT\EFFECT)); 
+<source lang="cpp\> sceneManager->assets()->defaultOptions()->effect(sceneManager->assets()->effect(DEFAULT\EFFECT)); 
 ```
 
 
@@ -84,12 +79,7 @@ Final Code
 
 
 ```cpp
-
-
-1.  include "minko/Minko.hpp"
-2.  include "minko/MinkoSDL.hpp"
-3.  include "minko/MinkoASSIMP.hpp"
-4.  include "minko/MinkoJPEG.hpp"
+ \#include "minko/Minko.hpp" \#include "minko/MinkoSDL.hpp" \#include "minko/MinkoASSIMP.hpp" \#include "minko/MinkoJPEG.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
