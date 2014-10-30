@@ -16,13 +16,13 @@ To do this, open a command line prompt in the root directory of the SDK and run:
 
 
 ```bash
- $ tool/mac/script/solution\xcode.sh 
+$ tool/mac/script/solution_xcode.sh 
 ```
 
 
 You should have the following result in the console: ![](images/Solution_minko_xcode.png "fig:images/Solution_minko_xcode.png")
 
-Make sure a minko.xcworkspace solution file has been properly generated. If this operation was successful, you should have a *.xcodeproj project file in each project directory.
+Make sure a `minko.xcworkspace` solution file has been properly generated. If this operation was successful, you should have a `*.xcodeproj` project file in each project directory.
 
 Step 3: Updating the project for Xcode 5 (optional)
 ---------------------------------------------------
@@ -51,7 +51,7 @@ The SDK is now built, but you might want to share or copy it so you don't have t
 
 
 ```bash
- $ tool/mac/script/dist.sh 
+$ tool/mac/script/dist.sh 
 ```
 
 

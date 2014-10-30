@@ -1,14 +1,14 @@
 There are two ways of changing the transform of your nodes :
 
--   Through the Properties panel
+-   Through the `Properties` panel
 -   With the gizmos on the scene
 
-In order to change the transform of a node, you have to select this node, either by clicking on it on the scene, or by clicking on it on the scene tree of the Scene panel.
+In order to change the transform of a node, you have to select this node, either by clicking on it on the scene, or by clicking on it on the scene tree of the `Scene` panel.
 
 Transform section on the Properties panel
 =========================================
 
-The Transform section of the Properties panel allows you to alter 4 characteristics of the transform.
+The `Transform` section of the `Properties` panel allows you to alter 4 characteristics of the transform.
 
 ![](images/Transform_panel.png "images/Transform_panel.png")
 
@@ -35,7 +35,7 @@ Transform Gizmos
 
 When a node is selected on the scene, you will notice there is a gizmo placed at its origin. You can use it to move your node in a more visual way than with the form. It also makes it easier to move a node that is included in transformed group.
 
-To switch between gizmos, use the three buttons on the left of bottom bar. See the [bottom bar](The_bottom_bar.md) tutorial for more details.
+To switch between gizmos, use the three buttons on the left of bottom bar. See the [bottom bar](The_bottom_bar#Transform_gizmos.md) tutorial for more details.
 
 ![](images/Transform_gizmos.png "images/Transform_gizmos.png")
 
@@ -55,9 +55,9 @@ Finally, the scale gizmo will allow you to change the scale along one of the 3 a
 
 #### Spacial reference
 
-By default, all gizmos will move your node in world space, wether they're at the root of the scene or in a number of subgroups with different transforms. You can switch to local space, with the World/Local button on the bottom bar, if you want to move your node in local space.
+By default, all gizmos will move your node in world space, wether they're at the root of the scene or in a number of subgroups with different transforms. You can switch to local space, with the `World/Local` button on the bottom bar, if you want to move your node in local space.
 
 #### Pivot Point
 
-By default, for the rotation, the center of the node will be used as pivot point. You can switch this to the pivot point of the node with the Center/Pivot button of the bottom bar. In pivot mode, the pivot point will be either the node's pivot point if it is set, or the node origin.
+By default, for the rotation, the center of the node will be used as pivot point. You can switch this to the pivot point of the node with the `Center/Pivot` button of the bottom bar. In pivot mode, the pivot point will be either the node's pivot point if it is set, or the node origin.
 

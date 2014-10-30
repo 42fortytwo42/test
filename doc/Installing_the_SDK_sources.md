@@ -22,7 +22,7 @@ If you're working with GitHub for Windows/Mac, you can clone the repository simp
 
 ![](images/Minko_github_clone.jpg "images/Minko_github_clone.jpg")
 
-The URI of the GitHub repository is: [https://github.com/aerys/minko.git](https://github.com/aerys/minko.git)
+The URI of the GitHub repository is: `[https://github.com/aerys/minko.git`](https://github.com/aerys/minko.git`)
 
 Step 3 (optional): Switching to the 'dev' branch
 ------------------------------------------------

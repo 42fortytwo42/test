@@ -1,19 +1,19 @@
-In this tutorial, we will introduce how to work with the PhongMaterial to achieve lights dependent rendering. In order to fully understand this example, please read this one first : [Working with the BasicMaterial](Working_with_the_BasicMaterial.md)
+In this tutorial, we will introduce how to work with the `PhongMaterial` to achieve lights dependent rendering. In order to fully understand this example, please read this one first : [Working with the BasicMaterial](Working_with_the_BasicMaterial.md)
 
 Step 0: Setup the scene
 -----------------------
 
-First of all, a PhongMaterial needs at least one light in the scene, otherwise it will appear totally black:
+First of all, a `PhongMaterial` needs at least one light in the scene, otherwise it will appear totally black:
 
 -   directional light: [Working with directional lights](Working_with_directional_lights.md)
 -   spot light: [Working with spot lights](Working_with_spot_lights.md)
 -   point light: [Working with point lights](Working_with_point_lights.md)
 
-Secondly the Phong.effect must be added to the assets loading queue:
+Secondly the `Phong.effect` must be added to the assets loading queue:
 
 
 ```cpp
- sceneManager->assets()->queue("effect/Phong.effect"); 
+sceneManager->assets()->queue("effect/Phong.effect"); 
 ```
 
 
@@ -21,75 +21,81 @@ Let's setup the scene:
 
 
 ```cpp
- #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
-using namespace minko; using namespace minko::component; using namespace minko::math;
+#include "minko/Minko.hpp" 
+#include "minko/MinkoPNG.hpp" 
+#include "minko/MinkoSDL.hpp"
+
+
+using namespace minko; 
+using namespace minko::component; 
+using namespace minko::math;
 
 int main(int argc, char** argv) {
 
-autocanvas=Canvas::create("",800,600);
+   auto canvas = Canvas::create("", 800, 600);
 
-autosceneManager=SceneManager::create(canvas->context());
+   auto sceneManager = SceneManager::create(canvas->context());
 
-//addthepngparsertoloadtextures
-//addthePhongeffect
-sceneManager->assets()
-->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-->queue("effect/Phong.effect");
+   // add the png parser to load textures
+   // add the Phong effect
+   sceneManager->assets()
+       ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+   ->queue("effect/Phong.effect");
 
-auto_=sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptrassets)
-{
-autoroot=scene::Node::create("root")
-->addComponent(sceneManager);
+   auto _ = sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptr assets)
+   {
+   auto root = scene::Node::create("root")
+       ->addComponent(sceneManager);
 
-autocamera=scene::Node::create("camera")
-->addComponent(Renderer::create(0x00000000))
-->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(),Vector3::create(0.0f,1.f,1.3f))
-))
-->addComponent(PerspectiveCamera::create(800.f/600.f,(float)PI*0.25f,.1f,1000.f));
-root->addChild(camera);
+   auto camera = scene::Node::create("camera")
+           ->addComponent(Renderer::create(0x00000000))
+       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(0.0f, 1.f, 1.3f))
+           ))
+       ->addComponent(PerspectiveCamera::create(800.f / 600.f, (float)PI * 0.25f, .1f, 1000.f));
+   root->addChild(camera);
 
-autospotLight=scene::Node::create("SpotLight")
-->addComponent(SpotLight::create(0.6f,0.78f,20.f))
-->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(3.f,5.f,1.5f))));
-spotLight->component<SpotLight>()->diffuse(0.5f);
+   auto spotLight = scene::Node::create("SpotLight")
+       ->addComponent(SpotLight::create(0.6f, 0.78f, 20.f))
+       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(3.f, 5.f, 1.5f))));
+   spotLight->component<SpotLight>()->diffuse(0.5f);
 
-root->addChild(spotLight);
+   root->addChild(spotLight);
 
-autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
-{
-sceneManager->nextFrame(t,dt);
-});
+   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
+   {
+       sceneManager->nextFrame(t, dt);
+   });
 
-canvas->run();
-});
-sceneManager->assets()->load();
-return0;
+   canvas->run();
+   });
+   sceneManager->assets()->load();
+   return 0;
 
 } 
 ```
 
 
-To create a phong material you must use the material::PhongMaterial::create() method: 
+To create a phong material you must use the `material::PhongMaterial::create()` method: 
 ```cpp
- auto phongMaterial = material::PhongMaterial::create(); 
+auto phongMaterial = material::PhongMaterial::create(); 
 ```
 
 
-Don't forget to use the material:: prefix since the PhongMaterial class is defined in the minko::material namespace (and assuming you are already using the minko namespace).
+Don't forget to use the `material::` prefix since the `PhongMaterial` class is defined in the `minko::material` namespace (and assuming you are already using the `minko` namespace).
 
-The phong material uses the bindings listed in the Phong.effect.
+The phong material uses the bindings listed in the `Phong.effect`.
 
 Step 1: Configure the PhongMaterial
 -----------------------------------
 
-As the BasicMaterial, a PhongMaterial defines diffuseColor and diffuseMap methods:
+As the `BasicMaterial`, a `PhongMaterial` defines `diffuseColor` and `diffuseMap` methods:
 
--   PhongMaterial::diffuseColor(Vector4::Ptr color), where color is an RGBA Vector4 value
--   PhongMaterial::diffuseColor(uint color), where rgba is an RGBA formatted unsigned integer value
--   PhongMaterial::diffuseMap(AbstractTexture::Ptr texture) [Loading and using textures](Loading_and_using_textures.md)
+-   `PhongMaterial::diffuseColor(Vector4::Ptr color)`, where color is an RGBA Vector4 value
+-   `PhongMaterial::diffuseColor(uint color)`, where rgba is an RGBA formatted unsigned integer value
+-   `PhongMaterial::diffuseMap(AbstractTexture::Ptr texture)` [Loading and using textures](Loading_and_using_textures.md)
 
-The PhongMaterial is a [data::ArrayProvider](data::ArrayProvider) with a set of user-friendly inlined getter/setters for the properties expected by the corresponding effect.
+The `PhongMaterial` is a `[data::ArrayProvider`](data::ArrayProvider`) with a set of user-friendly inlined getter/setters for the properties expected by the corresponding effect.
 
 
 ```cpp
@@ -105,7 +111,7 @@ phongMaterial->diffuseColor(0xFF0000FF); phongMaterial->diffuseMap(assets->textu
 ```
 
 
-Once a diffuseMap is set, it overwrites the diffuseColor.
+Once a `diffuseMap` is set, it overwrites the `diffuseColor`.
 
 | Right                                                                  | Left                                                     | Front                                                      |
 |------------------------------------------------------------------------|----------------------------------------------------------|------------------------------------------------------------|
@@ -123,10 +129,12 @@ The specular color changes the color of this hightlights. The default value is w
 
 The phong material class defines several methods to set the specular color:
 
--   PhongMaterial::specularColor(Vector4::Ptr color)
--   PhongMaterial::specularColor(uint color)
+-   `PhongMaterial::specularColor(Vector4::Ptr color)`
+-   `PhongMaterial::specularColor(uint color)`
 
-<source lang="cpp> phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); 
+
+```cpp
+phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); 
 ```
 
 
@@ -142,15 +150,15 @@ Step 3: Setting the shininess
 
 Empirically, the shininess parameter controls how sharp specular reflections will look across the surface of the object. The default value is 8.
 
-To set the shininess, the PhongMaterial defines one method :
+To set the shininess, the `PhongMaterial` defines one method :
 
--   PhongMaterial::shininess(float shininess)
+-   `PhongMaterial::shininess(float shininess)`
 
 Usually shininess is a power of two.
 
 
 ```cpp
- phongMaterial->shininess(32.f); 
+phongMaterial->shininess(32.f); 
 ```
 
 
@@ -165,67 +173,73 @@ Final Code
 
 
 ```cpp
- #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
-using namespace minko; using namespace minko::component; using namespace minko::math;
+#include "minko/Minko.hpp" 
+#include "minko/MinkoPNG.hpp" 
+#include "minko/MinkoSDL.hpp"
+
+
+using namespace minko; 
+using namespace minko::component; 
+using namespace minko::math;
 
 int main(int argc, char** argv) {
 
-autocanvas=Canvas::create("MinkoTutorial-WorkingwiththePhongMaterial",800,600);
+   auto canvas = Canvas::create("Minko Tutorial - Working with the PhongMaterial", 800, 600);
 
-autosceneManager=SceneManager::create(canvas->context());
+   auto sceneManager = SceneManager::create(canvas->context());
 
-//addthepngparsertoloadtextures
-//addthePhongeffect
-sceneManager->assets()
-->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-->queue("texture/diffuseMap.png")
-->queue("effect/Phong.effect");
+   // add the png parser to load textures
+   // add the Phong effect
+   sceneManager->assets()
+       ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+       ->queue("texture/diffuseMap.png")
+   ->queue("effect/Phong.effect");
 
-auto_=sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptrassets)
-{
-autoroot=scene::Node::create("root")
-->addComponent(sceneManager);
+   auto _ = sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptr assets)
+   {
+   auto root = scene::Node::create("root")
+       ->addComponent(sceneManager);
 
-autophongMaterial=material::PhongMaterial::create();
+       auto phongMaterial = material::PhongMaterial::create();
 
-phongMaterial->diffuseMap(assets->texture("texture/diffuseMap.png"));
-phongMaterial->shininess(2.f);
-phongMaterial->specularColor(math::Vector4::create(0.4f,0.8f,1.f,1.f));
+       phongMaterial->diffuseMap(assets->texture("texture/diffuseMap.png"));
+       phongMaterial->shininess(2.f);
+       phongMaterial->specularColor(math::Vector4::create(0.4f, 0.8f, 1.f, 1.f));
+       
+   auto mesh = scene::Node::create("mesh")
+       ->addComponent(Transform::create(Matrix4x4::create()->prependScale(1.1)))
+       ->addComponent(Surface::create(
+           geometry::SphereGeometry::create(sceneManager->assets()->context()),
+           phongMaterial,
+           assets->effect("effect/Phong.effect")
+       ));
 
-automesh=scene::Node::create("mesh")
-->addComponent(Transform::create(Matrix4x4::create()->prependScale(1.1)))
-->addComponent(Surface::create(
-geometry::SphereGeometry::create(sceneManager->assets()->context()),
-phongMaterial,
-assets->effect("effect/Phong.effect")
-));
+   auto camera = scene::Node::create("camera")
+           ->addComponent(Renderer::create(0x00000000))
+       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(0.0f, 1.f, 1.3f))
+           ))
+       ->addComponent(PerspectiveCamera::create(800.f / 600.f, (float)PI * 0.25f, .1f, 1000.f));
 
-autocamera=scene::Node::create("camera")
-->addComponent(Renderer::create(0x00000000))
-->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(),Vector3::create(0.0f,1.f,1.3f))
-))
-->addComponent(PerspectiveCamera::create(800.f/600.f,(float)PI*0.25f,.1f,1000.f));
+   auto spotLight = scene::Node::create("SpotLight")
+       ->addComponent(SpotLight::create(0.6f, 0.78f, 20.f))
+       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(3.f, 5.f, 1.5f))));
+   spotLight->component<SpotLight>()->diffuse(0.5f);
+   
 
-autospotLight=scene::Node::create("SpotLight")
-->addComponent(SpotLight::create(0.6f,0.78f,20.f))
-->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(3.f,5.f,1.5f))));
-spotLight->component<SpotLight>()->diffuse(0.5f);
+   root->addChild(camera);
+       root->addChild(mesh);
+   root->addChild(spotLight);
 
+   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
+   {
+       sceneManager->nextFrame(t, dt);
+   });
 
-root->addChild(camera);
-root->addChild(mesh);
-root->addChild(spotLight);
-
-autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
-{
-sceneManager->nextFrame(t,dt);
-});
-
-canvas->run();
-});
-sceneManager->assets()->load();
-return0;
+   canvas->run();
+   });
+   sceneManager->assets()->load();
+   return 0;
 
 } 
 ```
@@ -234,7 +248,7 @@ return0;
 Where to go from there
 ----------------------
 
-This tutorial covers partially the possibilities of the PhongMaterial. To learn more about this material, these tutorials provide more information:
+This tutorial covers partially the possibilities of the `PhongMaterial`. To learn more about this material, these tutorials provide more information:
 
 -   [ Working with normal maps ](Working_with_normal_maps_.md)
 -   [ Working with environment maps ](Working_with_environment_maps_.md)

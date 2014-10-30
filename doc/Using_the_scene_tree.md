@@ -3,7 +3,7 @@ The scene tree gives you an overview of what is is your scene. It also allows yo
 Focus
 =====
 
-On every node, you can click Focus on the right click menu to focus the camera on that node.
+On every node, you can click `Focus` on the right click menu to focus the camera on that node.
 
 Adding nodes
 ============
@@ -48,7 +48,7 @@ With this submenu, you can add one of the following cameras :
 Copying nodes
 =============
 
-You can copy one of multiple nodes, and paste them elsewhere. You can either use the right click menu and select Copy/Paste, or the Ctrl + C(copy) Ctrl + V(paste) keyboard shortcuts, either on the scene tree or on the scene.
+You can copy one of multiple nodes, and paste them elsewhere. You can either use the right click menu and select `Copy`/`Paste`, or the `Ctrl + C`(copy) `Ctrl + V`(paste) keyboard shortcuts, either on the scene tree or on the scene.
 
 Node specific actions
 =====================
@@ -87,12 +87,12 @@ This will replace the instance of the symbol with a group containing the symbol 
 Editing a symbol
 ================
 
-You can enter a symbol in order to make modifications to it. For this, you can either double-click on an instance of the symbol in the tree, or select it and click on the Enter Symbol button above the tree (arrow going to the right).
+You can enter a symbol in order to make modifications to it. For this, you can either double-click on an instance of the symbol in the tree, or select it and click on the `Enter Symbol` button above the tree (arrow going to the right).
 
-Once your modifications are finished, you can leave the symbol by clicking on the Leave Symbol button above the tree (arrow going to the left).
+Once your modifications are finished, you can leave the symbol by clicking on the `Leave Symbol` button above the tree (arrow going to the left).
 
 Unfolding all nodes
 ===================
 
-Use the + and - buttons above the scene tree to fold or unfold every group in the scene.
+Use the `+` and `-` buttons above the scene tree to fold or unfold every group in the scene.
 

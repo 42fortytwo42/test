@@ -61,7 +61,7 @@ Minko for HTML5 relies only on WebGL, the HTML5 standard API to create 3D web ap
 
 | Host                       | Support                                      |
 |----------------------------|----------------------------------------------|
-| X86 or X86\64 Kernel 2.6+ | ![](images/Checked.png "images/Checked.png") |
+| X86 or X86_64 Kernel 2.6+ | ![](images/Checked.png "images/Checked.png") |
 | ARM - kernel 2.6+          | ![](images/Checked.png "images/Checked.png") |
 
 ### ![](images/Androidmini.png "fig:images/Androidmini.png") Android

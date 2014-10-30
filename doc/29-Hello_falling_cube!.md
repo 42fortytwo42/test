@@ -18,7 +18,8 @@ But first things first, you must before anything else [enable the 'bullet' plugi
 
 
 ```cpp
- #include "minko/MinkoBullet.hpp" 
+
+#include "minko/MinkoBullet.hpp" 
 ```
 
 
@@ -27,16 +28,16 @@ Step 1: Set up your physics world
 
 Parallel to your rendered, visible world should exist a *physics world* where all the computations governed by the laws of physics take place. Both universes then synchronize one another at each frame in order to physically animate the visible objects of your scene.
 
-For your simulation to work, you thus need to add a minko::component::bullet::PhysicsWorld to the scene node "you want the simulation to take place in", or alternatively, the node only the children of which will actually participate to the simulation. In most cases, this node will simply be the root of the scene node hierarchy.
+For your simulation to work, you thus need to add a `minko::component::bullet::PhysicsWorld` to the scene node "you want the simulation to take place in", or alternatively, the node only the children of which will actually participate to the simulation. In most cases, this node will simply be the root of the scene node hierarchy.
 
-**Note** Please remember that for the simulation to be updated at the end of each frame, the addition of a minko::component::Renderer somewhere in your scene node hierarchy is mandatory.
+**Note** Please remember that for the simulation to be updated at the end of each frame, the addition of a `minko::component::Renderer` somewhere in your scene node hierarchy is mandatory.
 
 
 ```cpp
- auto root = scene::Node::create("root")
+auto root = scene::Node::create("root")
 
-->addComponent(sceneManager)
-->addComponent(bullet::PhysicsWorld::create());
+   ->addComponent(sceneManager)
+   ->addComponent(bullet::PhysicsWorld::create());
 
 
 ```
@@ -47,9 +48,9 @@ From now on, you have a physics world that takes care of all physics-based compu
 Step 2: Make your scene nodes physics-aware
 -------------------------------------------
 
-Indeed, simply adding nodes to your rendered scene is not enough, you must introduce your objects to the physics world you just created. And in order to add objects to your scene's physics world, you must attach a minko::component::bullet::Collider component to the scene nodes that will be part of your simulation. Such nodes will then have their *position* and *orientation* governed by the law of physics and move around accordingly.
+Indeed, simply adding nodes to your rendered scene is not enough, you must introduce your objects to the physics world you just created. And in order to add objects to your scene's physics world, you must attach a `minko::component::bullet::Collider` component to the scene nodes that will be part of your simulation. Such nodes will then have their *position* and *orientation* governed by the law of physics and move around accordingly.
 
-Colliders are initialized with instances of minko::component::bullet::ColliderData which are nothing more than storage structures gathering most of the relevant physical properties you would want to adorn your objects. At the time of the writting of this article, only rigid objects are supported in Minko.
+Colliders are initialized with instances of `minko::component::bullet::ColliderData` which are nothing more than storage structures gathering most of the relevant physical properties you would want to adorn your objects. At the time of the writting of this article, only rigid objects are supported in Minko.
 
 Of paramount importance are the following properties of a collider data instance :
 
@@ -60,19 +61,19 @@ Follows the example of a simple falling cube, the corresponding node of which is
 
 
 ```cpp
- auto boxColliderData = bullet::ColliderData::create(
+auto boxColliderData = bullet::ColliderData::create(
 
-5.0f,//strictlypositivemass
-bullet::BoxShape::create(0.5f,0.5f,0.5f)//shapestrictlymatchestheCubeGeometry
+   5.0f, // strictly positive mass
+   bullet::BoxShape::create(0.5f, 0.5f, 0.5f) // shape strictly matches the CubeGeometry
 
 ); auto boxNode = scene::Node::create("boxNode")
 
-->addComponent(bullet::Collider::create(boxColliderData))
-->addComponent(Surface::create(
-geometry::CubeGeometry::create(assets->context()),
-material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
-assets->effect("effect/Basic.effect")
-));
+   ->addComponent(bullet::Collider::create(boxColliderData))
+   ->addComponent(Surface::create(
+       geometry::CubeGeometry::create(assets->context()),
+       material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
+       assets->effect("effect/Basic.effect")
+   ));
 
 
 ```
@@ -85,7 +86,7 @@ Simply adding your collider-bearing node to the scene:
 
 
 ```cpp
- root->addChild(boxNode); 
+root->addChild(boxNode); 
 ```
 
 
@@ -93,75 +94,83 @@ is now enough to trigger the simulation, and watch our poor cube fall under the 
 
 ![Above are several captures of the physics simulation at different frames.](images/FallingCube.png "Above are several captures of the physics simulation at different frames.")
 
-**Important** When adding a new child node to your scene, a minko::component::bullet::PhysicsWorld must already be present in the set of its newly-defined parent nodes. If not, this added node will simply be ignored from the simulation regardless of the validity of its attached collider.
+**Important** When adding a new child node to your scene, a `minko::component::bullet::PhysicsWorld` must already be present in the set of its newly-defined parent nodes. If not, this added node will simply be ignored from the simulation regardless of the validity of its attached collider.
 
-Also note that even though boxNode has not been explicitly added a minko::component::Transform component, our cube indeed moves around and has its position and orientation updated by the simulation anyway: it is so because a minko::component::Transform has been automatically added to the node when it entered the physics world. Our cube thus starts the simulation lying at the origin of the world without any orientation. Needless to say it is always preferred, if not more convenient, to have you add this minko::component::Transform yourself.
+Also note that even though `boxNode` has not been explicitly added a `minko::component::Transform` component, our cube indeed moves around and has its position and orientation updated by the simulation anyway: it is so because a `minko::component::Transform` has been automatically added to the node when it entered the physics world. Our cube thus starts the simulation lying at the origin of the world without any orientation. Needless to say it is always preferred, if not more convenient, to have you add this `minko::component::Transform` yourself.
 
-**Note** You will most likely want your physics objects to be *visible* objects, or more formally minko::component::Surface-bearing nodes (as illustrated in this tutorial). However, nothing prevents you from attaching colliders to any node, may it be invisible, such as a camera-dedicated node for instance.
+**Note** You will most likely want your physics objects to be *visible* objects, or more formally `minko::component::Surface`-bearing nodes (as illustrated in this tutorial). However, nothing prevents you from attaching colliders to any node, may it be invisible, such as a camera-dedicated node for instance.
 
 Final code
 ----------
 
 
 ```cpp
- #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp" // STEP 0 #include "minko/MinkoBullet.hpp"
 
-using namespace minko; using namespace minko::scene; using namespace minko::component; using namespace minko::math;
+#include "minko/Minko.hpp" 
+#include "minko/MinkoPNG.hpp" 
+#include "minko/MinkoSDL.hpp" // STEP 0 
+#include "minko/MinkoBullet.hpp"
 
-const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600; const std::string TEXTURE\FILENAME = "texture/box.png";
+
+using namespace minko; 
+using namespace minko::scene; 
+using namespace minko::component; 
+using namespace minko::math;
+
+const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600; const std::string TEXTURE_FILENAME = "texture/box.png";
 
 int main(int argc, char** argv) {
 
-autocanvas=Canvas::create("MinkoTutorial-Hellofallingcube!",WINDOW_WIDTH,WINDOW_HEIGHT);
-autosceneManager=SceneManager::create(canvas->context());
+   auto canvas = Canvas::create("Minko Tutorial - Hello falling cube!", WINDOW_WIDTH, WINDOW_HEIGHT);
+   auto sceneManager = SceneManager::create(canvas->context());
 
-sceneManager->assets()
-->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-->queue(TEXTURE_FILENAME)
-->queue("effect/Basic.effect");
+   sceneManager->assets()
+       ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+       ->queue(TEXTURE_FILENAME)
+       ->queue("effect/Basic.effect");
 
-autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
-{
-autocamera=scene::Node::create("camera")
-->addComponent(Renderer::create(0x7f7f7fff))
-->addComponent(Transform::create(
-Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(0.5f,2.0f,2.0f))
-))
-->addComponent(PerspectiveCamera::create(WINDOW_WIDTH/WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f));
+   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
+   {
+       auto camera = scene::Node::create("camera")
+           ->addComponent(Renderer::create(0x7f7f7fff))
+           ->addComponent(Transform::create(
+           Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(0.5f, 2.0f, 2.0f))
+           ))
+           ->addComponent(PerspectiveCamera::create(WINDOW_WIDTH / WINDOW_HEIGHT, (float) PI * 0.25f, .1f, 1000.f));
 
-//STEP1:createandaddyourphysicsworldtothescene
-autoroot=scene::Node::create("root")
-->addComponent(sceneManager)
-->addComponent(bullet::PhysicsWorld::create());
+       // STEP 1: create and add your physics world to the scene
+       auto root = scene::Node::create("root")
+           ->addComponent(sceneManager)
+           ->addComponent(bullet::PhysicsWorld::create());
 
-//STEP2:createabox-shapedrigidbody
-autoboxColliderData=bullet::ColliderData::create(
-5.0f,//strictlypositivemass
-bullet::BoxShape::create(0.5f,0.5f,0.5f)//shapestrictlymatchestheCubeGeometry
-);
-autoboxNode=scene::Node::create("boxNode")
-->addComponent(bullet::Collider::create(boxColliderData))
-->addComponent(Surface::create(
-geometry::CubeGeometry::create(assets->context()),
-material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
-assets->effect("effect/Basic.effect")
-));
+       // STEP 2: create a box-shaped rigid body
+       auto boxColliderData = bullet::ColliderData::create(
+           5.0f, // strictly positive mass
+           bullet::BoxShape::create(0.5f, 0.5f, 0.5f) // shape strictly matches the CubeGeometry
+           );
+       auto boxNode = scene::Node::create("boxNode")
+           ->addComponent(bullet::Collider::create(boxColliderData))
+           ->addComponent(Surface::create(
+           geometry::CubeGeometry::create(assets->context()),
+           material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
+           assets->effect("effect/Basic.effect")
+           ));
 
-root->addChild(camera);
-//STEP3:triggerthesimulationbyaddingthephysicsobjecttothescene
-root->addChild(boxNode);
+       root->addChild(camera);
+       // STEP 3: trigger the simulation by adding the physics object to the scene
+       root->addChild(boxNode);
 
-autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
-{
-sceneManager->nextFrame(t,dt);
-});
+       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
+       {
+           sceneManager->nextFrame(t, dt);
+       });
 
-canvas->run();
-});
+       canvas->run();
+   });
 
-sceneManager->assets()->load();
+   sceneManager->assets()->load();
 
-return0;
+   return 0;
 
 } 
 ```
@@ -172,7 +181,7 @@ About the transforms' scaling components
 
 This may not come as an important matter at first, but it is something you may want to keep in mind in the future. Only the *position* and *orientation* are exchanged between the Bullet simulation and the Minko rendering.
 
-If the objects you want to include to your simulation are prealably scaled (via the prependAppend/appendScale of the minko::component::Transform component), you must take these scaling factors into account when defining the collider shapes (as these will not currently be transferred to the simulation otherwise).
+If the objects you want to include to your simulation are prealably scaled (via the `prependAppend`/`appendScale` of the `minko::component::Transform` component), you must take these scaling factors into account when defining the collider shapes (as these will not currently be transferred to the simulation otherwise).
 
 Where to go from there
 ----------------------

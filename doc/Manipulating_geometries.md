@@ -1,4 +1,4 @@
-The Geometry section of the Properties panel provides a set of operations you can perform on geometries.
+The `Geometry` section of the `Properties` panel provides a set of operations you can perform on geometries.
 
 Flip normals
 ============

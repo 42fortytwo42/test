@@ -16,30 +16,30 @@ Bindings are used to declare how each property of each pass of the effect will b
 
 
 ```javascript
- "attributeBindings" : {
+"attributeBindings" : {
 
-"position":"geometry/vertex/attribute/position"
+   "position"      : "geometry/vertex/attribute/position"
 
 },
 
 "uniformBindings" : {
 
-"diffuseColor":"material/diffuse/rgba",
-"modelToWorldMatrix":"transform/modelToWorldMatrix",
-"worldToScreenMatrix":"transform/worldToScreenMatrix"
+   "diffuseColor"      : "material/diffuse/rgba",
+   "modelToWorldMatrix"    : "transform/modelToWorldMatrix",
+   "worldToScreenMatrix"   : "transform/worldToScreenMatrix"
 
 },
 
 "stateBindings" : {
 
-"blendMode":"material/blendMode",
-"depthTest":"material/depthTest"
+   "blendMode"     : "material/blendMode",
+   "depthTest"     : "material/depthTest"
 
 } 
 ```
 
 
-The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](.md)).
+The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](#Pass_Bindings.md)).
 
 Passes
 ------
@@ -62,28 +62,28 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 
 
 ```javascript
- // some effect {
+// some effect {
 
-//bydefault,the"blendMode"stateisboundtothe"material/blendMode"property
-"stateBindings":{
-"blendMode":"material/blendMode"
-},
+   // by default, the "blendMode" state is bound to the "material/blendMode" property
+   "stateBindings"     : {
+       "blendMode" : "material/blendMode"
+   },
 
-"passes":[{
-"name":"firstpass",
-//"firstpass"doestnore-declarethe"blendMode"statebinding:itwilluse
-//thedefaultone
-//...
-},
-{
-"name":"secondpass",
-//"secondpass"re-declarethe"blendMode"statebinding:itwill*not*use
-//thedefaultone
-"stateBindings":{
-"blendMode":"some/other/blendMode/property"
-},
-//...
-}]
+   "passes" : [{
+       "name"  : "first pass",
+       // "first pass" doest no re-declare the "blendMode" state binding: it will use
+       // the default one
+       // ...
+   },
+   {
+       "name"  : "second pass",
+       // "second pass" re-declare the "blendMode" state binding: it will *not* use
+       // the default one
+       "stateBindings"     : {
+           "blendMode" : "some/other/blendMode/property"
+       },
+       // ...
+   }]
 
 } 
 ```
@@ -103,22 +103,22 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                -   "zero"                                                                                                                                                                                                                                                       
                                                -   "one"                                                                                                                                                                                                                                                        
                                                -   "color"                                                                                                                                                                                                                                                      
-                                               -   "one\minus\src\color"                                                                                                                                                                                                                                     
-                                               -   "src\alpha"                                                                                                                                                                                                                                                 
-                                               -   "one\minus\src\alpha"                                                                                                                                                                                                                                     
-                                               -   "dst\alpha"                                                                                                                                                                                                                                                 
-                                               -   "one\minus\dst\alpha"                                                                                                                                                                                                                                     
+                                               -   "one_minus_src_color"                                                                                                                                                                                                                                     
+                                               -   "src_alpha"                                                                                                                                                                                                                                                 
+                                               -   "one_minus_src_alpha"                                                                                                                                                                                                                                     
+                                               -   "dst_alpha"                                                                                                                                                                                                                                                 
+                                               -   "one_minus_dst_alpha"                                                                                                                                                                                                                                     
                                                                                                                                                                                                                                                                                                                 
                                                The second value of the array is the blending destination factor and must be one of the following values:                                                                                                                                                        
                                                                                                                                                                                                                                                                                                                 
                                                -   "zero"                                                                                                                                                                                                                                                       
                                                -   "one"                                                                                                                                                                                                                                                        
-                                               -   "dst\color"                                                                                                                                                                                                                                                 
-                                               -   "one\minus\dst\color"                                                                                                                                                                                                                                     
-                                               -   "one\minus\alpha"                                                                                                                                                                                                                                          
-                                               -   "one\minus\src\alpha"                                                                                                                                                                                                                                     
-                                               -   "dst\alpha"                                                                                                                                                                                                                                                 
-                                               -   "one\minus\dst\alpha"                                                                                                                                                                                                                                     
+                                               -   "dst_color"                                                                                                                                                                                                                                                 
+                                               -   "one_minus_dst_color"                                                                                                                                                                                                                                     
+                                               -   "one_minus_alpha"                                                                                                                                                                                                                                          
+                                               -   "one_minus_src_alpha"                                                                                                                                                                                                                                     
+                                               -   "dst_alpha"                                                                                                                                                                                                                                                 
+                                               -   "one_minus_dst_alpha"                                                                                                                                                                                                                                     
                                                                                                                                                                                                                                                                                                                 
                                                Instead of an array, you can use a single string to use one of the following predefined blend modes:                                                                                                                                                             
                                                                                                                                                                                                                                                                                                                 
@@ -138,11 +138,11 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                -   "always"                                                                                                                                                                                                                                                     
                                                -   "equal"                                                                                                                                                                                                                                                      
                                                -   "greater"                                                                                                                                                                                                                                                    
-                                               -   "greater\equal"                                                                                                                                                                                                                                             
+                                               -   "greater_equal"                                                                                                                                                                                                                                             
                                                -   "less"                                                                                                                                                                                                                                                       
-                                               -   "less\equal"                                                                                                                                                                                                                                                
+                                               -   "less_equal"                                                                                                                                                                                                                                                
                                                -   "never"                                                                                                                                                                                                                                                      
-                                               -   "not\equal"                                                                                                                                                                                                                                                 | |
+                                               -   "not_equal"                                                                                                                                                                                                                                                 | |
 ```javascript
 "depthTest" : [true, "less"]
 ```
@@ -152,11 +152,11 @@ Here is an example that will set the first pass rendering states:
 
 
 ```javascript
- "passes" : [{
+"passes" : [{
 
-"priority":0,
-"blendMode":["one","zero"],
-"depthTest":[false,"less"],
+   "priority"  : 0,
+   "blendMode" : ["one", "zero"],
+   "depthTest" : [false, "less"],
 
 // ... 
 ```
@@ -168,17 +168,17 @@ The GLSL code for the vertex shader.
 
 Example: 
 ```javascript
- "vertexShader" : "
+"vertexShader" : "
 
-attributevec3position;
+   attribute vec3 position;
 
-uniformmat4modelToWorldMatrix;
-uniformmat4worldToScreenMatrix;
+   uniform mat4 modelToWorldMatrix;
+   uniform mat4 worldToScreenMatrix;
 
-voidmain(void)
-{
-gl_Position=worldToScreenMatrix*modelToWorldMatrix*vec4(position,1.0);
-}
+   void main(void)
+   {
+       gl_Position =  worldToScreenMatrix * modelToWorldMatrix * vec4(position, 1.0);
+   }
 
 " 
 ```
@@ -190,14 +190,14 @@ The GLSL code for the fragment shader.
 
 Example: 
 ```javascript
- "fragmentShader" : "
+"fragmentShader" : "
 
-uniformvec4diffuseColor;
+   uniform vec4 diffuseColor;
 
-voidmain(void)
-{
-gl_FragColor=diffuseColor;
-}
+   void main(void)
+   {
+       gl_FragColor = diffuseColor;
+   }
 
 " 
 ```
@@ -208,49 +208,49 @@ Complete Example
 
 
 ```javascript
- // basic effect {
+// basic effect {
 
-"name":"basic",
+   "name"  : "basic",
+   
+   "attributeBindings" : {
+       "position"      : "geometry/vertex/attribute/position"
+   },
+   
+   "uniformBindings"   : {
+       "diffuseColor"      : "material/diffuse/rgba",
+       "modelToWorldMatrix"    : "transform/modelToWorldMatrix",
+       "worldToScreenMatrix"   : "transform/worldToScreenMatrix"
+   },
+   
+   "stateBindings" : {
+       "blendMode"     : "material/blendMode",
+       "depthTest"     : "material/depthTest"
+   },
+   
+   "passes"    : [{
+       "priority"      : 0,
+       "blendMode"     : ["one", "zero"],
+       "depthTest"     : [false, "less"],
+       "vertexShader"  : "
+           attribute vec3 position;
 
-"attributeBindings":{
-"position":"geometry/vertex/attribute/position"
-},
+           uniform mat4 modelToWorldMatrix;
+           uniform mat4 worldToScreenMatrix;
 
-"uniformBindings":{
-"diffuseColor":"material/diffuse/rgba",
-"modelToWorldMatrix":"transform/modelToWorldMatrix",
-"worldToScreenMatrix":"transform/worldToScreenMatrix"
-},
+           void main(void)
+           {
+               gl_Position =  worldToScreenMatrix * modelToWorldMatrix * vec4(position, 1.0);
+           }
+       ",
+       "fragmentShader"    : "
+           uniform vec4 diffuseColor;
 
-"stateBindings":{
-"blendMode":"material/blendMode",
-"depthTest":"material/depthTest"
-},
-
-"passes":[{
-"priority":0,
-"blendMode":["one","zero"],
-"depthTest":[false,"less"],
-"vertexShader":"
-attributevec3position;
-
-uniformmat4modelToWorldMatrix;
-uniformmat4worldToScreenMatrix;
-
-voidmain(void)
-{
-gl_Position=worldToScreenMatrix*modelToWorldMatrix*vec4(position,1.0);
-}
-",
-"fragmentShader":"
-uniformvec4diffuseColor;
-
-voidmain(void)
-{
-gl_FragColor=diffuseColor;
-}
-"
-}]
+           void main(void)
+           {
+               gl_FragColor = diffuseColor;
+           }
+       "
+   }]
 
 } 
 ```

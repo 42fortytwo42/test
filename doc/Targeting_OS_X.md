@@ -1,4 +1,4 @@
-This tutorial requires that your have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named my-project.
+This tutorial requires that your have read [Create a new application](Create_a_new_application.md). We'll suppose your application is named `my-project`.
 
 Step 1: Installing the toolchain
 --------------------------------
@@ -18,7 +18,7 @@ The Unix-based toolchain provided by the Command Line Tools includes Clang 3.2, 
 
 
 ```bash
- # Clang sudo port install clang-3.4 sudo port select --set clang mp-clang-3.4
+# Clang sudo port install clang-3.4 sudo port select --set clang mp-clang-3.4
 
 # GCC sudo port install gcc48 sudo port select --set gcc mp-gcc48 
 ```
@@ -31,7 +31,7 @@ While Xcode project support is part of the short-term roadmap (it's already avai
 
 
 ```bash
- script/solution\gmake\gcc.sh 
+script/solution_gmake_gcc.sh 
 ```
 
 
@@ -39,15 +39,15 @@ Or, if we prefer Clang":
 
 
 ```bash
- script/solution\gmake\clang.sh 
+script/solution_gmake_clang.sh 
 ```
 
 
-If we want to customise our solution, we can call premake directly. For instance, when selecting the compiler, the cc option is passed (supported values are gcc and clang):
+If we want to customise our solution, we can call `premake` directly. For instance, when selecting the compiler, the `cc` option is passed (supported values are `gcc` and `clang`):
 
 
 ```bash
- ${MINKO\HOME}/tool/mac/script/premake5.sh --cc=clang gmake 
+${MINKO_HOME}/tool/mac/script/premake5.sh --cc=clang gmake 
 ```
 
 
@@ -55,24 +55,24 @@ To learn more about premake commands, run:
 
 
 ```bash
- ${MINKO\HOME}/tool/mac/script/premake5.sh help 
+${MINKO_HOME}/tool/mac/script/premake5.sh help 
 ```
 
 
-Note that by default a simple binary will be built. No .app is generated. We can create a simple .app by switch the application kind to WindowedApp in the premake5.lua file of the project:
+Note that by default a simple binary will be built. No .app is generated. We can create a simple .app by switch the application `kind` to `WindowedApp` in the `premake5.lua` file of the project:
 
 
 ```lua
- include "script"
+include "script"
 
-PROJECT\NAME = path.getname(os.getcwd())
+PROJECT_NAME = path.getname(os.getcwd())
 
-minko.project.solution(PROJECT\NAME)
+minko.project.solution(PROJECT_NAME)
 
-minko.project.application(PROJECT_NAME)
+   minko.project.application(PROJECT_NAME)
 
-kind"WindowedApp"
---restoftheprojectfile...
+       kind "WindowedApp"
+       -- rest of the project file...
 
 
 ```
@@ -85,7 +85,7 @@ For a while now, Macs have only been 64-bit stations, so Minko does not support 
 
 
 ```bash
- make config=osx64\release 
+make config=osx64_release 
 ```
 
 
@@ -93,15 +93,15 @@ or
 
 
 ```bash
- make config=osx64\debug 
+make config=osx64_debug 
 ```
 
 
-We can get more information about the building process by setting the verbose variable:
+We can get more information about the building process by setting the `verbose` variable:
 
 
 ```bash
- make config=osx64\release verbose=1 
+make config=osx64_release verbose=1 
 ```
 
 
@@ -112,7 +112,7 @@ Let's run the application. Open a terminal in the application directory and type
 
 
 ```bash
- cd bin/osx64/release ./my-project 
+cd bin/osx64/release ./my-project 
 ```
 
 
@@ -125,17 +125,17 @@ To clean the build, run:
 
 
 ```bash
- make config=osx64\release clean 
+make config=osx64_release clean 
 ```
 
 
-This will basically remove any target file (bin and obj folders).
+This will basically remove any target file (`bin` and `obj` folders).
 
-If you also want to erase generated solution files (Makefiles), you can use a stronger command which will erase any ignored file (files matched by a pattern in .gitignore:
+If you also want to erase generated solution files (`Makefile`s), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`:
 
 
 ```bash
- script/clean.sh 
+script/clean.sh 
 ```
 
 

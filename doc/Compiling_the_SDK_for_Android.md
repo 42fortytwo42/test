@@ -26,26 +26,26 @@ When it is back, you will see that **Default** changes to **Install** for the **
 
 ### Installing the Android SDK
 
--   Define the environment variable ANDROID pointing to the following directory:
-    -   Windows: C:\android
-    -   OS X / Linux: /opt/android
+-   Define the environment variable `ANDROID` pointing to the following directory:
+    -   Windows: `C:\android`
+    -   OS X / Linux: `/opt/android`
 -   Download the latest [ADT](http://developer.android.com/sdk/index.html) bundle
--   Extract the archive to the ${ANDROID} directory
+-   Extract the archive to the `${ANDROID}` directory
 
 ### Installing the Android NDK
 
 -   Download the latest [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) package
--   Extract the archive to ${ANDROID}/NDK
+-   Extract the archive to `${ANDROID}/NDK`
 -   Run the following script:
-    -   Windows: tool\win\script\install\jni.bat
-    -   Linux: tool/lin/script/install\jni.sh
-    -   OS X: tool/mac/script/install\jni.sh
+    -   Windows: `tool\win\script\install_jni.bat`
+    -   Linux: `tool/lin/script/install_jni.sh`
+    -   OS X: `tool/mac/script/install_jni.sh`
 
 ### Installing ANT
 
--   Windows: decompress the [ANT binary archive](https://www.apache.org/dist/ant/binaries/) in the ${ANDROID}/ant directory and add ${ANDROID}/ant/bin to your Path environment variable.
--   OS X: use the brew package manager using the brew install ant command
--   Linux: apt-get install ant
+-   Windows: decompress the [ANT binary archive](https://www.apache.org/dist/ant/binaries/) in the `${ANDROID}/ant` directory and add `${ANDROID}/ant/bin` to your `Path` environment variable.
+-   OS X: use the `brew` package manager using the `brew install ant` command
+-   Linux: `apt-get install ant`
 
 The final folder hierarchy should be as follow:
 
@@ -53,21 +53,21 @@ The final folder hierarchy should be as follow:
 ```
  ${ANDROID}
 
-/ant
-/build-tools
-/extras
-/ndk
-/android-ndk-r${VERSION}
-/platforms
-/platform-tools
-/toolchains
-/tools
+ /ant
+ /build-tools
+ /extras
+ /ndk
+   /android-ndk-r${VERSION}
+ /platforms
+ /platform-tools
+ /toolchains
+ /tools
 
 
 ```
 
 
-Node: the ${ANDROID}/ant directory should exist only on Windows.
+Node: the `${ANDROID}/ant` directory should exist only on Windows.
 
 Step 3: Generating the JNI solution
 -----------------------------------
@@ -76,9 +76,9 @@ Minko's SDK uses premake5, which is embed in the SDK, for its build system. The 
 
 To do this, open a command line prompt in the root directory of the SDK and run:
 
--   Windows: tool\win\script\solution\gmake.bat
--   Linux: tool/lin/script/solution\gmake.sh
--   OS X: tool/mac/script/solution\gmake.sh
+-   Windows: `tool\win\script\solution_gmake.bat`
+-   Linux: `tool/lin/script/solution_gmake.sh`
+-   OS X: `tool/mac/script/solution_gmake.sh`
 
 Step 4: Compile the SDK
 -----------------------
@@ -87,7 +87,7 @@ Now, you should have a bunch of Makefiles. You can build the solution using the 
 
 
 ```bash
- $ make config=android\release 
+$ make config=android_release 
 ```
 
 
@@ -95,7 +95,7 @@ If you want to leverage multicore processors, you can use the following command 
 
 
 ```bash
- $ make -j 4 config=android\release 
+$ make -j 4 config=android_release 
 ```
 
 
@@ -106,10 +106,10 @@ Step 5 (optional): Re-compile SDL2
 
 If you get undefined reference errors for SDL2 functions at linkage when building the SDK's examples/tutorials, it means you might have to rebuild SDL2 for your NDK/platform. By default, Minko builds for **ARMv7**. If you need to support another architecture, you will have to rebuild SDL2.
 
-To do this, regenerate the solution with the --rebuild-sdl option:
+To do this, regenerate the solution with the `--rebuild-sdl` option:
 
--   Linux: tool/lin/script/premake5.sh gmake --rebuild-sdl
--   OS X: tool/mac/script/premake5.sh gmake --rebuild-sdl
+-   Linux: `tool/lin/script/premake5.sh gmake --rebuild-sdl`
+-   OS X: `tool/mac/script/premake5.sh gmake --rebuild-sdl`
 
 Then try the step 4 again. Your solution should contain a new SDL2 project that will be built using your version of the Android NDK and you should not get any linkage error.
 

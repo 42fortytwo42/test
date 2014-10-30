@@ -13,7 +13,7 @@ If you are looking for a production ready SDK, please use the "stable" release. 
 Step 2: Setup your environment
 ------------------------------
 
-You have to set an environment variable that will be used by Minko's build system to locate the SDK you just installed. You just have to set the MINKO\HOME environment variable to the actual path of the SDK. This is the path to the root of the SDK as you get if from the ZIP archive (or the GIT repository) and where you can actually find a file called sdk.lua.
+You have to set an environment variable that will be used by Minko's build system to locate the SDK you just installed. You just have to set the `MINKO_HOME` environment variable to the actual path of the SDK. This is the path to the root of the SDK as you get if from the ZIP archive (or the GIT repository) and where you can actually find a file called `sdk.lua`.
 
 ### Windows
 
@@ -27,10 +27,10 @@ Then click on "New..." in the "System variables" panel (or in the "User variable
 
 The "New System Variable" window will open, enter the following settings:
 
--   Variable name : MINKO\HOME
+-   Variable name : MINKO_HOME
 -   Variable value : the path to the actual Minko SDK root folder on your file system (ex: "C:\minko-sdk" without quotes)
 
-and press "OK". If it worked correctly the MINKO\HOME environment variable should now be in the list.
+and press "OK". If it worked correctly the `MINKO_HOME` environment variable should now be in the list.
 
 ### Linux / OS X
 
@@ -38,15 +38,15 @@ Open a terminal and type or copy/paste the following command line
 
 
 ```bash
- export MINKO\HOME=/path/to/the/minko/sdk 
+export MINKO_HOME=/path/to/the/minko/sdk 
 ```
 
 
-This will **temporarily** set the MINKO\HOME environment variable. **To make sure this change permanent, add it to your shell .rc file** (ex: ~/.bashrc if you are using bash). To do this, type or copy/paste the following command line in the terminal:
+This will **temporarily** set the `MINKO_HOME` environment variable. **To make sure this change permanent, add it to your shell .rc file** (ex: `~/.bashrc` if you are using bash). To do this, type or copy/paste the following command line in the terminal:
 
 
 ```bash
- echo "export MINKO\HOME=/path/to/the/minko/sdk"->> ~/.bashrc 
+echo "export MINKO_HOME=/path/to/the/minko/sdk"->> ~/.bashrc 
 ```
 
 

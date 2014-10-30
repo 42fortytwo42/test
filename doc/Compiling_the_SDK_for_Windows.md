@@ -12,7 +12,7 @@ Make sure you have the source code of Minko on your filesystem. You can get them
 Step 2: Install the dependencies
 --------------------------------
 
-If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](Targeting_Windows.md).
+If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](Targeting_Windows#Step_1:_Install_the_toolchain.md).
 
 Step 3: Generating the Visual Studio Solution
 ---------------------------------------------
@@ -21,7 +21,7 @@ Minko's SDK uses premake5, which is embed in the SDK, for its build system. Prem
 
 To do this you can:
 
--   Run the following script from the "%MINKO\HOME%\tools\win\scripts" directory
+-   Run the following script from the "%MINKO_HOME%\tools\win\scripts" directory
 
 
 ```bash
@@ -37,7 +37,7 @@ premake_vs2013.bat
 
 
 ```bash
- tool/win/bin/premake5.exe --no-tests vs2013 
+tool/win/bin/premake5.exe --no-tests vs2013 
 ```
 
 
@@ -45,12 +45,12 @@ In both cases, you should have the following result in the console:
 
 ![](images/PremakeVisualStudio2013.png "images/PremakeVisualStudio2013.png")
 
-The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (*.sln) and projects (*.vcxproj) files have been properly generated. If this operation was successful, you should have minko.sln at the root of the SDK directory and a *.vcxproj in each projet.
+The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (*.sln) and projects (*.vcxproj) files have been properly generated. If this operation was successful, you should have `minko.sln` at the root of the SDK directory and a `*.vcxproj` in each projet.
 
 Step 4: Compile the SDK
 -----------------------
 
-The Minko SDK is now ready. Open the solution file minko.sln generated at the root of the SDK and then just hit F7 to build the solution or F5 to build and start the default example project.
+The Minko SDK is now ready. Open the solution file `minko.sln` generated at the root of the SDK and then just hit F7 to build the solution or F5 to build and start the default example project.
 
 Step 5: Package (optional)
 --------------------------
@@ -59,7 +59,7 @@ The SDK is now built, but you might want to share or copy it so you don't have t
 
 
 ```bash
- tool\win\bin\premake5.exe dist 
+tool\win\bin\premake5.exe dist 
 ```
 
 

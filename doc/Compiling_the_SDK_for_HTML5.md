@@ -15,26 +15,26 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 ### Windows
 
 -   Install the full package of the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK 1.16]
--   Double-click tool\win\script\install\emscripten.bat
+-   Double-click `tool\win\script\install_emscripten.bat`
 
 
 
 -   Run **Emscripten Command Prompt** (available in your applications)
--   Type emsdk install mingw-4.6.2-32bit
--   Type emsdk activate mingw-4.6.2-32bit
--   Type emsdk install java-7.45-32bit
--   Type emsdk activate java-7.45-32bit
--   Make sure you don't have any sh.exe in your PATH (msysgit for instance)
+-   Type `emsdk install mingw-4.6.2-32bit`
+-   Type `emsdk activate mingw-4.6.2-32bit`
+-   Type `emsdk install java-7.45-32bit`
+-   Type `emsdk activate java-7.45-32bit`
+-   Make sure you don't have any `sh.exe` in your `PATH` (msysgit for instance)
 
 
 
 ### OS X
 
--   Run tool/mac/script/install\emscripten.sh (this will install the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK])
+-   Run `tool/mac/script/install_emscripten.sh` (this will install the [<https://github.com/kripken/emscripten/wiki/Emscripten-SDK>#wiki-downloads Emscripten SDK])
 
 ### Linux
 
--   Run tool/lin/script/install\emscripten.sh (this will install Emscripten from the source automatically, tested on Ubuntu 14.04 only)
+-   Run `tool/lin/script/install_emscripten.sh` (this will install Emscripten from the source automatically, tested on Ubuntu 14.04 only)
 
  The Emscripten SDK installer is not yet compatible with Linux, so you will have to install the components manually. Depending on the platform you're on, the procedure differs, but the components are the same:
 
@@ -49,13 +49,13 @@ Under Ubuntu 13.04+, the procedure is easier:
 
 
 ```bash
- sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 # Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->> ~/.profile 
+sudo apt-get install clang-3.2 sudo apt-get install nodejs export EMSCRIPTEN=/opt/emscripten sudo mkdir -m 777 ${EMSCRIPTEN} git clone <https://github.com/kripken/emscripten> ${EMSCRIPTEN} cd ${EMSCRIPTEN} && git checkout 1.13.0 # Above versions are broken. echo "EMSCRIPTEN=${EMSCRIPTEN}"->> ~/.profile 
 ```
 
 
 
 ```bash
- sudo apt-get update sudo apt-get install -y python-software-properties python g++ make sudo add-apt-repository ppa:chris-lea/node.js sudo apt-get update 
+sudo apt-get update sudo apt-get install -y python-software-properties python g++ make sudo add-apt-repository ppa:chris-lea/node.js sudo apt-get update 
 ```
 
 
@@ -72,7 +72,7 @@ To make things easy, just run the following batch script:
 
 
 ```bash
--> %MINKO\HOME%/tool/win/script/build\html5.bat 
+> %MINKO_HOME%/tool/win/script/build_html5.bat 
 ```
 
 
@@ -82,22 +82,22 @@ For example, to compile only the framework, the plugins and the examples, you ca
 
 
 ```bash
--> %MINKO\HOME%/tool/win/script/build\html5\no\tutorial.bat 
+> %MINKO_HOME%/tool/win/script/build_html5_no_tutorial.bat 
 ```
 
 
 ### Linux / OSX
 
-For all the command lines below, $MINKO\BIN is either:
+For all the command lines below, `$MINKO_BIN` is either:
 
--   $MINKO\HOME/tool/lin/bin/ if you are using Linux;
--   or $MINKO\HOME/tool/mac/bin/ if you are using OSX.
+-   `$MINKO_HOME/tool/lin/bin/` if you are using Linux;
+-   or `$MINKO_HOME/tool/mac/bin/` if you are using OSX.
 
 The first step is to create the required solution/project Makefiles:
 
 
 ```bash
- $ $MINKO\BIN/premake5.sh gmake 
+$ $MINKO_BIN/premake5.sh gmake 
 ```
 
 
@@ -105,7 +105,7 @@ To learn more about the available options and how to disable the compilation of 
 
 
 ```bash
- $ $MINKO\BIN/premake5.sh gmake --help 
+$ $MINKO_BIN/premake5.sh gmake --help 
 ```
 
 
@@ -113,7 +113,7 @@ If you just want to compile the SDK to link your own applications, you don't nee
 
 
 ```bash
- $ $MINKO\BIN/premake5.sh gmake --no-tutorial --no-example 
+$ $MINKO_BIN/premake5.sh gmake --no-tutorial --no-example 
 ```
 
 
@@ -121,7 +121,7 @@ When you're done, you should have a bunch of Makefiles. You can build the soluti
 
 
 ```bash
- $ make config=html5\release 
+$ make config=html5_release 
 ```
 
 
@@ -129,7 +129,7 @@ If you want to leverage multicore processors, you can use the following command 
 
 
 ```bash
- $ make -j 4 config=html5\release 
+$ make -j 4 config=html5_release 
 ```
 
 
@@ -138,7 +138,7 @@ It should speed up the compilation process significantly.
 Step 5: Enjoy!
 --------------
 
-If you have compiled the examples/tutorials, you can try to launch them by opening the corresponding HTML file that will be located in the bin/html5/release directory of each project. **Make sure you open those files from an actual web server and not directly from your file system (do not use "<file:///>").**
+If you have compiled the examples/tutorials, you can try to launch them by opening the corresponding HTML file that will be located in the `bin/html5/release` directory of each project. **Make sure you open those files from an actual web server and not directly from your file system (do not use "<file:///>").**
 
 You can now use your SDK to [Create a new application](Create_a_new_application.md).
 

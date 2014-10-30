@@ -13,42 +13,42 @@ To understand how our CPU side code collaborates with the GPU side program, let'
 
 asset/effect/MyCustomEffect.effect 
 ```javascript
- {
-
-"name":"MyCustomEffect",
-"attributeBindings":{
-"aPosition":"geometry.vertex.attribute.position"
-},
-"passes":[{
-"vertexShader":"
-#ifdefGL_ES
-precisionmediumpfloat;
-#endif
-
-attributevec3aPosition;
-
-uniformmat4uModelToWorldMatrix;
-uniformmat4uViewMatrix;
-uniformmat4uProjectionMatrix;
-
-voidmain(void)
 {
-gl_Position=uProjectionMatrix*uViewMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
-}
-",
-"fragmentShader":"
-#ifdefGL_ES
-precisionmediumpfloat;
-#endif
 
-uniformvec4uColor;
+ "name" : "MyCustomEffect",
+ "attributeBindings" : {
+   "aPosition" : "geometry.vertex.attribute.position"
+ },
+ "passes" : [{
+   "vertexShader" : "
+     #ifdef GL_ES
+       precision mediump float;
+     #endif
 
-voidmain(void)
-{
-gl_FragColor=uColor;
-}
-"
-}]
+     attribute vec3 aPosition;
+
+     uniform mat4 uModelToWorldMatrix;
+     uniform mat4 uViewMatrix;
+     uniform mat4 uProjectionMatrix;
+
+     void main(void)
+     {
+       gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
+     }
+   ",
+   "fragmentShader" : "
+     #ifdef GL_ES
+       precision mediump float;
+     #endif
+
+     uniform vec4 uColor;
+
+     void main(void)
+     {
+       gl_FragColor = uColor;
+     }
+   "
+ }]
 
 } 
 ```
@@ -56,50 +56,55 @@ gl_FragColor=uColor;
 
 src/main.cpp 
 ```cpp
- #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
-using namespace minko; using namespace minko::math; using namespace minko::component;
+#include "minko/Minko.hpp" 
+#include "minko/MinkoSDL.hpp"
 
-const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
+
+using namespace minko; 
+using namespace minko::math; 
+using namespace minko::component;
+
+const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-autocanvas=Canvas::create("Hellocube!",WINDOW_WIDTH,WINDOW_HEIGHT);
-autosceneManager=component::SceneManager::create(canvas->context());
-sceneManager->assets()->queue("effect/Basic.effect");
-autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
-{
-automyCustomEffect=assets->effect("effect/MyCustomEffect.effect");
+ auto canvas = Canvas::create("Hello cube!", WINDOW_WIDTH, WINDOW_HEIGHT);
+ auto sceneManager = component::SceneManager::create(canvas->context());
+ sceneManager->assets()->queue("effect/Basic.effect");
+ auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
+ {
+   auto myCustomEffect = assets->effect("effect/MyCustomEffect.effect");
 
-autoroot=scene::Node::create("root")
-->addComponent(sceneManager)
-->addComponent(Renderer::create(0x7f7f7fff));
-autocube=scene::Node::create("cube");
-->addComponent(Surface::create(
-geometry::CubeGeometry(assets->context()),
-material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
-myCustomEffect
-));
-root->addChild(cube);
+   auto root = scene::Node::create("root")
+     ->addComponent(sceneManager)
+     ->addComponent(Renderer::create(0x7f7f7fff));
+   auto cube = scene::Node::create("cube");
+     ->addComponent(Surface::create(
+       geometry::CubeGeometry(assets->context()),
+       material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
+       myCustomEffect
+     ));
+   root->addChild(cube);
 
-autoModelToWorldMatrix=Matrix4x4::create()->translation(0.f,0.f,-5.f);
+   autoModelToWorldMatrix = Matrix4x4::create()->translation(0.f, 0.f, -5.f);
 
-myCustomEffect->setUniform("uModelToWorldMatrix",modelToWorldMatrix);
-myCustomEffect->setUniform("uViewMatrix",Matrix4x4::create());
-myCustomEffect->setUniform("uProjectionMatrix",Matrix4x4::create()->perspective((float)WINDOW_WIDTH/(float)WINDOW_HEIGHT));
+   myCustomEffect->setUniform("uModelToWorldMatrix", modelToWorldMatrix);
+   myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create());
+   myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)WINDOW_WIDTH / (float)WINDOW_HEIGHT));
 
-myCustomEffect->setUniform("uColor",Vector4::create(0.f,0.f,1.f,1.f));
-autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas)
-{
-modelToWorldMatrix->prependRotationY(0.01f);
-myCustomEffect->setUniform("uModelToWorldMatrix",modelToWorldMatrix);
-
-sceneManager->nextFrame();
-});
-canvas->run();
-});
-sceneManager->assets()->load();
-return0;
+   myCustomEffect->setUniform("uColor", Vector4::create(0.f, 0.f, 1.f, 1.f));
+   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas)
+   {
+     modelToWorldMatrix->prependRotationY(0.01f);
+     myCustomEffect->setUniform("uModelToWorldMatrix", modelToWorldMatrix);
+     
+     sceneManager->nextFrame();
+   });
+   canvas->run();
+ });
+ sceneManager->assets()->load();
+ return 0;
 
 } 
 ```
@@ -115,15 +120,15 @@ The problem
 
 This code is fine and should compile/work fine. But as you might have guessed, there are multiple problems in the code that make it hardly scalable for a real life application.
 
-The problem is the use of the Effect::setUniform() method. The method itself is perfectly fine. But it will affect all the objects that use this very Effect. To render multiple objects with different settings (position, color, etc...), we would have to follow this pseudo-code:
+The problem is the use of the `Effect::setUniform()` method. The method itself is perfectly fine. But it will affect all the objects that use this very `Effect`. To render multiple objects with different settings (position, color, etc...), we would have to follow this pseudo-code:
 
 
 ```
  for each object in objectToRender
 
-foreachuniformNameinobject.uniformNames
-object.effect.setUniform(uniformName,object.uniformValues[uniformName]);
-render();
+ for each uniformName in object.uniformNames
+   object.effect.setUniform(uniformName, object.uniformValues[uniformName]);
+   render();
 
 
 ```
@@ -150,37 +155,37 @@ The purpose of this API is to be used by application developers to create new sc
 
 ### Data providers
 
-The values themselves are store in [data::Provider](data::Provider) objects. The purpose of such object is to **provide (key, value) pairs built from the name of the property - the "key" - and the corresponding value**. A [data::Provider](data::Provider) is pretty much a map that can hold values with a mixed type.
+The values themselves are store in `[data::Provider`](data::Provider`) objects. The purpose of such object is to **provide (key, value) pairs built from the name of the property - the "key" - and the corresponding value**. A `[data::Provider`](data::Provider`) is pretty much a map that can hold values with a mixed type.
 
-Yet, they are more than just simple maps. Indeed, each [data::Provider](data::Provider) provides the following signals:
+Yet, they are more than just simple maps. Indeed, each `[data::Provider`](data::Provider`) provides the following signals:
 
--   propertyAdded is executed when a property is added to the provider (ie. <data::Provider>::set() is called with a property name that was not set before);
--   propertyRemoved is executed when a property is removed from the provider (ie. <data::Provider>::unset() is called with a property name that was previously used with set());
--   propertyChanged is executed when the value set for a property changes.
+-   `propertyAdded` is executed when a property is added to the provider (ie. `<data::Provider>::set()` is called with a property name that was not set before);
+-   `propertyRemoved` is executed when a property is removed from the provider (ie. `<data::Provider>::unset()` is called with a property name that was previously used with `set()`);
+-   `propertyChanged` is executed when the value set for a property changes.
 
 Those three signals can be used to adapt the behavior of the application according to how the values in the provider changes.
 
 
 ```cpp
- auto provider = <data::Provider>::create();
+auto provider = <data::Provider>::create();
 
 container->addProvider(provider);
 
 auto propertyAdded = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
-std::cout<<"property'"<<name<<"'addedtoprovider"<<std::endl;
+ std::cout << "property '" << name << "' added to provider" << std::endl;
 
 });
 
 auto propertyChanged = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
-std::cout<<"propertychanged:"<<name<<"="<<p->get<int>(name)<<std::endl;
+ std::cout << "property changed: " << name << " = " << p->get<int>(name) << std::endl;
 
 });
 
 auto propertyAdded = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
-std::cout<<"property'"<<name<<"'removedfromprovider"<<std::endl;
+ std::cout << "property '" << name << "' removed from provider" << std::endl;
 
 });
 
@@ -198,13 +203,13 @@ Compiling and running this code should give the following output in the console:
 
 ### Data containers
 
-A [data::Container](data::Container) will store a collection of [data::Provider](data::Provider) objects. Each scene Node as a single [data::Container](data::Container) that can hold as many [data::Provider](data::Provider) as necessary. The only constraint is that two different providers cannot declare the same property if they are added to the same container.
+A `[data::Container`](data::Container`) will store a collection of `[data::Provider`](data::Provider`) objects. Each scene `Node` as a single `[data::Container`](data::Container`) that can hold as many `[data::Provider`](data::Provider`) as necessary. The only constraint is that two different providers cannot declare the same property if they are added to the same container.
 
-When a [data::Provider](data::Provider) is added to a [data::Container](data::Container), all its properties are "added" to the container. To better understand the relationship between providers and containers, please consider the following code snippet:
+When a `[data::Provider`](data::Provider`) is added to a `[data::Container`](data::Container`), all its properties are "added" to the container. To better understand the relationship between providers and containers, please consider the following code snippet:
 
 
 ```cpp
- auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
+auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
 std::cout << "provider->hasProperty(\"foo\"): " << provider->hasProperty("foo") << std::endl; std::cout << "container->hasProperty(\"foo\"): " << container->hasProperty("foo") << std::endl;
 
@@ -226,29 +231,29 @@ Here is the corresponding console output you should get:
 ```
 
 
-Just like data providers, [data::Container](data::Container) objects provide signals to track how properties change:
+Just like data providers, `[data::Container`](data::Container`) objects provide signals to track how properties change:
 
--   <data::Container>::propertyAdded()
--   <data::Container>::propertyRemoved()
--   <data::Container>::propertyChanged(propertyName)
+-   `<data::Container>::propertyAdded()`
+-   `<data::Container>::propertyRemoved()`
+-   `<data::Container>::propertyChanged(propertyName)`
 
-**When a provider is added to a container, their signals are piped** to make sure a single [data::Container](data::Container) can act a the single entry point for all the [data::Provider](data::Provider) objects it holds. This is true for both the properties - as explained above - and the signals. When the <data::Provider>::propertyAdded() signal is executed, the <data::Container>::propertyAdded() signal will be executed on all the containers that hold the provider that executed the signal in the first place.
+**When a provider is added to a container, their signals are piped** to make sure a single `[data::Container`](data::Container`) can act a the single entry point for all the `[data::Provider`](data::Provider`) objects it holds. This is true for both the properties - as explained above - and the signals. When the `<data::Provider>::propertyAdded()` signal is executed, the `<data::Container>::propertyAdded()` signal will be executed on all the containers that hold the provider that executed the signal in the first place.
 
 
 ```cpp
- auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
+auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
 
 container->addProvider(provider);
 
 auto propertyAddedToProvider = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
-std::cout<<"property'"<<name<<"'addedtoprovider"<<std::endl;
+ std::cout << "property '" << name << "' added to provider" << std::endl;
 
 });
 
 auto propertyAddedToContainer = container->propertyAdded()->connect([&](data::Container::Ptr c, const std::string& name) {
 
-std::cout<<"property'"<<name<<"'addedtocontainer"<<std::endl;
+ std::cout << "property '" << name << "' added to container" << std::endl;
 
 });
 
@@ -275,58 +280,58 @@ There are 4 different kinds of bindings:
 -   **state bindings** will push data for the render states (blending, triangle culling...) of a draw call;
 -   **macro bindings** will push data that will tell whether a specific GLSL macro should be defined or not and what its value should be.
 
-**A binding is declared with at least a property name and a source.** The property name will be used to get the corresponding value from a [data::Container](data::Container). The "source" will tell which container should be read. The source of a binding can be set to <data::BindingSource>::TARGET ("target"), <data::BindingSource>::RENDERER ("renderer") or <data::BindingSource>::ROOT ("root").
+**A binding is declared with at least a property name and a source.** The property name will be used to get the corresponding value from a `[data::Container`](data::Container`). The "source" will tell which container should be read. The source of a binding can be set to `<data::BindingSource>::TARGET` ("target"), `<data::BindingSource>::RENDERER` ("renderer") or `<data::BindingSource>::ROOT` ("root").
 
-Here is an example of how uniform bindings can be declared in an *.effect file (to learn more about the effect files format, please read the [Effect files format reference](Effect_files_format_reference.md)):
+Here is an example of how uniform bindings can be declared in an `*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](Effect_files_format_reference.md)):
 
 
 ```javascript
- "uniformBindings" : {
+"uniformBindings" : {
 
-"diffuseColor":{"property":"material.diffuseColor","source":"target"},
-"cameraPosition":{"property":"camera.position","source":"renderer"},
-"spotLights":{"property":"spotLights","source":"root"}
+ "diffuseColor"   : { "property" : "material.diffuseColor", "source" : "target" },
+ "cameraPosition" : { "property" : "camera.position",       "source" : "renderer" },
+ "spotLights"     : { "property" : "spotLights",            "source" : "root" }
 
 } 
 ```
 
 
--   The "target" binding source indicates that the property should be read from the data container of the node that is the actual object being rendered (the node where the Surface component in most cases). This source is used for local properties such as the object material or its geometry.
--   The "renderer" binding source indicates that the property should be read from the data container of the node where the Renderer component is. This source is used for properties that depend on the renderer such as the camera.
+-   The "target" binding source indicates that the property should be read from the data container of the node that is the actual object being rendered (the node where the `Surface` component in most cases). This source is used for local properties such as the object material or its geometry.
+-   The "renderer" binding source indicates that the property should be read from the data container of the node where the `Renderer` component is. This source is used for properties that depend on the renderer such as the camera.
 -   The "root" binding source indicates that the property should be read from the data container of the root node of the scene. This source is used for properties that are global to the whole scene such as lights.
 
 To better understand what "target", "renderer" and "root" might mean in this context, let's take a simple scene with a camera, a mesh and a light:
 
 
 ```cpp
- auto root = scene::Node::create()
+auto root = scene::Node::create()
 
-->addComponent(component::SceneManager::create(context));
+ ->addComponent(component::SceneManager::create(context));
 
 auto camera = scene::Node::create()
 
-->addComponent(component::PerspectiveCamera::create((float)PI/4.f,(float)WIDTH/(float)HEIGHT))
-->addComponent(component::Transform());
+ ->addComponent(component::PerspectiveCamera::create((float)PI / 4.f, (float)WIDTH / (float)HEIGHT))
+ ->addComponent(component::Transform());
 
 root->addChild(camera);
 
 auto mesh = scene::Node::create()
 
-->addComponent(component::Surface::create(
-geometry::CubeGeometry::create(context),
-material::Material::create()->set("diffuseColor",Vector4::create(1.f,0.f,1.f,1.f)),
-basicEffect
-))
-->addComponent(component::Transform(
-Matrix4x4::create()->appendTranslation(0.f,0.f,-5.f)
-));
+ ->addComponent(component::Surface::create(
+   geometry::CubeGeometry::create(context),
+   material::Material::create()->set("diffuseColor", Vector4::create(1.f, 0.f, 1.f, 1.f)),
+   basicEffect
+ ))
+ ->addComponent(component::Transform(
+   Matrix4x4::create()->appendTranslation(0.f, 0.f, -5.f)
+ ));
 
 root->addChild(mesh);
 
 auto light = scene::Node::create()
 
-->addComponent(component::SpotLight::create())
-->addComponent(component::Transform::create());
+ ->addComponent(component::SpotLight::create())
+ ->addComponent(component::Transform::create());
 
 root->addChild(light); 
 ```
@@ -339,8 +344,8 @@ Here is the diagram of a simple 3D scene and its attached components:
 On the diagram, you can see that:
 
 -   the "material.diffuseColor" property is declared by the very node that will be rendererd on the screen; it's also the very node that gets affected by the actual effect therefore its binding source must be "target";
--   the "camera.position" property is declared by the scene node where the Renderer is, therefore its binding source must be "renderer";
--   the SpotLight component will add its data to the root node, therefore its binding source must be "root".
+-   the "camera.position" property is declared by the scene node where the `Renderer` is, therefore its binding source must be "renderer";
+-   the `SpotLight` component will add its data to the root node, therefore its binding source must be "root".
 
 Where to go from there
 ----------------------
