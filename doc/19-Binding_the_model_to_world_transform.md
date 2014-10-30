@@ -9,9 +9,9 @@ In the [Moving objects](Moving_objects.md) tutorial, we've seen that we can add 
 ```cpp
  // Transform.cpp void Transform::initialize() {
 
- // some other code...
+//someothercode...
 
- _data->set<Matrix4x4::Ptr>("transform.modelToWorldMatrix", _modelToWorld);
+_data->set<Matrix4x4::Ptr>("transform.modelToWorldMatrix",_modelToWorld);
 
 } 
 ```
@@ -23,7 +23,7 @@ When the Transform component is added to some target Node, it will add its [data
 ```javascript
  "uniformBindings" : {
 
- "uModelToWorldMatrix" : "transform.modelToWorldMatrix"
+"uModelToWorldMatrix":"transform.modelToWorldMatrix"
 
 } 
 ```
@@ -35,39 +35,39 @@ If we add this to the code from the [Creating custom materials](Creating_custom_
 ```javascript
  {
 
- "name" : "MyCustomEffect",
- "attributeBindings" : {
-   "aPosition" : "geometry[${geometryId}].position"
- },
- "uniformBindings" : {
-   "uColor" : "material[${materialId}].color",
-   "uModelToWorldMatrix" : "transform.modelToWorldMatrix"
- },
- "passes" : [{
-   "vertexShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
-     void main(void)
-     {
-       gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
-     }
-   ",
-   "fragmentShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     uniform vec4 uColor;
-     void main(void)
-     {
-       gl_FragColor = uColor;
-     }
-   "
- }]
+"name":"MyCustomEffect",
+"attributeBindings":{
+"aPosition":"geometry[${geometryId}].position"
+},
+"uniformBindings":{
+"uColor":"material[${materialId}].color",
+"uModelToWorldMatrix":"transform.modelToWorldMatrix"
+},
+"passes":[{
+"vertexShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+attributevec3aPosition;
+uniformmat4uModelToWorldMatrix;
+uniformmat4uViewMatrix;
+uniformmat4uProjectionMatrix;
+voidmain(void)
+{
+gl_Position=uProjectionMatrix*uViewMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
+}
+",
+"fragmentShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+uniformvec4uColor;
+voidmain(void)
+{
+gl_FragColor=uColor;
+}
+"
+}]
 
 } 
 ```
@@ -87,14 +87,14 @@ Because our uModelToWorldMatrix property is now bound to transform.modelToWorldM
 ```cpp
  auto cube = scene::Node::create()
 
- ->addComponent(Transform::create(
-   Matrix4x4::create()->translation(0.f, 0.f, -10.f)
- ))
- ->addComponent(Surface::create(
-   geometry::CubeGeometry::create(),
-   myCustomMaterial,
-   myCustomEffect
- ));
+->addComponent(Transform::create(
+Matrix4x4::create()->translation(0.f,0.f,-10.f)
+))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(),
+myCustomMaterial,
+myCustomEffect
+));
 
 
 ```
@@ -111,39 +111,39 @@ asset/effect/MyCustomEffect.effect
 ```javascript
  {
 
- "name" : "MyCustomEffect",
- "attributeBindings" : {
-   "aPosition" : "geometry[${geometryId}].position"
- },
- "uniformBindings" : {
-   "uColor" : "material[${materialId}].color",
-   "uModelToWorldMatrix" : "transform.modelToWorldMatrix"
- },
- "passes" : [{
-   "vertexShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
-     void main(void)
-     {
-       gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
-     }
-   ",
-   "fragmentShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     uniform vec4 uColor;
-     void main(void)
-     {
-       gl_FragColor = uColor;
-     }
-   "
- }]
+"name":"MyCustomEffect",
+"attributeBindings":{
+"aPosition":"geometry[${geometryId}].position"
+},
+"uniformBindings":{
+"uColor":"material[${materialId}].color",
+"uModelToWorldMatrix":"transform.modelToWorldMatrix"
+},
+"passes":[{
+"vertexShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+attributevec3aPosition;
+uniformmat4uModelToWorldMatrix;
+uniformmat4uViewMatrix;
+uniformmat4uProjectionMatrix;
+voidmain(void)
+{
+gl_Position=uProjectionMatrix*uViewMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
+}
+",
+"fragmentShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+uniformvec4uColor;
+voidmain(void)
+{
+gl_FragColor=uColor;
+}
+"
+}]
 
 } 
 ```
@@ -151,10 +151,7 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
-
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 #include "MyCustomMaterial.hpp"
 
@@ -164,39 +161,39 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Minko Tutorial - Binding the model to world transform", WINDOW_WIDTH, WINDOW_HEIGHT);
- auto sceneManager = component::SceneManager::create(canvas->context());
- sceneManager->assets()->queue("effect/MyCustomEffect.effect");
- auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
- {
-   auto root = scene::Node::create("root")
-     ->addComponent(sceneManager)
-     ->addComponent(Renderer::create(0x7f7f7fff));
-   auto myCustomEffect = assets->effect("effect/MyCustomEffect.effect");
-   auto myCustomMaterial = material::MyCustomMaterial::create();
-   auto cube = scene::Node::create("cube")
-     ->addComponent(Transform::create(
-       Matrix4x4::create()->translation(0.f, 0.f, -10.f)
-     ))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry::create(assets->context()),
-       myCustomMaterial,
-       myCustomEffect
-     ));
-   root->addChild(cube);
+autocanvas=Canvas::create("MinkoTutorial-Bindingthemodeltoworldtransform",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+sceneManager->assets()->queue("effect/MyCustomEffect.effect");
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager)
+->addComponent(Renderer::create(0x7f7f7fff));
+automyCustomEffect=assets->effect("effect/MyCustomEffect.effect");
+automyCustomMaterial=material::MyCustomMaterial::create();
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create(
+Matrix4x4::create()->translation(0.f,0.f,-10.f)
+))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+myCustomMaterial,
+myCustomEffect
+));
+root->addChild(cube);
 
-   myCustomMaterial->color(Vector4::create(1.f, 0.f, 0.f, 1.f));
-   myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create());
-   myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)PI * 0.25f, (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, .1f, 1000.f));
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-     cube->component<Transform>()->transform()->prependRotationY(0.01f);
-     sceneManager->nextFrame(t, dt);
-   });
-   canvas->run();
- });
- sceneManager->assets()->load();
- return 0;
+myCustomMaterial->color(Vector4::create(1.f,0.f,0.f,1.f));
+myCustomEffect->setUniform("uViewMatrix",Matrix4x4::create());
+myCustomEffect->setUniform("uProjectionMatrix",Matrix4x4::create()->perspective((float)PI*0.25f,(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,.1f,1000.f));
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+cube->component<Transform>()->transform()->prependRotationY(0.01f);
+sceneManager->nextFrame(t,dt);
+});
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```

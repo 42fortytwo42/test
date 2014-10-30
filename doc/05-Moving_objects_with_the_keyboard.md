@@ -7,7 +7,7 @@ Step 1: Catching keyboards inputs
 ```cpp
  auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
- std::cout << "key down!" << std::endl;
+std::cout<<"keydown!"<<std::endl;
 
 }); 
 ```
@@ -19,7 +19,7 @@ The argument passed to the callbacks of the Canvas::keyDown() signal is an array
 ```cpp
  auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
- std::cout << "The 'up' key is" << (k->keyIsDown(input::Keyboard::ScanCode::SPACE) ? "" : " not") << " down" << std::endl;
+std::cout<<"The'up'keyis"<<(k->keyIsDown(input::Keyboard::ScanCode::SPACE)?"":"not")<<"down"<<std::endl;
 
 }); 
 ```
@@ -34,10 +34,10 @@ To move our object, we will simply use the Matrix4x4::appendTranslation() method
 ```cpp
  auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
-   if (k->keyIsDown(input::Keyboard::ScanCode::LEFT))
-       cube->component<Transform>()->matrix()->appendTranslation(-0.1f);
-   if (k->keyIsDown(input::Keyboard::ScanCode::RIGHT))
-       cube->component<Transform>()->matrix()->appendTranslation(0.1f);
+if(k->keyIsDown(input::Keyboard::ScanCode::LEFT))
+cube->component<Transform>()->matrix()->appendTranslation(-0.1f);
+if(k->keyIsDown(input::Keyboard::ScanCode::RIGHT))
+cube->component<Transform>()->matrix()->appendTranslation(0.1f);
 
 }); 
 ```
@@ -48,9 +48,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -58,50 +56,50 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Tutorial - Moving objects with the keyboard", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = component::SceneManager::create(canvas->context());
+autocanvas=Canvas::create("Tutorial-Movingobjectswiththekeyboard",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
 
-   sceneManager->assets()->queue("effect/Basic.effect");
-   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
-   {
-       auto root = scene::Node::create("root")
-           ->addComponent(sceneManager);
+sceneManager->assets()->queue("effect/Basic.effect");
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
 
-       auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x7f7f7fff))
-           ->addComponent(PerspectiveCamera::create(
-           (float) WINDOW_WIDTH / (float) WINDOW_HEIGHT, (float) PI * 0.25f, .1f, 1000.f)
-           );
-       root->addChild(camera);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f)
+);
+root->addChild(camera);
 
-       auto cube = scene::Node::create("cube")
-           ->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, -5.f)))
-           ->addComponent(Surface::create(
-           geometry::CubeGeometry::create(assets->context()),
-           material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
-           assets->effect("effect/Basic.effect")
-           ));
-       root->addChild(cube);
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(0.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
+assets->effect("effect/Basic.effect")
+));
+root->addChild(cube);
 
-       auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k)
-       {
-           if (k->keyIsDown(input::Keyboard::ScanCode::LEFT))
-               cube->component<Transform>()->matrix()->appendTranslation(-0.1f);
-           if (k->keyIsDown(input::Keyboard::ScanCode::RIGHT))
-               cube->component<Transform>()->matrix()->appendTranslation(0.1f);
-       });
+autokeyDown=canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptrk)
+{
+if(k->keyIsDown(input::Keyboard::ScanCode::LEFT))
+cube->component<Transform>()->matrix()->appendTranslation(-0.1f);
+if(k->keyIsDown(input::Keyboard::ScanCode::RIGHT))
+cube->component<Transform>()->matrix()->appendTranslation(0.1f);
+});
 
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-       {
-           sceneManager->nextFrame(t, dt);
-       });
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
 
-       canvas->run();
-   });
+canvas->run();
+});
 
-   sceneManager->assets()->load();
+sceneManager->assets()->load();
 
-   return 0;
+return0;
 
 } 
 ```

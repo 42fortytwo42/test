@@ -58,7 +58,7 @@ This approach is very useful because it mixes the flexibility of dynamic propert
 
 Performance wise, the static getters/setters declared in a material are (should be) inlined so it should make no difference.
 
-To learn more on this subject, please read the [The difference between the Material::set() method and setter methods](The_difference_between_the_Material::set()_method_and_setter_methods) article.
+To learn more on this subject, please read the [The difference between the Material\set() method and setter methods](The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
 
 Step 3: Setting a diffuse map (or texture)
 ------------------------------------------
@@ -88,10 +88,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoPNG.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -99,48 +96,48 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Minko Tutorial - Working with the BasicMaterial", WINDOW_WIDTH, WINDOW_HEIGHT);
- auto sceneManager = component::SceneManager::create(canvas->context());
- sceneManager->assets()
-   ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-   ->queue("effect/Basic.effect")
-   ->queue("texture/box.png");
+autocanvas=Canvas::create("MinkoTutorial-WorkingwiththeBasicMaterial",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+sceneManager->assets()
+->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+->queue("effect/Basic.effect")
+->queue("texture/box.png");
 
- auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
- {
-   auto root = scene::Node::create("root")
-     ->addComponent(sceneManager);
-   auto camera = scene::Node::create("camera")
-     ->addComponent(Renderer::create(0x7f7f7fff))
-     ->addComponent(PerspectiveCamera::create(
-       (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, (float)PI * 0.25f, .1f, 1000.f)
-     );
-   root->addChild(camera);
-   auto texturedCube = scene::Node::create("texturedCube")
-     ->addComponent(Transform::create(Matrix4x4::create()->translation(-2.f, 0.f, -5.f)))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry::create(assets->context()),
-   material::Material::create()->set("diffuseMap", assets->texture("texture/box.png")),
-       assets->effect("effect/Basic.effect")
-     ));
-   root->addChild(texturedCube);
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f)
+);
+root->addChild(camera);
+autotexturedCube=scene::Node::create("texturedCube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(-2.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::Material::create()->set("diffuseMap",assets->texture("texture/box.png")),
+assets->effect("effect/Basic.effect")
+));
+root->addChild(texturedCube);
 
-   auto coloredCube = scene::Node::create("coloredCube")
-     ->addComponent(Transform::create(Matrix4x4::create()->translation(2.f, 0.f, -5.f)))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry::create(assets->context()),
-       material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
-       assets->effect("effect/Basic.effect")
-     ));
-   root->addChild(coloredCube);
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-     sceneManager->nextFrame(t, dt);
-   });
-   canvas->run();
- });
- sceneManager->assets()->load();
- return 0;
+autocoloredCube=scene::Node::create("coloredCube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(2.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
+assets->effect("effect/Basic.effect")
+));
+root->addChild(coloredCube);
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```

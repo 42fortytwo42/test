@@ -53,15 +53,15 @@ The final folder hierarchy should be as follow:
 ```
  ${ANDROID}
 
- /ant
- /build-tools
- /extras
- /ndk
-   /android-ndk-r${VERSION}
- /platforms
- /platform-tools
- /toolchains
- /tools
+/ant
+/build-tools
+/extras
+/ndk
+/android-ndk-r${VERSION}
+/platforms
+/platform-tools
+/toolchains
+/tools
 
 
 ```

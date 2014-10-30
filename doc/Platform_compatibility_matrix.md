@@ -9,9 +9,9 @@ Platforms officially targeted
 |                                                                                       |                                              | Premake configuration name       |
 |---------------------------------------------------------------------------------------|----------------------------------------------|----------------------------------|
 | align=left|![](images/Html5_min.png "fig:images/Html5_min.png") HTML5                 | ![](images/Checked.png "images/Checked.png") | html5                            |
-| align=left|![](images/Winmini.png "fig:images/Winmini.png") Windows                   | ![](images/Checked.png "images/Checked.png") | windows32<br/\>windows64        |
+| align=left|![](images/Winmini.png "fig:images/Winmini.png") Windows                   | ![](images/Checked.png "images/Checked.png") | windows32<br/>windows64        |
 | align=left|![](images/Mac_min.png "fig:images/Mac_min.png") OS X                      | ![](images/Checked.png "images/Checked.png") | osx64                            |
-| align=left|![](images/Linux_min.png "fig:images/Linux_min.png") Linux                 | ![](images/Checked.png "images/Checked.png") | linux32<br/\>linux64            |
+| align=left|![](images/Linux_min.png "fig:images/Linux_min.png") Linux                 | ![](images/Checked.png "images/Checked.png") | linux32<br/>linux64            |
 | align=left|![](images/Androidmini.png "fig:images/Androidmini.png") Android           | ![](images/Help_16.png "images/Help_16.png") | N/A (expected for the beta 2...) |
 | align=left|![](images/Iso7mini.png "fig:images/Iso7mini.png") iOS                     | ![](images/Checked.png "images/Checked.png") | ios                              |
 | align=left|![](images/Flashmini.png "fig:images/Flashmini.png") Flash                 | ![](images/Help_16.png "images/Help_16.png") | N/A                              |
@@ -29,8 +29,7 @@ For each platform, support may vary depending of the host version, the possible 
 
 ### ![](images/Html5_min.png "fig:images/Html5_min.png") HTML5
 
-Minko for HTML5 relies only on WebGL, the HTML5 standard API to create 3D web applications. For more details about WebGL availability, please consult the corresponding [<http://caniuse.com/>
-#search=webgl "Can I use..." page].
+Minko for HTML5 relies only on WebGL, the HTML5 standard API to create 3D web applications. For more details about WebGL availability, please consult the corresponding [<http://caniuse.com/>#search=webgl "Can I use..." page].
 
 | Host        | Support                                                                                                                                   |
 |-------------|-------------------------------------------------------------------------------------------------------------------------------------------|

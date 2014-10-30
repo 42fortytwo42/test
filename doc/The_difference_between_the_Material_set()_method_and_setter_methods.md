@@ -59,18 +59,18 @@ For example, BasicMaterial::diffuseColor() is implemented like this:
 ```cpp
  class BasicMaterial :
 
- public Material
+publicMaterial
 
 {
 
- inline
- Ptr
- diffuseColor(std::shared_ptr<Vector4> color)
- {
-   set("diffuseColor", color);
+inline
+Ptr
+diffuseColor(std::shared_ptr<Vector4>color)
+{
+set("diffuseColor",color);
 
-   return std::dynamic_pointer_cast<BasicMaterial>(shared_from_this());
- }
+returnstd::dynamic_pointer_cast<BasicMaterial>(shared_from_this());
+}
 
 } 
 ```
@@ -84,12 +84,12 @@ Manually declaring specialized setter method in Material-derived classes is also
 ```cpp
  inline Ptr diffuseColor(const uint rgba) {
 
- return diffuseColor(math::Vector4::create(
-   ((rgba >> 24) & 0xff) / 255.f,
-   ((rgba >> 16) & 0xff) / 255.f,
-   ((rgba >> 8) & 0xff) / 255.f,
-   (rgba & 0xff) / 255.f
- ));
+returndiffuseColor(math::Vector4::create(
+((rgba>>24)&0xff)/255.f,
+((rgba>>16)&0xff)/255.f,
+((rgba>>8)&0xff)/255.f,
+(rgba&0xff)/255.f
+));
 
 } 
 ```

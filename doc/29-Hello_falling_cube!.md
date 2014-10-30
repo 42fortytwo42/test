@@ -14,12 +14,11 @@ Every object in a Minko scene is a node, the purpose of which is then defined by
 Step 0: Invoke the 'bullet' Minko plugin
 ----------------------------------------
 
-But first things first, you must before anything else [enable the 'bullet' plugin](How_to_enable_a_plugin) and then include the 'bullet' plugin's main header file into your project source code:
+But first things first, you must before anything else [enable the 'bullet' plugin](How_to_enable_a_plugin.md) and then include the 'bullet' plugin's main header file into your project source code:
 
 
 ```cpp
- 
-#include "minko/MinkoBullet.hpp" 
+ #include "minko/MinkoBullet.hpp" 
 ```
 
 
@@ -36,8 +35,8 @@ For your simulation to work, you thus need to add a minko::component::bullet::Ph
 ```cpp
  auto root = scene::Node::create("root")
 
-   ->addComponent(sceneManager)
-   ->addComponent(bullet::PhysicsWorld::create());
+->addComponent(sceneManager)
+->addComponent(bullet::PhysicsWorld::create());
 
 
 ```
@@ -63,17 +62,17 @@ Follows the example of a simple falling cube, the corresponding node of which is
 ```cpp
  auto boxColliderData = bullet::ColliderData::create(
 
-   5.0f, // strictly positive mass
-   bullet::BoxShape::create(0.5f, 0.5f, 0.5f) // shape strictly matches the CubeGeometry
+5.0f,//strictlypositivemass
+bullet::BoxShape::create(0.5f,0.5f,0.5f)//shapestrictlymatchestheCubeGeometry
 
 ); auto boxNode = scene::Node::create("boxNode")
 
-   ->addComponent(bullet::Collider::create(boxColliderData))
-   ->addComponent(Surface::create(
-       geometry::CubeGeometry::create(assets->context()),
-       material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
-       assets->effect("effect/Basic.effect")
-   ));
+->addComponent(bullet::Collider::create(boxColliderData))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
+assets->effect("effect/Basic.effect")
+));
 
 
 ```
@@ -105,11 +104,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoPNG.hpp" 
-#include "minko/MinkoSDL.hpp" // STEP 0 
-#include "minko/MinkoBullet.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp" // STEP 0 #include "minko/MinkoBullet.hpp"
 
 using namespace minko; using namespace minko::scene; using namespace minko::component; using namespace minko::math;
 
@@ -117,56 +112,56 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600; const std::string
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Minko Tutorial - Hello falling cube!", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = SceneManager::create(canvas->context());
+autocanvas=Canvas::create("MinkoTutorial-Hellofallingcube!",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=SceneManager::create(canvas->context());
 
-   sceneManager->assets()
-       ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-       ->queue(TEXTURE_FILENAME)
-       ->queue("effect/Basic.effect");
+sceneManager->assets()
+->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+->queue(TEXTURE_FILENAME)
+->queue("effect/Basic.effect");
 
-   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
-   {
-       auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x7f7f7fff))
-           ->addComponent(Transform::create(
-           Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(0.5f, 2.0f, 2.0f))
-           ))
-           ->addComponent(PerspectiveCamera::create(WINDOW_WIDTH / WINDOW_HEIGHT, (float) PI * 0.25f, .1f, 1000.f));
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(Transform::create(
+Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(0.5f,2.0f,2.0f))
+))
+->addComponent(PerspectiveCamera::create(WINDOW_WIDTH/WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f));
 
-       // STEP 1: create and add your physics world to the scene
-       auto root = scene::Node::create("root")
-           ->addComponent(sceneManager)
-           ->addComponent(bullet::PhysicsWorld::create());
+//STEP1:createandaddyourphysicsworldtothescene
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager)
+->addComponent(bullet::PhysicsWorld::create());
 
-       // STEP 2: create a box-shaped rigid body
-       auto boxColliderData = bullet::ColliderData::create(
-           5.0f, // strictly positive mass
-           bullet::BoxShape::create(0.5f, 0.5f, 0.5f) // shape strictly matches the CubeGeometry
-           );
-       auto boxNode = scene::Node::create("boxNode")
-           ->addComponent(bullet::Collider::create(boxColliderData))
-           ->addComponent(Surface::create(
-           geometry::CubeGeometry::create(assets->context()),
-           material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
-           assets->effect("effect/Basic.effect")
-           ));
+//STEP2:createabox-shapedrigidbody
+autoboxColliderData=bullet::ColliderData::create(
+5.0f,//strictlypositivemass
+bullet::BoxShape::create(0.5f,0.5f,0.5f)//shapestrictlymatchestheCubeGeometry
+);
+autoboxNode=scene::Node::create("boxNode")
+->addComponent(bullet::Collider::create(boxColliderData))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseMap(assets->texture(TEXTURE_FILENAME)),
+assets->effect("effect/Basic.effect")
+));
 
-       root->addChild(camera);
-       // STEP 3: trigger the simulation by adding the physics object to the scene
-       root->addChild(boxNode);
+root->addChild(camera);
+//STEP3:triggerthesimulationbyaddingthephysicsobjecttothescene
+root->addChild(boxNode);
 
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-       {
-           sceneManager->nextFrame(t, dt);
-       });
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
 
-       canvas->run();
-   });
+canvas->run();
+});
 
-   sceneManager->assets()->load();
+sceneManager->assets()->load();
 
-   return 0;
+return0;
 
 } 
 ```
@@ -184,7 +179,7 @@ Where to go from there
 
 That should be enough for you to build physics simulations in your Minko scene.
 
-For a peek at the code in a slightly more elaborate example, please refer to the ['physics' example](ExamplePhysics) that directly comes with the Minko SDK.
+For a peek at the code in a slightly more elaborate example, please refer to the ['physics' example](ExamplePhysics.md) that directly comes with the Minko SDK.
 
 ![physicsExampleThumbnail](images/PhysicsExample.jpeg "physicsExampleThumbnail")
 

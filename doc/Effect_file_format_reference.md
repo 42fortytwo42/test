@@ -18,28 +18,28 @@ Bindings are used to declare how each property of each pass of the effect will b
 ```javascript
  "attributeBindings" : {
 
-   "position"      : "geometry/vertex/attribute/position"
+"position":"geometry/vertex/attribute/position"
 
 },
 
 "uniformBindings" : {
 
-   "diffuseColor"      : "material/diffuse/rgba",
-   "modelToWorldMatrix"    : "transform/modelToWorldMatrix",
-   "worldToScreenMatrix"   : "transform/worldToScreenMatrix"
+"diffuseColor":"material/diffuse/rgba",
+"modelToWorldMatrix":"transform/modelToWorldMatrix",
+"worldToScreenMatrix":"transform/worldToScreenMatrix"
 
 },
 
 "stateBindings" : {
 
-   "blendMode"     : "material/blendMode",
-   "depthTest"     : "material/depthTest"
+"blendMode":"material/blendMode",
+"depthTest":"material/depthTest"
 
 } 
 ```
 
 
-The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](-#-Pass_Bindings)).
+The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](.md)).
 
 Passes
 ------
@@ -64,26 +64,26 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 ```javascript
  // some effect {
 
-   // by default, the "blendMode" state is bound to the "material/blendMode" property
-   "stateBindings"     : {
-       "blendMode" : "material/blendMode"
-   },
+//bydefault,the"blendMode"stateisboundtothe"material/blendMode"property
+"stateBindings":{
+"blendMode":"material/blendMode"
+},
 
-   "passes" : [{
-       "name"  : "first pass",
-       // "first pass" doest no re-declare the "blendMode" state binding: it will use
-       // the default one
-       // ...
-   },
-   {
-       "name"  : "second pass",
-       // "second pass" re-declare the "blendMode" state binding: it will *not* use
-       // the default one
-       "stateBindings"     : {
-           "blendMode" : "some/other/blendMode/property"
-       },
-       // ...
-   }]
+"passes":[{
+"name":"firstpass",
+//"firstpass"doestnore-declarethe"blendMode"statebinding:itwilluse
+//thedefaultone
+//...
+},
+{
+"name":"secondpass",
+//"secondpass"re-declarethe"blendMode"statebinding:itwill*not*use
+//thedefaultone
+"stateBindings":{
+"blendMode":"some/other/blendMode/property"
+},
+//...
+}]
 
 } 
 ```
@@ -154,9 +154,9 @@ Here is an example that will set the first pass rendering states:
 ```javascript
  "passes" : [{
 
-   "priority"  : 0,
-   "blendMode" : ["one", "zero"],
-   "depthTest" : [false, "less"],
+"priority":0,
+"blendMode":["one","zero"],
+"depthTest":[false,"less"],
 
 // ... 
 ```
@@ -170,15 +170,15 @@ Example:
 ```javascript
  "vertexShader" : "
 
-   attribute vec3 position;
+attributevec3position;
 
-   uniform mat4 modelToWorldMatrix;
-   uniform mat4 worldToScreenMatrix;
+uniformmat4modelToWorldMatrix;
+uniformmat4worldToScreenMatrix;
 
-   void main(void)
-   {
-       gl_Position =  worldToScreenMatrix * modelToWorldMatrix * vec4(position, 1.0);
-   }
+voidmain(void)
+{
+gl_Position=worldToScreenMatrix*modelToWorldMatrix*vec4(position,1.0);
+}
 
 " 
 ```
@@ -192,12 +192,12 @@ Example:
 ```javascript
  "fragmentShader" : "
 
-   uniform vec4 diffuseColor;
+uniformvec4diffuseColor;
 
-   void main(void)
-   {
-       gl_FragColor = diffuseColor;
-   }
+voidmain(void)
+{
+gl_FragColor=diffuseColor;
+}
 
 " 
 ```
@@ -210,47 +210,47 @@ Complete Example
 ```javascript
  // basic effect {
 
-   "name"  : "basic",
-   
-   "attributeBindings" : {
-       "position"      : "geometry/vertex/attribute/position"
-   },
-   
-   "uniformBindings"   : {
-       "diffuseColor"      : "material/diffuse/rgba",
-       "modelToWorldMatrix"    : "transform/modelToWorldMatrix",
-       "worldToScreenMatrix"   : "transform/worldToScreenMatrix"
-   },
-   
-   "stateBindings" : {
-       "blendMode"     : "material/blendMode",
-       "depthTest"     : "material/depthTest"
-   },
-   
-   "passes"    : [{
-       "priority"      : 0,
-       "blendMode"     : ["one", "zero"],
-       "depthTest"     : [false, "less"],
-       "vertexShader"  : "
-           attribute vec3 position;
+"name":"basic",
 
-           uniform mat4 modelToWorldMatrix;
-           uniform mat4 worldToScreenMatrix;
+"attributeBindings":{
+"position":"geometry/vertex/attribute/position"
+},
 
-           void main(void)
-           {
-               gl_Position =  worldToScreenMatrix * modelToWorldMatrix * vec4(position, 1.0);
-           }
-       ",
-       "fragmentShader"    : "
-           uniform vec4 diffuseColor;
+"uniformBindings":{
+"diffuseColor":"material/diffuse/rgba",
+"modelToWorldMatrix":"transform/modelToWorldMatrix",
+"worldToScreenMatrix":"transform/worldToScreenMatrix"
+},
 
-           void main(void)
-           {
-               gl_FragColor = diffuseColor;
-           }
-       "
-   }]
+"stateBindings":{
+"blendMode":"material/blendMode",
+"depthTest":"material/depthTest"
+},
+
+"passes":[{
+"priority":0,
+"blendMode":["one","zero"],
+"depthTest":[false,"less"],
+"vertexShader":"
+attributevec3position;
+
+uniformmat4modelToWorldMatrix;
+uniformmat4worldToScreenMatrix;
+
+voidmain(void)
+{
+gl_Position=worldToScreenMatrix*modelToWorldMatrix*vec4(position,1.0);
+}
+",
+"fragmentShader":"
+uniformvec4diffuseColor;
+
+voidmain(void)
+{
+gl_FragColor=diffuseColor;
+}
+"
+}]
 
 } 
 ```

@@ -13,13 +13,9 @@ Here are some advice on debugging your applications in HTML5.
 
 In your application, if you need some code to be executed solely when running in HTML5, you can use the EMSCRIPTEN macro 
 ```cpp
- 
-#if defined(EMSCRIPTEN) //my code for HTML5 
-#endif
+ #if defined(EMSCRIPTEN) //my code for HTML5 #endif
 
-
-#if !defined(EMSCRIPTEN) //my code for any target but HTML5 
-#endif 
+#if !defined(EMSCRIPTEN) //my code for any target but HTML5 #endif 
 ```
 
 
@@ -47,9 +43,9 @@ In native, reaching a return instruction in the main would result in the program
 ```cpp
  void main(int argc, char* argv) {
 
-   //some code
-   std::cout << "application returned" << std::endl;
-   return 0;
+//somecode
+std::cout<<"applicationreturned"<<std::endl;
+return0;
 
 } 
 ```

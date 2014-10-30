@@ -9,27 +9,23 @@ Step 1: Initialize the window
 We will use the SDL plugin to initialize a window. The following code is a simple C++ main function that initialize such window:
 
 
-
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
-const uint WINDOW\\WIDTH = 800; const uint WINDOW\\HEIGHT = 600;
+const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
 autocanvas=Canvas::create("Hellocube!",WINDOW_WIDTH,WINDOW_HEIGHT);
- 
+
 canvas->run();
 
 return0;
 
 } 
 ```
-
 
 
 The call to canvas->run() will make the application loop until canvas->quit() is called or the window is closed.
@@ -51,7 +47,7 @@ The following piece of code will create a SceneManager and use it's SceneManager
 
 sceneManager->assets()->queue("effect/Basic.effect"); auto complete = sceneManager->assets()->loader()->complete()->connect([&](file::Loader::Ptr loader) {
 
- // assets are loaded and ready
+//assetsareloadedandready
 
 });
 
@@ -76,7 +72,7 @@ The scene root is just a Node with the SceneManager component:
 ```cpp
  auto root = scene::Node::create("root")
 
- ->addComponent(sceneManager);
+->addComponent(sceneManager);
 
 
 ```
@@ -93,10 +89,10 @@ Our camera will be just a scene Node with two components:
 ```cpp
  auto camera = scene::Node::create("camera")
 
- ->addComponent(Renderer::create(0x7f7f7fff))
- ->addComponent(PerspectiveCamera::create(
-   (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, (float)M_PI * 0.25f, .1f, 1000.f)
- );
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)M_PI*0.25f,.1f,1000.f)
+);
 
 root->addChild(camera); 
 ```
@@ -176,7 +172,7 @@ To render our scene, we will use the SceneManager::nextFrame() method. This meth
 ```cpp
  auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
- sceneManager->nextFrame(t, dt);
+sceneManager->nextFrame(t,dt);
 
 }); 
 ```
@@ -191,7 +187,7 @@ To rotate our cube, we just have to access its Transform component and apply the
 ```cpp
 
 
- cube->component<Transform>()->matrix()->prependRotationY(.01f);
+cube->component<Transform>()->matrix()->prependRotationY(.01f);
 
 
 ```
@@ -203,8 +199,8 @@ To make our cube rotate a bit more at each frame, we simply add this line to our
 ```cpp
  auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
-                       cube->component<Transform>()->matrix()->prependRotationY(.01f);
- sceneManager->nextFrame(t, dt);
+cube->component<Transform>()->matrix()->prependRotationY(.01f);
+sceneManager->nextFrame(t,dt);
 
 }); 
 ```
@@ -213,6 +209,5 @@ To make our cube rotate a bit more at each frame, we simply add this line to our
 Final code
 ----------
 
-{{
-#github:tutorial/01-hello-cube/src/main.cpp}}
+{{#github:tutorial/01-hello-cube/src/main.cpp}}
 

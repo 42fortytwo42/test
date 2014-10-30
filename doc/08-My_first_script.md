@@ -26,23 +26,23 @@ PROJECT\NAME = path.getname(os.getcwd())
 
 minko.project.solution(PROJECT\NAME)
 
-   minko.project.application(PROJECT_NAME)
+minko.project.application(PROJECT_NAME)
 
-       language "c++"
-       kind "ConsoleApp"
+language"c++"
+kind"ConsoleApp"
 
-       files { "src/**.cpp", "src/**.hpp" }
-       includedirs { "src" }
+files{"src/**.cpp","src/**.hpp"}
+includedirs{"src"}
 
-       -- plugins
-       minko.plugin.enable("sdl")
-       minko.plugin.enable("lua")
+--plugins
+minko.plugin.enable("sdl")
+minko.plugin.enable("lua")
 
 
 ```
 
 
-Don't forget to [regenerate your solution file](Create a new application-#-Step_3:_Generate_the_solution_file) when you're done.
+Don't forget to [regenerate your solution file](Create_a_new_application.md) when you're done.
 
 Step 1: My first script file
 ----------------------------
@@ -69,19 +69,19 @@ Here is an example of script that will simply output debug messages in the conso
 ```lua
  -- /asset/script/my\script.lua function my\script:start(node)
 
- print('start')
+print('start')
 
 end
 
 function my\script:update(node)
 
- print('update')
+print('update')
 
 end
 
 function my\script:stop(node)
 
- print('stop')
+print('stop')
 
 end 
 ```
@@ -94,8 +94,7 @@ The first thing to do in our C++ application code is to load the main header for
 
 
 ```cpp
- 
-#include "minko/MinkoLua.hpp" 
+ #include "minko/MinkoLua.hpp" 
 ```
 
 
@@ -116,19 +115,17 @@ Step 3: Loading a script
 
 We can then use all the classes related to Lua scripting. Next we need to actually load our script. This should not be a surprise by now: we are going to use the AssetLibrary. Just like for any kind of assets, we need to:
 
-
-# make sure the LuaScriptParser is registered for the "lua" file extension; 
-# actually load our script(s) using AssetLibrary::queue() and/or AssetLibrary::load().
+# make sure the LuaScriptParser is registered for the "lua" file extension; # actually load our script(s) using AssetLibrary::queue() and/or AssetLibrary::load().
 
 
 ```cpp
- // register the LuaScriptParser sceneManager->assets()->registerParser<[file::LuaScriptParser\>](file::LuaScriptParser>)("lua");
+ // register the LuaScriptParser sceneManager->assets()->registerParser<[file::LuaScriptParser>](file::LuaScriptParser>)("lua");
 
 // queue the "script/my\script.lua" script file sceneManager->assets()->queue("script/my\script.lua");
 
 if (assets->script("script/my\script.lua"))
 
-   std::cout << "script loaded!" << std::endl;
+std::cout<<"scriptloaded!"<<std::endl;
 
 // actually begin loading operations sceneManager->assets()->load(); 
 ```
@@ -145,14 +142,14 @@ In this case, we will simply add our script to the root of our scene:
 ```cpp
  auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
-   root->addComponent(assets->script("script/my_script.lua"));
+root->addComponent(assets->script("script/my_script.lua"));
 
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-       sceneManager->nextFrame(t, dt);
-   });
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
 
-   canvas->run();
+canvas->run();
 
 }); 
 ```
@@ -172,11 +169,11 @@ In our case, my\script:stop() will never be called because it is never removed f
 ```cpp
  auto numFrames = 0; auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr c, float t, float dt) {
 
-   ++numFrames;
-   if (numFrames == 5)
-       root->removeComponent(sceneManager->assets()->script("script/my_script.lua"));
+++numFrames;
+if(numFrames==5)
+root->removeComponent(sceneManager->assets()->script("script/my_script.lua"));
 
-   sceneManager->nextFrame(t, dt);
+sceneManager->nextFrame(t,dt);
 
 }); 
 ```
@@ -195,10 +192,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp" 
-#include "minko/MinkoLua.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp" #include "minko/MinkoLua.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -206,40 +200,40 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Minko Tutorial - My first script", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = component::SceneManager::create(canvas->context());
-   auto root = scene::Node::create("root")->addComponent(sceneManager);
+autocanvas=Canvas::create("MinkoTutorial-Myfirstscript",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+autoroot=scene::Node::create("root")->addComponent(sceneManager);
 
-   // initialization of Lua context
-   LuaContext::initialize(argc, argv, root, canvas);
+//initializationofLuacontext
+LuaContext::initialize(argc,argv,root,canvas);
 
-   // add a LuaScriptManager to the root node
-   root->addComponent(LuaScriptManager::create());
+//addaLuaScriptManagertotherootnode
+root->addComponent(LuaScriptManager::create());
 
-   sceneManager->assets()->registerParser<[file::LuaScriptParser>](file::LuaScriptParser>)("lua");
-   sceneManager->assets()->queue("script/my_script.lua");
+sceneManager->assets()->registerParser<[file::LuaScriptParser>](file::LuaScriptParser>)("lua");
+sceneManager->assets()->queue("script/my_script.lua");
 
-   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
-   {
-       root->addComponent(assets->script("script/my_script.lua"));
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+root->addComponent(assets->script("script/my_script.lua"));
 
-       auto numFrames = 0;
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr c, float t, float dt)
-       {
-           ++numFrames;
-           if (numFrames == 5)
-               root->removeComponent(sceneManager->assets()->script("script/my_script.lua"));
+autonumFrames=0;
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrc,floatt,floatdt)
+{
+++numFrames;
+if(numFrames==5)
+root->removeComponent(sceneManager->assets()->script("script/my_script.lua"));
 
-           sceneManager->nextFrame(t, dt);
-       });
+sceneManager->nextFrame(t,dt);
+});
 
-       canvas->run();
-   });
+canvas->run();
+});
 
-   // actually begin loading operations
-   sceneManager->assets()->load();
+//actuallybeginloadingoperations
+sceneManager->assets()->load();
 
-   return 0;
+return0;
 
 } 
 ```

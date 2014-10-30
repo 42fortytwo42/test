@@ -3,7 +3,7 @@ Minko contains a plugin specific for effect more advanced than tha basic or phon
 Step 0: Invoke the 'fx' Minko plugin
 ------------------------------------
 
-The first thing you have to do is anything else than [enable the 'fx' plugin](How_to_enable_a_plugin) adding this line at the end of your project's premake file:
+The first thing you have to do is anything else than [enable the 'fx' plugin](How_to_enable_a_plugin.md) adding this line at the end of your project's premake file:
 
 
 ```lua
@@ -32,10 +32,10 @@ We can check that our anti-aliasing effect is correctly loaded like that:
 ```cpp
  auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
-   auto effect = sceneManager->assets()->effect("effect/FXAA/FXAA.effect");
+autoeffect=sceneManager->assets()->effect("effect/FXAA/FXAA.effect");
 
-   if (!effect)
-       throw std::logic_error("The FXAA effect has not been loaded.");
+if(!effect)
+throwstd::logic_error("TheFXAAeffecthasnotbeenloaded.");
 
 });
 
@@ -87,11 +87,11 @@ The final initialization step is to create a second scene - completely different
 ```cpp
  auto renderer = Renderer::create(); auto postProcessingScene = scene::Node::create() ->addComponent(renderer) ->addComponent(
 
-   Surface::create(
-       geometry::QuadGeometry::create(sceneManager->assets()->context()),
-       material::Material::create(),
-       effect
-   )
+Surface::create(
+geometry::QuadGeometry::create(sceneManager->assets()->context()),
+material::Material::create(),
+effect
+)
 
 ); 
 ```
@@ -108,8 +108,8 @@ We just have to update what we do in our Canvas::enterFrame() callback:
 ```cpp
  auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
- sceneManager->nextFrame(t, dt, renderTarget);
- renderer->render(assets->context());
+sceneManager->nextFrame(t,dt,renderTarget);
+renderer->render(assets->context());
 
 } 
 ```
@@ -126,14 +126,14 @@ We will do this in our Canvas::resized() callback:
 ```cpp
  auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
-   camera->component<PerspectiveCamera>()->aspectRatio((float) width / (float) height);
+camera->component<PerspectiveCamera>()->aspectRatio((float)width/(float)height);
 
-   renderTarget = render::Texture::create(assets->context(), clp2(width), clp2(height), false, true);
-   renderTarget->upload();
+renderTarget=render::Texture::create(assets->context(),clp2(width),clp2(height),false,true);
+renderTarget->upload();
 
-   effect->setUniform("textureSampler", renderTarget);
-   effect->setUniform("texcoordOffset",
-       Vector2::create(1.0f / renderTarget->width(), 1.0f / renderTarget->height()));
+effect->setUniform("textureSampler",renderTarget);
+effect->setUniform("texcoordOffset",
+Vector2::create(1.0f/renderTarget->width(),1.0f/renderTarget->height()));
 
 }); 
 ```
@@ -146,9 +146,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -156,112 +154,112 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Minko Tutorial - Applying anti-aliasing effect", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = SceneManager::create(canvas->context());
+autocanvas=Canvas::create("MinkoTutorial-Applyinganti-aliasingeffect",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=SceneManager::create(canvas->context());
 
-   sceneManager->assets()
-       ->queue("effect/Basic.effect")
-       ->queue("effect/FXAA/FXAA.effect")
-       ;
+sceneManager->assets()
+->queue("effect/Basic.effect")
+->queue("effect/FXAA/FXAA.effect")
+;
 
-   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
-   {
-       auto root = scene::Node::create("root")
-           ->addComponent(sceneManager);
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
 
-       auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x00000000))
-           ->addComponent(PerspectiveCamera::create(
-               (float) WINDOW_WIDTH / (float) WINDOW_HEIGHT, (float) PI * 0.25f, .1f, 1000.f))
-           ->addComponent(Transform::create(Matrix4x4::create()
-               ->lookAt(Vector3::create(), Vector3::create(0.f, 0.f, -5.f)))
-           );
-       root->addChild(camera);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x00000000))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f))
+->addComponent(Transform::create(Matrix4x4::create()
+->lookAt(Vector3::create(),Vector3::create(0.f,0.f,-5.f)))
+);
+root->addChild(camera);
 
-       auto cube = scene::Node::create("cube")
-           ->addComponent(Transform::create())
-           ->addComponent(Surface::create(
-           geometry::CubeGeometry::create(assets->context()),
-           material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
-           assets->effect("effect/Basic.effect")
-           ));
-       root->addChild(cube);
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create())
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
+assets->effect("effect/Basic.effect")
+));
+root->addChild(cube);
 
-       auto effect = sceneManager->assets()->effect("effect/FXAA/FXAA.effect");
+autoeffect=sceneManager->assets()->effect("effect/FXAA/FXAA.effect");
 
-       // Check that the FXAA effect has been properly loaded
-       if (!effect)
-           throw std::logic_error("The FXAA effect has not been loaded.");
+//CheckthattheFXAAeffecthasbeenproperlyloaded
+if(!effect)
+throwstd::logic_error("TheFXAAeffecthasnotbeenloaded.");
 
-       auto renderTarget = render::Texture::create(
-           assets->context(), clp2(WINDOW_WIDTH), clp2(WINDOW_HEIGHT), false, true);
-       renderTarget->upload();
+autorenderTarget=render::Texture::create(
+assets->context(),clp2(WINDOW_WIDTH),clp2(WINDOW_HEIGHT),false,true);
+renderTarget->upload();
 
-       effect->setUniform("textureSampler", renderTarget);
-       effect->setUniform("texcoordOffset",
-           Vector2::create(1.0f / renderTarget->width(), 1.0f / renderTarget->height()));
+effect->setUniform("textureSampler",renderTarget);
+effect->setUniform("texcoordOffset",
+Vector2::create(1.0f/renderTarget->width(),1.0f/renderTarget->height()));
 
-       auto renderer = Renderer::create();
-       // Create a scene just to display the post processing render target texture
-       auto postProcessingScene = scene::Node::create()
-           ->addComponent(renderer)
-           ->addComponent(
-               Surface::create(
-                   geometry::QuadGeometry::create(sceneManager->assets()->context()),
-                   material::Material::create(),
-                   effect
-               )
-           );
+autorenderer=Renderer::create();
+//Createascenejusttodisplaythepostprocessingrendertargettexture
+autopostProcessingScene=scene::Node::create()
+->addComponent(renderer)
+->addComponent(
+Surface::create(
+geometry::QuadGeometry::create(sceneManager->assets()->context()),
+material::Material::create(),
+effect
+)
+);
 
-       auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height)
-       {
-           camera->component<PerspectiveCamera>()->aspectRatio((float) width / (float) height);
+autoresized=canvas->resized()->connect([&](AbstractCanvas::Ptrcanvas,uintwidth,uintheight)
+{
+camera->component<PerspectiveCamera>()->aspectRatio((float)width/(float)height);
 
-           renderTarget = render::Texture::create(assets->context(), clp2(width), clp2(height), false, true);
-           renderTarget->upload();
+renderTarget=render::Texture::create(assets->context(),clp2(width),clp2(height),false,true);
+renderTarget->upload();
 
-           effect->setUniform("textureSampler", renderTarget);
-           effect->setUniform("texcoordOffset",
-               Vector2::create(1.0f / renderTarget->width(), 1.0f / renderTarget->height()));
-       });
+effect->setUniform("textureSampler",renderTarget);
+effect->setUniform("texcoordOffset",
+Vector2::create(1.0f/renderTarget->width(),1.0f/renderTarget->height()));
+});
 
-       // Enable/Disable FXAA pressing space key
-       auto enableFXAA = true;
-       auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k)
-       {
-           if (k->keyIsDown(input::Keyboard::ScanCode::SPACE))
-           {
-               enableFXAA = !enableFXAA;
+//Enable/DisableFXAApressingspacekey
+autoenableFXAA=true;
+autokeyDown=canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptrk)
+{
+if(k->keyIsDown(input::Keyboard::ScanCode::SPACE))
+{
+enableFXAA=!enableFXAA;
 
-               if (enableFXAA)
-                   std::cout << "Enable FXAA" << std::endl;
-               else
-                   std::cout << "Disable FXAA" << std::endl;
-           }
+if(enableFXAA)
+std::cout<<"EnableFXAA"<<std::endl;
+else
+std::cout<<"DisableFXAA"<<std::endl;
+}
 
-       });
+});
 
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-       {
-           cube->component<Transform>()->matrix()->prependRotationY(.01f);
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+cube->component<Transform>()->matrix()->prependRotationY(.01f);
 
-           if (enableFXAA)
-           {
-               sceneManager->nextFrame(t, dt, renderTarget);
-               renderer->render(assets->context());
-           }
-           else
-           {
-               sceneManager->nextFrame(t, dt);
-           }
-       });
+if(enableFXAA)
+{
+sceneManager->nextFrame(t,dt,renderTarget);
+renderer->render(assets->context());
+}
+else
+{
+sceneManager->nextFrame(t,dt);
+}
+});
 
-       canvas->run();
-   });
+canvas->run();
+});
 
-   sceneManager->assets()->load();
+sceneManager->assets()->load();
 
-   return 0;
+return0;
 
 } 
 ```

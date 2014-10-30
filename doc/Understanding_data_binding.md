@@ -15,40 +15,40 @@ asset/effect/MyCustomEffect.effect
 ```javascript
  {
 
- "name" : "MyCustomEffect",
- "attributeBindings" : {
-   "aPosition" : "geometry.vertex.attribute.position"
- },
- "passes" : [{
-   "vertexShader" : "
-     -#-ifdef GL_ES
-       precision mediump float;
-     -#-endif
+"name":"MyCustomEffect",
+"attributeBindings":{
+"aPosition":"geometry.vertex.attribute.position"
+},
+"passes":[{
+"vertexShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
 
-     attribute vec3 aPosition;
+attributevec3aPosition;
 
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
+uniformmat4uModelToWorldMatrix;
+uniformmat4uViewMatrix;
+uniformmat4uProjectionMatrix;
 
-     void main(void)
-     {
-       gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
-     }
-   ",
-   "fragmentShader" : "
-     -#-ifdef GL_ES
-       precision mediump float;
-     -#-endif
+voidmain(void)
+{
+gl_Position=uProjectionMatrix*uViewMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
+}
+",
+"fragmentShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
 
-     uniform vec4 uColor;
+uniformvec4uColor;
 
-     void main(void)
-     {
-       gl_FragColor = uColor;
-     }
-   "
- }]
+voidmain(void)
+{
+gl_FragColor=uColor;
+}
+"
+}]
 
 } 
 ```
@@ -56,9 +56,7 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -66,42 +64,42 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Hello cube!", WINDOW_WIDTH, WINDOW_HEIGHT);
- auto sceneManager = component::SceneManager::create(canvas->context());
- sceneManager->assets()->queue("effect/Basic.effect");
- auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
- {
-   auto myCustomEffect = assets->effect("effect/MyCustomEffect.effect");
+autocanvas=Canvas::create("Hellocube!",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+sceneManager->assets()->queue("effect/Basic.effect");
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+automyCustomEffect=assets->effect("effect/MyCustomEffect.effect");
 
-   auto root = scene::Node::create("root")
-     ->addComponent(sceneManager)
-     ->addComponent(Renderer::create(0x7f7f7fff));
-   auto cube = scene::Node::create("cube");
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry(assets->context()),
-       material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
-       myCustomEffect
-     ));
-   root->addChild(cube);
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager)
+->addComponent(Renderer::create(0x7f7f7fff));
+autocube=scene::Node::create("cube");
+->addComponent(Surface::create(
+geometry::CubeGeometry(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
+myCustomEffect
+));
+root->addChild(cube);
 
-   autoModelToWorldMatrix = Matrix4x4::create()->translation(0.f, 0.f, -5.f);
+autoModelToWorldMatrix=Matrix4x4::create()->translation(0.f,0.f,-5.f);
 
-   myCustomEffect->setUniform("uModelToWorldMatrix", modelToWorldMatrix);
-   myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create());
-   myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)WINDOW_WIDTH / (float)WINDOW_HEIGHT));
+myCustomEffect->setUniform("uModelToWorldMatrix",modelToWorldMatrix);
+myCustomEffect->setUniform("uViewMatrix",Matrix4x4::create());
+myCustomEffect->setUniform("uProjectionMatrix",Matrix4x4::create()->perspective((float)WINDOW_WIDTH/(float)WINDOW_HEIGHT));
 
-   myCustomEffect->setUniform("uColor", Vector4::create(0.f, 0.f, 1.f, 1.f));
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas)
-   {
-     modelToWorldMatrix->prependRotationY(0.01f);
-     myCustomEffect->setUniform("uModelToWorldMatrix", modelToWorldMatrix);
-     
-     sceneManager->nextFrame();
-   });
-   canvas->run();
- });
- sceneManager->assets()->load();
- return 0;
+myCustomEffect->setUniform("uColor",Vector4::create(0.f,0.f,1.f,1.f));
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas)
+{
+modelToWorldMatrix->prependRotationY(0.01f);
+myCustomEffect->setUniform("uModelToWorldMatrix",modelToWorldMatrix);
+
+sceneManager->nextFrame();
+});
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```
@@ -123,19 +121,15 @@ The problem is the use of the Effect::setUniform() method. The method itself is 
 ```
  for each object in objectToRender
 
- for each uniformName in object.uniformNames
-   object.effect.setUniform(uniformName, object.uniformValues[uniformName]);
-   render();
+foreachuniformNameinobject.uniformNames
+object.effect.setUniform(uniformName,object.uniformValues[uniformName]);
+render();
 
 
 ```
 
 
-This pseudo-code raises multiple questions: 
-# How efficient is it to set all uniforms for all objects? 
-# How can we handle values coming from other nodes in the scene, such as lights or cameras? 
-# What happens when we change the name of an uniform in the GLSL code? 
-# How could we integrate third party GLSL code and plug it to the properties already available in the engine?
+This pseudo-code raises multiple questions: # How efficient is it to set all uniforms for all objects? # How can we handle values coming from other nodes in the scene, such as lights or cameras? # What happens when we change the name of an uniform in the GLSL code? # How could we integrate third party GLSL code and plug it to the properties already available in the engine?
 
 Another problem is to allow our application to adapt its behavior when one of the properties of a scene node changes. For example, when the 3D position of a node changes we might want to check its position relative to the mouse cursor or whether the object is actually visible at all or not. Most application scripts will actually base their behavior according to how the properties of our scene node change over time. If we store our uniforms in a simple map, we will have a hard time tracking the corresponding values and act accordingly when they change.
 
@@ -174,19 +168,19 @@ container->addProvider(provider);
 
 auto propertyAdded = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
- std::cout << "property '" << name << "' added to provider" << std::endl;
+std::cout<<"property'"<<name<<"'addedtoprovider"<<std::endl;
 
 });
 
 auto propertyChanged = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
- std::cout << "property changed: " << name << " = " << p->get<int>(name) << std::endl;
+std::cout<<"propertychanged:"<<name<<"="<<p->get<int>(name)<<std::endl;
 
 });
 
 auto propertyAdded = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
- std::cout << "property '" << name << "' removed from provider" << std::endl;
+std::cout<<"property'"<<name<<"'removedfromprovider"<<std::endl;
 
 });
 
@@ -248,13 +242,13 @@ container->addProvider(provider);
 
 auto propertyAddedToProvider = provider->propertyAdded()->connect([&](data::Provider::Ptr p, const std::string& name) {
 
- std::cout << "property '" << name << "' added to provider" << std::endl;
+std::cout<<"property'"<<name<<"'addedtoprovider"<<std::endl;
 
 });
 
 auto propertyAddedToContainer = container->propertyAdded()->connect([&](data::Container::Ptr c, const std::string& name) {
 
- std::cout << "property '" << name << "' added to container" << std::endl;
+std::cout<<"property'"<<name<<"'addedtocontainer"<<std::endl;
 
 });
 
@@ -289,9 +283,9 @@ Here is an example of how uniform bindings can be declared in an *.effect file (
 ```javascript
  "uniformBindings" : {
 
- "diffuseColor"   : { "property" : "material.diffuseColor", "source" : "target" },
- "cameraPosition" : { "property" : "camera.position",       "source" : "renderer" },
- "spotLights"     : { "property" : "spotLights",            "source" : "root" }
+"diffuseColor":{"property":"material.diffuseColor","source":"target"},
+"cameraPosition":{"property":"camera.position","source":"renderer"},
+"spotLights":{"property":"spotLights","source":"root"}
 
 } 
 ```
@@ -307,32 +301,32 @@ To better understand what "target", "renderer" and "root" might mean in this con
 ```cpp
  auto root = scene::Node::create()
 
- ->addComponent(component::SceneManager::create(context));
+->addComponent(component::SceneManager::create(context));
 
 auto camera = scene::Node::create()
 
- ->addComponent(component::PerspectiveCamera::create((float)PI / 4.f, (float)WIDTH / (float)HEIGHT))
- ->addComponent(component::Transform());
+->addComponent(component::PerspectiveCamera::create((float)PI/4.f,(float)WIDTH/(float)HEIGHT))
+->addComponent(component::Transform());
 
 root->addChild(camera);
 
 auto mesh = scene::Node::create()
 
- ->addComponent(component::Surface::create(
-   geometry::CubeGeometry::create(context),
-   material::Material::create()->set("diffuseColor", Vector4::create(1.f, 0.f, 1.f, 1.f)),
-   basicEffect
- ))
- ->addComponent(component::Transform(
-   Matrix4x4::create()->appendTranslation(0.f, 0.f, -5.f)
- ));
+->addComponent(component::Surface::create(
+geometry::CubeGeometry::create(context),
+material::Material::create()->set("diffuseColor",Vector4::create(1.f,0.f,1.f,1.f)),
+basicEffect
+))
+->addComponent(component::Transform(
+Matrix4x4::create()->appendTranslation(0.f,0.f,-5.f)
+));
 
 root->addChild(mesh);
 
 auto light = scene::Node::create()
 
- ->addComponent(component::SpotLight::create())
- ->addComponent(component::Transform::create());
+->addComponent(component::SpotLight::create())
+->addComponent(component::Transform::create());
 
 root->addChild(light); 
 ```

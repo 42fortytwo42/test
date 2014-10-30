@@ -169,7 +169,7 @@ Transform properties
 Light properties
 ----------------
 
--   Color</color\>: changes the light color.
+-   Color</color>: changes the light color.
 -   Attenuation Distance: distance at which the light intensity will fade out.
 -   Inner radius, Outer radius: the outer radius gives the radius of the cone, the light will be more intense inside of the inner radius and will fade from the inner radius to the outer radius.
 -   Diffuse: changes the intensity of the light. All materials can accentuate this intensity with the Diffuse Multiplier parameter.

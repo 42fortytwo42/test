@@ -17,21 +17,21 @@ PROJECT\NAME = path.getname(os.getcwd())
 
 minko.project.solution(PROJECT\NAME)
 
-   minko.project.application(PROJECT_NAME)
+minko.project.application(PROJECT_NAME)
 
-       language "c++"
-       kind "ConsoleApp"
+language"c++"
+kind"ConsoleApp"
 
-       files { "src/**.cpp", "src/**.hpp" }
-       includedirs { "src" }
+files{"src/**.cpp","src/**.hpp"}
+includedirs{"src"}
 
-       -- plugins
-       minko.plugin.enable("sdl")
-       --minko.plugin.enable("bullet")
-       --minko.plugin.enable("jpeg")
-       --minko.plugin.enable("mk")
-       --minko.plugin.enable("particles")
-       --minko.plugin.enable("png")
+--plugins
+minko.plugin.enable("sdl")
+--minko.plugin.enable("bullet")
+--minko.plugin.enable("jpeg")
+--minko.plugin.enable("mk")
+--minko.plugin.enable("particles")
+--minko.plugin.enable("png")
 
 
 ```
@@ -70,7 +70,7 @@ You can, of course, enable as many plugins as you need.
 Step 2: Generate the solution
 -----------------------------
 
-Now that our solution configuration is up to date, we have to re-generate the actual solution file for our IDE/build system. To do this, please refer to the [step 3 of the "Create a new application" tutorial](Create_a_new_application-#-Step_3:_Generate_the_solution_file).
+Now that our solution configuration is up to date, we have to re-generate the actual solution file for our IDE/build system. To do this, please refer to the [step 3 of the "Create a new application" tutorial](Create_a_new_application.md).
 
 Step 2 (alternative): Enable a plugin in the command line
 ---------------------------------------------------------
@@ -85,7 +85,7 @@ For example, if we want to enabled the "jpeg" plugin, we will have to add the fo
 ```
 
 
-The command line itself is documented in the [step 3 of the "Create a new application" tutorial](Create_a_new_application-#-Step_3:_Generate_the_solution_file).
+The command line itself is documented in the [step 3 of the "Create a new application" tutorial](Create_a_new_application.md).
 
 For example, the following Windows command line will enable the "jpeg" plugin when generating the Visual Studio 2013 solution file for our project:
 
@@ -104,9 +104,7 @@ In the following code, we will enable the JPEG image files parser only if the MI
 
 
 ```cpp
- 
-#ifdef MINKO\PLUGIN\JPEG sceneManager->assets()->registerParser<JPEGParser\>("jpg"); 
-#endif 
+ #ifdef MINKO\PLUGIN\JPEG sceneManager->assets()->registerParser<JPEGParser>("jpg"); #endif 
 ```
 
 

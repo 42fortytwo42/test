@@ -23,8 +23,8 @@ Here is how we can bind the camera transform and projection in our effect using 
 ```javascript
  "uniformBindings" : {
 
- "uViewMatrix" : { "property" : "camera.viewMatrix", "source" : "renderer" },
- "uProjectionMatrix" : { "property" : "camera.projectionMatrix", "source" : "renderer" }
+"uViewMatrix":{"property":"camera.viewMatrix","source":"renderer"},
+"uProjectionMatrix":{"property":"camera.projectionMatrix","source":"renderer"}
 
 } 
 ```
@@ -49,29 +49,29 @@ The PerspectiveCamera also provides the camera.worldToScreenMatrix, which is the
 ```javascript
  {
 
- // ...
+//...
 
- "uniformBindings" : {
-   "uColor" : "material[${materialId}].color",
-   "uModelToWorldMatrix" : "transform.modelToWorldMatrix",
-   "uWorldToScreenMatrix" : { "property" : "camera.worldToScreenMatrix", "source" : "renderer" }
- },
+"uniformBindings":{
+"uColor":"material[${materialId}].color",
+"uModelToWorldMatrix":"transform.modelToWorldMatrix",
+"uWorldToScreenMatrix":{"property":"camera.worldToScreenMatrix","source":"renderer"}
+},
 
- "passes" : [{
-   "vertexShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uWorldToScreenMatrix;
-     void main(void)
-     {
-       gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
-     }
-   ",
+"passes":[{
+"vertexShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+attributevec3aPosition;
+uniformmat4uModelToWorldMatrix;
+uniformmat4uWorldToScreenMatrix;
+voidmain(void)
+{
+gl_Position=uWorldToScreenMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
+}
+",
 
-   // ...
+//...
 
 } 
 ```
@@ -88,9 +88,9 @@ Now that our view matrix is bound, we don't have to set it manually. But we have
 ```cpp
  auto camera = scene::Node::create()
 
- ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(-5.0f, 5.0f, 5.0f))))
- ->addComponent(Renderer::create())
- ->addComponent(PerspectiveCamera::create((float)WINDOW_WIDTH / (float)WINDOW_HEIGHT));
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(),Vector3::create(-5.0f,5.0f,5.0f))))
+->addComponent(Renderer::create())
+->addComponent(PerspectiveCamera::create((float)WINDOW_WIDTH/(float)WINDOW_HEIGHT));
 
 root->addChild(camera); 
 ```
@@ -115,39 +115,39 @@ asset/effect/MyCustomEffect.effect
 ```javascript
  {
 
- "name" : "MyCustomEffect",
- "attributeBindings" : {
-   "aPosition" : "geometry[${geometryId}].position"
- },
- "uniformBindings" : {
-   "uColor" : "material[${materialId}].color",
-   "uModelToWorldMatrix" : "transform.modelToWorldMatrix",
-   "uWorldToScreenMatrix" : { "property" : "camera.worldToScreenMatrix", "source" : "renderer" }
- },
- "passes" : [{
-   "vertexShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uWorldToScreenMatrix;
-     void main(void)
-     {
-       gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
-     }
-   ",
-   "fragmentShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     uniform vec4 uColor;
-     void main(void)
-     {
-       gl_FragColor = uColor;
-     }
-   "
- }]
+"name":"MyCustomEffect",
+"attributeBindings":{
+"aPosition":"geometry[${geometryId}].position"
+},
+"uniformBindings":{
+"uColor":"material[${materialId}].color",
+"uModelToWorldMatrix":"transform.modelToWorldMatrix",
+"uWorldToScreenMatrix":{"property":"camera.worldToScreenMatrix","source":"renderer"}
+},
+"passes":[{
+"vertexShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+attributevec3aPosition;
+uniformmat4uModelToWorldMatrix;
+uniformmat4uWorldToScreenMatrix;
+voidmain(void)
+{
+gl_Position=uWorldToScreenMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
+}
+",
+"fragmentShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+uniformvec4uColor;
+voidmain(void)
+{
+gl_FragColor=uColor;
+}
+"
+}]
 
 } 
 ```
@@ -155,10 +155,7 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
-
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 #include "MyCustomMaterial.hpp"
 
@@ -168,41 +165,41 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Minko Tutorial - Binding the camera", WINDOW_WIDTH, WINDOW_HEIGHT);
- auto sceneManager = component::SceneManager::create(canvas->context());
- sceneManager->assets()->queue("effect/MyCustomEffect.effect");
- auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
- {
-   auto root = scene::Node::create("root")
-     ->addComponent(sceneManager);
-   auto camera = scene::Node::create()
-     ->addComponent(Renderer::create(0x7f7f7fff))
-     ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(-5.0f, 5.0f, 5.0f))))
-     ->addComponent(PerspectiveCamera::create((float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, (float)PI * 0.25f, .1f, 1000.f));
-   root->addChild(camera);
-   auto myCustomEffect     = assets->effect("effect/MyCustomEffect.effect");
-   auto myCustomMaterial   = material::MyCustomMaterial::create();
-   auto cube = scene::Node::create("cube")
-     ->addComponent(Transform::create(
-       Matrix4x4::create()->translation(0.f, 0.f, -5.f)
-     ))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry::create(assets->context()),
-       myCustomMaterial,
-       myCustomEffect
-     ));
-   root->addChild(cube);
-   myCustomMaterial->color(Vector4::create(1.f, 0.f, 0.f, 1.f));
+autocanvas=Canvas::create("MinkoTutorial-Bindingthecamera",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+sceneManager->assets()->queue("effect/MyCustomEffect.effect");
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
+autocamera=scene::Node::create()
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(),Vector3::create(-5.0f,5.0f,5.0f))))
+->addComponent(PerspectiveCamera::create((float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f));
+root->addChild(camera);
+automyCustomEffect=assets->effect("effect/MyCustomEffect.effect");
+automyCustomMaterial=material::MyCustomMaterial::create();
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create(
+Matrix4x4::create()->translation(0.f,0.f,-5.f)
+))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+myCustomMaterial,
+myCustomEffect
+));
+root->addChild(cube);
+myCustomMaterial->color(Vector4::create(1.f,0.f,0.f,1.f));
 
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-     cube->component<Transform>()->matrix()->prependRotationY(0.01f);
-     sceneManager->nextFrame(t, dt);
-   });
-   canvas->run();
- });
- sceneManager->assets()->load();
- return 0;
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+cube->component<Transform>()->matrix()->prependRotationY(0.01f);
+sceneManager->nextFrame(t,dt);
+});
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```

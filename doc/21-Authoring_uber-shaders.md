@@ -6,9 +6,7 @@
 
 In this tutorial, we will see how to create "über shaders". Über shaders are rendering programs that can handle many different rendering scenarios. For example, a lighting über shader will be able to handle many different counts and types of lights. An even simpler scenario is whether we want to render using the vertex color, a solid color or a texture.
 
-To learn how to create an über-shader, we will update the effect created in the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial to be able to render two scenarios: 
-# rendering with a solid color; 
-# rendering with a texture.
+To learn how to create an über-shader, we will update the effect created in the [Create your first custom effect](Create_your_first_custom_effect.md) tutorial to be able to render two scenarios: # rendering with a solid color; # rendering with a texture.
 
 Step 0: Introduction to über shaders
 ------------------------------------
@@ -19,10 +17,7 @@ That's where über shaders kick in: an über shader is a single shader program t
 
 
 ```c
- 
-#ifdef SOME\OPTION // do something... 
-#else // do something else... 
-#endif 
+ #ifdef SOME\OPTION // do something... #else // do something else... #endif 
 ```
 
 
@@ -31,13 +26,11 @@ In the case above, the actual behavior of the shader will depend on whether the 
 Step 1: Updating the fragment shader
 ------------------------------------
 
-We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](Create_your_first_custom_effect-#-Step_3:_The_fragment_shader) and update it to use a texture if the DIFFUSE\MAP macro is defined:
+We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](Create_your_first_custom_effect.md) and update it to use a texture if the DIFFUSE\MAP macro is defined:
 
 
 ```c
- 
-#ifdef GL\ES precision mediump float; 
-#endif
+ #ifdef GL\ES precision mediump float; #endif
 
 uniform vec4 uDiffuseColor; uniform sampler2D uDiffuseMap;
 
@@ -45,11 +38,11 @@ varying vec2 vVertexUv;
 
 void main(void) {
 
- -#-ifdef DIFFUSE_MAP
-   gl_FragColor = texture2D(uDiffuseMap, vVertexUv);
- -#-else
-   gl_FragColor = uDiffuseColor;
- -#-endif
+#ifdefDIFFUSE_MAP
+gl_FragColor=texture2D(uDiffuseMap,vVertexUv);
+#else
+gl_FragColor=uDiffuseColor;
+#endif
 
 } 
 ```
@@ -59,9 +52,7 @@ To sample the uDiffuseMap texture, our fragment shader will also need the textur
 
 
 ```c
- 
-#ifdef GL\ES precision mediump float; 
-#endif
+ #ifdef GL\ES precision mediump float; #endif
 
 attribute vec3 aPosition; attribute vec2 aUv;
 
@@ -71,11 +62,11 @@ varying vec2 vVertexUv;
 
 void main(void) {
 
- -#-ifdef DIFFUSE_MAP
-   vVertexUv = aUv;
- -#-endif
+#ifdefDIFFUSE_MAP
+vVertexUv=aUv;
+#endif
 
- gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
+gl_Position=uWorldToScreenMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
 
 } 
 ```
@@ -87,8 +78,8 @@ We've made some modifications in the fragment shader that required a minor updat
 ```javascript
  "attributeBindings" : {
 
- "aPosition" : "geometry[${geometryId}].position",
- "aUv" : "geometry[${geometryId}].uv"
+"aPosition":"geometry[${geometryId}].position",
+"aUv":"geometry[${geometryId}].uv"
 
 } 
 ```
@@ -100,10 +91,10 @@ and the uniformBindings to make sure our uDiffuseMap property is properly bound 
 ```javascript
  "uniformBindings" : {
 
- "uDiffuseColor" : "material[${materialId}].diffuseColor",
- "uDiffuseMap" : "material[${materialId}].diffuseMap",
- "uModelToWorldMatrix" : "transform.modelToWorldMatrix",
- "uWorldToScreenMatrix" : { "property" : "camera.worldToScreenMatrix", "source" : "renderer" }
+"uDiffuseColor":"material[${materialId}].diffuseColor",
+"uDiffuseMap":"material[${materialId}].diffuseMap",
+"uModelToWorldMatrix":"transform.modelToWorldMatrix",
+"uWorldToScreenMatrix":{"property":"camera.worldToScreenMatrix","source":"renderer"}
 
 } 
 ```
@@ -118,16 +109,13 @@ We now have a fragment shader that can use a solid color or a texture depending 
 
 
 ```c
- 
-#ifdef DIFFUSE\MAP
+ #ifdef DIFFUSE\MAP
 
- gl_FragColor = texture2D(uDiffuseMap, vVertexUv);
-
+gl_FragColor=texture2D(uDiffuseMap,vVertexUv);
 
 #else
 
- gl_FragColor = uDiffuseColor;
-
+gl_FragColor=uDiffuseColor;
 
 #endif 
 ```
@@ -137,8 +125,7 @@ It works but it's still not really scalable: we would have to manually define th
 
 
 ```c
- 
-#define DIFFUSE\MAP 
+ #define DIFFUSE\MAP 
 ```
 
 
@@ -150,7 +137,7 @@ Using macroBindings, we can bind a macro definition to a data property provided 
 ```javascript
  "macroBindings" : {
 
- "DIFFUSE_MAP" : "material[${materialId}].diffuseMap"
+"DIFFUSE_MAP":"material[${materialId}].diffuseMap"
 
 } 
 ```
@@ -162,13 +149,12 @@ The behavior of a macro binding is described in the following pseudo-code:
 ```lua
  defineString = "" if propertyExists(propertyName) then
 
- if isInteger(data[propertyName]) then
-   defineString = "-#-define " + propertyName + " " + data[propertyName] // -#-define MACRO_NAME propertyValue
- else
-   defineString = "-#-define " + propertyName // -#-define MACRO_NAME
+ifisInteger(data[propertyName])then
+defineString="#define"+propertyName+""+data[propertyName]//#defineMACRO_NAMEpropertyValue
+else
+defineString="#define"+propertyName//#defineMACRO_NAME
 
-// else no 
-#define 
+// else no #define 
 ```
 
 
@@ -183,55 +169,55 @@ asset/effect/MyCustomUberEffect.effect
 ```javascript
  {
 
- "name" : "MyCustomUberEffect",
- "attributeBindings" : {
-   "aPosition" : "geometry[${geometryId}].position",
-   "aUv" : "geometry[${geometryId}].uv"
- },
- "uniformBindings" : {
-   "uDiffuseColor" : "material[${materialId}].diffuseColor",
-   "uDiffuseMap" : "material[${materialId}].diffuseMap",
-   "uModelToWorldMatrix" : "transform.modelToWorldMatrix",
-   "uWorldToScreenMatrix" : { "property" : "camera.worldToScreenMatrix", "source" : "renderer" }
- },
- "macroBindings" : {
-   "DIFFUSE_MAP" : "material[${materialId}].diffuseMap"
- },
- "passes" : [{
-   "vertexShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     attribute vec3 aPosition;
-     attribute vec2 aUv;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uWorldToScreenMatrix;
-     varying vec2 vVertexUv;
-     void main(void)
-     {
-       -#-ifdef DIFFUSE_MAP
-         vVertexUv = aUv;
-       -#-endif
-       gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
-     }
-   ",
-   "fragmentShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     uniform vec4 uDiffuseColor;
-     uniform sampler2D uDiffuseMap;
-     varying vec2 vVertexUv;
-     void main(void)
-     {
-       -#-ifdef DIFFUSE_MAP
-         gl_FragColor = texture2D(uDiffuseMap, vVertexUv);
-       -#-else
-         gl_FragColor = uDiffuseColor;
-       -#-endif
-     }
-   "
- }]
+"name":"MyCustomUberEffect",
+"attributeBindings":{
+"aPosition":"geometry[${geometryId}].position",
+"aUv":"geometry[${geometryId}].uv"
+},
+"uniformBindings":{
+"uDiffuseColor":"material[${materialId}].diffuseColor",
+"uDiffuseMap":"material[${materialId}].diffuseMap",
+"uModelToWorldMatrix":"transform.modelToWorldMatrix",
+"uWorldToScreenMatrix":{"property":"camera.worldToScreenMatrix","source":"renderer"}
+},
+"macroBindings":{
+"DIFFUSE_MAP":"material[${materialId}].diffuseMap"
+},
+"passes":[{
+"vertexShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+attributevec3aPosition;
+attributevec2aUv;
+uniformmat4uModelToWorldMatrix;
+uniformmat4uWorldToScreenMatrix;
+varyingvec2vVertexUv;
+voidmain(void)
+{
+#ifdefDIFFUSE_MAP
+vVertexUv=aUv;
+#endif
+gl_Position=uWorldToScreenMatrix*uModelToWorldMatrix*vec4(aPosition,1.0);
+}
+",
+"fragmentShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+uniformvec4uDiffuseColor;
+uniformsampler2DuDiffuseMap;
+varyingvec2vVertexUv;
+voidmain(void)
+{
+#ifdefDIFFUSE_MAP
+gl_FragColor=texture2D(uDiffuseMap,vVertexUv);
+#else
+gl_FragColor=uDiffuseColor;
+#endif
+}
+"
+}]
 
 } 
 ```
@@ -239,9 +225,7 @@ asset/effect/MyCustomUberEffect.effect
 
 src/main.cpp 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -249,45 +233,45 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Minko Tutorial - Authoring uber-shaders", WINDOW_WIDTH, WINDOW_HEIGHT);
- auto sceneManager = component::SceneManager::create(canvas->context());
- sceneManager->assets()
-   ->queue("effect/MyCustomUberEffect.effect")
-   ->queue("texture/box.png");
- auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
- {
-   auto root = scene::Node::create("root")
-     ->addComponent(sceneManager);
-   auto camera = scene::Node::create("camera")
-     ->addComponent(Renderer::create(0x7f7f7fff))
-     ->addComponent(PerspectiveCamera::create(
-       (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, (float)PI * 0.25f, .1f, 1000.f)
-     );
-   root->addChild(camera);
-   auto texturedCube = scene::Node::create("texturedCube");
-     ->addComponent(Transform::create(Matrix4x4::create()->translation(-2.f, 0.f, -5.f)))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry(assets->context()),
-       material::Material::create()->set("diffuseMap", assets()->texture("texture/box.png")),
-       assets->effect("effect/MyCustomUberEffect.effect")
-     ));
-   root->addChild(texturedCube);
-   auto coloredCube = scene::Node::create("coloredCube")
-     ->addComponent(Transform::create(Matrix4x4::create()->translation(2.f, 0.f, -5.f)))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry::create(assets->context()),
-       material::Material::create()->set("diffuseColor", Vector4::create(0.f, 0.f, 1.f, 1.f)),
-       assets->effect("effect/MyCustomUberEffect.effect")
-     ));
-   root->addChild(coloredCube);
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-     sceneManager->nextFrame(t, dt);
-   });
-   canvas->run();
- });
- sceneManager->assets()->load();
- return 0;
+autocanvas=Canvas::create("MinkoTutorial-Authoringuber-shaders",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+sceneManager->assets()
+->queue("effect/MyCustomUberEffect.effect")
+->queue("texture/box.png");
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f)
+);
+root->addChild(camera);
+autotexturedCube=scene::Node::create("texturedCube");
+->addComponent(Transform::create(Matrix4x4::create()->translation(-2.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry(assets->context()),
+material::Material::create()->set("diffuseMap",assets()->texture("texture/box.png")),
+assets->effect("effect/MyCustomUberEffect.effect")
+));
+root->addChild(texturedCube);
+autocoloredCube=scene::Node::create("coloredCube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(2.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::Material::create()->set("diffuseColor",Vector4::create(0.f,0.f,1.f,1.f)),
+assets->effect("effect/MyCustomUberEffect.effect")
+));
+root->addChild(coloredCube);
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```

@@ -20,7 +20,7 @@ To enable one (or both) of those plugins, we will have to update our project con
 ```
 
 
-Uncommenting one of those lines will enable the corresponding plugin. Now we have to regenerate the project/solution files to take those changes into account. To do this, please refer to the [Step 3 of the "Create a new application" tutorial](Create_a_new_application-#-Step_3:_Generate_the_solution_file).
+Uncommenting one of those lines will enable the corresponding plugin. Now we have to regenerate the project/solution files to take those changes into account. To do this, please refer to the [Step 3 of the "Create a new application" tutorial](Create_a_new_application.md).
 
 If you want to support more texture file formats, feel free to create a new plugin based on those already available. It's usually quite simple to integrate 3rd party parsing libraries to handle new file formats.
 
@@ -31,7 +31,7 @@ Before we can load anything, we have to make sure Minko will know how to handle 
 
 
 ```cpp
- sceneManager->assets()->registerParser<[file::JPEGParser\>](file::JPEGParser>)("jpg"); 
+ sceneManager->assets()->registerParser<[file::JPEGParser>](file::JPEGParser>)("jpg"); 
 ```
 
 
@@ -54,10 +54,10 @@ Loading textures can be an asynchronous task depending on how the internal loade
 ```cpp
  sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
- auto texture = assets->texture("texture/my_texture.jpg");
+autotexture=assets->texture("texture/my_texture.jpg");
 
- std::cout << "texture width: " << texture->width() << std::endl;
- std::cout << "texture height: " << texture->height() << std::endl;
+std::cout<<"texturewidth:"<<texture->width()<<std::endl;
+std::cout<<"textureheight:"<<texture->height()<<std::endl;
 
 });
 
@@ -80,9 +80,9 @@ To use our texture upon loading, we simply use the BasicMaterial::diffuseMap() m
 ```cpp
  sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
- auto basicMaterial = std::dynamic_pointer_cast<material::BasicMaterial>(cube->component<Surface>()->material());
+autobasicMaterial=std::dynamic_pointer_cast<material::BasicMaterial>(cube->component<Surface>()->material());
 
- basicMaterial->diffuseMap(assets->texture("texture/my_texture.jpg"));
+basicMaterial->diffuseMap(assets->texture("texture/my_texture.jpg"));
 
 }); 
 ```
@@ -94,13 +94,13 @@ You can also avoid the dynamic cast by using the Material::set() method:
 ```cpp
  sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 
- cube->component<Surface>()->material()->set("diffuseMap", assets->texture("texture/my_texture.jpg"));
+cube->component<Surface>()->material()->set("diffuseMap",assets->texture("texture/my_texture.jpg"));
 
 }); 
 ```
 
 
-Both methods have the exact same behavior since Material::set() is actually called by BasicMaterial::diffuseMap() internally. The second method is a bit harder to write because its dynamic and code-hinting won't work, but it should be a bit faster since it avoids a dynamic pointer cast at runtime. Working with Material::set() is also more generic since it will work on any Material no matter its actual type and it will have the desired effect as long as you use the right string property name. Therfore, you might want to use Material::set() if you are writting your own scenes parser or some complex assets dynamic loading code. To learn more on this subject, please read the [The difference between the Material::set() method and setter methods](The_difference_between_the_Material::set()_method_and_setter_methods) article.
+Both methods have the exact same behavior since Material::set() is actually called by BasicMaterial::diffuseMap() internally. The second method is a bit harder to write because its dynamic and code-hinting won't work, but it should be a bit faster since it avoids a dynamic pointer cast at runtime. Working with Material::set() is also more generic since it will work on any Material no matter its actual type and it will have the desired effect as long as you use the right string property name. Therfore, you might want to use Material::set() if you are writting your own scenes parser or some complex assets dynamic loading code. To learn more on this subject, please read the [The difference between the Material\set() method and setter methods](The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
 
 Of course, if you want to use your texture for something else that the diffuse map, you'll have to set the corresponding property. For example, if you want to set the normal map, you'll want to set the normalMap property instead. All the other operations are exactly the same.
 
@@ -109,10 +109,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoJPEG.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoJPEG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -120,40 +117,40 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Minko Tutorial - Loading and using textures", WINDOW_WIDTH, WINDOW_HEIGHT);
- auto sceneManager = component::SceneManager::create(canvas->context());
- sceneManager->assets()
-   ->registerParser<[file::JPEGParser>](file::JPEGParser>)("jpg")
-   ->queue("effect/Basic.effect")
-   ->queue("texture/my_texture.jpg");
+autocanvas=Canvas::create("MinkoTutorial-Loadingandusingtextures",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+sceneManager->assets()
+->registerParser<[file::JPEGParser>](file::JPEGParser>)("jpg")
+->queue("effect/Basic.effect")
+->queue("texture/my_texture.jpg");
 
- auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
- {
-   auto root = scene::Node::create("root")
-     ->addComponent(sceneManager);
-   auto camera = scene::Node::create("camera")
-     ->addComponent(Renderer::create(0x7f7f7fff))
-     ->addComponent(PerspectiveCamera::create(
-       (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, (float)PI * 0.25f, .1f, 1000.f)
-     ));
-   root->addChild(camera);
-   auto cube = scene::Node::create("cube")
-     ->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, -5.f)))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry(assets->context()),
-       material::BasicMaterial::create()->diffuseMap(assets->texture("texture/my_texture.jpg")),
-       assets->effect("effect/Basic.effect")
-     );
-   root->addChild(cube);
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-     cube->component<Transform>()->matrix()->prependRotationY(.01f);
-     sceneManager->nextFrame(t, dt);
-   });
-   canvas->run();
- });
- sceneManager->assets()->load();
- return 0;
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f)
+));
+root->addChild(camera);
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(0.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry(assets->context()),
+material::BasicMaterial::create()->diffuseMap(assets->texture("texture/my_texture.jpg")),
+assets->effect("effect/Basic.effect")
+);
+root->addChild(cube);
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+cube->component<Transform>()->matrix()->prependRotationY(.01f);
+sceneManager->nextFrame(t,dt);
+});
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```

@@ -21,53 +21,50 @@ Let's setup the scene:
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoPNG.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("", 800, 600);
+autocanvas=Canvas::create("",800,600);
 
-   auto sceneManager = SceneManager::create(canvas->context());
+autosceneManager=SceneManager::create(canvas->context());
 
-   // add the png parser to load textures
-   // add the Phong effect
-   sceneManager->assets()
-       ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-   ->queue("effect/Phong.effect");
+//addthepngparsertoloadtextures
+//addthePhongeffect
+sceneManager->assets()
+->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+->queue("effect/Phong.effect");
 
-   auto _ = sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptr assets)
-   {
-   auto root = scene::Node::create("root")
-       ->addComponent(sceneManager);
+auto_=sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
 
-   auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x00000000))
-       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(0.0f, 1.f, 1.3f))
-           ))
-       ->addComponent(PerspectiveCamera::create(800.f / 600.f, (float)PI * 0.25f, .1f, 1000.f));
-   root->addChild(camera);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x00000000))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(),Vector3::create(0.0f,1.f,1.3f))
+))
+->addComponent(PerspectiveCamera::create(800.f/600.f,(float)PI*0.25f,.1f,1000.f));
+root->addChild(camera);
 
-   auto spotLight = scene::Node::create("SpotLight")
-       ->addComponent(SpotLight::create(0.6f, 0.78f, 20.f))
-       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(3.f, 5.f, 1.5f))));
-   spotLight->component<SpotLight>()->diffuse(0.5f);
+autospotLight=scene::Node::create("SpotLight")
+->addComponent(SpotLight::create(0.6f,0.78f,20.f))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(3.f,5.f,1.5f))));
+spotLight->component<SpotLight>()->diffuse(0.5f);
 
-   root->addChild(spotLight);
+root->addChild(spotLight);
 
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-       sceneManager->nextFrame(t, dt);
-   });
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
 
-   canvas->run();
-   });
-   sceneManager->assets()->load();
-   return 0;
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```
@@ -129,7 +126,7 @@ The phong material class defines several methods to set the specular color:
 -   PhongMaterial::specularColor(Vector4::Ptr color)
 -   PhongMaterial::specularColor(uint color)
 
-<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); 
+<source lang="cpp> phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(math::Vector4::create(1.f, 0.f, 0.f, 1.f)); 
 ```
 
 
@@ -168,70 +165,67 @@ Final Code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoPNG.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Minko Tutorial - Working with the PhongMaterial", 800, 600);
+autocanvas=Canvas::create("MinkoTutorial-WorkingwiththePhongMaterial",800,600);
 
-   auto sceneManager = SceneManager::create(canvas->context());
+autosceneManager=SceneManager::create(canvas->context());
 
-   // add the png parser to load textures
-   // add the Phong effect
-   sceneManager->assets()
-       ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-       ->queue("texture/diffuseMap.png")
-   ->queue("effect/Phong.effect");
+//addthepngparsertoloadtextures
+//addthePhongeffect
+sceneManager->assets()
+->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+->queue("texture/diffuseMap.png")
+->queue("effect/Phong.effect");
 
-   auto _ = sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptr assets)
-   {
-   auto root = scene::Node::create("root")
-       ->addComponent(sceneManager);
+auto_=sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
 
-       auto phongMaterial = material::PhongMaterial::create();
+autophongMaterial=material::PhongMaterial::create();
 
-       phongMaterial->diffuseMap(assets->texture("texture/diffuseMap.png"));
-       phongMaterial->shininess(2.f);
-       phongMaterial->specularColor(math::Vector4::create(0.4f, 0.8f, 1.f, 1.f));
-       
-   auto mesh = scene::Node::create("mesh")
-       ->addComponent(Transform::create(Matrix4x4::create()->prependScale(1.1)))
-       ->addComponent(Surface::create(
-           geometry::SphereGeometry::create(sceneManager->assets()->context()),
-           phongMaterial,
-           assets->effect("effect/Phong.effect")
-       ));
+phongMaterial->diffuseMap(assets->texture("texture/diffuseMap.png"));
+phongMaterial->shininess(2.f);
+phongMaterial->specularColor(math::Vector4::create(0.4f,0.8f,1.f,1.f));
 
-   auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x00000000))
-       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(), Vector3::create(0.0f, 1.f, 1.3f))
-           ))
-       ->addComponent(PerspectiveCamera::create(800.f / 600.f, (float)PI * 0.25f, .1f, 1000.f));
+automesh=scene::Node::create("mesh")
+->addComponent(Transform::create(Matrix4x4::create()->prependScale(1.1)))
+->addComponent(Surface::create(
+geometry::SphereGeometry::create(sceneManager->assets()->context()),
+phongMaterial,
+assets->effect("effect/Phong.effect")
+));
 
-   auto spotLight = scene::Node::create("SpotLight")
-       ->addComponent(SpotLight::create(0.6f, 0.78f, 20.f))
-       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(3.f, 5.f, 1.5f))));
-   spotLight->component<SpotLight>()->diffuse(0.5f);
-   
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x00000000))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(),Vector3::create(0.0f,1.f,1.3f))
+))
+->addComponent(PerspectiveCamera::create(800.f/600.f,(float)PI*0.25f,.1f,1000.f));
 
-   root->addChild(camera);
-       root->addChild(mesh);
-   root->addChild(spotLight);
+autospotLight=scene::Node::create("SpotLight")
+->addComponent(SpotLight::create(0.6f,0.78f,20.f))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(3.f,5.f,1.5f))));
+spotLight->component<SpotLight>()->diffuse(0.5f);
 
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-       sceneManager->nextFrame(t, dt);
-   });
 
-   canvas->run();
-   });
-   sceneManager->assets()->load();
-   return 0;
+root->addChild(camera);
+root->addChild(mesh);
+root->addChild(spotLight);
+
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
+
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```

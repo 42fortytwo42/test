@@ -15,8 +15,7 @@ The first very first thing you need to do is to include the following header to 
 
 
 ```cpp
- 
-#include <SpotLight.hpp\> 
+ #include <SpotLight.hpp> 
 ```
 
 
@@ -39,14 +38,14 @@ As a SpotLight is a Component you'll have to follow this logic to create and add
 ```cpp
 
 
- // Creating the Node
- auto spotLightNode = scene::Node::create("spotLight");
-       
- // Adding the Component SpotLight
- spotLightNode->addComponent(SpotLight::create(.15f, .4f));
+//CreatingtheNode
+autospotLightNode=scene::Node::create("spotLight");
 
-  // Adding the Node to the root of the scene graph
- root->addChild(spotLightNode);
+//AddingtheComponentSpotLight
+spotLightNode->addComponent(SpotLight::create(.15f,.4f));
+
+//AddingtheNodetotherootofthescenegraph
+root->addChild(spotLightNode);
 
 
 ```
@@ -58,8 +57,8 @@ As you can see in the code above, we first create a node named "spotLight" to wh
 ```cpp
 
 
- // Creating the Node & adding the Component SpotLight
- auto spotLightNode = scene::Node::create("spotLight")->addComponent(SpotLight::create(.15f, .4f));
+//CreatingtheNode&addingtheComponentSpotLight
+autospotLightNode=scene::Node::create("spotLight")->addComponent(SpotLight::create(.15f,.4f));
 
 
 ```
@@ -72,8 +71,8 @@ you can directly change way the light appears by modifying it's public parameter
 ```cpp
 
 
- auto spotLight = SpotLight::create(.15f, .4f);
- spotLight->diffuse(.4f);
+autospotLight=SpotLight::create(.15f,.4f);
+spotLight->diffuse(.4f);
 
 
 ```
@@ -88,8 +87,8 @@ Once the light is created you might want to turn the spot light toward a directi
 ```cpp
  auto spotLight = scene::Node::create("spotLight")
 
-       ->addComponent(SpotLight::create(.15f, .4f))
-       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(15.f, 20.f, 0.f))));
+->addComponent(SpotLight::create(.15f,.4f))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(15.f,20.f,0.f))));
 
 
 ```
@@ -104,14 +103,14 @@ You may sometime need to remove a light from a scene, to do this you simply need
 ```cpp
 
 
- // Adding an spot light
- auto spotLightNode = scene::Node::create("spotLight")->addComponent(SpotLight::create(.15f, .4f));
+//Addinganspotlight
+autospotLightNode=scene::Node::create("spotLight")->addComponent(SpotLight::create(.15f,.4f));
 
- // retrieving the component 
- auto spotLight = spotLightNode->component<SpotLight>(0);
+//retrievingthecomponent
+autospotLight=spotLightNode->component<SpotLight>(0);
 
- // Remove the component from the node
- spotLightNode->removeComponent(spotLight);
+//Removethecomponentfromthenode
+spotLightNode->removeComponent(spotLight);
 
 
 ```
@@ -124,9 +123,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -134,68 +131,68 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Minko Tutorial - Working with spot lights", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = component::SceneManager::create(canvas->context());
+autocanvas=Canvas::create("MinkoTutorial-Workingwithspotlights",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
 
-   // setup assets
-   sceneManager->assets()->defaultOptions()->generateMipmaps(true);
-   sceneManager->assets()->queue("effect/Phong.effect");
+//setupassets
+sceneManager->assets()->defaultOptions()->generateMipmaps(true);
+sceneManager->assets()->queue("effect/Phong.effect");
 
-   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
-   {
-       auto root = scene::Node::create("root")->addComponent(sceneManager);
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")->addComponent(sceneManager);
 
-       auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x7f7f7fff))
-           ->addComponent(Transform::create(
-           Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(0.f, 3.f, -5.f))
-           ))
-           ->addComponent(PerspectiveCamera::create(
-           (float) WINDOW_WIDTH / (float) WINDOW_HEIGHT, (float) PI * 0.25f, .1f, 1000.f)
-           );
-       root->addChild(camera);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(Transform::create(
+Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(0.f,3.f,-5.f))
+))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f)
+);
+root->addChild(camera);
 
-       // create a ground
-       auto ground = scene::Node::create("sphere")
-           ->addComponent(Surface::create(
-           geometry::QuadGeometry::create(assets->context()),
-           material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 0.f, 1.f)),
-           assets->effect("effect/Phong.effect")
-           ))
-           ->addComponent(Transform::create(Matrix4x4::create()->appendScale(3.f)->appendRotationX(-1.57f)));
-       root->addChild(ground);
+//createaground
+autoground=scene::Node::create("sphere")
+->addComponent(Surface::create(
+geometry::QuadGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,0.f,1.f)),
+assets->effect("effect/Phong.effect")
+))
+->addComponent(Transform::create(Matrix4x4::create()->appendScale(3.f)->appendRotationX(-1.57f)));
+root->addChild(ground);
 
-       // create the spot light node
-       auto spotLightNode = scene::Node::create("spotLight");
+//createthespotlightnode
+autospotLightNode=scene::Node::create("spotLight");
 
-       // change the spot light position
-       spotLightNode->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(0.1f, 2.f, 0.f))));
+//changethespotlightposition
+spotLightNode->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(0.1f,2.f,0.f))));
 
-       // create the point light component
-       auto spotLight = SpotLight::create(.15f, .4f);
+//createthepointlightcomponent
+autospotLight=SpotLight::create(.15f,.4f);
 
-       // update the spot light component attributes
-       spotLight->diffuse(0.5f);
+//updatethespotlightcomponentattributes
+spotLight->diffuse(0.5f);
 
-       // add the component to the spot light node
-       spotLightNode->addComponent(spotLight);
+//addthecomponenttothespotlightnode
+spotLightNode->addComponent(spotLight);
 
-       // add the node to the root of the scene graph
-       root->addChild(spotLightNode);
+//addthenodetotherootofthescenegraph
+root->addChild(spotLightNode);
 
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-       {
-           spotLightNode->component<Transform>()->matrix()->appendRotationX(0.002f * dt);
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+spotLightNode->component<Transform>()->matrix()->appendRotationX(0.002f*dt);
 
-           sceneManager->nextFrame(t, dt);
-       });
+sceneManager->nextFrame(t,dt);
+});
 
-       canvas->run();
-   });
+canvas->run();
+});
 
-   sceneManager->assets()->load();
+sceneManager->assets()->load();
 
-   return 0;
+return0;
 
 } 
 ```

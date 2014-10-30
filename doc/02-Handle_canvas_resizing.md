@@ -11,7 +11,7 @@ Once our Canvas is created, we can listen to its Canvas::resized() signal:
 ```cpp
  auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
- // do something here...
+//dosomethinghere...
 
 }); 
 ```
@@ -32,7 +32,7 @@ Assuming we have a direct access to our camera scene Node, we can adapt it's pro
 ```cpp
  auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
- camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);
+camera->component<PerspectiveCamera>()->aspectRatio((float)width/(float)height);
 
 }); 
 ```
@@ -44,13 +44,13 @@ If we only have access to the root Node of our scene, we can fetch all the nodes
 ```cpp
  auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
- auto cameras = scene::NodeSet::create(root)->descendants(true)->where([](scene::Node::Ptr node)
- {
-   return node->hasComponent<PerspectiveCamera>();
- });
+autocameras=scene::NodeSet::create(root)->descendants(true)->where([](scene::Node::Ptrnode)
+{
+returnnode->hasComponent<PerspectiveCamera>();
+});
 
- for (auto& camera : cameras->nodes())
-   camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);
+for(auto&camera:cameras->nodes())
+camera->component<PerspectiveCamera>()->aspectRatio((float)width/(float)height);
 
 }); 
 ```
@@ -63,9 +63,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -73,48 +71,48 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Tutorial - Canvas resizing", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = component::SceneManager::create(canvas->context());
+autocanvas=Canvas::create("Tutorial-Canvasresizing",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
 
-   sceneManager->assets()->queue("effect/Basic.effect");
-   auto complete = sceneManager->assets()->loader()->complete()->connect([&](file::Loader::Ptr loader)
-   {
-       auto root = scene::Node::create("root")
-           ->addComponent(sceneManager);
+sceneManager->assets()->queue("effect/Basic.effect");
+autocomplete=sceneManager->assets()->loader()->complete()->connect([&](file::Loader::Ptrloader)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
 
-       auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x7f7f7fff))
-           ->addComponent(PerspectiveCamera::create(
-           (float) WINDOW_WIDTH / (float) WINDOW_HEIGHT, (float) M_PI * 0.25f, .1f, 1000.f)
-           );
-       root->addChild(camera);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)M_PI*0.25f,.1f,1000.f)
+);
+root->addChild(camera);
 
-       auto cube = scene::Node::create("cube")
-           ->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, -5.f)))
-           ->addComponent(Surface::create(
-           geometry::CubeGeometry::create(assets->context()),
-           material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
-           assets->effect("effect/Basic.effect")
-           ));
-       root->addChild(cube);
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(0.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
+assets->effect("effect/Basic.effect")
+));
+root->addChild(cube);
 
-       auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height)
-       {
-           camera->component<PerspectiveCamera>()->aspectRatio((float) width / (float) height);
-       });
+autoresized=canvas->resized()->connect([&](AbstractCanvas::Ptrcanvas,uintwidth,uintheight)
+{
+camera->component<PerspectiveCamera>()->aspectRatio((float)width/(float)height);
+});
 
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-       {
-           cube->component<Transform>()->matrix()->prependRotationY(.01f);
-           sceneManager->nextFrame(t, dt);
-       });
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+cube->component<Transform>()->matrix()->prependRotationY(.01f);
+sceneManager->nextFrame(t,dt);
+});
 
-       canvas->run();
-   });
+canvas->run();
+});
 
-   sceneManager->assets()->loader()->load();
+sceneManager->assets()->loader()->load();
 
-   return 0;
+return0;
 
 } 
 ```

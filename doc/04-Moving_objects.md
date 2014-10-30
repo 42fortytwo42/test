@@ -32,9 +32,9 @@ Note that you cannot add two Transform on the same component because it doesn't 
 
 
 ```cpp
- if (!node->hasComponent<Transform\>())
+ if (!node->hasComponent<Transform>())
 
- node->addComponent(component::Transform::create());
+node->addComponent(component::Transform::create());
 
 
 ```
@@ -44,7 +44,7 @@ When it is assigned, our Transform component can also be accessed from the scene
 
 
 ```cpp
- auto transform = node->component<Transform\>(); 
+ auto transform = node->component<Transform>(); 
 ```
 
 
@@ -59,7 +59,7 @@ We can then use the Matrix4x4::appendTranslation() method to translate our objec
 
 
 ```cpp
- node->component<Transform\>()->matrix()->appendTranslation(42.f, 0.f, 0.f); 
+ node->component<Transform>()->matrix()->appendTranslation(42.f, 0.f, 0.f); 
 ```
 
 
@@ -71,7 +71,7 @@ You can also "reset" the translation or set it to an absolute value using the Ma
 
 
 ```cpp
- node->component<Transform\>()->matrix()->translation(42.f, 0.f, 0.f); 
+ node->component<Transform>()->matrix()->translation(42.f, 0.f, 0.f); 
 ```
 
 
@@ -80,9 +80,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -90,59 +88,59 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Tutorial - Moving objets", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = component::SceneManager::create(canvas->context());
+autocanvas=Canvas::create("Tutorial-Movingobjets",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
 
-   sceneManager->assets()->queue("effect/Basic.effect");
-   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)                    
-   {
-       auto root = scene::Node::create("root")
-           ->addComponent(sceneManager);
+sceneManager->assets()->queue("effect/Basic.effect");
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
 
-       auto camera = scene::Node::create("camera")
-           ->addComponent(Renderer::create(0x7f7f7fff))
-           ->addComponent(PerspectiveCamera::create(
-           (float) WINDOW_WIDTH / (float) WINDOW_HEIGHT, (float) PI * 0.25f, .1f, 1000.f)
-           );
-       root->addChild(camera);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f)
+);
+root->addChild(camera);
 
-       auto cube = scene::Node::create("cube")
-           ->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, -5.f)))
-           ->addComponent(Surface::create(
-           geometry::CubeGeometry::create(assets->context()),
-           material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
-           assets->effect("effect/Basic.effect")
-           ));
-       root->addChild(cube);
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(0.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
+assets->effect("effect/Basic.effect")
+));
+root->addChild(cube);
 
-       // If the cube already has a transform component
-       if (cube->hasComponent<Transform>())
-       {
-           // We translate the cube to the left
-           cube->component<Transform>()->matrix()->appendTranslation(-1.f, 0.f, 0.f);
-       }
-       else
-       {
-           // We create a new transform component
-           auto transform = component::Transform::create();
-           // We add it to the cube
-           cube->addComponent(transform);
+//Ifthecubealreadyhasatransformcomponent
+if(cube->hasComponent<Transform>())
+{
+//Wetranslatethecubetotheleft
+cube->component<Transform>()->matrix()->appendTranslation(-1.f,0.f,0.f);
+}
+else
+{
+//Wecreateanewtransformcomponent
+autotransform=component::Transform::create();
+//Weaddittothecube
+cube->addComponent(transform);
 
-           // We translate the cube in front of the camera with a little lag to the right
-           cube->component<Transform>()->matrix()->appendTranslation(1.f, 0.f, -5.f);
-       }
-       
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-       {
-           sceneManager->nextFrame(t, dt);
-       });
+//Wetranslatethecubeinfrontofthecamerawithalittlelagtotheright
+cube->component<Transform>()->matrix()->appendTranslation(1.f,0.f,-5.f);
+}
 
-       canvas->run();
-   });
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
 
-   sceneManager->assets()->load();
+canvas->run();
+});
 
-   return 0;
+sceneManager->assets()->load();
+
+return0;
 
 } 
 ```

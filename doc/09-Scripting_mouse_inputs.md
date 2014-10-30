@@ -9,11 +9,11 @@ The following section introduces the two different ways to deal with mouse input
 ```lua
  -- my\mouse\script.lua function my\mouse\script:start(node)
 
- local mouse = getCanvas().mouse
+localmouse=getCanvas().mouse
 
- mouse.leftButtonDown:connect(function(m) print('left button down!') end)
- mouse.leftButtonUp:connect(function(m) print('left button up!') end)
- mouse.move:connect(function(m, dx, dy) print('mouse move!') end)
+mouse.leftButtonDown:connect(function(m)print('leftbuttondown!')end)
+mouse.leftButtonUp:connect(function(m)print('leftbuttonup!')end)
+mouse.move:connect(function(m,dx,dy)print('mousemove!')end)
 
 end 
 ```
@@ -29,18 +29,18 @@ The following code will "wait" for the mouse.leftButtonDown signal before contin
 ```lua
  function my\mouse\script:start(node)
 
- self.co = coroutine.create(my_mouse_script.handleMouseDown)
- coroutine.resume(self.co, self)
+self.co=coroutine.create(my_mouse_script.handleMouseDown)
+coroutine.resume(self.co,self)
 
 end
 
 function my\mouse\script:handleMouseDown()
 
- print("please click...")
- -- execution of this specific script will pause when it hits the call to wait()
- wait(getCanvas().mouse.leftButtonDown)
- -- execution will resume here when the mouse.leftButtonDown has been executed
- print("left button down!")
+print("pleaseclick...")
+--executionofthisspecificscriptwillpausewhenithitsthecalltowait()
+wait(getCanvas().mouse.leftButtonDown)
+--executionwillresumeherewhenthemouse.leftButtonDownhasbeenexecuted
+print("leftbuttondown!")
 
 end 
 ```
@@ -51,10 +51,7 @@ Final code
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp" 
-#include "minko/MinkoLua.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp" #include "minko/MinkoLua.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -62,35 +59,35 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("Minko Tutorial - Scripting mouse inputs", WINDOW_WIDTH, WINDOW_HEIGHT);
-   auto sceneManager = component::SceneManager::create(canvas->context());
-   auto root = scene::Node::create("root")->addComponent(sceneManager);
+autocanvas=Canvas::create("MinkoTutorial-Scriptingmouseinputs",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+autoroot=scene::Node::create("root")->addComponent(sceneManager);
 
-   // initialization of Lua context
-   LuaContext::initialize(argc, argv, root, canvas);
+//initializationofLuacontext
+LuaContext::initialize(argc,argv,root,canvas);
 
-   // add a LuaScriptManager to the root node
-   root->addComponent(LuaScriptManager::create());
+//addaLuaScriptManagertotherootnode
+root->addComponent(LuaScriptManager::create());
 
-   sceneManager->assets()->registerParser<[file::LuaScriptParser>](file::LuaScriptParser>)("lua");
-   sceneManager->assets()->queue("script/my_mouse_script.lua");
+sceneManager->assets()->registerParser<[file::LuaScriptParser>](file::LuaScriptParser>)("lua");
+sceneManager->assets()->queue("script/my_mouse_script.lua");
 
-   auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
-   {
-       root->addComponent(assets->script("script/my_mouse_script.lua"));
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+root->addComponent(assets->script("script/my_mouse_script.lua"));
 
-       auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr c, float t, float dt)
-       {
-           sceneManager->nextFrame(t, dt);
-       });
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrc,floatt,floatdt)
+{
+sceneManager->nextFrame(t,dt);
+});
 
-       canvas->run();
-   });
+canvas->run();
+});
 
-   // actually begin loading operations
-   sceneManager->assets()->load();
+//actuallybeginloadingoperations
+sceneManager->assets()->load();
 
-   return 0;
+return0;
 
 } 
 ```

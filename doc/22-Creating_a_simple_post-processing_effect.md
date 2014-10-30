@@ -5,9 +5,7 @@ In this tutorial we will see how to author post-processing effects and how to se
 
 As a practical example, this tutorial will guide you through the creation of a "black and white" or "desaturate" post-processing effect. Its purpose is quite obvious: it will post-process your rendering to get a black and white final picture.
 
-Post-processing is done in two steps: 
-# The scene is rendered as usual but in a texture. 
-# This texture is used to render a fullscreen quad and each pixel can be modified using the fragment shader. enterFrame The second step implies writing at least one shader. But you might also have to write multiple shaders for multi-pass post-processing effects.
+Post-processing is done in two steps: # The scene is rendered as usual but in a texture. # This texture is used to render a fullscreen quad and each pixel can be modified using the fragment shader. enterFrame The second step implies writing at least one shader. But you might also have to write multiple shaders for multi-pass post-processing effects.
 
 Step 1: The vertex shader
 -------------------------
@@ -28,9 +26,7 @@ Because OpenGL performs render to texture using an inverted y axis, we also have
 
 
 ```c
- 
-#ifdef GL\ES precision mediump float; 
-#endif
+ #ifdef GL\ES precision mediump float; #endif
 
 attribute vec3 aPosition; attribute vec2 aUv;
 
@@ -38,9 +34,9 @@ varying vec4 vVertexUv;
 
 void main(void) {
 
- vVertexUv = vec2(aUv.x, 1 - uv.y);
+vVertexUv=vec2(aUv.x,1-uv.y);
 
- gl_Position = vec4(aPosition, 1) * vec4(1., 1., 1., .5);
+gl_Position=vec4(aPosition,1)*vec4(1.,1.,1.,.5);
 
 } 
 ```
@@ -55,9 +51,7 @@ Here, we will simply sample the backbuffer and use an average of its RGB value t
 
 
 ```c
- 
-#ifdef GL\ES precision mediump float; 
-#endif
+ #ifdef GL\ES precision mediump float; #endif
 
 uniform sampler2D uBackbuffer;
 
@@ -65,10 +59,10 @@ varying vec2 vVertexUv;
 
 void main() {
 
- vec4 pixel = texture2D(uBackbuffer, vVertexUv);
- float average = (pixel.r + pixel.g + pixel.b) / 3;
+vec4pixel=texture2D(uBackbuffer,vVertexUv);
+floataverage=(pixel.r+pixel.g+pixel.b)/3;
 
- gl_FragColor = vec4(average, average, average, 1);
+gl_FragColor=vec4(average,average,average,1);
 
 } 
 ```
@@ -99,7 +93,7 @@ When our Effect has been successfully loaded, we can fetch it from the library u
 
 if (!ppFx)
 
- throw std::logic_error("The post-processing effect has not been loaded.");
+throwstd::logic_error("Thepost-processingeffecthasnotbeenloaded.");
 
 ppFx->setUniform("uBackbuffer", ppTarget); 
 ```
@@ -113,12 +107,12 @@ The final initialization step is to create a second scene - completely different
 ```cpp
  auto ppRenderer = Renderer::create(); auto ppScene = scene::Node::create()
 
- ->addComponent(ppRenderer)
- ->addComponent(Surface::create(
-   geometry::QuadGeometry::create(sceneManager->assets()->context()),
-   material::Material::create(),
-   ppFx
- ));
+->addComponent(ppRenderer)
+->addComponent(Surface::create(
+geometry::QuadGeometry::create(sceneManager->assets()->context()),
+material::Material::create(),
+ppFx
+));
 
 
 ```
@@ -135,8 +129,8 @@ We just have to update what we do in our Canvas::enterFrame() callback:
 ```cpp
  auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
- sceneManager->nextFrame(t, dt, ppTarget);
- ppRenderer->render(assets->context());
+sceneManager->nextFrame(t,dt,ppTarget);
+ppRenderer->render(assets->context());
 
 } 
 ```
@@ -153,11 +147,11 @@ We will do this in our Canvas::resized() callback:
 ```cpp
  auto resized = canvas->resized()->connect([&](Canvas::Ptr canvas, unsigned int width, unsigned int height) {
 
- camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);
+camera->component<PerspectiveCamera>()->aspectRatio((float)width/(float)height);
 
- ppTarget = render::Texture::create(assets->context(), clp2(width), clp2(height), false, true);
- ppTarget->upload();
- ppFx->setUniform("uBackbuffer", ppTarget);
+ppTarget=render::Texture::create(assets->context(),clp2(width),clp2(height),false,true);
+ppTarget->upload();
+ppFx->setUniform("uBackbuffer",ppTarget);
 
 }); 
 ```
@@ -172,39 +166,39 @@ asset/effect/Desaturate.effect
 ```javascript
  {
 
- "name" : "desaturate",
- "attributeBindings" : {
-   "aPosition" : "geometry[${geometryId}].position",
-   "aUv" : "geometry[${geometryId}].uv"
- },
- "passes" : [{
-   "vertexShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     attribute vec3 aPosition;
-     attribute vec2 aUv;
-     varying vec4 vVertexUv;
-     void main(void)
-     {
-       vVertexUv = vec2(aUv.x, 1 - uv.y);
-       gl_Position = vec4(aPosition, 1) * vec4(1., 1., 1., .5);
-     }
-   ",
-   "fragmentShader" : "
-     -#-ifdef GL_ES
-     precision mediump float;
-     -#-endif
-     uniform sampler2D uBackbuffer;
-     varying vec2 vVertexUv;
-     void main()
-     {
-       vec4 pixel = texture2D(uBackbuffer, vVertexUv);
-       float average = (pixel.r + pixel.g + pixel.b) / 3;
-       gl_FragColor = vec4(average, average, average, 1);
-     }
-   "
- }]
+"name":"desaturate",
+"attributeBindings":{
+"aPosition":"geometry[${geometryId}].position",
+"aUv":"geometry[${geometryId}].uv"
+},
+"passes":[{
+"vertexShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+attributevec3aPosition;
+attributevec2aUv;
+varyingvec4vVertexUv;
+voidmain(void)
+{
+vVertexUv=vec2(aUv.x,1-uv.y);
+gl_Position=vec4(aPosition,1)*vec4(1.,1.,1.,.5);
+}
+",
+"fragmentShader":"
+#ifdefGL_ES
+precisionmediumpfloat;
+#endif
+uniformsampler2DuBackbuffer;
+varyingvec2vVertexUv;
+voidmain()
+{
+vec4pixel=texture2D(uBackbuffer,vVertexUv);
+floataverage=(pixel.r+pixel.g+pixel.b)/3;
+gl_FragColor=vec4(average,average,average,1);
+}
+"
+}]
 
 } 
 ```
@@ -212,9 +206,7 @@ asset/effect/Desaturate.effect
 
 src/main.cpp 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::math; using namespace minko::component;
 
@@ -222,69 +214,69 @@ const uint WINDOW\WIDTH = 800; const uint WINDOW\HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
- auto canvas = Canvas::create("Minko Tutorial - Creating a simple post-processing effect", WINDOW_WIDTH, WINDOW_HEIGHT);
- auto sceneManager = component::SceneManager::create(canvas->context());
- sceneManager->assets()
-   ->queue("effect/Basic.effect")
-   ->queue("effect/Desaturate.effect");
+autocanvas=Canvas::create("MinkoTutorial-Creatingasimplepost-processingeffect",WINDOW_WIDTH,WINDOW_HEIGHT);
+autosceneManager=component::SceneManager::create(canvas->context());
+sceneManager->assets()
+->queue("effect/Basic.effect")
+->queue("effect/Desaturate.effect");
 
- auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets)
- {
-   auto root = scene::Node::create("root")
-     ->addComponent(sceneManager);
-   auto camera = scene::Node::create("camera")
-     ->addComponent(Renderer::create(0x7f7f7fff))
-     ->addComponent(PerspectiveCamera::create(
-       (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, (float)PI * 0.25f, .1f, 1000.f)
-     ));
-   root->addChild(camera);
-   auto cube = scene::Node::create("cube")
-     ->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, -5.f)))
-     ->addComponent(Surface::create(
-       geometry::CubeGeometry::create(assets->context()),
-       material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)),
-       assets->effect("effect/Basic.effect")
-     ));
-   root->addChild(cube);
+autocomplete=sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptrassets)
+{
+autoroot=scene::Node::create("root")
+->addComponent(sceneManager);
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x7f7f7fff))
+->addComponent(PerspectiveCamera::create(
+(float)WINDOW_WIDTH/(float)WINDOW_HEIGHT,(float)PI*0.25f,.1f,1000.f)
+));
+root->addChild(camera);
+autocube=scene::Node::create("cube")
+->addComponent(Transform::create(Matrix4x4::create()->translation(0.f,0.f,-5.f)))
+->addComponent(Surface::create(
+geometry::CubeGeometry::create(assets->context()),
+material::BasicMaterial::create()->diffuseColor(Vector4::create(0.f,0.f,1.f,1.f)),
+assets->effect("effect/Basic.effect")
+));
+root->addChild(cube);
 
-   auto ppTarget = render::Texture::create(assets->context(), 1024, 1024, false, true);
+autoppTarget=render::Texture::create(assets->context(),1024,1024,false,true);
 
-   ppTarget->upload();
+ppTarget->upload();
 
-   auto ppFx = sceneManager->assets()->effect("effect/Desaturate.effect");
+autoppFx=sceneManager->assets()->effect("effect/Desaturate.effect");
 
-   if (!ppFx)
-     throw std::logic_error("The post-processing effect has not been loaded.");
+if(!ppFx)
+throwstd::logic_error("Thepost-processingeffecthasnotbeenloaded.");
 
-   ppFx->setUniform("uBackbuffer", ppTarget);
+ppFx->setUniform("uBackbuffer",ppTarget);
 
-   auto ppRenderer = Renderer::create();
-   auto ppScene = scene::Node::create()
-     ->addComponent(ppRenderer)
-     ->addComponent(Surface::create(
-       geometry::QuadGeometry::create(sceneManager->assets()->context()),
-       material::Material::create(),
-       ppFx
-     ));
-   auto resized = canvas->resized()->connect([&](Canvas::Ptr canvas, uint width, uint height)
-   {
-     camera->component<PerspectiveCamera>()->aspectRatio((float)width / (float)height);
+autoppRenderer=Renderer::create();
+autoppScene=scene::Node::create()
+->addComponent(ppRenderer)
+->addComponent(Surface::create(
+geometry::QuadGeometry::create(sceneManager->assets()->context()),
+material::Material::create(),
+ppFx
+));
+autoresized=canvas->resized()->connect([&](Canvas::Ptrcanvas,uintwidth,uintheight)
+{
+camera->component<PerspectiveCamera>()->aspectRatio((float)width/(float)height);
 
-     ppTarget = render::Texture::create(assets->context(), clp2(width), clp2(height), false, true);
-     ppTarget->upload();
-     ppFx->setUniform("uBackbuffer", ppTarget);
-   });
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt)
-   {
-     cube->component<Transform>()->transform()->prependRotationY(.01f);
+ppTarget=render::Texture::create(assets->context(),clp2(width),clp2(height),false,true);
+ppTarget->upload();
+ppFx->setUniform("uBackbuffer",ppTarget);
+});
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,floatt,floatdt)
+{
+cube->component<Transform>()->transform()->prependRotationY(.01f);
 
-     sceneManager->nextFrame(t, dt, ppTarget);
-     ppRenderer->render(assets->context());
-   });
-   canvas->run();
- });
- sceneManager->assets()->load();
- return 0;
+sceneManager->nextFrame(t,dt,ppTarget);
+ppRenderer->render(assets->context());
+});
+canvas->run();
+});
+sceneManager->assets()->load();
+return0;
 
 } 
 ```

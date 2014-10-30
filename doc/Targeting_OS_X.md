@@ -18,9 +18,7 @@ The Unix-based toolchain provided by the Command Line Tools includes Clang 3.2, 
 
 
 ```bash
- 
-# Clang sudo port install clang-3.4 sudo port select --set clang mp-clang-3.4
-
+ # Clang sudo port install clang-3.4 sudo port select --set clang mp-clang-3.4
 
 # GCC sudo port install gcc48 sudo port select --set gcc mp-gcc48 
 ```
@@ -71,10 +69,10 @@ PROJECT\NAME = path.getname(os.getcwd())
 
 minko.project.solution(PROJECT\NAME)
 
-   minko.project.application(PROJECT_NAME)
+minko.project.application(PROJECT_NAME)
 
-       kind "WindowedApp"
-       -- rest of the project file...
+kind"WindowedApp"
+--restoftheprojectfile...
 
 
 ```

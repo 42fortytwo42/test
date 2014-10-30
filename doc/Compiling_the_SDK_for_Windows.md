@@ -12,7 +12,7 @@ Make sure you have the source code of Minko on your filesystem. You can get them
 Step 2: Install the dependencies
 --------------------------------
 
-If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](Targeting_Windows-#-Step_1:_Install_the_toolchain).
+If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](Targeting_Windows.md).
 
 Step 3: Generating the Visual Studio Solution
 ---------------------------------------------

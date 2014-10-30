@@ -33,7 +33,7 @@ The phongMaterial has access to a diffuseColor and a diffuseMap. Those propertie
 
 Specular color is the color of the light specular reflection. The default value is white.
 
-<source lang="cpp\> phongMaterial->specularColor(0xFF0000FF); 
+<source lang="cpp> phongMaterial->specularColor(0xFF0000FF); 
 ```
 
 
@@ -129,79 +129,76 @@ Full Example
 
 
 ```cpp
- 
-#include "minko/Minko.hpp" 
-#include "minko/MinkoPNG.hpp" 
-#include "minko/MinkoSDL.hpp"
+ #include "minko/Minko.hpp" #include "minko/MinkoPNG.hpp" #include "minko/MinkoSDL.hpp"
 
 using namespace minko; using namespace minko::component; using namespace minko::math;
 
 int main(int argc, char** argv) {
 
-   auto canvas = Canvas::create("My title", 800, 600);
+autocanvas=Canvas::create("Mytitle",800,600);
 
-   auto sceneManager = SceneManager::create(canvas->context());
+autosceneManager=SceneManager::create(canvas->context());
 
-   // setup assets
-   sceneManager->assets()->defaultOptions()->resizeSmoothly(true);
-   sceneManager->assets()->defaultOptions()->generateMipmaps(true);
-   sceneManager->assets()
-   ->registerParser<[file::PNGParser>](file::PNGParser>)("png")
-   ->queue("texture/diffuse.png")
-   ->queue("texture/envmap.png")
-   ->queue("texture/normal.png")
-   ->queue("texture/specular.png")
-   ->queue("effect/Phong.effect");
+//setupassets
+sceneManager->assets()->defaultOptions()->resizeSmoothly(true);
+sceneManager->assets()->defaultOptions()->generateMipmaps(true);
+sceneManager->assets()
+->registerParser<[file::PNGParser>](file::PNGParser>)("png")
+->queue("texture/diffuse.png")
+->queue("texture/envmap.png")
+->queue("texture/normal.png")
+->queue("texture/specular.png")
+->queue("effect/Phong.effect");
 
-   auto _ = sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptr assets)
-   {
-   auto phongMaterial = material::PhongMaterial::create()->diffuseColor(math::Vector4::create(1., 1., 1., 1.));
-   auto root = scene::Node::create("root")->addComponent(sceneManager);
+auto_=sceneManager->assets()->complete()->connect([=](file::AssetLibrary::Ptrassets)
+{
+autophongMaterial=material::PhongMaterial::create()->diffuseColor(math::Vector4::create(1.,1.,1.,1.));
+autoroot=scene::Node::create("root")->addComponent(sceneManager);
 
-   phongMaterial->shininess(2);
-   phongMaterial->diffuseMap(assets->texture("texture/diffuse.png"));
-   phongMaterial->normalMap(assets->texture("texture/normal.png"));
-   phongMaterial->specularMap(assets->texture("texture/specular.png"));
-   phongMaterial->specularColor(0xC0FFC0FF);
-   phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell);
-   phongMaterial->environmentAlpha(0.15);
-       
-   auto camera = scene::Node::create("camera")
-       ->addComponent(Renderer::create(0x00000000))
-       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(0.0f, 0.f, 0.f), Vector3::create(0.0f, 1.f, 1.3f))
-           ))
-       ->addComponent(PerspectiveCamera::create(800.f / 600.f, (float)PI * 0.25f, .1f, 1000.f));
-   
-       root->addChild(camera);
+phongMaterial->shininess(2);
+phongMaterial->diffuseMap(assets->texture("texture/diffuse.png"));
+phongMaterial->normalMap(assets->texture("texture/normal.png"));
+phongMaterial->specularMap(assets->texture("texture/specular.png"));
+phongMaterial->specularColor(0xC0FFC0FF);
+phongMaterial->environmentMap(assets->texture("texture/envmap.png"),render::EnvironmentMap2dType::BlinnNewell);
+phongMaterial->environmentAlpha(0.15);
 
-   auto mesh = scene::Node::create("mesh")
-       ->addComponent(Transform::create(Matrix4x4::create()))
-       ->addComponent(
-                   Surface::create(geometry::SphereGeometry::create(sceneManager->assets()->context(), 30, 30, true),
-           phongMaterial,
-           assets->effect("effect/Phong.effect")
-   ));
+autocamera=scene::Node::create("camera")
+->addComponent(Renderer::create(0x00000000))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::create(0.0f,0.f,0.f),Vector3::create(0.0f,1.f,1.3f))
+))
+->addComponent(PerspectiveCamera::create(800.f/600.f,(float)PI*0.25f,.1f,1000.f));
 
-   root->addChild(mesh);
+root->addChild(camera);
 
-   auto spotLight = scene::Node::create("SpotLight")
-       ->addComponent(SpotLight::create(0.6f, 0.78f, 20.f))
-       ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(3.f, 5.f, 1.5f))));
+automesh=scene::Node::create("mesh")
+->addComponent(Transform::create(Matrix4x4::create()))
+->addComponent(
+Surface::create(geometry::SphereGeometry::create(sceneManager->assets()->context(),30,30,true),
+phongMaterial,
+assets->effect("effect/Phong.effect")
+));
 
-   spotLight->component<SpotLight>()->diffuse(1.4f);
-   spotLight->component<SpotLight>()->specular(2);
+root->addChild(mesh);
 
-   auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, uint time, uint deltaTime)
-   {
-       sceneManager->nextFrame();
-   });
+autospotLight=scene::Node::create("SpotLight")
+->addComponent(SpotLight::create(0.6f,0.78f,20.f))
+->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(),Vector3::create(3.f,5.f,1.5f))));
 
-   canvas->run();
-   });
+spotLight->component<SpotLight>()->diffuse(1.4f);
+spotLight->component<SpotLight>()->specular(2);
 
-   sceneManager->assets()->load();
+autoenterFrame=canvas->enterFrame()->connect([&](Canvas::Ptrcanvas,uinttime,uintdeltaTime)
+{
+sceneManager->nextFrame();
+});
 
-   return 0;
+canvas->run();
+});
+
+sceneManager->assets()->load();
+
+return0;
 
 } 
 ```
