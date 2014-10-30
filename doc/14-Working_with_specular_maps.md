@@ -23,7 +23,8 @@ The setup will be the same that the one at the end of the [Working with the Phon
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 
@@ -123,7 +124,8 @@ Final Code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 
@@ -185,5 +187,5 @@ int main(int argc, char** argv) {
 Where to go from here
 ---------------------
 
-`specularMap` can me mixed with `normalMap` ([Working with normal maps](12-Working_with_normal_maps_.md)) and/or `environmentMap` ([Working with environment maps ](13-Working_with_environment_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](PhongMaterial_reference#Full_Example_.md).
+`specularMap` can me mixed with `normalMap` ([Working with normal maps](12-Working_with_normal_maps.md)) and/or `environmentMap` ([Working with environment maps ](13-Working_with_environment_maps.md)) to produce great effect on your 3D models: [PhongMaterial reference full example](PhongMaterial_reference#Full_Example.md).
 
