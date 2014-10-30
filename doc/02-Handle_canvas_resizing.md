@@ -1,6 +1,6 @@
 Whether the `Canvas` represents a simple drawing area or a complete window, you'll have to deal with the eventuality of its resizal. In this tutorial, we will learn how to catch the resizal of the `Canvas` and how to adapt the projection of our camera(s) to fit its new aspect ratio.
 
-The code for this tutorial is based on the one described in the [Hello cube!](Hello_cube!.md) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](01-Hello_cube!.md) tutorial.
 
 Step 1: Catch the resize Signal
 -------------------------------
@@ -63,16 +63,13 @@ Final code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

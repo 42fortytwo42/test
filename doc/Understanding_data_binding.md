@@ -56,16 +56,13 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
@@ -350,7 +347,7 @@ On the diagram, you can see that:
 Where to go from there
 ----------------------
 
-To learn more about how to work with uniform bindings, please read the [Binding the model to world transform](Binding_the_model_to_world_transform.md) or the [Binding the camera](Binding_the_camera.md) tutorial.
+To learn more about how to work with uniform bindings, please read the [Binding the model to world transform](19-Binding_the_model_to_world_transform.md) or the [Binding the camera](20-Binding_the_camera.md) tutorial.
 
 To learn more about how to work with macro bindings, please read the [Authoring über-shaders](Authoring über-shaders) tutorial.
 

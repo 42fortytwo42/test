@@ -1,4 +1,4 @@
-In the previous tutorial, we've seen [how to bind the model to world matrix](Binding_the_model_to_world_transform.md) in our effects. Using the same binding mechanism, we can bind the camera properties. Especially the "view matrix", which is used to transform "global" world-space 3D vertices into the camera relative view-space.
+In the previous tutorial, we've seen [how to bind the model to world matrix](19-Binding_the_model_to_world_transform.md) in our effects. Using the same binding mechanism, we can bind the camera properties. Especially the "view matrix", which is used to transform "global" world-space 3D vertices into the camera relative view-space.
 
 To do this, we will use data binding to :
 
@@ -30,7 +30,7 @@ Here is how we can bind the camera transform and projection in our effect using 
 ```
 
 
-If you read the [Binding the model to world transform](Binding_the_model_to_world_transform.md) tutorial, you'll notice that the `uniformBindings` we declare here are a bit different. This is because we have to declare where our bindings properties should be read from. Our `uniformBindings` declare the following fields:
+If you read the [Binding the model to world transform](19-Binding_the_model_to_world_transform.md) tutorial, you'll notice that the `uniformBindings` we declare here are a bit different. This is because we have to declare where our bindings properties should be read from. Our `uniformBindings` declare the following fields:
 
 -   `property`: the name of the data property that should be set in our application;
 -   `source`: where the data should be read from.
@@ -96,7 +96,7 @@ root->addChild(camera);
 ```
 
 
-Note that because we will likely need to move and orient our camera, we also add a `Transform` component to our `camera` scene node. To learn more about this component, you can read the [Moving objects](Moving_objects.md) tutorial.
+Note that because we will likely need to move and orient our camera, we also add a `Transform` component to our `camera` scene node. To learn more about this component, you can read the [Moving objects](04-Moving_objects.md) tutorial.
 
 **Attention!** Always make sure the `PerspectiveCamera` is added on the same node as the `Renderer` component that is supposed to perform the rendering operations. As every scene might have multiple cameras, their respective `[data::Provider`](data::Provider`) has to be added to the `[data::Container`](data::Container`) of the same node than the `Renderer`. In short, the properties of a `PerspectiveCamera` will be available only to the `Renderer` that is on the same node; which makes it possible to have multiple camera/renderer in the same scene.
 
@@ -155,19 +155,15 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
 
-
 #include "MyCustomMaterial.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

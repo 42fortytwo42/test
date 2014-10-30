@@ -17,7 +17,6 @@ The next step is to include the correct header into your C++ application source 
 
 
 ```cpp
-
 #include "minko/MinkoASSIMP.hpp" 
 #include "minko/MinkoJPEG.hpp" 
 ```
@@ -42,7 +41,7 @@ sceneManager->assets()
 ```
 
 
-Most common 3D file formats are supported by the ASSIMPParser ([Supported file formats](Supported_file_formats_(Community_Edition).md)). To load file with specific Minko extension (lighter, faster and modular), you can read the corresponding tutorial: [Loading .scene files](Loading_.scene_files.md). Learn how to export this format from the editor : [Exporting .scene files](Exporting_.scene_files.md).
+Most common 3D file formats are supported by the ASSIMPParser ([Supported file formats](Supported_file_formats_(Community_Edition).md)). To load file with specific Minko extension (lighter, faster and modular), you can read the corresponding tutorial: [Loading .scene files](07-Loading_.scene_files.md). Learn how to export this format from the editor : [Exporting .scene files](Exporting_.scene_files.md).
 
 After that, you can add your files to the loading queue and the right parser will be chosen automatically.
 
@@ -83,18 +82,15 @@ Final Code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp" 
 #include "minko/MinkoASSIMP.hpp" 
 #include "minko/MinkoJPEG.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 const std::string OBJ_MODEL_FILENAME = "model/pirate.obj"; const std::string DAE_MODEL_FILENAME = "model/pirate.dae";
 

@@ -10,7 +10,7 @@ Scripting in Lua is very cool because you get the best of both worlds:
 Before we start, you should read the following tutorials:
 
 -   [Create a new application](Create_a_new_application.md)
--   [Hello cube!](Hello_cube!.md)
+-   [Hello cube!](01-Hello_cube!.md)
 -   [How to enable a plugin](How_to_enable_a_plugin.md)
 
 Step 0: Enabling the Lua plugin
@@ -94,7 +94,6 @@ The first thing to do in our C++ application code is to load the main header for
 
 
 ```cpp
-
 #include "minko/MinkoLua.hpp" 
 ```
 
@@ -193,17 +192,14 @@ Final code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp" 
 #include "minko/MinkoLua.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

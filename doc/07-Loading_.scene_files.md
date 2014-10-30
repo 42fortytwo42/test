@@ -16,7 +16,6 @@ minko.plugin.enable("serializer")
 
 Next, the `AssetManager` of your scene should register the `minko::[file::SceneParser`](file::SceneParser`) for .scene files : 
 ```cpp
-
 #include "minko/MinkoSerializer.hpp"
 
 sceneManager->assets()->registerParser<minko::[file::SceneParser>](file::SceneParser>)("scene"); 
@@ -56,17 +55,14 @@ Final Code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp" 
 #include "minko/MinkoSerializer.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600; std::string SCENE_FILENAME = "model/myScene/myScene.scene";
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600; std::string SCENE_FILENAME = "model/myScene/myScene.scene";
 
 int main(int argc, char** argv) {
 

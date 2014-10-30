@@ -1,6 +1,6 @@
 In this tutorial, we will see how to load textures and use them in materials. This tutorial focus on loading RGBA diffuse textures, but the very same technique is used to load just about any texture (normal maps, specular maps, etc...).
 
-The code for this tutorial is based on the one described in the [Hello cube!](Hello_cube!.md) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](01-Hello_cube!.md) tutorial.
 
 Just like any asset, texture are loaded through the `AssetLibrary`. Here, we will use the library available from our `SceneManager::assets()` property, but you can also create your own `AssetLibrary` objects to fit your needs.
 
@@ -109,17 +109,14 @@ Final code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoJPEG.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

@@ -10,16 +10,13 @@ We will use the SDL plugin to initialize a window. The following code is a simpl
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
@@ -64,7 +61,7 @@ The `AssetLibrary::queue()` method will enlist all the file names that you want 
 
 The `Basic.effect` file itself is not in your application: it's in Minko's core framework. Minko's build system is made in such a way that this kind of required files are copied automatically using post-build commands. Thus, you don't have to worry about the actual location of the `Basic.effect` file for now.
 
-If you want to learn more about effects loading, you can read the [Loading effects](Loading_effects.md) tutorial.
+If you want to learn more about effects loading, you can read the [Loading effects](16-Loading_effects.md) tutorial.
 
 Step 3: Initialize the scene
 ----------------------------
@@ -144,7 +141,7 @@ cubeMaterial->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f));
 ```
 
 
-You can learn more about the `BasicMaterial` in the [Working with the BasicMaterial](Working_with_the_BasicMaterial.md) tutorial.
+You can learn more about the `BasicMaterial` in the [Working with the BasicMaterial](10-Working_with_the_BasicMaterial.md) tutorial.
 
 ### Move the cube
 
@@ -156,7 +153,7 @@ cube->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, 
 ```
 
 
-Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](Moving_objects.md) tutorial
+Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](04-Moving_objects.md) tutorial
 
 ### Add the cube to the scene
 

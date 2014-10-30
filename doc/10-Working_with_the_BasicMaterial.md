@@ -81,24 +81,21 @@ material->set("diffuseMap", texture);
 
 If you set the `diffuseMap`, the `diffuseColor` property will not be used anymore. This is done thanks to Minko's support for "über-shaders". This feature allows the rendering engine to use rendering programs - or shaders - that can handle many different situations such as in this case rendering with a texture or a solid color. This is a very efficient solution to make it easy to customize rendering with little effort.
 
-You can read more about textures in the [Loading and using textures](Loading_and_using_textures.md) tutorial.
+You can read more about textures in the [Loading and using textures](15-Loading_and_using_textures.md) tutorial.
 
 Final code
 ----------
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

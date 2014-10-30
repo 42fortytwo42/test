@@ -1,13 +1,13 @@
-In this tutorial, we will introduce how to work with the `PhongMaterial` to achieve lights dependent rendering. In order to fully understand this example, please read this one first : [Working with the BasicMaterial](Working_with_the_BasicMaterial.md)
+In this tutorial, we will introduce how to work with the `PhongMaterial` to achieve lights dependent rendering. In order to fully understand this example, please read this one first : [Working with the BasicMaterial](10-Working_with_the_BasicMaterial.md)
 
 Step 0: Setup the scene
 -----------------------
 
 First of all, a `PhongMaterial` needs at least one light in the scene, otherwise it will appear totally black:
 
--   directional light: [Working with directional lights](Working_with_directional_lights.md)
--   spot light: [Working with spot lights](Working_with_spot_lights.md)
--   point light: [Working with point lights](Working_with_point_lights.md)
+-   directional light: [Working with directional lights](26-Working_with_directional_lights.md)
+-   spot light: [Working with spot lights](28-Working_with_spot_lights.md)
+-   point light: [Working with point lights](27-Working_with_point_lights.md)
 
 Secondly the `Phong.effect` must be added to the assets loading queue:
 
@@ -21,13 +21,10 @@ Let's setup the scene:
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 
@@ -93,7 +90,7 @@ As the `BasicMaterial`, a `PhongMaterial` defines `diffuseColor` and `diffuseMap
 
 -   `PhongMaterial::diffuseColor(Vector4::Ptr color)`, where color is an RGBA Vector4 value
 -   `PhongMaterial::diffuseColor(uint color)`, where rgba is an RGBA formatted unsigned integer value
--   `PhongMaterial::diffuseMap(AbstractTexture::Ptr texture)` [Loading and using textures](Loading_and_using_textures.md)
+-   `PhongMaterial::diffuseMap(AbstractTexture::Ptr texture)` [Loading and using textures](15-Loading_and_using_textures.md)
 
 The `PhongMaterial` is a `[data::ArrayProvider`](data::ArrayProvider`) with a set of user-friendly inlined getter/setters for the properties expected by the corresponding effect.
 
@@ -173,13 +170,10 @@ Final Code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 
@@ -250,7 +244,7 @@ Where to go from there
 
 This tutorial covers partially the possibilities of the `PhongMaterial`. To learn more about this material, these tutorials provide more information:
 
--   [ Working with normal maps ](Working_with_normal_maps_.md)
--   [ Working with environment maps ](Working_with_environment_maps_.md)
--   [ Working with specular maps](Working_with_specular_maps_.md)
+-   [ Working with normal maps ](12-Working_with_normal_maps_.md)
+-   [ Working with environment maps ](13-Working_with_environment_maps_.md)
+-   [ Working with specular maps](14-Working_with_specular_maps_.md)
 

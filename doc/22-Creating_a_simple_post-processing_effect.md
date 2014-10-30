@@ -1,7 +1,7 @@
 In this tutorial we will see how to author post-processing effects and how to setup our application/scene to use them. Before you read this tutorial, you should read:
 
 -   [Create your first custom effect](Create_your_first_custom_effect.md) to learn about `*.effect` files authoring basics;
--   [Binding the camera](Binding_the_camera.md) and/or [Binding the model to world transform](Binding_the_model_to_world_transform.md) to learn about `uniformBindings`.
+-   [Binding the camera](20-Binding_the_camera.md) and/or [Binding the model to world transform](19-Binding_the_model_to_world_transform.md) to learn about `uniformBindings`.
 
 As a practical example, this tutorial will guide you through the creation of a "black and white" or "desaturate" post-processing effect. Its purpose is quite obvious: it will post-process your rendering to get a black and white final picture.
 
@@ -83,7 +83,7 @@ ppTarget->upload();
 
 **Attention!** Don't forget to call `Texture::upload()`: even if the texture has no actual data, it needs to be allocated on the GPU.
 
-Just like any `Effect`, our post-processing file should be loaded using the `AssetLibrary::load()` method. You can read more on this subject in the [Loading effects](Loading_effects.md) tutorial.
+Just like any `Effect`, our post-processing file should be loaded using the `AssetLibrary::load()` method. You can read more on this subject in the [Loading effects](16-Loading_effects.md) tutorial.
 
 When our `Effect` has been successfully loaded, we can fetch it from the library using the `AssetLibrary::effect()` method. The following code makes sure the effect has been properly loaded and throws an exception otherwise:
 
@@ -206,16 +206,13 @@ asset/effect/Desaturate.effect
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

@@ -18,7 +18,6 @@ But first things first, you must before anything else [enable the 'bullet' plugi
 
 
 ```cpp
-
 #include "minko/MinkoBullet.hpp" 
 ```
 
@@ -105,19 +104,16 @@ Final code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp" // STEP 0 
 #include "minko/MinkoBullet.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::scene; 
 using namespace minko::component; 
 using namespace minko::math;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600; const std::string TEXTURE_FILENAME = "texture/box.png";
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600; const std::string TEXTURE_FILENAME = "texture/box.png";
 
 int main(int argc, char** argv) {
 

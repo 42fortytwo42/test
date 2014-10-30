@@ -82,7 +82,8 @@ Manually declaring specialized setter method in `Material`-derived classes is al
 
 
 ```cpp
-inline Ptr diffuseColor(const uint rgba) {
+inline Ptr diffuseColor(
+const uint rgba) {
 
  return diffuseColor(math::Vector4::create(
    ((rgba >> 24) & 0xff) / 255.f,

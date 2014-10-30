@@ -5,7 +5,7 @@ In this tutorial, we will see how to reference external GLSL files in `*.effect`
 
 To reference external GLSL code, we will use the `#pragma include` directive within shader fields.
 
-As an example, we will break apart the custom effect that we previously set up in the tutorial [Creating a custom effect](17-Creating_a_custom_effect.md).
+As an example, we will break apart the custom effect that we previously set up in the tutorial [Creating a custom effect](17-17-Creating_a_custom_effect.md).
 
 Step 1: Referencing the external GLSL files
 -------------------------------------------
@@ -40,9 +40,9 @@ You also have to remember that you can always choose between declaring some `uni
 
 To learn how to setup `uniformBindings`, you can read the following tutorials:
 
--   [Creating custom materials](Creating_custom_materials.md)
--   [Binding the model to world transform](Binding_the_model_to_world_transform.md)
--   [Binding the camera](Binding_the_camera.md)
+-   [Creating custom materials](18-Creating_custom_materials.md)
+-   [Binding the model to world transform](19-Binding_the_model_to_world_transform.md)
+-   [Binding the camera](20-Binding_the_camera.md)
 
 Final code
 ----------
@@ -104,16 +104,13 @@ void main(void) {
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

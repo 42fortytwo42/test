@@ -9,7 +9,7 @@ auto phongMaterial = material::PhongMaterial::create();
 ```
 
 
-You'll find more information about the `phongMaterial` in this tutorial [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
+You'll find more information about the `phongMaterial` in this tutorial [Working with the PhongMaterial](11-Working_with_the_PhongMaterial.md)
 
 Properties of the phong material
 --------------------------------
@@ -18,12 +18,12 @@ We'll show the different properties of the `phongMaterial` on three different sc
 
 Each set of properties has a dedicated tutorial in the **tutorials** section:
 
--   [Working with the PhongMaterial](Working_with_the_PhongMaterial.md), to create a PhongMaterial then change the `diffuseColor`, `diffuseMap`, `specularColor` and the `shininess`
+-   [Working with the PhongMaterial](11-Working_with_the_PhongMaterial.md), to create a PhongMaterial then change the `diffuseColor`, `diffuseMap`, `specularColor` and the `shininess`
 -   [[Working with normal maps | Working with normal maps]
--   [ Working with specular maps](Working_with_specular_maps_.md)
--   [ Working with environment maps](Working_with_environment_maps_.md)
+-   [ Working with specular maps](14-Working_with_specular_maps_.md)
+-   [ Working with environment maps](13-Working_with_environment_maps_.md)
 
-The `phongMaterial` has access to a `diffuseColor` and a `diffuseMap`. Those properties can be set in the same way than the `basicMaterial` ([Working with the BasicMaterial](Working_with_the_BasicMaterial.md)).
+The `phongMaterial` has access to a `diffuseColor` and a `diffuseMap`. Those properties can be set in the same way than the `basicMaterial` ([Working with the BasicMaterial](10-Working_with_the_BasicMaterial.md)).
 
 | Right                                                                  | Left                                                     | Front                                                      |
 |------------------------------------------------------------------------|----------------------------------------------------------|------------------------------------------------------------|
@@ -42,7 +42,7 @@ Specular color is the color of the light specular reflection. The default value 
 | 0xFF0000FF     | ![](images/RedSpecular1.PNG "images/RedSpecular1.PNG")     | ![](images/RedSpecular2.PNG "images/RedSpecular2.PNG")     | ![](images/RedSpecular3.PNG "images/RedSpecular3.PNG")     |
 | 0xC0FFC0FF     | ![](images/GreenSpecular1.PNG "images/GreenSpecular1.PNG") | ![](images/GreenSpecular2.PNG "images/GreenSpecular2.PNG") | ![](images/GreenSpecular3.PNG "images/GreenSpecular3.PNG") |
 
-To have more information about specular color : [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
+To have more information about specular color : [Working with the PhongMaterial](11-Working_with_the_PhongMaterial.md)
 
 ### Shininess
 
@@ -60,7 +60,7 @@ phongMaterial->shininess(32.f);
 | 16        | ![](images/Shiniess16_1.PNG "images/Shiniess16_1.PNG")   | ![](images/Shiniess16_2.PNG "images/Shiniess16_2.PNG")   | ![](images/Shiniess16_3.PNG "images/Shiniess16_3.PNG")   |
 | 64        | ![](images/Shiniess64_1.PNG "images/Shiniess64_1.PNG")   | ![](images/Shiniess64_2.PNG "images/Shiniess64_2.PNG")   | ![](images/Shiniess64_3.PNG "images/Shiniess64_3.PNG")   |
 
-To have more information about shininess : [Working with the PhongMaterial](Working_with_the_PhongMaterial.md)
+To have more information about shininess : [Working with the PhongMaterial](11-Working_with_the_PhongMaterial.md)
 
 ### Environment Map & Environment Alpha
 
@@ -82,7 +82,7 @@ phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::Env
 |----------------------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
 | ![](images/Ditchriverii9.jpg "images/Ditchriverii9.jpg") | ![](images/Envmap1.PNG "images/Envmap1.PNG") | ![](images/Envmap2.PNG "images/Envmap2.PNG") | ![](images/Envmap3.PNG "images/Envmap3.PNG") |
 
-If you need more information about environment map : [ Working with environment maps](Working_with_environment_maps_.md)
+If you need more information about environment map : [ Working with environment maps](13-Working_with_environment_maps_.md)
 
 ### Normal Map
 
@@ -105,7 +105,7 @@ phongMaterial->normalMap(assets->texture("texture/normalmap.png"));
 | ![](images/TextureNormal3.jpg "images/TextureNormal3.jpg") | ![](images/Normal3_1.PNG "images/Normal3_1.PNG") | ![](images/Normal3_2.PNG "images/Normal3_2.PNG") | ![](images/Normal3_3.PNG "images/Normal3_3.PNG") |
 ||
 
-If you need more information about normal mapping : [Working with normal maps](Working_with_normal_maps_.md)
+If you need more information about normal mapping : [Working with normal maps](12-Working_with_normal_maps_.md)
 
 ### Specular Map
 
@@ -122,20 +122,17 @@ phongMaterial->shininess(2); phongMaterial->specularMap(assets->texture("texture
 | ![](images/Texturespecular3.jpg "images/Texturespecular3.jpg") | ![](images/SpecularMap3_1.PNG "images/SpecularMap3_1.PNG") | ![](images/SpecularMap3_2.PNG "images/SpecularMap3_2.PNG") | ![](images/SpecularMap3_3.PNG "images/SpecularMap3_3.PNG") |
 ||
 
-If you need more information about specular maps : [ Working with specular maps](Working_with_specular_maps_.md)
+If you need more information about specular maps : [ Working with specular maps](14-Working_with_specular_maps_.md)
 
 Full Example
 ------------
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 

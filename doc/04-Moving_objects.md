@@ -1,6 +1,6 @@
 In this tutorial, we will see how to move objects programmatically. This tutorial will teach you both how to translate objects and how to set their position directly.
 
-The code for this tutorial is based on the one described in the [Hello cube!](Hello_cube!.md) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](01-Hello_cube!.md) tutorial.
 
 Step 1: Creating a 3D transform
 -------------------------------
@@ -80,16 +80,13 @@ Final code
 
 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

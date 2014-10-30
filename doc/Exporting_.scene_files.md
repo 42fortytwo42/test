@@ -23,5 +23,5 @@ In this mode, all assets will be embedded in the `.scene` file.
 Step 3: Import .scene files in Minko 3
 ======================================
 
-You can then use your `.scene` file in a Minko 3 application. See [Load .scene files](Loading_.scene_files.md) for more information.
+You can then use your `.scene` file in a Minko 3 application. See [Load .scene files](07-Loading_.scene_files.md) for more information.
 

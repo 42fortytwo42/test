@@ -112,7 +112,6 @@ In our very case, we will create a `MyCustomMaterial` class that extends `Materi
 
 
 ```cpp
-
 #include "minko/Common.hpp" 
 #include "minko/material/Material.hpp"
 
@@ -211,19 +210,15 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
 
-
 #include "MyCustomMaterial.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

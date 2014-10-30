@@ -176,16 +176,13 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
@@ -234,7 +231,7 @@ Where to go from there
 
 As you might have noticed, our `Effect` is not really easy to work with:
 
--   setting uniforms will affect all the objects rendered with that `Effect`; to solve this you can read the [Creating custom materials](Creating_custom_materials.md) tutorial;
--   we have to deal with our model to world transform manually; to solve this you can read the [Binding the model to world transform](Binding_the_model_to_world_transform.md) tutorial;
--   we are setting/updating the camera manually with a view and a project matrix; to solve this you can read the [Binding the camera](Binding_the_camera.md) tutorial
+-   setting uniforms will affect all the objects rendered with that `Effect`; to solve this you can read the [Creating custom materials](18-Creating_custom_materials.md) tutorial;
+-   we have to deal with our model to world transform manually; to solve this you can read the [Binding the model to world transform](19-Binding_the_model_to_world_transform.md) tutorial;
+-   we are setting/updating the camera manually with a view and a project matrix; to solve this you can read the [Binding the camera](20-Binding_the_camera.md) tutorial
 

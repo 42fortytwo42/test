@@ -1,8 +1,8 @@
 **We recommand you to read the following tutorials before starting this one:**
 
 -   [Create your first custom effect](Create_your_first_custom_effect.md)
--   [Binding the model to world transform](Binding_the_model_to_world_transform.md)
--   [Binding the camera](Binding_the_camera.md)
+-   [Binding the model to world transform](19-Binding_the_model_to_world_transform.md)
+-   [Binding the camera](20-Binding_the_camera.md)
 
 In this tutorial, we will see how to create "über shaders". Über shaders are rendering programs that can handle many different rendering scenarios. For example, a lighting über shader will be able to handle many different counts and types of lights. An even simpler scenario is whether we want to render using the vertex color, a solid color or a texture.
 
@@ -225,16 +225,13 @@ asset/effect/MyCustomUberEffect.effect
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 

@@ -3,7 +3,7 @@ In this tutorial, we will see how to use the 3D transforms available in the engi
 Step 1: Binding the model to world matrix
 -----------------------------------------
 
-In the [Moving objects](Moving_objects.md) tutorial, we've seen that we can add custom 3D transforms to our scene nodes using the `Transform` component. If you take a look at the code for the `Transform::initialize()` method, you'll notice that this very component declares the `transform.modelToWorldMatrix` in it's `[data::Provider`](data::Provider`):
+In the [Moving objects](04-Moving_objects.md) tutorial, we've seen that we can add custom 3D transforms to our scene nodes using the `Transform` component. If you take a look at the code for the `Transform::initialize()` method, you'll notice that this very component declares the `transform.modelToWorldMatrix` in it's `[data::Provider`](data::Provider`):
 
 
 ```cpp
@@ -29,7 +29,7 @@ When the `Transform` component is added to some target `Node`, it will add its `
 ```
 
 
-If we add this to the code from the [Creating custom materials](Creating_custom_materials.md) tutorial, we end up with the following code for our effect:
+If we add this to the code from the [Creating custom materials](18-Creating_custom_materials.md) tutorial, we end up with the following code for our effect:
 
 
 ```javascript
@@ -102,7 +102,7 @@ auto cube = scene::Node::create()
 
 Note how we initialize our `Transform` component with the translation `Matrix4x4` we used to use as the value to set `uModelToWorldMatrix`. But thanks to data binding, this `uniform` will now be automatically be updated everytime we change the `Transform::transform()` property.
 
-You can read more about the `Transform` component in the [Moving objects](Moving_objects.md) tutorial.
+You can read more about the `Transform` component in the [Moving objects](04-Moving_objects.md) tutorial.
 
 Final code
 ----------
@@ -151,19 +151,15 @@ asset/effect/MyCustomEffect.effect
 
 src/main.cpp 
 ```cpp
-
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
 
-
 #include "MyCustomMaterial.hpp"
-
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; const uint WINDOW_HEIGHT = 600;
+const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
 
