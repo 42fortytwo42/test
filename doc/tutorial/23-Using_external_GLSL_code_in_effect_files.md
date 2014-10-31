@@ -5,7 +5,7 @@ In this tutorial, we will see how to reference external GLSL files in `*.effect`
 
 To reference external GLSL code, we will use the `#pragma include` directive within shader fields.
 
-As an example, we will break apart the custom effect that we previously set up in the tutorial [Creating a custom effect](../tutorial/17-17-Creating_a_custom_effect.md).
+As an example, we will break apart the custom effect that we previously set up in the tutorial [Creating a custom effect](../tutorial/17-Creating_a_custom_effect.md).
 
 Step 1: Referencing the external GLSL files
 -------------------------------------------
@@ -108,10 +108,12 @@ src/main.cpp
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {

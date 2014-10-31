@@ -1,6 +1,6 @@
 ![](../doc/image/Features_engine_Cpp_web_tank_new.png "fig:../doc/image/Features_engine_Cpp_web_tank_new.png") `Hi there!` Welcome to the official **Minko 3** documentation. Here you will find all the resources you might need to start working with Minko and learn everything about it. Tutorials, examples, technical articles... we've gathered everything in one place to make your work easier. Enjoy :)
 
-(Getting started with Minko 3)
+[<span class="btn btn-primary btn-large">Let's get started!</span>](Getting started with Minko 3 beta 1)
 
 Minko is a **free** and **open source** real-time **3D** framework created by [Aerys](http://aerys.in). Minko is designed to create fast and robust 3D applications for **the web, desktop and mobile devices**. It is currently compatible with the following platforms:
 
@@ -14,9 +14,9 @@ You can find the complete list and the status for each platform on our [Platform
 Make sure you check the following pages to get started:
 
 -   [Developer reference](http://doc.v3.minko.io/reference/)
--   [Tutorials](tutorial/Tutorials.md)
+-   [Tutorials](tutorial/README.md)
 -   [Examples](tutorial/Examples.md)
--   [Articles](Articles)
+-   [Articles](article/README.md)
 
 If you are looking for professional technical support, please [contact us](http://minko.io/contact)!
 
