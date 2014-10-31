@@ -3,7 +3,9 @@ test
 
 
 ![](doc/image/InitSceneSpot.png "doc/image/InitSceneSpot.png")
+op
 ![](../doc/image/InitSceneSpot.png "doc/image/InitSceneSpot.png")
+ici
 ![](image/InitSceneSpot.png "doc/image/InitSceneSpot.png")
 
 
