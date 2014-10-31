@@ -2,12 +2,9 @@ test
 ====
 
 
-![](doc/image/InitSceneSpot.png "doc/image/InitSceneSpot.png")
 op
 ![](../doc/image/InitSceneSpot.png "doc/image/InitSceneSpot.png")
 ici
-![](image/InitSceneSpot.png "doc/image/InitSceneSpot.png")
-
 
 <div class="hero-unit"> ![](image/Pointlight.png "image/Pointlight.png") <h1>Hi there!</h1> Welcome to the official **Minko 3** documentation. Here you will find all the resources you might need to start working with Minko and learn everything about it. Tutorials, examples, technical articles... we've gathered everything in one place to make your work easier. Enjoy :)
 
