@@ -39,7 +39,7 @@ Bindings are used to declare how each property of each pass of the effect will b
 ```
 
 
-The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](../#Pass_Bindings.md)).
+The bindings declared in the root effect node are considered "default" bindings: they will apply for all passes. But each pass can declare its own bindings and eventually replace the default ones (see [](../tutorial/#Pass_Bindings.md)).
 
 Passes
 ------
@@ -172,8 +172,10 @@ Example:
 
    attribute vec3 position;
 
-   uniform mat4 modelToWorldMatrix;
-   uniform mat4 worldToScreenMatrix;
+  
+uniform mat4 modelToWorldMatrix;
+  
+uniform mat4 worldToScreenMatrix;
 
    void main(void)
    {
@@ -234,8 +236,10 @@ Complete Example
        "vertexShader"  : "
            attribute vec3 position;
 
-           uniform mat4 modelToWorldMatrix;
-           uniform mat4 worldToScreenMatrix;
+          
+uniform mat4 modelToWorldMatrix;
+          
+uniform mat4 worldToScreenMatrix;
 
            void main(void)
            {

@@ -19,11 +19,11 @@ You have to set an environment variable that will be used by Minko's build syste
 
 Go to Control Panel-> System-> Advanced system settings and click on "Environment Variables"
 
-![](../image/Minko_win_env_variables.jpg "../image/Minko_win_env_variables.jpg")
+![](../../doc/image/Minko_win_env_variables.jpg "../../doc/image/Minko_win_env_variables.jpg")
 
 Then click on "New..." in the "System variables" panel (or in the "User variables" panel if you want to setup the SDK for your own user only)
 
-![](../image/Minko_win_new_env_variable.jpg "../image/Minko_win_new_env_variable.jpg")
+![](../../doc/image/Minko_win_new_env_variable.jpg "../../doc/image/Minko_win_new_env_variable.jpg")
 
 The "New System Variable" window will open, enter the following settings:
 
@@ -61,7 +61,7 @@ Now that's you've got the SDK set up, let's use Minko. Depending on host and tar
 -   [Targeting OS X](../tutorial/Targeting_OS_X.md)
 -   [Targeting Linux](../tutorial/Targeting_Linux.md)
 -   [Targeting iOS](../tutorial/Targeting_iOS.md)
--   [Targeting Android](../Targeting_Android.md) (coming with the beta 2...)
+-   [Targeting Android](../tutorial/Targeting_Android.md) (coming with the beta 2...)
 -   [Targeting HTML5](../tutorial/Targeting_HTML5.md)
--   [Targeting Flash](../Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
+-   [Targeting Flash](../tutorial/Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
 

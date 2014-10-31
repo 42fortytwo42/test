@@ -10,7 +10,7 @@ You can now export `.mks` files to the new serialized format used in Minko 3.
 
 You can choose between two exporting modes: files and embed. To export your scene, go into `Files-> Publish for Minko 3-> Publish files / Publish embed`
 
-![](../image/Exportscenefiles01.png "../image/Exportscenefiles01.png")
+![](../../doc/image/Exportscenefiles01.png "../../doc/image/Exportscenefiles01.png")
 
 #### Files mode
 
@@ -23,5 +23,5 @@ In this mode, all assets will be embedded in the `.scene` file.
 Step 3: Import .scene files in Minko 3
 ======================================
 
-You can then use your `.scene` file in a Minko 3 application. See [Load .scene files](../07-Loading_.scene_files.md) for more information.
+You can then use your `.scene` file in a Minko 3 application. See [Load .scene files](../tutorial/07-Loading_.scene_files.md) for more information.
 

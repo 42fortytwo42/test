@@ -1,6 +1,6 @@
 In this tutorial, we will see how to catch mouse inputs in order to rotate our camera.
 
-The code for this tutorial is based on the one described in the [Hello cube!](../01-Hello_cube!.md) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](../tutorial/01-Hello_cube!.md) tutorial.
 
 Step 1: Catching mouse inputs
 -----------------------------

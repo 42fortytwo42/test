@@ -28,7 +28,8 @@ To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragm
 
 In the code above, `MyCustomShader.vertex.glsl` and `MyCustomShader.fragment.glsl` are expected to be located in the same directory as the `MyCustomEffect.effect` file.
 
-The effect of the `#pragma include` directive is pretty much the same as the `#include` C/C++ pre-processor macro: the code from the included file(s) are copy/pasted directly.
+The effect of the `#pragma include` directive is pretty much the same as the `
+#include` C/C++ pre-processor macro: the code from the included file(s) are copy/pasted directly.
 
 Step 2 (optional): Binding the uniforms
 ---------------------------------------
@@ -39,9 +40,9 @@ You also have to remember that you can always choose between declaring some `uni
 
 To learn how to setup `uniformBindings`, you can read the following tutorials:
 
--   [Creating custom materials](../18-Creating_custom_materials.md)
--   [Binding the model to world transform](../19-Binding_the_model_to_world_transform.md)
--   [Binding the camera](../20-Binding_the_camera.md)
+-   [Creating custom materials](../tutorial/18-Creating_custom_materials.md)
+-   [Binding the model to world transform](../tutorial/19-Binding_the_model_to_world_transform.md)
+-   [Binding the camera](../tutorial/20-Binding_the_camera.md)
 
 Final code
 ----------
@@ -73,7 +74,9 @@ precision mediump float;
 
 attribute vec3 aPosition;
 
-uniform mat4 uModelToWorldMatrix; uniform mat4 uViewMatrix; uniform mat4 uProjectionMatrix;
+uniform mat4 uModelToWorldMatrix;
+uniform mat4 uViewMatrix;
+uniform mat4 uProjectionMatrix;
 
 void main(void) {
 
@@ -105,12 +108,10 @@ src/main.cpp
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-
-using namespace minko; 
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-
-const uint WINDOW_WIDTH = 800; 
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {

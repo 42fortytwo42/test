@@ -5,18 +5,18 @@ Adding a collider to a node
 
 Colliders can be added to any node of a scene : meshes, cameras, lights or groups. Select a node in the scene tree, then in the application menu go to `Controller-> Physics`. There, you can choose between `Primitive Collider` or `Triangle Mesh Collider`.
 
-![](../image/Physicscollidermenu.png "../image/Physicscollidermenu.png")
+![](../../doc/image/Physicscollidermenu.png "../../doc/image/Physicscollidermenu.png")
 
 -   `Primitive Collider`: this type of collider can be added to any node, and will have a primitive shape: `box`, `ball`, `cone` or `cylinder`.
 -   `Triangle Mesh Colliders`: can be added to meshes only, and will generate a collider fitting the mesh geometry. For performance, it is recommended to use these type of colliders for static colliders only, and only when absolutely necessary. It is preferable to use a primitive collider instead, or to try and break a complex `triangle mesh collider` into multiple `primitive colliders`.
 
 Here is a mesh with a cylinder `primitive collider`:
 
-![](../image/Primitivecollider.png "../image/Primitivecollider.png")
+![](../../doc/image/Primitivecollider.png "../../doc/image/Primitivecollider.png")
 
 Here is the same mesh with a `triangle mesh collider`:
 
-![](../image/Trianglemeshcollider.png "../image/Trianglemeshcollider.png")
+![](../../doc/image/Trianglemeshcollider.png "../../doc/image/Trianglemeshcollider.png")
 
 Collider properties
 ===================

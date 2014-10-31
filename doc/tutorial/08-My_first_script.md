@@ -10,7 +10,7 @@ Scripting in Lua is very cool because you get the best of both worlds:
 Before we start, you should read the following tutorials:
 
 -   [Create a new application](../tutorial/Create_a_new_application.md)
--   [Hello cube!](../01-Hello_cube!.md)
+-   [Hello cube!](../tutorial/01-Hello_cube!.md)
 -   [How to enable a plugin](../tutorial/How_to_enable_a_plugin.md)
 
 Step 0: Enabling the Lua plugin

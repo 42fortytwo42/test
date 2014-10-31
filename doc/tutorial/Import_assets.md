@@ -7,19 +7,19 @@ Different ways of importing assets
 
 The easiest way to import an asset is to drag and drop the file on the software. You can select one of multiple files.
 
-![](../image/Import4.png "../image/Import4.png")
+![](../../doc/image/Import4.png "../../doc/image/Import4.png")
 
 #### Assets panel button
 
 Open the `Assets` panel (second button on the left column) and click on the import button.
 
-![](../image/Import2.png "../image/Import2.png")
+![](../../doc/image/Import2.png "../../doc/image/Import2.png")
 
 #### From the file menu
 
 Click `File-> Import` on the menu bar.
 
-![](../image/Import1.png "../image/Import1.png")
+![](../../doc/image/Import1.png "../../doc/image/Import1.png")
 
 #### Keyboard shortcut
 
@@ -30,7 +30,7 @@ Importing textures
 
 All imported textures go in the `Textures` tab of the `Assets` panel.
 
-![](../image/Importtex1.png "../image/Importtex1.png")
+![](../../doc/image/Importtex1.png "../../doc/image/Importtex1.png")
 
 #### Supported formats
 
@@ -54,7 +54,7 @@ When you select a texture, you will have access to some useful options on the `P
 -   If you tick the `Synchronize` box, your texture will be automatically updated if the original file has changed.
 -   With the `Replace` button, you can replace that texture with another file.
 
-![](../image/Importtex2.png "../image/Importtex2.png")
+![](../../doc/image/Importtex2.png "../../doc/image/Importtex2.png")
 
 Importing 3D models
 ===================
@@ -67,7 +67,7 @@ If you drag and drop a 3D model file, you will have 3 import options :
 -   `Import at origin` will add a copy of the symbol at the origin of the scene after it has been imported
 -   `Import here` will add a copy of the symbol where the mouse is currently
 
-![](../image/Importsymbol1.png "../image/Importsymbol1.png")
+![](../../doc/image/Importsymbol1.png "../../doc/image/Importsymbol1.png")
 
 In any case, all 3D models will go in the `Symbols` tab of the `Assets` panel.
 
@@ -86,5 +86,5 @@ The following formats are supported :
 
 Any material will be created and will appear in the `Materials` tab of the `Assets` panel. Any textures used in these materials will be imported if it has been found.
 
-![](../image/Importsymbol3.png "../image/Importsymbol3.png")
+![](../../doc/image/Importsymbol3.png "../../doc/image/Importsymbol3.png")
 

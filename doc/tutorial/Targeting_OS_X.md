@@ -27,7 +27,7 @@ The Unix-based toolchain provided by the Command Line Tools includes Clang 3.2, 
 Step 2: Generate the solution
 -----------------------------
 
-While Xcode project support is part of the short-term roadmap (it's already available for [iOS](../Targetting_iOS.md)), only \Makefile\s are supported at the moment. A script is provided to generate a GNU Make-compatible solution with default options:
+While Xcode project support is part of the short-term roadmap (it's already available for [iOS](../tutorial/Targetting_iOS.md)), only \Makefile\s are supported at the moment. A script is provided to generate a GNU Make-compatible solution with default options:
 
 
 ```bash

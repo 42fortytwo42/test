@@ -44,7 +44,7 @@ As you can see, `*.effect` files are declared using the JSON format. Here are a 
 -   the `attributeBindings` field declares an object that will map our effect's shaders (vertex) attribute declarations to actual engine data properties
 -   the `passes` field declares an array of objects where each object is a rendering pass made mainly of a [<https://en.wikipedia.org/wiki/Shader>#Vertex_shaders vertex shader] (the "vertexShader" field) and a [<https://en.wikipedia.org/wiki/Shader>#Pixel_shaders fragment shader] (the "fragmentShader" field).
 
-You can learn more about the `*.effect` files format in the [Effect files format reference](../Effect_files_format_reference.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](../tutorial/Effect_files_format_reference.md) article.
 
 Step 2 : The vertex shader
 --------------------------
@@ -57,7 +57,9 @@ We can now define our vertex shader for the single and only pass of our effect. 
 
 attribute vec3 aPosition;
 
-uniform mat4 uModelToWorldMatrix; uniform mat4 uViewMatrix; uniform mat4 uProjectionMatrix;
+uniform mat4 uModelToWorldMatrix;
+uniform mat4 uViewMatrix;
+uniform mat4 uProjectionMatrix;
 
 void main(void) {
 
@@ -147,9 +149,12 @@ asset/effect/MyCustomEffect.effect
 
      attribute vec3 aPosition;
 
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uViewMatrix;
+    
+uniform mat4 uProjectionMatrix;
 
      void main(void)
      {
@@ -231,7 +236,7 @@ Where to go from there
 
 As you might have noticed, our `Effect` is not really easy to work with:
 
--   setting uniforms will affect all the objects rendered with that `Effect`; to solve this you can read the [Creating custom materials](../18-Creating_custom_materials.md) tutorial;
--   we have to deal with our model to world transform manually; to solve this you can read the [Binding the model to world transform](../19-Binding_the_model_to_world_transform.md) tutorial;
--   we are setting/updating the camera manually with a view and a project matrix; to solve this you can read the [Binding the camera](../20-Binding_the_camera.md) tutorial
+-   setting uniforms will affect all the objects rendered with that `Effect`; to solve this you can read the [Creating custom materials](../tutorial/18-Creating_custom_materials.md) tutorial;
+-   we have to deal with our model to world transform manually; to solve this you can read the [Binding the model to world transform](../tutorial/19-Binding_the_model_to_world_transform.md) tutorial;
+-   we are setting/updating the camera manually with a view and a project matrix; to solve this you can read the [Binding the camera](../tutorial/20-Binding_the_camera.md) tutorial
 

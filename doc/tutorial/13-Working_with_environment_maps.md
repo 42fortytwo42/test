@@ -9,22 +9,22 @@ Environment maps are textures that Minko uses to simulate reflection on a 3D obj
 -   2D Texture for Probe technique
 -   Cube Texture
 
-| Blinn Newell                                                 | Probe                                                        | Cube Texture                                                                           |
-|--------------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| ![](../image/Ditchriverii9.jpg "../image/Ditchriverii9.jpg") | ![](../image/Galileo_probe.jpg "../image/Galileo_probe.jpg") | ![](../image/F6-example_horizontalcross.png "../image/F6-example_horizontalcross.png") |
+| Blinn Newell                                                               | Probe                                                                      | Cube Texture                                                                                         |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| ![](../../doc/image/Ditchriverii9.jpg "../../doc/image/Ditchriverii9.jpg") | ![](../../doc/image/Galileo_probe.jpg "../../doc/image/Galileo_probe.jpg") | ![](../../doc/image/F6-example_horizontalcross.png "../../doc/image/F6-example_horizontalcross.png") |
 
 Prerequisites
 -------------
 
 To fully understand the rest of the tutorial, you need to know how to setup a scene with a phong material, and how to load textures:
 
--   [Working with the PhongMaterial](../11-Working_with_the_PhongMaterial.md)
--   [Loading and using textures](../15-Loading_and_using_textures.md)
+-   [Working with the PhongMaterial](../tutorial/11-Working_with_the_PhongMaterial.md)
+-   [Loading and using textures](../tutorial/15-Loading_and_using_textures.md)
 
 Step 0: Setup a scene
 ---------------------
 
-The setup will be the same that the one at the end of the [Working with the PhongMaterial](../11-Working_with_the_PhongMaterial.md) tutorial:
+The setup will be the same that the one at the end of the [Working with the PhongMaterial](../tutorial/11-Working_with_the_PhongMaterial.md) tutorial:
 
 
 ```cpp
@@ -124,9 +124,9 @@ phongMaterial->environmentAlpha(0.2f);
 ```
 
 
-| Environment Alpha                                            | 0.2                                              | 0.5                                              | 0.95                                             |
-|--------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
-| ![](../image/Ditchriverii9.jpg "../image/Ditchriverii9.jpg") | ![](../image/Envmap1.PNG "../image/Envmap1.PNG") | ![](../image/Envmap2.PNG "../image/Envmap2.PNG") | ![](../image/Envmap3.PNG "../image/Envmap3.PNG") |
+| Environment Alpha                                                          | 0.2                                                            | 0.5                                                            | 0.95                                                           |
+|----------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|
+| ![](../../doc/image/Ditchriverii9.jpg "../../doc/image/Ditchriverii9.jpg") | ![](../../doc/image/Envmap1.PNG "../../doc/image/Envmap1.PNG") | ![](../../doc/image/Envmap2.PNG "../../doc/image/Envmap2.PNG") | ![](../../doc/image/Envmap3.PNG "../../doc/image/Envmap3.PNG") |
 
 Final Code
 ----------
@@ -199,5 +199,5 @@ int main(int argc, char** argv) {
 Where to go from here
 ---------------------
 
-`environmentMap` can me mixed with `specularMap` ([Working with specular maps](../14-Working_with_specular_maps_.md)) and/or `normalMap` ([Working with normal maps ](../12-Working_with_normal_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](../article/PhongMaterial_reference#Full_Example_.md).
+`environmentMap` can me mixed with `specularMap` ([Working with specular maps](../tutorial/14-Working_with_specular_maps_.md)) and/or `normalMap` ([Working with normal maps ](../tutorial/12-Working_with_normal_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](../tutorial/PhongMaterial_reference#Full_Example_.md).
 

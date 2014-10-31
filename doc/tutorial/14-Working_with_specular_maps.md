@@ -10,13 +10,13 @@ Prerequisites
 
 To fully understand the rest of the tutorial, you need to know how to setup a scene with a phong material, and how to load textures:
 
--   [Working with the PhongMaterial](../11-Working_with_the_PhongMaterial.md)
--   [Loading and using textures](../15-Loading_and_using_textures.md)
+-   [Working with the PhongMaterial](../tutorial/11-Working_with_the_PhongMaterial.md)
+-   [Loading and using textures](../tutorial/15-Loading_and_using_textures.md)
 
 Step 0: Setup a scene
 ---------------------
 
-The setup will be the same that the one at the end of the [Working with the PhongMaterial](../11-Working_with_the_PhongMaterial.md) tutorial:
+The setup will be the same that the one at the end of the [Working with the PhongMaterial](../tutorial/11-Working_with_the_PhongMaterial.md) tutorial:
 
 
 ```cpp
@@ -108,11 +108,11 @@ phongMaterial->specularMap(assets->texture("texture/specularmap.png"));
 ```
 
 
-| scope="col" widt"100px"| DiffuseMap / SpecularMap                  | Right                                                          | Left                                                           | Front                                                          |
-|--------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|
-| ![ link=](../image/Texturespecular1.jpg " link=")                  | ![](../image/SpecularMap1_1.PNG "../image/SpecularMap1_1.PNG") | ![](../image/SpecularMap1_2.PNG "../image/SpecularMap1_2.PNG") | ![](../image/SpecularMap1_3.PNG "../image/SpecularMap1_3.PNG") |
-| ![ link=](../image/Texturespecular22.jpg " link=")                 | ![](../image/SpecularMap2_1.PNG "../image/SpecularMap2_1.PNG") | ![](../image/SpecularMap2_2.PNG "../image/SpecularMap2_2.PNG") | ![](../image/SpecularMap2_3.PNG "../image/SpecularMap2_3.PNG") |
-| ![](../image/Texturespecular3.jpg "../image/Texturespecular3.jpg") | ![](../image/SpecularMap3_1.PNG "../image/SpecularMap3_1.PNG") | ![](../image/SpecularMap3_2.PNG "../image/SpecularMap3_2.PNG") | ![](../image/SpecularMap3_3.PNG "../image/SpecularMap3_3.PNG") |
+| scope="col" widt"100px"| DiffuseMap / SpecularMap                                | Right                                                                        | Left                                                                         | Front                                                                        |
+|----------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| ![ link=](../../doc/image/Texturespecular1.jpg " link=")                         | ![](../../doc/image/SpecularMap1_1.PNG "../../doc/image/SpecularMap1_1.PNG") | ![](../../doc/image/SpecularMap1_2.PNG "../../doc/image/SpecularMap1_2.PNG") | ![](../../doc/image/SpecularMap1_3.PNG "../../doc/image/SpecularMap1_3.PNG") |
+| ![ link=](../../doc/image/Texturespecular22.jpg " link=")                        | ![](../../doc/image/SpecularMap2_1.PNG "../../doc/image/SpecularMap2_1.PNG") | ![](../../doc/image/SpecularMap2_2.PNG "../../doc/image/SpecularMap2_2.PNG") | ![](../../doc/image/SpecularMap2_3.PNG "../../doc/image/SpecularMap2_3.PNG") |
+| ![](../../doc/image/Texturespecular3.jpg "../../doc/image/Texturespecular3.jpg") | ![](../../doc/image/SpecularMap3_1.PNG "../../doc/image/SpecularMap3_1.PNG") | ![](../../doc/image/SpecularMap3_2.PNG "../../doc/image/SpecularMap3_2.PNG") | ![](../../doc/image/SpecularMap3_3.PNG "../../doc/image/SpecularMap3_3.PNG") |
 ||
 
 Final Code
@@ -185,5 +185,5 @@ int main(int argc, char** argv) {
 Where to go from here
 ---------------------
 
-`specularMap` can me mixed with `normalMap` ([Working with normal maps](../12-Working_with_normal_maps.md)) and/or `environmentMap` ([Working with environment maps ](../13-Working_with_environment_maps.md)) to produce great effect on your 3D models: [PhongMaterial reference full example](../article/PhongMaterial_reference#Full_Example.md).
+`specularMap` can me mixed with `normalMap` ([Working with normal maps](../tutorial/12-Working_with_normal_maps.md)) and/or `environmentMap` ([Working with environment maps ](../tutorial/13-Working_with_environment_maps.md)) to produce great effect on your 3D models: [PhongMaterial reference full example](../tutorial/PhongMaterial_reference#Full_Example.md).
 

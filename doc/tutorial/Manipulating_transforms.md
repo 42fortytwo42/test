@@ -10,7 +10,7 @@ Transform section on the Properties panel
 
 The `Transform` section of the `Properties` panel allows you to alter 4 characteristics of the transform.
 
-![](../image/Transform_panel.png "../image/Transform_panel.png")
+![](../../doc/image/Transform_panel.png "../../doc/image/Transform_panel.png")
 
 #### Scale
 
@@ -37,7 +37,7 @@ When a node is selected on the scene, you will notice there is a gizmo placed at
 
 To switch between gizmos, use the three buttons on the left of bottom bar. See the [bottom bar](../tutorial/The_bottom_bar#Transform_gizmos.md) tutorial for more details.
 
-![](../image/Transform_gizmos.png "../image/Transform_gizmos.png")
+![](../../doc/image/Transform_gizmos.png "../../doc/image/Transform_gizmos.png")
 
 #### Translation
 

@@ -1,12 +1,12 @@
 **We recommand you to read the following tutorials before starting this one:**
 
--   [Create your first custom effect](../Create_your_first_custom_effect.md)
--   [Binding the model to world transform](../19-Binding_the_model_to_world_transform.md)
--   [Binding the camera](../20-Binding_the_camera.md)
+-   [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md)
+-   [Binding the model to world transform](../tutorial/19-Binding_the_model_to_world_transform.md)
+-   [Binding the camera](../tutorial/20-Binding_the_camera.md)
 
 In this tutorial, we will see how to create "über shaders". Über shaders are rendering programs that can handle many different rendering scenarios. For example, a lighting über shader will be able to handle many different counts and types of lights. An even simpler scenario is whether we want to render using the vertex color, a solid color or a texture.
 
-To learn how to create an über-shader, we will update the effect created in the [Create your first custom effect](../Create_your_first_custom_effect.md) tutorial to be able to render two scenarios: # rendering with a solid color; # rendering with a texture.
+To learn how to create an über-shader, we will update the effect created in the [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md) tutorial to be able to render two scenarios: # rendering with a solid color; # rendering with a texture.
 
 Step 0: Introduction to über shaders
 ------------------------------------
@@ -26,7 +26,7 @@ In the case above, the actual behavior of the shader will depend on whether the 
 Step 1: Updating the fragment shader
 ------------------------------------
 
-We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](../Create_your_first_custom_effect#Step_3:_The_fragment_shader.md) and update it to use a texture if the `DIFFUSE_MAP` macro is defined:
+We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](../tutorial/Create_your_first_custom_effect#Step_3:_The_fragment_shader.md) and update it to use a texture if the `DIFFUSE_MAP` macro is defined:
 
 
 ```c
@@ -56,7 +56,8 @@ To sample the `uDiffuseMap` texture, our fragment shader will also need the text
 
 attribute vec3 aPosition; attribute vec2 aUv;
 
-uniform mat4 uModelToWorldMatrix; uniform mat4 uWorldToScreenMatrix;
+uniform mat4 uModelToWorldMatrix;
+uniform mat4 uWorldToScreenMatrix;
 
 varying vec2 vVertexUv;
 
@@ -190,8 +191,10 @@ asset/effect/MyCustomUberEffect.effect
      #endif
      attribute vec3 aPosition;
      attribute vec2 aUv;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uWorldToScreenMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uWorldToScreenMatrix;
      varying vec2 vVertexUv;
      void main(void)
      {

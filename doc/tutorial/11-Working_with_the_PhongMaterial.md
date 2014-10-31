@@ -1,13 +1,13 @@
-In this tutorial, we will introduce how to work with the `PhongMaterial` to achieve lights dependent rendering. In order to fully understand this example, please read this one first : [Working with the BasicMaterial](../10-Working_with_the_BasicMaterial.md)
+In this tutorial, we will introduce how to work with the `PhongMaterial` to achieve lights dependent rendering. In order to fully understand this example, please read this one first : [Working with the BasicMaterial](../tutorial/10-Working_with_the_BasicMaterial.md)
 
 Step 0: Setup the scene
 -----------------------
 
 First of all, a `PhongMaterial` needs at least one light in the scene, otherwise it will appear totally black:
 
--   directional light: [Working with directional lights](../26-Working_with_directional_lights.md)
--   spot light: [Working with spot lights](../28-Working_with_spot_lights.md)
--   point light: [Working with point lights](../27-Working_with_point_lights.md)
+-   directional light: [Working with directional lights](../tutorial/26-Working_with_directional_lights.md)
+-   spot light: [Working with spot lights](../tutorial/28-Working_with_spot_lights.md)
+-   point light: [Working with point lights](../tutorial/27-Working_with_point_lights.md)
 
 Secondly the `Phong.effect` must be added to the assets loading queue:
 
@@ -90,7 +90,7 @@ As the `BasicMaterial`, a `PhongMaterial` defines `diffuseColor` and `diffuseMap
 
 -   `PhongMaterial::diffuseColor(Vector4::Ptr color)`, where color is an RGBA Vector4 value
 -   `PhongMaterial::diffuseColor(uint color)`, where rgba is an RGBA formatted unsigned integer value
--   `PhongMaterial::diffuseMap(AbstractTexture::Ptr texture)` [Loading and using textures](../15-Loading_and_using_textures.md)
+-   `PhongMaterial::diffuseMap(AbstractTexture::Ptr texture)` [Loading and using textures](../tutorial/15-Loading_and_using_textures.md)
 
 The `PhongMaterial` is a `[data::ArrayProvider`](data::ArrayProvider`) with a set of user-friendly inlined getter/setters for the properties expected by the corresponding effect.
 
@@ -110,9 +110,9 @@ phongMaterial->diffuseColor(0xFF0000FF); phongMaterial->diffuseMap(assets->textu
 
 Once a `diffuseMap` is set, it overwrites the `diffuseColor`.
 
-| Right                                                                      | Left                                                         | Front                                                          |
-|----------------------------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------|
-| ![](../image/InitSceneDirectional.png "../image/InitSceneDirectional.png") | ![](../image/InitSceneSpot.png "../image/InitSceneSpot.png") | ![](../image/InitScenePoint.png "../image/InitScenePoint.png") |
+| Right                                                                                    | Left                                                                       | Front                                                                        |
+|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| ![](../../doc/image/InitSceneDirectional.png "../../doc/image/InitSceneDirectional.png") | ![](../../doc/image/InitSceneSpot.png "../../doc/image/InitSceneSpot.png") | ![](../../doc/image/InitScenePoint.png "../../doc/image/InitScenePoint.png") |
 
 Step 2: Setting a specular color
 --------------------------------
@@ -135,10 +135,10 @@ phongMaterial->specularColor(0xFF0000FF); // or phongMaterial->specularColor(mat
 ```
 
 
-| Specular Color | Right                                                          | Left                                                           | Front                                                          |
-|----------------|----------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|
-| 0xFF0000FF     | ![](../image/RedSpecular1.PNG "../image/RedSpecular1.PNG")     | ![](../image/RedSpecular2.PNG "../image/RedSpecular2.PNG")     | ![](../image/RedSpecular3.PNG "../image/RedSpecular3.PNG")     |
-| 0xC0FFC0FF     | ![](../image/GreenSpecular1.PNG "../image/GreenSpecular1.PNG") | ![](../image/GreenSpecular2.PNG "../image/GreenSpecular2.PNG") | ![](../image/GreenSpecular3.PNG "../image/GreenSpecular3.PNG") |
+| Specular Color | Right                                                                        | Left                                                                         | Front                                                                        |
+|----------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| 0xFF0000FF     | ![](../../doc/image/RedSpecular1.PNG "../../doc/image/RedSpecular1.PNG")     | ![](../../doc/image/RedSpecular2.PNG "../../doc/image/RedSpecular2.PNG")     | ![](../../doc/image/RedSpecular3.PNG "../../doc/image/RedSpecular3.PNG")     |
+| 0xC0FFC0FF     | ![](../../doc/image/GreenSpecular1.PNG "../../doc/image/GreenSpecular1.PNG") | ![](../../doc/image/GreenSpecular2.PNG "../../doc/image/GreenSpecular2.PNG") | ![](../../doc/image/GreenSpecular3.PNG "../../doc/image/GreenSpecular3.PNG") |
 
 Those images show one important thing: if one of the color components is zero, the specular color won't reach white.
 
@@ -159,11 +159,11 @@ phongMaterial->shininess(32.f);
 ```
 
 
-| shininess | Right                                                        | Left                                                         | Front                                                        |
-|-----------|--------------------------------------------------------------|--------------------------------------------------------------|--------------------------------------------------------------|
-| 2         | ![](../image/Shiniess0_2_1.PNG "../image/Shiniess0_2_1.PNG") | ![](../image/Shiniess0_2_2.PNG "../image/Shiniess0_2_2.PNG") | ![](../image/Shiniess0_2_3.PNG "../image/Shiniess0_2_3.PNG") |
-| 16        | ![](../image/Shiniess16_1.PNG "../image/Shiniess16_1.PNG")   | ![](../image/Shiniess16_2.PNG "../image/Shiniess16_2.PNG")   | ![](../image/Shiniess16_3.PNG "../image/Shiniess16_3.PNG")   |
-| 64        | ![](../image/Shiniess64_1.PNG "../image/Shiniess64_1.PNG")   | ![](../image/Shiniess64_2.PNG "../image/Shiniess64_2.PNG")   | ![](../image/Shiniess64_3.PNG "../image/Shiniess64_3.PNG")   |
+| shininess | Right                                                                      | Left                                                                       | Front                                                                      |
+|-----------|----------------------------------------------------------------------------|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| 2         | ![](../../doc/image/Shiniess0_2_1.PNG "../../doc/image/Shiniess0_2_1.PNG") | ![](../../doc/image/Shiniess0_2_2.PNG "../../doc/image/Shiniess0_2_2.PNG") | ![](../../doc/image/Shiniess0_2_3.PNG "../../doc/image/Shiniess0_2_3.PNG") |
+| 16        | ![](../../doc/image/Shiniess16_1.PNG "../../doc/image/Shiniess16_1.PNG")   | ![](../../doc/image/Shiniess16_2.PNG "../../doc/image/Shiniess16_2.PNG")   | ![](../../doc/image/Shiniess16_3.PNG "../../doc/image/Shiniess16_3.PNG")   |
+| 64        | ![](../../doc/image/Shiniess64_1.PNG "../../doc/image/Shiniess64_1.PNG")   | ![](../../doc/image/Shiniess64_2.PNG "../../doc/image/Shiniess64_2.PNG")   | ![](../../doc/image/Shiniess64_3.PNG "../../doc/image/Shiniess64_3.PNG")   |
 
 Final Code
 ----------
@@ -244,7 +244,7 @@ Where to go from there
 
 This tutorial covers partially the possibilities of the `PhongMaterial`. To learn more about this material, these tutorials provide more information:
 
--   [ Working with normal maps ](../12-Working_with_normal_maps_.md)
--   [ Working with environment maps ](../13-Working_with_environment_maps_.md)
--   [ Working with specular maps](../14-Working_with_specular_maps_.md)
+-   [ Working with normal maps ](../tutorial/12-Working_with_normal_maps_.md)
+-   [ Working with environment maps ](../tutorial/13-Working_with_environment_maps_.md)
+-   [ Working with specular maps](../tutorial/14-Working_with_specular_maps_.md)
 

@@ -5,27 +5,27 @@ The compatibility matrix provides, for each platform supported by Minko, the cur
 
 The possible states are :
 
--   ![](../image/Checked.png "fig:../image/Checked.png"): Fully supported
--   ![](../image/Warning.png "fig:../image/Warning.png"): Partially supported
--   ![](../image/Error.png "fig:../image/Error.png"): Not supported
--   ![](../image/Help_16.png "fig:../image/Help_16.png"): Not implemented yet
+-   ![](../../doc/image/Checked.png "fig:../../doc/image/Checked.png"): Fully supported
+-   ![](../../doc/image/Warning.png "fig:../../doc/image/Warning.png"): Partially supported
+-   ![](../../doc/image/Error.png "fig:../../doc/image/Error.png"): Not supported
+-   ![](../../doc/image/Help_16.png "fig:../../doc/image/Help_16.png"): Not implemented yet
 -   N/A : Not Applicable
 
-| Plugin/Platform | HTML5                                            | Windows                                          | MacOS                                            | Linux                                            |
-|-----------------|--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
-| angle           | N/A                                              | ![](../image/Checked.png "../image/Checked.png") | N/A                                              | N/A                                              |
-| assimp          | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| bullet          | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| fx              | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| jpeg            | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| leap            | ![](../image/Help_16.png "../image/Help_16.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| lua             | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| oculus          | ![](../image/Warning.png "../image/Warning.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| offscreen       | N/A                                              | ![](../image/Error.png "../image/Error.png")     | ![](../image/Error.png "../image/Error.png")     | ![](../image/Checked.png "../image/Checked.png") |
-| particles       | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| png             | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| sdl             | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| serializer      | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") | ![](../image/Checked.png "../image/Checked.png") |
-| webgl           | ![](../image/Checked.png "../image/Checked.png") | N/A                                              | N/A                                              | N/A                                              |
+| Plugin/Platform | HTML5                                                          | Windows                                                        | MacOS                                                          | Linux                                                          |
+|-----------------|----------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|
+| angle           | N/A                                                            | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | N/A                                                            | N/A                                                            |
+| assimp          | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| bullet          | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| fx              | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| jpeg            | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| leap            | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| lua             | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| oculus          | ![](../../doc/image/Warning.png "../../doc/image/Warning.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| offscreen       | N/A                                                            | ![](../../doc/image/Error.png "../../doc/image/Error.png")     | ![](../../doc/image/Error.png "../../doc/image/Error.png")     | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| particles       | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| png             | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| sdl             | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| serializer      | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") |
+| webgl           | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | N/A                                                            | N/A                                                            | N/A                                                            |
 
 

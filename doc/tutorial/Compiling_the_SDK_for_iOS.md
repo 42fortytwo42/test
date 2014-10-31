@@ -20,7 +20,7 @@ $ tool/mac/script/solution_xcode.sh
 ```
 
 
-You should have the following result in the console: ![](../image/Solution_minko_xcode.png "fig:../image/Solution_minko_xcode.png")
+You should have the following result in the console: ![](../../doc/image/Solution_minko_xcode.png "fig:../../doc/image/Solution_minko_xcode.png")
 
 Make sure a `minko.xcworkspace` solution file has been properly generated. If this operation was successful, you should have a `*.xcodeproj` project file in each project directory.
 
@@ -31,11 +31,11 @@ The generated solution file may generated outdated options, which is fine since 
 
 Just go to the warning tab in Xcode. You should see a warning for each project and plugin linked in the current open project.
 
-![](../image/Xcode_project_update.png "../image/Xcode_project_update.png")
+![](../../doc/image/Xcode_project_update.png "../../doc/image/Xcode_project_update.png")
 
 Just click on each warning. Xcode will prompt you to update, but before, you can perform a snapshot of the current project settings. Feel free to do so, even it doesn't have any incidence on the project.
 
-![](../image/Xcode_project_snapshot.png "../image/Xcode_project_snapshot.png")
+![](../../doc/image/Xcode_project_snapshot.png "../../doc/image/Xcode_project_snapshot.png")
 
 Just click "Perform Changes" and Xcode will upgrade the project.
 

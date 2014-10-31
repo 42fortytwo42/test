@@ -37,7 +37,7 @@ tool/lin/script/premake5.sh --help
 ```
 
 
-![](../image/Minko_linux_premake_gmake.jpg "../image/Minko_linux_premake_gmake.jpg")
+![](../../doc/image/Minko_linux_premake_gmake.jpg "../../doc/image/Minko_linux_premake_gmake.jpg")
 
 The list of the projects may vary according to the actual version of the SDK. What's important is to make sure that you have a `Makefile` at the root of the SDK and in each project directory.
 

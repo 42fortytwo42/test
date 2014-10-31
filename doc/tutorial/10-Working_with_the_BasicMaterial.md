@@ -58,7 +58,7 @@ This approach is very useful because it mixes the flexibility of dynamic propert
 
 Performance wise, the static getters/setters declared in a material are (should be) inlined so it should make no difference.
 
-To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../article/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
+To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../tutorial/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
 
 Step 3: Setting a diffuse map (or texture)
 ------------------------------------------
@@ -81,7 +81,7 @@ material->set("diffuseMap", texture);
 
 If you set the `diffuseMap`, the `diffuseColor` property will not be used anymore. This is done thanks to Minko's support for "über-shaders". This feature allows the rendering engine to use rendering programs - or shaders - that can handle many different situations such as in this case rendering with a texture or a solid color. This is a very efficient solution to make it easy to customize rendering with little effort.
 
-You can read more about textures in the [Loading and using textures](../15-Loading_and_using_textures.md) tutorial.
+You can read more about textures in the [Loading and using textures](../tutorial/15-Loading_and_using_textures.md) tutorial.
 
 Final code
 ----------

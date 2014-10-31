@@ -1,9 +1,9 @@
-In this tutorial, we will see how to use the 3D transforms available in the engine in our custom effects. In the [Create your first custom effect](../Create_your_first_custom_effect.md) tutorial, we've seen how to declare `uniform`s and set them from our application code. But having to manually set each uniform is not really scalable, especially regarding 3D transforms and the camera because this kind of data is likely to change at every frame. Yet, most of our objects will need them in order to be renderer properly.
+In this tutorial, we will see how to use the 3D transforms available in the engine in our custom effects. In the [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md) tutorial, we've seen how to declare `uniform`s and set them from our application code. But having to manually set each uniform is not really scalable, especially regarding 3D transforms and the camera because this kind of data is likely to change at every frame. Yet, most of our objects will need them in order to be renderer properly.
 
 Step 1: Binding the model to world matrix
 -----------------------------------------
 
-In the [Moving objects](../04-Moving_objects.md) tutorial, we've seen that we can add custom 3D transforms to our scene nodes using the `Transform` component. If you take a look at the code for the `Transform::initialize()` method, you'll notice that this very component declares the `transform.modelToWorldMatrix` in it's `[data::Provider`](data::Provider`):
+In the [Moving objects](../tutorial/04-Moving_objects.md) tutorial, we've seen that we can add custom 3D transforms to our scene nodes using the `Transform` component. If you take a look at the code for the `Transform::initialize()` method, you'll notice that this very component declares the `transform.modelToWorldMatrix` in it's `[data::Provider`](data::Provider`):
 
 
 ```cpp
@@ -29,7 +29,7 @@ When the `Transform` component is added to some target `Node`, it will add its `
 ```
 
 
-If we add this to the code from the [Creating custom materials](../18-Creating_custom_materials.md) tutorial, we end up with the following code for our effect:
+If we add this to the code from the [Creating custom materials](../tutorial/18-Creating_custom_materials.md) tutorial, we end up with the following code for our effect:
 
 
 ```javascript
@@ -49,9 +49,12 @@ If we add this to the code from the [Creating custom materials](../18-Creating_c
      precision mediump float;
      #endif
      attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uViewMatrix;
+    
+uniform mat4 uProjectionMatrix;
      void main(void)
      {
        gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
@@ -73,7 +76,7 @@ If we add this to the code from the [Creating custom materials](../18-Creating_c
 ```
 
 
-You can learn more about the `*.effect` files format in the [Effect files format reference](../Effect_files_format_reference.md) article. To learn more about data binding, please read the [Understanding data binding](../article/Understanding_data_binding.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](../tutorial/Effect_files_format_reference.md) article. To learn more about data binding, please read the [Understanding data binding](../tutorial/Understanding_data_binding.md) article.
 
 Step 2: Udpating the application code
 -------------------------------------
@@ -102,7 +105,7 @@ auto cube = scene::Node::create()
 
 Note how we initialize our `Transform` component with the translation `Matrix4x4` we used to use as the value to set `uModelToWorldMatrix`. But thanks to data binding, this `uniform` will now be automatically be updated everytime we change the `Transform::transform()` property.
 
-You can read more about the `Transform` component in the [Moving objects](../04-Moving_objects.md) tutorial.
+You can read more about the `Transform` component in the [Moving objects](../tutorial/04-Moving_objects.md) tutorial.
 
 Final code
 ----------
@@ -125,9 +128,12 @@ asset/effect/MyCustomEffect.effect
      precision mediump float;
      #endif
      attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uViewMatrix;
+    
+uniform mat4 uProjectionMatrix;
      void main(void)
      {
        gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);

@@ -1,7 +1,7 @@
 Step 0: Exporting .scene files from the Minko editor
 ====================================================
 
-You can export your mks files to the new .scene file for Minko 3. See the [Export .scene files](../Export_.scene_files.md) tutorial.
+You can export your mks files to the new .scene file for Minko 3. See the [Export .scene files](../tutorial/Export_.scene_files.md) tutorial.
 
 Step 1: Enable the serializer plugin
 ====================================
@@ -48,7 +48,7 @@ sceneManager->assets()->load();
 ```
 
 
-You can look at the [serializer example](../ExampleSerializer.md) for a more detailed example of importing a .scene file.
+You can look at the [serializer example](../tutorial/ExampleSerializer.md) for a more detailed example of importing a .scene file.
 
 Final Code
 ==========

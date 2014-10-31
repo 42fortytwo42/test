@@ -43,7 +43,7 @@ tool/win/bin/premake5.exe --no-tests vs2013
 
 In both cases, you should have the following result in the console:
 
-![](../image/PremakeVisualStudio2013.png "../image/PremakeVisualStudio2013.png")
+![](../../doc/image/PremakeVisualStudio2013.png "../../doc/image/PremakeVisualStudio2013.png")
 
 The windows might actually close itself right after it's done and the list of the projects may vary according to the actual version of the SDK. What's important is to make sure that the solution (*.sln) and projects (*.vcxproj) files have been properly generated. If this operation was successful, you should have `minko.sln` at the root of the SDK directory and a `*.vcxproj` in each projet.
 

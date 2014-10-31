@@ -65,7 +65,8 @@ when all the assets listed by the successive calls to the `AssetLibrary::queue()
 Step 2: Fetching the Effect object
 ----------------------------------
 
-When our `*.effect` is loaded, it is automatically made available in the `AssetLibrary` and can be fetched using the `AssetLibrary::effect()` method. This method expects a single `const std::string&` argument that will point to the loaded `Effect` object using:
+When our `*.effect` is loaded, it is automatically made available in the `AssetLibrary` and can be fetched using the `AssetLibrary::effect()` method. This method expects a single `
+const std::string&` argument that will point to the loaded `Effect` object using:
 
 -   the value of the "name" field in the `*.effect` file, if any;
 -   or the actual file name used upon loading (the `std::string` passed to either `AssetLibrary::load()` or `AssetLibrary::queue()`).
@@ -144,6 +145,6 @@ Where to go from there...
 
 Now that you know how to load effects, you should read one of the following tutorials:
 
--   [Create your first custom effect](../Create_your_first_custom_effect.md)
--   [Creating a simple post-processing effect](../22-Creating_a_simple_post-processing_effect.md)
+-   [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md)
+-   [Creating a simple post-processing effect](../tutorial/22-Creating_a_simple_post-processing_effect.md)
 

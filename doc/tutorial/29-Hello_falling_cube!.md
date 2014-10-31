@@ -91,7 +91,7 @@ root->addChild(boxNode);
 
 is now enough to trigger the simulation, and watch our poor cube fall under the effect of gravity.
 
-![Above are several captures of the physics simulation at different frames.](../image/FallingCube.png "Above are several captures of the physics simulation at different frames.")
+![Above are several captures of the physics simulation at different frames.](../../doc/image/FallingCube.png "Above are several captures of the physics simulation at different frames.")
 
 **Important** When adding a new child node to your scene, a `minko::component::bullet::PhysicsWorld` must already be present in the set of its newly-defined parent nodes. If not, this added node will simply be ignored from the simulation regardless of the validity of its attached collider.
 
@@ -113,7 +113,8 @@ using namespace minko::scene;
 using namespace minko::component; 
 using namespace minko::math;
 const uint WINDOW_WIDTH = 800; 
-const uint WINDOW_HEIGHT = 600; const std::string TEXTURE_FILENAME = "texture/box.png";
+const uint WINDOW_HEIGHT = 600; 
+const std::string TEXTURE_FILENAME = "texture/box.png";
 
 int main(int argc, char** argv) {
 
@@ -184,9 +185,9 @@ Where to go from there
 
 That should be enough for you to build physics simulations in your Minko scene.
 
-For a peek at the code in a slightly more elaborate example, please refer to the ['physics' example](../ExamplePhysics.md) that directly comes with the Minko SDK.
+For a peek at the code in a slightly more elaborate example, please refer to the ['physics' example](../tutorial/ExamplePhysics.md) that directly comes with the Minko SDK.
 
-![physicsExampleThumbnail](../image/PhysicsExample.jpeg "physicsExampleThumbnail")
+![physicsExampleThumbnail](../../doc/image/PhysicsExample.jpeg "physicsExampleThumbnail")
 
 Closing comments
 ----------------

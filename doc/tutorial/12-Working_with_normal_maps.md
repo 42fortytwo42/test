@@ -12,13 +12,13 @@ Prerequisites
 
 To fully understand the rest of the tutorial, you need to know how to setup a scene with a phong material, and how to load textures:
 
--   [Working with the PhongMaterial](../11-Working_with_the_PhongMaterial.md)
--   [Loading and using textures](../15-Loading_and_using_textures.md)
+-   [Working with the PhongMaterial](../tutorial/11-Working_with_the_PhongMaterial.md)
+-   [Loading and using textures](../tutorial/15-Loading_and_using_textures.md)
 
 Step 0: Setup a scene
 ---------------------
 
-The setup will be the same that the one at the end of the [Working with the PhongMaterial](../11-Working_with_the_PhongMaterial.md) tutorial:
+The setup will be the same that the one at the end of the [Working with the PhongMaterial](../tutorial/11-Working_with_the_PhongMaterial.md) tutorial:
 
 
 ```cpp
@@ -104,11 +104,11 @@ The `PhongMaterial` defines one method to set a `normalMap`:
 
 There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `TextureType` enum). Currently only 2D textures `normalMap` are supported.
 
-| scope="col" widt"100px"| DiffuseMap / NormalMap                | Right                                                | Left                                                 | Front                                                |
-|----------------------------------------------------------------|------------------------------------------------------|------------------------------------------------------|------------------------------------------------------|
-| ![ link=](../image/TextureNormal1.jpg " link=")                | ![](../image/Normal1_1.PNG "../image/Normal1_1.PNG") | ![](../image/Normal1_2.PNG "../image/Normal1_2.PNG") | ![](../image/Normal1_3.PNG "../image/Normal1_3.PNG") |
-| ![ link=](../image/TextureNormal2.jpg " link=")                | ![](../image/Normal2_1.PNG "../image/Normal2_1.PNG") | ![](../image/Normal2_2.PNG "../image/Normal2_2.PNG") | ![](../image/Normal2_3.PNG "../image/Normal2_3.PNG") |
-| ![](../image/TextureNormal3.jpg "../image/TextureNormal3.jpg") | ![](../image/Normal3_1.PNG "../image/Normal3_1.PNG") | ![](../image/Normal3_2.PNG "../image/Normal3_2.PNG") | ![](../image/Normal3_3.PNG "../image/Normal3_3.PNG") |
+| scope="col" widt"100px"| DiffuseMap / NormalMap                              | Right                                                              | Left                                                               | Front                                                              |
+|------------------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|
+| ![ link=](../../doc/image/TextureNormal1.jpg " link=")                       | ![](../../doc/image/Normal1_1.PNG "../../doc/image/Normal1_1.PNG") | ![](../../doc/image/Normal1_2.PNG "../../doc/image/Normal1_2.PNG") | ![](../../doc/image/Normal1_3.PNG "../../doc/image/Normal1_3.PNG") |
+| ![ link=](../../doc/image/TextureNormal2.jpg " link=")                       | ![](../../doc/image/Normal2_1.PNG "../../doc/image/Normal2_1.PNG") | ![](../../doc/image/Normal2_2.PNG "../../doc/image/Normal2_2.PNG") | ![](../../doc/image/Normal2_3.PNG "../../doc/image/Normal2_3.PNG") |
+| ![](../../doc/image/TextureNormal3.jpg "../../doc/image/TextureNormal3.jpg") | ![](../../doc/image/Normal3_1.PNG "../../doc/image/Normal3_1.PNG") | ![](../../doc/image/Normal3_2.PNG "../../doc/image/Normal3_2.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") |
 ||
 
 Final Code
@@ -182,5 +182,5 @@ int main(int argc, char** argv) {
 Where to go from here
 ---------------------
 
-`normalMap` can me mixed with `specularMap` ([Working with specular maps](../14-Working_with_specular_maps_.md)) and/or `environmentMap` ([Working with environment maps ](../13-Working_with_environment_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](../article/PhongMaterial_reference#Full_Example_.md).
+`normalMap` can me mixed with `specularMap` ([Working with specular maps](../tutorial/14-Working_with_specular_maps_.md)) and/or `environmentMap` ([Working with environment maps ](../tutorial/13-Working_with_environment_maps_.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](../tutorial/PhongMaterial_reference#Full_Example_.md).
 

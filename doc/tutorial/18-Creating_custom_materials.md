@@ -1,4 +1,4 @@
-In this tutorial, we will see how to create custom materials. The code for this tutorial will be based on the code done in the [Create your first custom effect](../Create_your_first_custom_effect.md) tutorial.
+In this tutorial, we will see how to create custom materials. The code for this tutorial will be based on the code done in the [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md) tutorial.
 
 Before we begin it is important to understand the difference between a `Material` - such as the `BasicMaterial` - and an `Effect` - such as the `Basic.effect`:
 
@@ -10,7 +10,7 @@ If an `Effect` was a function, then the values provided by a `Material` would be
 -   use the `BasicMaterial` with the `Phong.effect`, but you won't have code-hinting on Phong related material properties in your IDE;
 -   or use a `PhongMaterial` with a `Basic.effect`, but then a lot of material properties would actually be available in the code but unused during rendering.
 
-We've seen [how to create a (simple) custom effect](../Create_your_first_custom_effect.md) in the previous tutorial. One of the conclusions to this tutorial is that working with shader `uniform`s is not really scalable since it will set per-effect values instead of per-object. Thus, it is quite difficult to create large scenes sharing the same rendering code.
+We've seen [how to create a (simple) custom effect](../tutorial/Create_your_first_custom_effect.md) in the previous tutorial. One of the conclusions to this tutorial is that working with shader `uniform`s is not really scalable since it will set per-effect values instead of per-object. Thus, it is quite difficult to create large scenes sharing the same rendering code.
 
 This tutorial explains how to create materials and bind them in our effects in order to get per-object rendering properties.
 
@@ -48,9 +48,12 @@ This `uniformBinding` field can be declared in the pass object or directly at th
      precision mediump float;
      #endif
      attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uViewMatrix;
+    
+uniform mat4 uProjectionMatrix;
      void main(void)
      {
        gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);
@@ -79,7 +82,7 @@ The `uniformBindings` will affect:
 
 In this case, our effect as a single pass so declaring the `uniformBindings` at the effect root on in the pass object will make no difference. But if you write an effect with multiple passes, you might want to take this into consideration to have per-pass `uniformBindings`.
 
-You can learn more about the `*.effect` files format in the [Effect files format reference](../Effect_files_format_reference.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](../tutorial/Effect_files_format_reference.md) article.
 
 Step 2: Setting up our custom material
 --------------------------------------
@@ -184,9 +187,12 @@ asset/effect/MyCustomEffect.effect
      precision mediump float;
      #endif
      attribute vec3 aPosition;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uViewMatrix;
-     uniform mat4 uProjectionMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uViewMatrix;
+    
+uniform mat4 uProjectionMatrix;
      void main(void)
      {
        gl_Position = uProjectionMatrix * uViewMatrix * uModelToWorldMatrix * vec4(aPosition, 1.0);

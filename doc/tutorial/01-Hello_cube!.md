@@ -61,7 +61,7 @@ The `AssetLibrary::queue()` method will enlist all the file names that you want 
 
 The `Basic.effect` file itself is not in your application: it's in Minko's core framework. Minko's build system is made in such a way that this kind of required files are copied automatically using post-build commands. Thus, you don't have to worry about the actual location of the `Basic.effect` file for now.
 
-If you want to learn more about effects loading, you can read the [Loading effects](../16-Loading_effects.md) tutorial.
+If you want to learn more about effects loading, you can read the [Loading effects](../tutorial/16-Loading_effects.md) tutorial.
 
 Step 3: Initialize the scene
 ----------------------------
@@ -141,7 +141,7 @@ cubeMaterial->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f));
 ```
 
 
-You can learn more about the `BasicMaterial` in the [Working with the BasicMaterial](../10-Working_with_the_BasicMaterial.md) tutorial.
+You can learn more about the `BasicMaterial` in the [Working with the BasicMaterial](../tutorial/10-Working_with_the_BasicMaterial.md) tutorial.
 
 ### Move the cube
 
@@ -153,7 +153,7 @@ cube->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, 
 ```
 
 
-Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](../04-Moving_objects.md) tutorial
+Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) translation. You can learn more about the `Transform` component in the [Moving objects](../tutorial/04-Moving_objects.md) tutorial
 
 ### Add the cube to the scene
 

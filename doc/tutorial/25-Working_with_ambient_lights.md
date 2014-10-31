@@ -1,12 +1,12 @@
 An ambient light emits soft light rays in every direction, it can be used to elevate the overall level of diffuse illumination in a scene. It's important to understand that it has no specific directionality, and therefore casts no ground shadow.
 
-![](../image/Ambientlight.png "../image/Ambientlight.png")
+![](../../doc/image/Ambientlight.png "../../doc/image/Ambientlight.png")
 
 Ambient light emitting in all direction. no ground shadows are displayed
 
 The most important setting about ambient light is its diffuse level; in the following picture you can see the same scene with three different diffuse settings.
 
-![](../image/AmbientlightExample.png "../image/AmbientlightExample.png")
+![](../../doc/image/AmbientlightExample.png "../../doc/image/AmbientlightExample.png")
 
 Step 1: Instantiate an light
 ----------------------------

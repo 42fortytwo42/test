@@ -24,7 +24,7 @@ Then, click on the "Save" button.
 
 ### Options for the OpenCOLLADA exporter
 
-![](../image/3dsmax_export_opencollada.jpg "../image/3dsmax_export_opencollada.jpg")
+![](../../doc/image/3dsmax_export_opencollada.jpg "../../doc/image/3dsmax_export_opencollada.jpg")
 
 -   In the Standard Options panel, make sure that the "Bake Matrices" checkbox is selected. If your file uses textures and you want to ease their loading at runtime or in the editor, make sure the "Relative Paths" and "Copy Images" checkboxes are selected.
 -   In the Geometry panel, make sure the "Triangulate" checkbox is selected for better performances at runtime.
@@ -43,7 +43,7 @@ Disabling backface culling should always be avoided when working for real-time a
 
 #Select the mesh #Go to the utilities tab #Select the "Reset XForm" tool #Click on "Reset Selected" button
 
-![](../image/3dsmax2011_reset_xform.jpg "../image/3dsmax2011_reset_xform.jpg")
+![](../../doc/image/3dsmax2011_reset_xform.jpg "../../doc/image/3dsmax2011_reset_xform.jpg")
 
 After clicking "Reset Selected", you should see all the faces with a reversed winding. To flip those faces, start by collapsing the modifiers stack and then select those faces and click on the "Flip" button in the "Edit Polygons" panel.
 
@@ -65,7 +65,7 @@ When creating bones using the "Mirror" tool or the "Mirror" button in the "Bone 
 
 #Select the mirrored bones (selecting all the bones of the skeleton should work fine too) #Open the "Bone Tools" in Animation-> Bone Tools... #Click on the "Reset Scale" button in the "Object Properties" panel
 
-![](../image/3dsmax2011_bone_tools.jpg "../image/3dsmax2011_bone_tools.jpg")
+![](../../doc/image/3dsmax2011_bone_tools.jpg "../../doc/image/3dsmax2011_bone_tools.jpg")
 
 ### Skinning
 

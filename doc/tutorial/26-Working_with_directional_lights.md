@@ -1,12 +1,12 @@
-Unlike [point lights](../27-Working_with_point_lights.md), which occupy a specific location in the 3D scene, a directional light doesn't have a position, ONLY a direction. Rays of from directional lights run parallel in a single direction from every point in the sky, and are typically used to simulate direct light.
+Unlike [point lights](../tutorial/27-Working_with_point_lights.md), which occupy a specific location in the 3D scene, a directional light doesn't have a position, ONLY a direction. Rays of from directional lights run parallel in a single direction from every point in the sky, and are typically used to simulate direct light.
 
 Because a directional light represents a distant light source, its x,y,z coordinate means nothing—only its rotational attribute has any bearing on how the scene will be illuminated.
 
-![](../image/Directionallight.png "../image/Directionallight.png")
+![](../../doc/image/Directionallight.png "../../doc/image/Directionallight.png")
 
 Directional light emitting from the left to the right
 
-![](../image/DirectionallightExample.png "../image/DirectionallightExample.png")
+![](../../doc/image/DirectionallightExample.png "../../doc/image/DirectionallightExample.png")
 
 As you can see in this more complex example, the directional light comes from a direction, not a specific location. it's particularly visible on the column shadow.
 

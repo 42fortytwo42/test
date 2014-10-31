@@ -1,4 +1,4 @@
-As you should have learned in the tutorials dedicated to the binding of your objects' [model-to-world transforms](../19-Binding_the_model_to_world_transform.md) and your [camera](../20-Binding_the_camera.md), you can easily pass uniform properties to the GPU by editing effect files. In this tutorial, we will dwell on a slightly different, albeit crucial sort of data you can hand over to your graphics card.
+As you should have learned in the tutorials dedicated to the binding of your objects' [model-to-world transforms](../tutorial/19-Binding_the_model_to_world_transform.md) and your [camera](../tutorial/20-Binding_the_camera.md), you can easily pass uniform properties to the GPU by editing effect files. In this tutorial, we will dwell on a slightly different, albeit crucial sort of data you can hand over to your graphics card.
 
 Principle
 ---------
@@ -12,9 +12,9 @@ Typical attributes include (very surprisingly) 3D positions, but also vertex nor
 Where to start
 --------------
 
-This tutorial expects you already read how to bind uniforms and will start form the code you must have obtained at the end of the [binding of the camera properties](../20-Binding_the_camera.md). You are strongly invited to at least grab the code you will find there and then proceed to the following sections.
+This tutorial expects you already read how to bind uniforms and will start form the code you must have obtained at the end of the [binding of the camera properties](../tutorial/20-Binding_the_camera.md). You are strongly invited to at least grab the code you will find there and then proceed to the following sections.
 
-![What you should have so far.](../image/StartingScreen.jpeg "What you should have so far.")
+![What you should have so far.](../../doc/image/StartingScreen.jpeg "What you should have so far.")
 
 Step 1: Add your attributes to your geometry in Minko
 -----------------------------------------------------
@@ -116,7 +116,7 @@ What we did here is simply enhance the former cube geometry with an additional `
 Step 2: Add your binding in your effect file
 --------------------------------------------
 
-Pretty similarly to what we did for the uniform inputs for our effect (in order to specify the [model's transform](../19-Binding_the_model_to_world_transform.md) and [viewing settings of our scene](../20-Binding_the_camera.md)), we just have to *bind* the data stored in our Minko geometry to some actual `attribute` on the GLSL side. The per-vertex values taken by our `positionOffset` attribute are currently stored in the data provider of our geometry, and we will actually use them via a GLSL attribute input we will call `aPositionOffset`.
+Pretty similarly to what we did for the uniform inputs for our effect (in order to specify the [model's transform](../tutorial/19-Binding_the_model_to_world_transform.md) and [viewing settings of our scene](../tutorial/20-Binding_the_camera.md)), we just have to *bind* the data stored in our Minko geometry to some actual `attribute` on the GLSL side. The per-vertex values taken by our `positionOffset` attribute are currently stored in the data provider of our geometry, and we will actually use them via a GLSL attribute input we will call `aPositionOffset`.
 
 The vertex attribute binding between the geometry's data provider and our GLSL attribute is straightforwardly done by simply adding a single line in the effect file's `attributeBindings` dictionary, where the key corresponds to the name of the GLSL attribute and the value to the matching property name manipulated by the Minko engine's data providers.
 
@@ -155,8 +155,10 @@ Because a meaningful vertex attribute is only one that is actually used in compu
      #endif
      attribute vec3 aPosition;
      attribute vec3 aPositionOffset;
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uWorldToScreenMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uWorldToScreenMatrix;
      void main(void)
      {
        gl_Position = uWorldToScreenMatrix * uModelToWorldMatrix * vec4(aPosition + aPositionOffset, 1.0);
@@ -173,7 +175,7 @@ Because a meaningful vertex attribute is only one that is actually used in compu
 
 If everything went smooth, you should obtain something like this (the vantage point has been slightly altered for better readability):
 
-![Cube with displaced vertex positions.](../image/CubePositionOffsets.jpeg "Cube with displaced vertex positions.")
+![Cube with displaced vertex positions.](../../doc/image/CubePositionOffsets.jpeg "Cube with displaced vertex positions.")
 
 Step 1/2: Add your attributes to your effect in Minko (for the lazy and the reckless)
 -------------------------------------------------------------------------------------
@@ -265,7 +267,7 @@ Follows the code of the updated GLSL vertex and fragment shaders stoed in the cu
 ```
 
 
-![The vertex colors are directly fed to the GPU via the custom effect.](../image/CubeVertexColors.jpeg "The vertex colors are directly fed to the GPU via the custom effect.")
+![The vertex colors are directly fed to the GPU via the custom effect.](../../doc/image/CubeVertexColors.jpeg "The vertex colors are directly fed to the GPU via the custom effect.")
 
 Final code
 ----------
@@ -296,8 +298,10 @@ asset/effect/MyCustomEffect.effect
 
      varying vec4 vVertexColor;
 
-     uniform mat4 uModelToWorldMatrix;
-     uniform mat4 uWorldToScreenMatrix;
+    
+uniform mat4 uModelToWorldMatrix;
+    
+uniform mat4 uWorldToScreenMatrix;
 
      void main(void)
      {

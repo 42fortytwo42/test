@@ -1,6 +1,6 @@
 In this tutorial, we will see how to load textures and use them in materials. This tutorial focus on loading RGBA diffuse textures, but the very same technique is used to load just about any texture (normal maps, specular maps, etc...).
 
-The code for this tutorial is based on the one described in the [Hello cube!](../01-Hello_cube!.md) tutorial.
+The code for this tutorial is based on the one described in the [Hello cube!](../tutorial/01-Hello_cube!.md) tutorial.
 
 Just like any asset, texture are loaded through the `AssetLibrary`. Here, we will use the library available from our `SceneManager::assets()` property, but you can also create your own `AssetLibrary` objects to fit your needs.
 
@@ -100,7 +100,7 @@ sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 ```
 
 
-Both methods have the exact same behavior since `Material::set()` is actually called by `BasicMaterial::diffuseMap()` internally. The second method is a bit harder to write because its dynamic and code-hinting won't work, but it should be a bit faster since it avoids a dynamic pointer cast at runtime. Working with `Material::set()` is also more generic since it will work on any `Material` no matter its actual type and it will have the desired effect as long as you use the right string property name. Therfore, you might want to use `Material::set()` if you are writting your own scenes parser or some complex assets dynamic loading code. To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../article/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
+Both methods have the exact same behavior since `Material::set()` is actually called by `BasicMaterial::diffuseMap()` internally. The second method is a bit harder to write because its dynamic and code-hinting won't work, but it should be a bit faster since it avoids a dynamic pointer cast at runtime. Working with `Material::set()` is also more generic since it will work on any `Material` no matter its actual type and it will have the desired effect as long as you use the right string property name. Therfore, you might want to use `Material::set()` if you are writting your own scenes parser or some complex assets dynamic loading code. To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../tutorial/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
 
 Of course, if you want to use your texture for something else that the diffuse map, you'll have to set the corresponding property. For example, if you want to set the normal map, you'll want to set the `normalMap` property instead. All the other operations are exactly the same.
 
