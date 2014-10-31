@@ -1,10 +1,10 @@
 A point light casts illumination in every direction from a single point in 3D space. Point lights are useful for simulating any omnidirectional light source: Light-bulbs, candles, Christmas tree lights, gun-fire etc.
 
-![](../image/Pointlight.png "../image/Pointlight.png")
+![](../doc/image/Pointlight.png "../doc/image/Pointlight.png")
 
 As the point light is emitting in every directions, his reflection can be multiple places in the environment.
 
-![](../image/Pointlightexample.png "../image/Pointlightexample.png")
+![](../doc/image/Pointlightexample.png "../doc/image/Pointlightexample.png")
 
 In this more complex setup, you can see how multiple point lights render on a complex environment.
 
@@ -105,10 +105,12 @@ Final code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
