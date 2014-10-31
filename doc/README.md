@@ -1,7 +1,7 @@
 
  ![](../doc/image/InitSceneSpot.png "doc/image/InitSceneSpot.png")
 Features_engine_Cpp_web_tank_new.png
-<div class="hero-unit"> ![](doc/image/Features_engine_Cpp_web_tank_new.png "fig:../doc/image/Features_engine_Cpp_web_tank_new.png") <h1>Hi there!</h1> Welcome to the official **Minko 3** documentation. Here you will find all the resources you might need to start working with Minko and learn everything about it. Tutorials, examples, technical articles... we've gathered everything in one place to make your work easier. Enjoy :)
+<div class="hero-unit"> ![](../doc/image/Features_engine_Cpp_web_tank_new.png  "doc/image/InitSceneSpot.png") "fig:../doc/image/Features_engine_Cpp_web_tank_new.png") <h1>Hi there!</h1> Welcome to the official **Minko 3** documentation. Here you will find all the resources you might need to start working with Minko and learn everything about it. Tutorials, examples, technical articles... we've gathered everything in one place to make your work easier. Enjoy :)
 
 [<span class="btn btn-primary btn-large">Let's get started!</span>](Getting started with Minko 3 beta 1) </div>
 
