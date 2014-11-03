@@ -55,7 +55,7 @@ This approach is very useful because it mixes the flexibility of dynamic propert
 
 Performance wise, the static getters/setters declared in a material are (should be) inlined so it should make no difference.
 
-To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../tutorial/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
+To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../article/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
 
 Step 3: Setting a diffuse map (or texture)
 ------------------------------------------
@@ -85,10 +85,12 @@ Final code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
