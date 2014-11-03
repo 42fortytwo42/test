@@ -40,7 +40,7 @@ minko.project.solution(PROJECT_NAME)
 ```
 
 
-Don't forget to [regenerate your solution file](../Create_a_new_application.md#step-3-target-your-platform) when you're done.
+Don't forget to [regenerate your solution file](../tutorial/Create_a_new_application.md#step-3-target-your-platform) when you're done.
 
 Step 1: My first script file
 ----------------------------
