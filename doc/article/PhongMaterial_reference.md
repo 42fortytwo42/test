@@ -114,13 +114,6 @@ phongMaterial->shininess(2); phongMaterial->specularMap(assets->texture("texture
 | ![](../../doc/image/Texturespecular3.jpg "../../doc/image/Texturespecular3.jpg") | ![](../../doc/image/SpecularMap3_1.PNG "../../doc/image/SpecularMap3_1.PNG") | ![](../../doc/image/SpecularMap3_2.PNG "../../doc/image/SpecularMap3_2.PNG") | ![](../../doc/image/SpecularMap3_3.PNG "../../doc/image/SpecularMap3_3.PNG") |
 ||
 
-| scope="col" widt"100px"| DiffuseMap / SpecularMap                                | Right                                                                        | Left                                                                         | Front                                                                        |
-|----------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| ![ link=](../../doc/image/Texturespecular1.jpg " link=")                         | ![](../../doc/image/SpecularMap1_1.PNG "../../doc/image/SpecularMap1_1.PNG") | ![](../../doc/image/SpecularMap1_2.PNG "../../doc/image/SpecularMap1_2.PNG") | ![](../../doc/image/SpecularMap1_3.PNG "../../doc/image/SpecularMap1_3.PNG") |
-| ![ link=](../../doc/image/Texturespecular22.jpg " link=")                        | ![](../../doc/image/SpecularMap2_1.PNG "../../doc/image/SpecularMap2_1.PNG") | ![](../../doc/image/SpecularMap2_2.PNG "../../doc/image/SpecularMap2_2.PNG") | ![](../../doc/image/SpecularMap2_3.PNG "../../doc/image/SpecularMap2_3.PNG") |
-| ![](../../doc/image/Texturespecular3.jpg "../../doc/image/Texturespecular3.jpg") | ![](../../doc/image/SpecularMap3_1.PNG "../../doc/image/SpecularMap3_1.PNG") | ![](../../doc/image/SpecularMap3_2.PNG "../../doc/image/SpecularMap3_2.PNG") | ![](../../doc/image/SpecularMap3_3.PNG "../../doc/image/SpecularMap3_3.PNG") |
-||
-
 If you need more information about specular maps : [Working with specular maps](../tutorial/14-Working_with_specular_maps.md)
 
 Full Example
@@ -204,7 +197,8 @@ int main(int argc, char** argv) {
 
 } 
 ```
-
+|----------------------------------|-----------------------------------------------|-----------------------------------------------|
+| ![](../../doc/image/FinalResult11.PNG "../../doc/image/FinalResult11.PNG") | ![](../../doc/image/FinalResult2.PNG "../../doc/image/FinalResult2.PNG") | ![](../../doc/image/FinalResult3.PNG "../../doc/image/FinalResult3.PNG") |
 
 |----------------------------------------------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | ![](../../doc/image/FinalResult11.PNG "../../doc/image/FinalResult11.PNG") | ![](../../doc/image/FinalResult2.PNG "../../doc/image/FinalResult2.PNG") | ![](../../doc/image/FinalResult3.PNG "../../doc/image/FinalResult3.PNG") |
