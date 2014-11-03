@@ -19,7 +19,7 @@ script\solution_vs2013ctp.bat
 
 This should generate a `.sln` Visual Studio solution file. Double-click on it to open the solution in Visual Studio 2013.
 
-Note that you can also run the command from a terminal in your application directory (<kbd>Shift</kbd> + Right click on the folder-> `Open command window here`), which will allow you to customize your solution, such as [enabling specific plugins using the command line](../tutorial/How_to_enable_a_plugin#Step_2_.28alternative.29:_Enable_a_plugin_in_the_command_line.md):
+Note that you can also run the command from a terminal in your application directory (<kbd>Shift</kbd> + Right click on the folder-> `Open command window here`), which will allow you to customize your solution, such as [enabling specific plugins using the command line](../tutorial/How_to_enable_a_plugin.md#step-2-alternative-enable-a-plugin-in-the-command-line):
 
 ```bash
 "%MINKO_HOME%"\tool\win\bin\premake5.exe vs2013ctp 
