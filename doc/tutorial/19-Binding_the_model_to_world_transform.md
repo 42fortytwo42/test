@@ -1,4 +1,4 @@
-In this tutorial, we will see how to use the 3D transforms available in the engine in our custom effects. In the [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md) tutorial, we've seen how to declare `uniform`s and set them from our application code. But having to manually set each uniform is not really scalable, especially regarding 3D transforms and the camera because this kind of data is likely to change at every frame. Yet, most of our objects will need them in order to be renderer properly.
+In this tutorial, we will see how to use the 3D transforms available in the engine in our custom effects. In the [Create your first custom effect](../tutorial/17-Creating_a_custom_effect.md) tutorial, we've seen how to declare `uniform`s and set them from our application code. But having to manually set each uniform is not really scalable, especially regarding 3D transforms and the camera because this kind of data is likely to change at every frame. Yet, most of our objects will need them in order to be renderer properly.
 
 Step 1: Binding the model to world matrix
 -----------------------------------------
@@ -73,7 +73,7 @@ uniform mat4 uProjectionMatrix;
 ```
 
 
-You can learn more about the `*.effect` files format in the [Effect files format reference](../tutorial/Effect_files_format_reference.md) article. To learn more about data binding, please read the [Understanding data binding](../tutorial/Understanding_data_binding.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](../article/Effect_file_format_reference.md) article. To learn more about data binding, please read the [Understanding data binding](../article/Understanding_data_binding.md) article.
 
 Step 2: Udpating the application code
 -------------------------------------
@@ -156,10 +156,12 @@ src/main.cpp
 #include "minko/MinkoSDL.hpp"
 
 #include "MyCustomMaterial.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
