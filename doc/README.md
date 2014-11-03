@@ -9,7 +9,7 @@ Minko is a **free** and **open source** real-time **3D** framework created by [A
 -   Android smartphones and tablets
 -   iPhone 3GS, iPhone 4, iPhone 4S, iPhone 5, iPad, iPad 2, iPad 3 and iPad 4
 
-You can find the complete list and the status for each platform on our [Platform compatibility matrix](tutorial/Platform_compatibility_matrix.md).
+You can find the complete list and the status for each platform on our [Platform compatibility matrix](article/Platform_compatibility_matrix.md).
 
 Make sure you check the following pages to get started:
 
