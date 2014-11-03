@@ -6,16 +6,16 @@ The platforms compatibility matrix provides the current state of support for eac
 Platforms officially targeted
 -----------------------------
 
-| Premake configuration name       |
-|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
-|![](../../doc/image/Html5_min.png "fig:../../doc/image/Html5_min.png") HTML5                 | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | html5                            |
-|![](../../doc/image/Winmini.png "fig:../../doc/image/Winmini.png") Windows                   | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | windows32<br/>windows64        |
-|![](../../doc/image/Mac_min.png "fig:../../doc/image/Mac_min.png") OS X                      | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | osx64                            |
-|![](../../doc/image/Linux_min.png "fig:../../doc/image/Linux_min.png") Linux                 | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | linux32<br/>linux64            |
-|![](../../doc/image/Androidmini.png "fig:../../doc/image/Androidmini.png") Android           | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A (expected for the beta 2...) |
-|![](../../doc/image/Iso7mini.png "fig:../../doc/image/Iso7mini.png") iOS                     | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ios                              |
-|![](../../doc/image/Flashmini.png "fig:../../doc/image/Flashmini.png") Flash                 | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
-|![](../../doc/image/Windows_phone.png "fig:../../doc/image/Windows_phone.png") Windows Phone | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
+|    Premake configuration name    |      Available     | 
+|---------------------------------------------------------------------------------------------------------|------------------------------------------------------|
+| ![](../../doc/image/Html5_min.png "fig:../../doc/image/Html5_min.png") HTML5                 | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | html5                            |
+| ![](../../doc/image/Winmini.png "fig:../../doc/image/Winmini.png") Windows                   | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | windows32<br/>windows64        |
+| ![](../../doc/image/Mac_min.png "fig:../../doc/image/Mac_min.png") OS X                      | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | osx64                            |
+| ![](../../doc/image/Linux_min.png "fig:../../doc/image/Linux_min.png") Linux                 | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | linux32<br/>linux64            |
+| ![](../../doc/image/Androidmini.png "fig:../../doc/image/Androidmini.png") Android           | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A (expected for the beta 2...) |
+| ![](../../doc/image/Iso7mini.png "fig:../../doc/image/Iso7mini.png") iOS                     | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ios                              |
+| ![](../../doc/image/Flashmini.png "fig:../../doc/image/Flashmini.png") Flash                 | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
+| ![](../../doc/image/Windows_phone.png "fig:../../doc/image/Windows_phone.png") Windows Phone | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
 
 
 
