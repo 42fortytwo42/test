@@ -94,6 +94,13 @@ sceneManager->assets()->queue("texture/normalmap.png");
 phongMaterial->normalMap(assets->texture("texture/normalmap.png")); 
 ```
 
+| DiffuseMap / NormalMap | Right           | Left           | Front          |
+|------------------------|-----------------|----------------|----------------|
+| ![ link=](../../doc/image/TextureNormal1.jpg " link=")  | ![](../../doc/image/Normal1_1.PNG "../../doc/image/Normal1_1.PNG") | ![](../../doc/image/Normal1_2.PNG "../../doc/image/Normal1_2.PNG") | ![](../../doc/image/Normal1_3.PNG "../../doc/image/Normal1_3.PNG") | ![](../../doc/image/Normal1_3.PNG "../../doc/image/Normal1_3.PNG") | 
+![ link=](../../doc/image/TextureNormal2.jpg " link=")  | ![](../../doc/image/Normal2_1.PNG "../../doc/image/Normal2_1.PNG") | ![](../../doc/image/Normal2_2.PNG "../../doc/image/Normal2_2.PNG") | ![](../../doc/image/Normal2_3.PNG "../../doc/image/Normal2_3.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") | 
+![ link=](../../doc/image/TextureNormal3.jpg " link=")  | ![](../../doc/image/Normal3_1.PNG "../../doc/image/Normal3_1.PNG") | ![](../../doc/image/Normal3_2.PNG "../../doc/image/Normal3_2.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") | 
+
+hhhhh
 
 | scope="col" widt"100px"| DiffuseMap / NormalMap                              | Right                                                              | Left                                                               | Front                                                              |
 |------------------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|
@@ -127,7 +134,8 @@ Full Example
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 
