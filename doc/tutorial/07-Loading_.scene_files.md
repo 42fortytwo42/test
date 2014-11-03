@@ -47,7 +47,7 @@ sceneManager->assets()->load();
 ```
 
 
-You can look at the [serializer example](../tutorial/ExampleSerializer.md) for a more detailed example of importing a .scene file.
+You can look at the serializer example for a more detailed example of importing a .scene file.
 
 Final Code
 ==========
