@@ -103,6 +103,11 @@ The `PhongMaterial` defines one method to set a `normalMap`:
 
 There is two types of texture : `Texture2D` and `CubeTexture` (listed in the `TextureType` enum). Currently only 2D textures `normalMap` are supported.
 
+| DiffuseMap / NormalMap | Right                                                                        | Left                                                                         | Front                                                                        |
+|----------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| 0xFF0000FF     | ![](../../doc/image/RedSpecular1.PNG "../../doc/image/RedSpecular1.PNG")     | ![](../../doc/image/RedSpecular2.PNG "../../doc/image/RedSpecular2.PNG")     | ![](../../doc/image/RedSpecular3.PNG "../../doc/image/RedSpecular3.PNG")     |
+| 0xC0FFC0FF     | ![](../../doc/image/GreenSpecular1.PNG "../../doc/image/GreenSpecular1.PNG") | ![](../../doc/image/GreenSpecular2.PNG "../../doc/image/GreenSpecular2.PNG") | ![](../../doc/image/GreenSpecular3.PNG "../../doc/image/GreenSpecular3.PNG") |
+
 DiffuseMap / NormalMap | Right | Left  | Front 
 -----------------------------------------------------
 ![ link=](../../doc/image/TextureNormal1.jpg " link=") | 
