@@ -18,7 +18,7 @@ The first very first thing you need to do is to include the following header to 
 ```
 
 
-To create a new [AmbientLight](http://doc.minko.io/reference/v3/classminko_1_1component_1_1_ambient_light.html) object, we simply use the `AmbientLight::create()` static method (alternatively you can specify the value of the ambient light intensity by passing a float to the create method, for example `AmbientLight::create(0.2f)`).
+To create a new [AmbientLight](http://doc.v3.minko.io/reference/classminko_1_1component_1_1_spot_light.html) object, we simply use the `AmbientLight::create()` static method (alternatively you can specify the value of the ambient light intensity by passing a float to the create method, for example `AmbientLight::create(0.2f)`).
 
 Step 2: Adding the light to the scene
 -------------------------------------
@@ -97,10 +97,12 @@ Final Code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
