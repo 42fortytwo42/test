@@ -93,13 +93,9 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 |------|------|-------------|---------|
 | priority  | float   | The priority of the render pass: passes with higher priority are rendered first. | "priority" : 42.5|
 
-| blendMode | array[string, string] or string | The source and destination blend factors to use in the equation blending the pixels rendered by this pass and the pixels already drawn in the frame buffer. The first value of the array is the blending source factor and must be one of the following values: "zero","one", "color", "one_minus_src_color", "src_alpha", "one_minus_src_alpha", "dst_alpha", "one_minus_dst_alpha".
-The second value of the array is the blending destination factor and must be one of the following values: "zero", "one", "dst_color", "one_minus_dst_color", "one_minus_alpha", "one_minus_src_alpha", "dst_alpha", "one_minus_dst_alpha".
-Instead of an array, you can use a single string to use one of the following predefined blend modes: "default", "alpha",  "additive"|
-"blendMode" : ["one", "zero"]
-"blendMode" : "default"| 
+| blendMode | array[string, string] or string | less | "blendMode" : ["one", "zero"] "blendMode" : "default"| 
 
-| depthTest | array[boolean, string]   | The depth mask and depth function to be used for this rendering pass. The first value is the depth mask and can be either true or false. The second value is the depth function and must be one of the following: "always", "equal", "greater", "greater_equal", "less", "less_equal", "never", "not_equal"| "depthTest" : [true, "less"] |
+| depthTest | array[boolean, string]   | less | "depthTest" : [true, "less"] |
 
 Here is an example that will set the first pass rendering states:
 
