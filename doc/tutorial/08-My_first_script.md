@@ -40,7 +40,7 @@ minko.project.solution(PROJECT_NAME)
 ```
 
 
-Don't forget to [regenerate your solution file](../tutorial/Create_a_new_application#Step_3:_Generate_the_solution_file.md) when you're done.
+Don't forget to [regenerate your solution file](../Create_a_new_application.md#step-3-target-your-platform) when you're done.
 
 Step 1: My first script file
 ----------------------------
@@ -185,10 +185,12 @@ Final code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp" 
 #include "minko/MinkoLua.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
