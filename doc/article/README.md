@@ -1,17 +1,3 @@
-__NOTOC__
-
-Presentations
--------------
-
--   [Targeting mobiles, WebGL and Stage3D... with a single app!](Targeting mobiles, WebGL and Stage3D... with a single app!), Flash Online Conference #5, 26th of August 2013
--   [Build HTML5/WebGL applications with C++ and ASM.js](Build HTML5/WebGL applications with C++ and ASM.js), HTML5 Paris Meetup 13, 23rd of October 2013
--   [Build 3D web and desktop applications with C++11](Build 3D web and desktop applications with C++11), Windows Apps Paris Meetup, 27th of November 2013
--   [Build 3D web, mobile and desktop appliations with C++11](Build 3D web, mobile and desktop appliations with C++11), PAUG, 16th of December 2013
--   [Scripting apps with Lua and C++](Scripting apps with Lua and C++), Flash Online Conference #7, 21st of December 2013
--   [Why we created our own Flash platform, and why you should care](Why we created our own Flash platform, and why you should care), Flash Online Conference #8, 28th of February 2014
--   [Creating cross-platform 3D apps with Minko](../tutorial/Creating_cross-platform_3D_apps_with_Minko.md), iOS Developers Paris Meetup, 6th of March 2014
--   [WebGL games with Minko](../tutorial/WebGL_games_with_Minko.md), Next Game Frontier 2014, 13th of March 2014
-
 Minko Engine
 ------------
 
