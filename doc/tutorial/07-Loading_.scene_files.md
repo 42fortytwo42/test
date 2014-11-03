@@ -1,7 +1,7 @@
 Step 0: Exporting .scene files from the Minko editor
 ====================================================
 
-You can export your mks files to the new .scene file for Minko 3. See the [Export .scene files](../tutorial/Export_.scene_files.md) tutorial.
+You can export your mks files to the new .scene file for Minko 3. See the [Export .scene files](../tutorial/Exporting_.scene_files.md) tutorial.
 
 Step 1: Enable the serializer plugin
 ====================================
@@ -56,10 +56,12 @@ Final Code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp" 
 #include "minko/MinkoSerializer.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600; std::string SCENE_FILENAME = "model/myScene/myScene.scene";
 
 int main(int argc, char** argv) {
