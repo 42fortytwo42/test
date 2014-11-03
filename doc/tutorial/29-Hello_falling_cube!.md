@@ -101,11 +101,13 @@ Final code
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp" // STEP 0 
 #include "minko/MinkoBullet.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::scene; 
 using namespace minko::component; 
 using namespace minko::math;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600; 
 const std::string TEXTURE_FILENAME = "texture/box.png";
 
@@ -178,7 +180,7 @@ Where to go from there
 
 That should be enough for you to build physics simulations in your Minko scene.
 
-For a peek at the code in a slightly more elaborate example, please refer to the ['physics' example](../tutorial/ExamplePhysics.md) that directly comes with the Minko SDK.
+For a peek at the code in a slightly more elaborate example, please refer to the 'physics' example that directly comes with the Minko SDK.
 
 ![physicsExampleThumbnail](../../doc/image/PhysicsExample.jpeg "physicsExampleThumbnail")
 
