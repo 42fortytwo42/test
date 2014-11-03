@@ -76,7 +76,7 @@ Please make sure you also check the [developer reference](http://doc.v3.minko.io
 
 ### Extending the SDK
 
--   [Installing the SDK sources](Installing the SDK sources)
+-   [Installing the SDK sources](../tutorial/Installing_the_SDK_sources.md)
 -   [Compiling the SDK for Windows](../tutorial/Compiling_the_SDK_for_Windows.md)
 -   [Compiling the SDK for OS X](../tutorial/Compiling_the_SDK_for_OS_X.md)
 -   [Compiling the SDK for Linux](../tutorial/Compiling_the_SDK_for_Linux.md)
