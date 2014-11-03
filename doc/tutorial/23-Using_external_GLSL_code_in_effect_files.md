@@ -27,8 +27,7 @@ To reference our external `MyCustomEffect.vertex.glsl` and `MyCustomEffect.fragm
 
 In the code above, `MyCustomShader.vertex.glsl` and `MyCustomShader.fragment.glsl` are expected to be located in the same directory as the `MyCustomEffect.effect` file.
 
-The effect of the `#pragma include` directive is pretty much the same as the `
-#include` C/C++ pre-processor macro: the code from the included file(s) are copy/pasted directly.
+The effect of the `#pragma include` directive is pretty much the same as the `#include` C/C++ pre-processor macro: the code from the included file(s) are copy/pasted directly.
 
 Step 2 (optional): Binding the uniforms
 ---------------------------------------
