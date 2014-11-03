@@ -59,7 +59,7 @@ Now that's you've got the SDK set up, let's use Minko. Depending on host and tar
 -   [Targeting OS X](../tutorial/Targeting_OS_X.md)
 -   [Targeting Linux](../tutorial/Targeting_Linux.md)
 -   [Targeting iOS](../tutorial/Targeting_iOS.md)
--   [Targeting Android](../tutorial/Targeting_Android.md) (coming with the beta 2...)
+-   Targeting Android
 -   [Targeting HTML5](../tutorial/Targeting_HTML5.md)
--   [Targeting Flash](../tutorial/Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
+-   Targeting Flash (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
 
