@@ -13,7 +13,7 @@ Minko Engine
 
 -   [Effect files format reference](../article/Effect_file_format_reference.md)
 -   [ PhongMaterial reference](../article/PhongMaterial_reference.md)
--   [The difference between the Material_set() method and setter methods](../The_difference_between_the_Material_set()_method_and_setter_methods.md)
+-   [The difference between the Material_set() method and setter methods](../article/The_difference_between_the_Material_set()_method_and_setter_methods.md)
 
 Minko Studio
 ------------
@@ -27,5 +27,5 @@ Minko Studio
 
 ### Import / Export
 
--   [Exporting Collada files from 3D Studio Max](../tutorial/Exporting_Collada_files_from_3D_Studio_Max.md)
+-   [Exporting Collada files from 3D Studio Max](../article/Exporting_Collada_files_from_3D_Studio_Max.md)
 
