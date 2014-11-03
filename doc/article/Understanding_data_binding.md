@@ -349,5 +349,5 @@ Where to go from there
 
 To learn more about how to work with uniform bindings, please read the [Binding the model to world transform](../tutorial/19-Binding_the_model_to_world_transform.md) or the [Binding the camera](../tutorial/20-Binding_the_camera.md) tutorial.
 
-To learn more about how to work with macro bindings, please read the [Authoring über-shaders](Authoring über-shaders) tutorial.
+To learn more about how to work with macro bindings, please read the [Authoring über-shaders](../tutorial/21-Authoring_uber-shaders.md) tutorial.
 
