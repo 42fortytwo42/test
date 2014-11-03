@@ -198,5 +198,5 @@ int main(int argc, char** argv) {
 Where to go from here
 ---------------------
 
-`environmentMap` can me mixed with `specularMap` ([Working with specular maps](../tutorial/14-Working_with_specular_maps.md)) and/or `normalMap` ([Working with normal maps ](../tutorial/12-Working_with_normal_maps.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](../tutorial/PhongMaterial_reference#Full_Example.md).
+`environmentMap` can me mixed with `specularMap` ([Working with specular maps](../tutorial/14-Working_with_specular_maps.md)) and/or `normalMap` ([Working with normal maps ](../tutorial/12-Working_with_normal_maps.md)) to produce great effect on your 3D models: [ PhongMaterial reference full example](../tutorial/PhongMaterial_reference.md#Full_Example).
 
