@@ -3,7 +3,7 @@
 Step 1: Get the SDK sources
 ---------------------------
 
-Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](Installing the SDK (Git)).
+Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](../tutorial/Installing_the_SDK.md).
 
 Step 2: Install the dependencies
 --------------------------------
