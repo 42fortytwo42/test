@@ -107,7 +107,12 @@ If you need more information about normal mapping : [Working with normal maps](.
 ```cpp
 phongMaterial->shininess(2); phongMaterial->specularMap(assets->texture("texture/specularmap.png")); 
 ```
-
+| DiffuseMap / SpecularMap | Right           | Left           | Front          |
+|------------------------|-----------------|----------------|----------------|
+| ![ link=](../../doc/image/Texturespecular1.jpg " link=")                         | ![](../../doc/image/SpecularMap1_1.PNG "../../doc/image/SpecularMap1_1.PNG") | ![](../../doc/image/SpecularMap1_2.PNG "../../doc/image/SpecularMap1_2.PNG") | ![](../../doc/image/SpecularMap1_3.PNG "../../doc/image/SpecularMap1_3.PNG") |
+| ![ link=](../../doc/image/Texturespecular22.jpg " link=")                        | ![](../../doc/image/SpecularMap2_1.PNG "../../doc/image/SpecularMap2_1.PNG") | ![](../../doc/image/SpecularMap2_2.PNG "../../doc/image/SpecularMap2_2.PNG") | ![](../../doc/image/SpecularMap2_3.PNG "../../doc/image/SpecularMap2_3.PNG") |
+| ![](../../doc/image/Texturespecular3.jpg "../../doc/image/Texturespecular3.jpg") | ![](../../doc/image/SpecularMap3_1.PNG "../../doc/image/SpecularMap3_1.PNG") | ![](../../doc/image/SpecularMap3_2.PNG "../../doc/image/SpecularMap3_2.PNG") | ![](../../doc/image/SpecularMap3_3.PNG "../../doc/image/SpecularMap3_3.PNG") |
+||
 
 | scope="col" widt"100px"| DiffuseMap / SpecularMap                                | Right                                                                        | Left                                                                         | Front                                                                        |
 |----------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
