@@ -2,8 +2,8 @@ For the first beta, we'll put a little work on you (sorry...) and you'll have to
 
 To get started with Minko 3 beta 2, just follow those tutorials:
 
--   [Installing the SDK sources](Installing_the_SDK_sources)
--   [Installing the SDK, Step 2: Setup your environment](Installing_the_SDK#Step_2:_Setup_your_environment) and all following steps
+-   [Installing the SDK sources](../tutorial/Installing_the_SDK_sources.md)
+-   [Installing the SDK, Step 2: Setup your environment](../tutorial/Installing_the_SDK.md#Step_2:_Setup_your_environment) and all following steps
 -   You then have to compile the SDK for each target:
     -   To target Windows, follow the [Compiling the SDK for Windows](../tutorial/Compiling_the_SDK_for_Windows.md) tutorial.
     -   To target OSX, follow the [Compiling the SDK for OSX](../tutorial/Compiling_the_SDK_for_OSX.md) tutorial.
@@ -15,4 +15,3 @@ To get started with Minko 3 beta 2, just follow those tutorials:
 If you need help, please post on the dedicated [support forum](http://minko.io/forums/forum/support/minko-engine/).
 
 For the next release, we will provide a web installer with pre-compiled binaries for each project and each target.
-
