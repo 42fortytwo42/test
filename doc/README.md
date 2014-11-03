@@ -15,7 +15,7 @@ Make sure you check the following pages to get started:
 
 -   [Developer reference](http://doc.v3.minko.io/reference/)
 -   [Tutorials](tutorial/README.md)
--   [Examples]
+-   Examples
 -   [Articles](article/README.md)
 
 If you are looking for professional technical support, please [contact us](http://minko.io/contact)!
