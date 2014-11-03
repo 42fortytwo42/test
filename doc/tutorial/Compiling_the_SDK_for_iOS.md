@@ -5,7 +5,7 @@ We need to install [Xcode](https://developer.apple.com/xcode/) 5. Xcode is avail
 Step 1: Get the sources
 -----------------------
 
-Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](Installing the SDK (Git)).
+Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](Installing_the_SDK_sources.md#step-1-install-a-git-client).
 
 Step 2: Generating the Xcode solution
 -------------------------------------
