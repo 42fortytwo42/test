@@ -20,7 +20,7 @@ The first very first thing you need to do is to include the following header to 
 ```
 
 
-To create a new [DirectionalLight](http://doc.minko.io/reference/v3/classminko_1_1component_1_1_directional_light.html) object, we simply use the `DirectionalLight::create` static method.
+To create a new [DirectionalLight](http://doc.v3.minko.io/reference/classminko_1_1component_1_1_directional_light.html) object, we simply use the `DirectionalLight::create` static method.
 
 Step 2: Adding a directional light to the scene
 -----------------------------------------------
@@ -111,10 +111,12 @@ Final Code
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
