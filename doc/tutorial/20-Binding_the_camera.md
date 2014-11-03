@@ -40,7 +40,7 @@ The `source` declaration can have three values:
 -   `renderer`: the bound values should be read from the node that hosts the `Renderer` component;
 -   `root`: the bound values should be read from the scene root node.
 
-By default, the `source` field is set to `target`. But in the case of our camera, the `PerspectiveCamera` is located on the same node than the `Renderer`. Thus, we set the `source` field to `renderer`. To learn more about data binding and binding sources, please read the [Understanding data binding](../tutorial/Understanding_data_binding.md) article.
+By default, the `source` field is set to `target`. But in the case of our camera, the `PerspectiveCamera` is located on the same node than the `Renderer`. Thus, we set the `source` field to `renderer`. To learn more about data binding and binding sources, please read the [Understanding data binding](../article/Understanding_data_binding.md) article.
 
 The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is the result of the view matrix mutiplied with the projection. Using this property will save us some computation in our vertex shader:
 
@@ -77,7 +77,7 @@ uniform mat4 uWorldToScreenMatrix;
 ```
 
 
-You can learn more about the `*.effect` files format in the [Effect files format reference](../tutorial/Effect_files_format_reference.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](../article/Effect_file_format_reference.md) article.
 
 Step 2: Updating the application code
 -------------------------------------
@@ -159,10 +159,12 @@ src/main.cpp
 #include "minko/MinkoSDL.hpp"
 
 #include "MyCustomMaterial.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
