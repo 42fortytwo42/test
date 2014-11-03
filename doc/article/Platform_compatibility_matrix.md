@@ -29,7 +29,7 @@ For each platform, support may vary depending of the host version, the possible 
 
 ### ![](../../doc/image/Html5_min.png "fig:../../doc/image/Html5_min.png") HTML5
 
-Minko for HTML5 relies only on WebGL, the HTML5 standard API to create 3D web applications. For more details about WebGL availability, please consult the corresponding [](http://caniuse.com/#search=webgl "Can I use...") page).
+Minko for HTML5 relies only on WebGL, the HTML5 standard API to create 3D web applications. For more details about WebGL availability, please consult the corresponding [Can I use...](http://caniuse.com/#search=webgl ) page).
 
 | Host        | Support                                                                                                                                                     |
 |-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
