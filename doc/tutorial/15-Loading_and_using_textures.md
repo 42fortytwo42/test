@@ -19,7 +19,7 @@ minko.plugin.enable("jpeg") minko.plugin.enable("png")
 ```
 
 
-Uncommenting one of those lines will enable the corresponding plugin. Now we have to regenerate the project/solution files to take those changes into account. To do this, please refer to the [Step 3 of the "Create a new application" tutorial](../tutorial/Create_a_new_application#Step_3:_Generate_the_solution_file.md).
+Uncommenting one of those lines will enable the corresponding plugin. Now we have to regenerate the project/solution files to take those changes into account. To do this, please refer to the [Step 3 of the "Create a new application" tutorial](../tutorial/Create_a_new_application.md#step-3-target-your-platform).
 
 If you want to support more texture file formats, feel free to create a new plugin based on those already available. It's usually quite simple to integrate 3rd party parsing libraries to handle new file formats.
 
@@ -94,7 +94,7 @@ sceneManager->assets()->complete()->connect([&](file::AssetLibrary assets) {
 ```
 
 
-Both methods have the exact same behavior since `Material::set()` is actually called by `BasicMaterial::diffuseMap()` internally. The second method is a bit harder to write because its dynamic and code-hinting won't work, but it should be a bit faster since it avoids a dynamic pointer cast at runtime. Working with `Material::set()` is also more generic since it will work on any `Material` no matter its actual type and it will have the desired effect as long as you use the right string property name. Therfore, you might want to use `Material::set()` if you are writting your own scenes parser or some complex assets dynamic loading code. To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../tutorial/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
+Both methods have the exact same behavior since `Material::set()` is actually called by `BasicMaterial::diffuseMap()` internally. The second method is a bit harder to write because its dynamic and code-hinting won't work, but it should be a bit faster since it avoids a dynamic pointer cast at runtime. Working with `Material::set()` is also more generic since it will work on any `Material` no matter its actual type and it will have the desired effect as long as you use the right string property name. Therfore, you might want to use `Material::set()` if you are writting your own scenes parser or some complex assets dynamic loading code. To learn more on this subject, please read the [The difference between the Material_set() method and setter methods](../article/The_difference_between_the_Material_set()_method_and_setter_methods.md) article.
 
 Of course, if you want to use your texture for something else that the diffuse map, you'll have to set the corresponding property. For example, if you want to set the normal map, you'll want to set the `normalMap` property instead. All the other operations are exactly the same.
 
@@ -105,10 +105,12 @@ Final code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoJPEG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
