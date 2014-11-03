@@ -26,7 +26,7 @@ minko.plugin.enable("jpeg")
 ```
 
 
-If the plugin you want to use is not listed (see [Plugin compatibility matrix](../tutorial/Plugin_compatibility_matrix.md) ), just add it yourself:
+If the plugin you want to use is not listed (see [Plugin compatibility matrix](../article/Plugin_compatibility_matrix.md) ), just add it yourself:
 
 ```lua
 minko.plugin.enable("my-plugin") 
@@ -55,14 +55,14 @@ To learn more about this step, take some time to read the tutorials for each pla
 -   [Targeting OS X](../tutorial/Targeting_OS_X.md)
 -   [Targeting Linux](../tutorial/Targeting_Linux.md)
 -   [Targeting iOS](../tutorial/Targeting_iOS.md)
--   [Targeting Android](../tutorial/Targeting_Android.md) (coming with the beta 2...)
+-   Targeting Android (coming with the beta 2...)
 -   [Targeting HTML5](../tutorial/Targeting_HTML5.md)
--   [Targeting Flash](../tutorial/Targeting_Flash.md) (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
+-   Targeting Flash (coming when Adobe [updates its compiler](https://github.com/adobe-flash/crossbridge/issues/28)...)
 
 This will teach you how to build and run your application. Now, you can start coding in your favorite environment.
 
 Step 4: Go further! (optional)
 ------------------------------
 
-Check out our [ application examples](../tutorial/Examples.md). It's a great way to discover and learn the cool new features we've implemented!
+Check out our application examples. It's a great way to discover and learn the cool new features we've implemented!
 
