@@ -82,10 +82,12 @@ Final code
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
@@ -139,6 +141,6 @@ Where to go from there...
 
 Now that you know how to load effects, you should read one of the following tutorials:
 
--   [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md)
+-   [Create your first custom effect](../tutorial/17-Creating_a_custom_effect.md)
 -   [Creating a simple post-processing effect](../tutorial/22-Creating_a_simple_post-processing_effect.md)
 
