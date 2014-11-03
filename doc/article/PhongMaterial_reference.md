@@ -202,3 +202,6 @@ int main(int argc, char** argv) {
 | ![](../../doc/image/FinalResult11.PNG "../../doc/image/FinalResult11.PNG") | ![](../../doc/image/FinalResult2.PNG "../../doc/image/FinalResult2.PNG") | ![](../../doc/image/FinalResult3.PNG "../../doc/image/FinalResult3.PNG") |
 
 
+| Right                                                                                    | Left                                                                       | Front                                                                        |
+|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| ![](../../doc/image/InitSceneDirectional.png "../../doc/image/InitSceneDirectional.png") | ![](../../doc/image/InitSceneSpot.png "../../doc/image/InitSceneSpot.png") | ![](../../doc/image/InitScenePoint.png "../../doc/image/InitScenePoint.png") |
