@@ -17,20 +17,6 @@ Platforms officially targeted
 | ![](../../doc/image/Flashmini.png "fig:../../doc/image/Flashmini.png") Flash                 | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
 | ![](../../doc/image/Windows_phone.png "fig:../../doc/image/Windows_phone.png") Windows Phone | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
 
-
-
-
-|                                                                                                         |                                                                | Premake configuration name       |
-|---------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------|
-| align=left|![](../../doc/image/Html5_min.png "fig:../../doc/image/Html5_min.png") HTML5                 | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | html5                            |
-| align=left|![](../../doc/image/Winmini.png "fig:../../doc/image/Winmini.png") Windows                   | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | windows32<br/>windows64        |
-| align=left|![](../../doc/image/Mac_min.png "fig:../../doc/image/Mac_min.png") OS X                      | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | osx64                            |
-| align=left|![](../../doc/image/Linux_min.png "fig:../../doc/image/Linux_min.png") Linux                 | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | linux32<br/>linux64            |
-| align=left|![](../../doc/image/Androidmini.png "fig:../../doc/image/Androidmini.png") Android           | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A (expected for the beta 2...) |
-| align=left|![](../../doc/image/Iso7mini.png "fig:../../doc/image/Iso7mini.png") iOS                     | ![](../../doc/image/Checked.png "../../doc/image/Checked.png") | ios                              |
-| align=left|![](../../doc/image/Flashmini.png "fig:../../doc/image/Flashmini.png") Flash                 | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
-| align=left|![](../../doc/image/Windows_phone.png "fig:../../doc/image/Windows_phone.png") Windows Phone | ![](../../doc/image/Help_16.png "../../doc/image/Help_16.png") | N/A                              |
-
 Target compatibility matrices
 -----------------------------
 
