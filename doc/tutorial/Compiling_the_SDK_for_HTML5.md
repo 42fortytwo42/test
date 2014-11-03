@@ -14,7 +14,7 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 
 ### Windows
 
--   Install the full package of the [https://github.com/kripken/emscripten/wiki/Emscripten-SDK#wiki-downloads Emscripten SDK 1.16]
+-   Install the full package of the [Emscripten](https://github.com/kripken/emscripten/wiki/Emscripten-SDK#wiki-downloads Emscripten SDK 1.16)
 -   Double-click `tool\win\script\install_emscripten.bat`
 
 
