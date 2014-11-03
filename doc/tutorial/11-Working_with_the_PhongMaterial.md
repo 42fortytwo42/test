@@ -22,7 +22,8 @@ Let's setup the scene:
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 
@@ -167,7 +168,8 @@ Final Code
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
 
@@ -238,7 +240,7 @@ Where to go from there
 
 This tutorial covers partially the possibilities of the `PhongMaterial`. To learn more about this material, these tutorials provide more information:
 
--   [ Working with normal maps ](../tutorial/12-Working_with_normal_maps_.md)
--   [ Working with environment maps ](../tutorial/13-Working_with_environment_maps_.md)
--   [ Working with specular maps](../tutorial/14-Working_with_specular_maps_.md)
+-   [ Working with normal maps ](../tutorial/12-Working_with_normal_maps.md)
+-   [ Working with environment maps ](../tutorial/13-Working_with_environment_maps.md)
+-   [ Working with specular maps](../tutorial/14-Working_with_specular_maps.md)
 
