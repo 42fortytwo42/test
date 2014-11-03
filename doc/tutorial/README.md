@@ -91,9 +91,9 @@ This section lists all the tutorials available for the Minko "Studio" edition, e
 
 ### Scene editor
 
--   [Installation](Installation)
+-   [Installation](../tutorial/Installation.md)
 -   [The bottom bar](../tutorial/The_bottom_bar.md)
--   [Import assets](Import assets)
+-   [Import assets](../tutorial/Import_assets.md)
 -   [Moving the camera in the scene](../tutorial/Moving_the_camera_in_the_scene.md)
 -   [Using the scene tree](../tutorial/Using_the_scene_tree.md)
 -   [Manipulating transforms](../tutorial/Manipulating_transforms.md)
