@@ -1,6 +1,6 @@
 In this tutorial we will see how to author post-processing effects and how to setup our application/scene to use them. Before you read this tutorial, you should read:
 
--   [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md) to learn about `*.effect` files authoring basics;
+-   [Create your first custom effect](../tutorial/17-Creating_a_custom_effect.md) to learn about `*.effect` files authoring basics;
 -   [Binding the camera](../tutorial/20-Binding_the_camera.md) and/or [Binding the model to world transform](../tutorial/19-Binding_the_model_to_world_transform.md) to learn about `uniformBindings`.
 
 As a practical example, this tutorial will guide you through the creation of a "black and white" or "desaturate" post-processing effect. Its purpose is quite obvious: it will post-process your rendering to get a black and white final picture.
@@ -204,10 +204,12 @@ src/main.cpp
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
