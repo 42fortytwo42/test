@@ -16,7 +16,6 @@ Step 0: Invoke the 'bullet' Minko plugin
 
 But first things first, you must before anything else [enable the 'bullet' plugin](../tutorial/How_to_enable_a_plugin.md) and then include the 'bullet' plugin's main header file into your project source code:
 
-
 ```cpp
 #include "minko/MinkoBullet.hpp" 
 ```
@@ -31,13 +30,11 @@ For your simulation to work, you thus need to add a `minko::component::bullet::P
 
 **Note** Please remember that for the simulation to be updated at the end of each frame, the addition of a `minko::component::Renderer` somewhere in your scene node hierarchy is mandatory.
 
-
 ```cpp
 auto root = scene::Node::create("root")
 
    ->addComponent(sceneManager)
    ->addComponent(bullet::PhysicsWorld::create());
-
 
 ```
 
@@ -58,7 +55,6 @@ Of paramount importance are the following properties of a collider data instance
 
 Follows the example of a simple falling cube, the corresponding node of which is added a box-shaped collider weighting 5 kg:
 
-
 ```cpp
 auto boxColliderData = bullet::ColliderData::create(
 
@@ -74,7 +70,6 @@ auto boxColliderData = bullet::ColliderData::create(
        assets->effect("effect/Basic.effect")
    ));
 
-
 ```
 
 
@@ -82,7 +77,6 @@ Step 3: Run your simulation
 ---------------------------
 
 Simply adding your collider-bearing node to the scene:
-
 
 ```cpp
 root->addChild(boxNode); 
@@ -101,7 +95,6 @@ Also note that even though `boxNode` has not been explicitly added a `minko::com
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

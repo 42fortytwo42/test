@@ -7,7 +7,6 @@ Step 1: Catch the resize Signal
 
 Once our `Canvas` is created, we can listen to its `Canvas::resized()` signal:
 
-
 ```cpp
 auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
@@ -28,7 +27,6 @@ Step 2: Adapting the projection
 
 Assuming we have a direct access to our camera scene `Node`, we can adapt it's projection by accessing its `PerspectiveCamera` component and setting its `aspectRatio()` property:
 
-
 ```cpp
 auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
 
@@ -39,7 +37,6 @@ auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint w
 
 
 If we only have access to the root `Node` of our scene, we can fetch all the nodes with a `PerspectiveCamera` component to update them:
-
 
 ```cpp
 auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
@@ -60,7 +57,6 @@ The `NodeSet` class and its `descendants()` and `where()` operators help us fetc
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

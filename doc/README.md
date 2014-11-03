@@ -21,4 +21,3 @@ Make sure you check the following pages to get started:
 If you are looking for professional technical support, please [contact us](http://minko.io/contact)!
 
 You can find Minko 2 documentation [here](http://doc.v2.minko.io/wiki/Main_Page).
-

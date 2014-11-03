@@ -15,7 +15,6 @@ What's important to understand is how critic it is to be able to write über sha
 
 That's where über shaders kick in: an über shader is a single shader program that will adapt its operations according to whether some options are enabled or not. To do this, Minko leverages the GLSL pre-processor:
 
-
 ```c
 #ifdef SOME_OPTION // do something... #else // do something else... #endif 
 ```
@@ -27,7 +26,6 @@ Step 1: Updating the fragment shader
 ------------------------------------
 
 We will take the fragment shader explained in the [Step 3 of the Create your first custom effect tutorial](../tutorial/Create_your_first_custom_effect#Step_3:_The_fragment_shader.md) and update it to use a texture if the `DIFFUSE_MAP` macro is defined:
-
 
 ```c
 #ifdef GL_ES precision mediump float; #endif
@@ -49,7 +47,6 @@ void main(void) {
 
 
 To sample the `uDiffuseMap` texture, our fragment shader will also need the texture coordinates interpolated from the vertex data. Thus, we have to make sure the `vVertexUv` varying is properly filled by our vertex shader:
-
 
 ```c
 #ifdef GL_ES precision mediump float; #endif
@@ -75,7 +72,6 @@ void main(void) {
 
 We've made some modifications in the fragment shader that required a minor update of our vertex shader. We will have to update our effect's `attributeBindings` to make sure the `aUv` vertex attribute is properly set:
 
-
 ```javascript
 "attributeBindings" : {
 
@@ -87,7 +83,6 @@ We've made some modifications in the fragment shader that required a minor updat
 
 
 and the `uniformBindings` to make sure our `uDiffuseMap` property is properly bound too:
-
 
 ```javascript
 "uniformBindings" : {
@@ -108,7 +103,6 @@ Step 2: Über shaders automation with macro bindings
 
 We now have a fragment shader that can use a solid color or a texture depending on whether the `DIFFUSE_MAP` macro is set:
 
-
 ```c
 #ifdef DIFFUSE_MAP
 
@@ -124,7 +118,6 @@ We now have a fragment shader that can use a solid color or a texture depending 
 
 It works but it's still not really scalable: we would have to manually define the `DIFFUSE_MAP` macro by adding:
 
-
 ```c
 #define DIFFUSE_MAP 
 ```
@@ -133,7 +126,6 @@ It works but it's still not really scalable: we would have to manually define th
 at the begining of our vertex/fragment shader if we want to use a texture. Manually changing the source code of our shader at runtime in our application code is not really an option: we would have to fork each program and decide which macro should be defined manually. Instead, we will - once again - use data binding to automate this macro definition process.
 
 Using `macroBindings`, we can bind a macro definition to a data property provided by the engine/our application:
-
 
 ```javascript
 "macroBindings" : {
@@ -145,7 +137,6 @@ Using `macroBindings`, we can bind a macro definition to a data property provide
 
 
 The behavior of a macro binding is described in the following pseudo-code:
-
 
 ```lua
 defineString = "" if propertyExists(propertyName) then

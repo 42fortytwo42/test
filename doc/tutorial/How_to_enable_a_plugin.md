@@ -9,7 +9,6 @@ To make sure our plugin linkage and other required operations are automated by M
 
 The default solution file looks like this:
 
-
 ```lua
 dofile(os.getenv("MINKO_HOME") .. "/sdk.lua")
 
@@ -33,14 +32,12 @@ minko.project.solution(PROJECT_NAME)
        --minko.plugin.enable("particles")
        --minko.plugin.enable("png")
 
-
 ```
 
 
 As you can see, some plugins are referenced by default in the solution file. But they are commented. To enable a plugin, uncomment the corresponding line.
 
 For example, to enable the "jpeg" plugin that provides a JPEG image files parser, uncomment the following line:
-
 
 ```lua
 --minko.plugin.enable("jpeg") 
@@ -49,14 +46,12 @@ For example, to enable the "jpeg" plugin that provides a JPEG image files parser
 
 To uncomment a line in LUA, simply remove the "--" at the begining of the line. You should then have:
 
-
 ```lua
 minko.plugin.enable("jpeg") 
 ```
 
 
 If the plugin you want to enable is not in the list, you can call the `minko.plugin.enable()` function and pass the name of the plugin you need:
-
 
 ```lua
 minko.plugin.enable("myplugin") 
@@ -79,7 +74,6 @@ If a plugin is not mandatory but rather just "supported" by the application, you
 
 For example, if we want to enabled the "jpeg" plugin, we will have to add the following option:
 
-
 ```
  --with-jpeg 
 ```
@@ -88,7 +82,6 @@ For example, if we want to enabled the "jpeg" plugin, we will have to add the fo
 The command line itself is documented in the [step 3 of the "Create a new application" tutorial](../tutorial/Create_a_new_application#Step_3:_Generate_the_solution_file.md).
 
 For example, the following Windows command line will enable the "jpeg" plugin when generating the Visual Studio 2013 solution file for our project:
-
 
 ```
  "%MINKO_HOME%"\tools\win\bin\premake5.exe --with-jpeg vs2013 
@@ -101,7 +94,6 @@ Step 3: Check that the plugin is enabled
 Each plugin should define a custom dedicated C++ pre-processor macro that will help us enabling/disabling some of the plugin-related features in our code at compile time. Any plugin should define the corresponding `MINKO_PLUGIN_%{PLUGIN_NAME}` where `${PLUGIN_NAME}` should be replaced by the actual name of the plugin. For example, the "jpeg" plugin will define the `MINKO_PLUGIN_JPEG` macro.
 
 In the following code, we will enable the JPEG image files parser only if the `MINKO_PLUGIN_JPEG` is defined (ie only if the corresponding plugin is actually enabled):
-
 
 ```cpp
 #ifdef MINKO_PLUGIN_JPEG sceneManager->assets()->registerParser<JPEGParser>("jpg"); #endif 

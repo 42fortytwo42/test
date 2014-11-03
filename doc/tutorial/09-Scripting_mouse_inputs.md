@@ -5,7 +5,6 @@ The following section introduces the two different ways to deal with mouse input
 
 ### Listening to mouse signals
 
-
 ```lua
 -- my_mouse_script.lua function my_mouse_script:start(node)
 
@@ -24,7 +23,6 @@ end
 Coroutines are a great way to work with an asynchronous API using a synchronous syntax. Instead of listening to a specific signal and act accordingly in the corresponding callback, we will simply pause the script and wait for "something to happen" before resuming.
 
 The following code will "wait" for the `mouse.leftButtonDown` signal before continuing:
-
 
 ```lua
 function my_mouse_script:start(node)
@@ -48,7 +46,6 @@ end
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

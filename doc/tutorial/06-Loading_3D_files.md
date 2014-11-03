@@ -7,14 +7,12 @@ Enable ASSIMP
 
 Assimp is the asset import library used by Minko to load asset files, we have to enable it into the `premake5.lua` with these lines:
 
-
 ```lua
 minko.plugin.enable("assimp") -- this plugin can be useful for assets that need to load jpeg files minko.plugin.enable("jpeg") 
 ```
 
 
 The next step is to include the correct header into your C++ application source code.
-
 
 ```cpp
 #include "minko/MinkoASSIMP.hpp" 
@@ -29,14 +27,12 @@ Every supported file format is available through a plugin. Each parser must be r
 
 In order to enable a data parser, you have to tell Minko it exists using the `AssetLibrary::registerParse` method.
 
-
 ```cpp
 sceneManager->assets()
 
    ->registerParser<[file::ASSIMPParser>](file::ASSIMPParser>)("obj")
    ->registerParser<[file::ASSIMPParser>](file::ASSIMPParser>)("dae")
        ->registerParser<[file::JPEGParser>](file::JPEGParser>)("jpg")
-
 
 ```
 
@@ -50,7 +46,6 @@ Access loaded files
 
 Once the loaded complete signal of the assetLibrary is triggered you can access the different model with the `AssetLibrary::symbol(name)` method
 
-
 ```cpp
 auto objModel = assets->symbol("model/model.obj"); auto daeModel = assets->symbol("model/model.dae"); 
 ```
@@ -63,14 +58,12 @@ Use default Effect
 
 Most of the time, your model does not know the effect that its surfaces are supposed to be linked with. In order to indicate an effect, you must use the defaultOptions of the `AssetLibrary`.
 
-
 ```cpp
 sceneManager->assets()->defaultOptions()->effect(sceneManager->assets()->effect(DEFAULT_EFFECT)); 
 ```
 
 
 You can also choose a default material
-
 
 ```cpp
 sceneManager->assets()->defaultOptions()->material()->set("diffuseColor", Vector4::create(0.8f, 0.1f, 0.1f, 1.0f)); 
@@ -79,7 +72,6 @@ sceneManager->assets()->defaultOptions()->material()->set("diffuseColor", Vector
 
 Final Code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

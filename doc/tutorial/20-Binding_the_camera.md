@@ -19,7 +19,6 @@ Those properties are declared in the `PerspectiveCamera::data()` provider, which
 
 Here is how we can bind the camera transform and projection in our effect using `uniformBindings`:
 
-
 ```javascript
 "uniformBindings" : {
 
@@ -44,7 +43,6 @@ The `source` declaration can have three values:
 By default, the `source` field is set to `target`. But in the case of our camera, the `PerspectiveCamera` is located on the same node than the `Renderer`. Thus, we set the `source` field to `renderer`. To learn more about data binding and binding sources, please read the [Understanding data binding](../tutorial/Understanding_data_binding.md) article.
 
 The `PerspectiveCamera` also provides the `camera.worldToScreenMatrix`, which is the result of the view matrix mutiplied with the projection. Using this property will save us some computation in our vertex shader:
-
 
 ```javascript
 {
@@ -86,7 +84,6 @@ Step 2: Updating the application code
 
 Now that our view matrix is bound, we don't have to set it manually. But we have to make sure the property it's bound to is actually available! As this property is declared by the `PerspectiveCamera` component, we have to make sure it is available somewhere in our scene.
 
-
 ```cpp
 auto camera = scene::Node::create()
 
@@ -103,7 +100,6 @@ Note that because we will likely need to move and orient our camera, we also add
 **Attention!** Always make sure the `PerspectiveCamera` is added on the same node as the `Renderer` component that is supposed to perform the rendering operations. As every scene might have multiple cameras, their respective `[data::Provider`](data::Provider`) has to be added to the `[data::Container`](data::Container`) of the same node than the `Renderer`. In short, the properties of a `PerspectiveCamera` will be available only to the `Renderer` that is on the same node; which makes it possible to have multiple camera/renderer in the same scene.
 
 Because all of our camera-related properties are now handled by data binding, we also have to update our code to comment (or simply remove) any corresponding `Effect::setUniform()`:
-
 
 ```cpp
 //myCustomEffect->setUniform("uViewMatrix", Matrix4x4::create()); //myCustomEffect->setUniform("uProjectionMatrix", Matrix4x4::create()->perspective((float)WINDOW_WIDTH / (float)WINDOW_HEIGHT)); 

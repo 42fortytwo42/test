@@ -26,7 +26,6 @@ Step 0: Setup a scene
 
 The setup will be the same that the one at the end of the [Working with the PhongMaterial](../tutorial/11-Working_with_the_PhongMaterial.md) tutorial:
 
-
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoPNG.hpp" 
@@ -106,7 +105,6 @@ To modulate the `environmentMap` another property of the `PhongMaterial` indicat
 
 The type of environment mapping must be set at the same time as the texture except for the cube maps (the type is set automatically).
 
-
 ```cpp
 phongMaterial->environmentMap(assets->texture("texture/envmap.png"), render::EnvironmentMap2dType::BlinnNewell);
 
@@ -130,7 +128,6 @@ phongMaterial->environmentAlpha(0.2f);
 
 Final Code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

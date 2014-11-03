@@ -122,14 +122,12 @@ This code is fine and should compile/work fine. But as you might have guessed, t
 
 The problem is the use of the `Effect::setUniform()` method. The method itself is perfectly fine. But it will affect all the objects that use this very `Effect`. To render multiple objects with different settings (position, color, etc...), we would have to follow this pseudo-code:
 
-
 ```
  for each object in objectToRender
 
  for each uniformName in object.uniformNames
    object.effect.setUniform(uniformName, object.uniformValues[uniformName]);
    render();
-
 
 ```
 
@@ -165,7 +163,6 @@ Yet, they are more than just simple maps. Indeed, each `[data::Provider`](data::
 
 Those three signals can be used to adapt the behavior of the application according to how the values in the provider changes.
 
-
 ```cpp
 auto provider = <data::Provider>::create();
 
@@ -198,7 +195,6 @@ provider->set("foo", 42); provider->set("foo", 24); provider->set("foo", 23); pr
 
 Compiling and running this code should give the following output in the console:
 
-
 ```
  property 'foo' added to provider property changed: foo = 42 property changed: foo = 24 property changed: foo = 23 property 'foo' removed from provider 
 ```
@@ -209,7 +205,6 @@ Compiling and running this code should give the following output in the console:
 A `[data::Container`](data::Container`) will store a collection of `[data::Provider`](data::Provider`) objects. Each scene `Node` as a single `[data::Container`](data::Container`) that can hold as many `[data::Provider`](data::Provider`) as necessary. The only constraint is that two different providers cannot declare the same property if they are added to the same container.
 
 When a `[data::Provider`](data::Provider`) is added to a `[data::Container`](data::Container`), all its properties are "added" to the container. To better understand the relationship between providers and containers, please consider the following code snippet:
-
 
 ```cpp
 auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
@@ -228,7 +223,6 @@ std::cout << "provider->hasProperty(\"foo\"): " << provider->hasProperty("foo") 
 
 Here is the corresponding console output you should get:
 
-
 ```
  provider->hasProperty("foo") = false container->hasProperty("foo") = false provider->hasProperty("foo") = true container->hasProperty("foo") = false provider->hasProperty("foo") = true container->hasProperty("foo") = truee 
 ```
@@ -241,7 +235,6 @@ Just like data providers, `[data::Container`](data::Container`) objects provide 
 -   `<data::Container>::propertyChanged(propertyName)`
 
 **When a provider is added to a container, their signals are piped** to make sure a single `[data::Container`](data::Container`) can act a the single entry point for all the `[data::Provider`](data::Provider`) objects it holds. This is true for both the properties - as explained above - and the signals. When the `<data::Provider>::propertyAdded()` signal is executed, the `<data::Container>::propertyAdded()` signal will be executed on all the containers that hold the provider that executed the signal in the first place.
-
 
 ```cpp
 auto provider = <data::Provider>::create(); auto container = <data::Container>::create();
@@ -268,7 +261,6 @@ provider->set("foo", 42);
 
 Compiling and running this code should give the following output in the console:
 
-
 ```
  property 'foo' added to provider property 'foo' added to container 
 ```
@@ -289,7 +281,6 @@ There are 4 different kinds of bindings:
 
 Here is an example of how uniform bindings can be declared in an `*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](../tutorial/Effect_files_format_reference.md)):
 
-
 ```javascript
 "uniformBindings" : {
 
@@ -306,7 +297,6 @@ Here is an example of how uniform bindings can be declared in an `*.effect` file
 -   The "root" binding source indicates that the property should be read from the data container of the root node of the scene. This source is used for properties that are global to the whole scene such as lights.
 
 To better understand what "target", "renderer" and "root" might mean in this context, let's take a simple scene with a camera, a mesh and a light:
-
 
 ```cpp
 auto root = scene::Node::create()

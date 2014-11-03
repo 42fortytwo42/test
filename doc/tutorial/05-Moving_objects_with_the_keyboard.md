@@ -3,7 +3,6 @@ In this tutorial, we will see how to catch keyboard inputs and use them to move 
 Step 1: Catching keyboards inputs
 ---------------------------------
 
-
 ```cpp
 auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
@@ -14,7 +13,6 @@ auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k
 
 
 The argument passed to the callbacks of the `Canvas::keyDown()` signal is an array where each cell indicates whether a specific key is down or not.
-
 
 ```cpp
 auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
@@ -30,7 +28,6 @@ Step 2: Moving objects
 
 To move our object, we will simply use the `Matrix4x4::appendTranslation()` method with argument values depending on which key is actually down:
 
-
 ```cpp
 auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k) {
 
@@ -45,7 +42,6 @@ auto keyDown = canvas->keyboard()->keyDown()->connect([&](input::Keyboard::Ptr k
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

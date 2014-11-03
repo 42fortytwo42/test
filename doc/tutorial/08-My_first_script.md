@@ -18,7 +18,6 @@ Step 0: Enabling the Lua plugin
 
 The very first step is to make sure we can use Lua scripts in our applications. To do this, we're going to follow the [Create a new application](../tutorial/Create_a_new_application.md) tutorial and then the [How to enable a plugin](../tutorial/How_to_enable_a_plugin.md) tutorial to enable the "lua" plugin. Your `premake5.lua` file should look like this:
 
-
 ```lua
 dofile(os.getenv("MINKO_HOME") .. "/sdk.lua")
 
@@ -37,7 +36,6 @@ minko.project.solution(PROJECT_NAME)
        -- plugins
        minko.plugin.enable("sdl")
        minko.plugin.enable("lua")
-
 
 ```
 
@@ -65,7 +63,6 @@ You should also keep in mind that:
 
 Here is an example of script that will simply output debug messages in the console using the `print()` global Lua function:
 
-
 ```lua
 -- /asset/script/my_script.lua function my_script:start(node)
 
@@ -92,14 +89,12 @@ Step 2: Initialization of LUA
 
 The first thing to do in our C++ application code is to load the main header for the "lua" plugin:
 
-
 ```cpp
 #include "minko/MinkoLua.hpp" 
 ```
 
 
 Now, we have to initialize the Lua context to give it access to our canvas and root node without forget to add a `LuaScriptManager` thereto:
-
 
 ```cpp
 auto canvas = Canvas::create("Minko Tutorial - My first script", 800, 600); auto sceneManager = component::SceneManager::create(canvas->context()); auto root = scene::Node::create("root")->addComponent(sceneManager);
@@ -117,7 +112,6 @@ We can then use all the classes related to Lua scripting. Next we need to actual
 
 -   make sure the `LuaScriptParser` is registered for the "lua" file extension;
 -   actually load our script(s) using `AssetLibrary::queue()` and/or `AssetLibrary::load()`.
-
 
 ```cpp
 // register the LuaScriptParser sceneManager->assets()->registerParser<[file::LuaScriptParser>](file::LuaScriptParser>)("lua");
@@ -139,7 +133,6 @@ Scripts are components. When loaded, each script file will be available as an `A
 
 In this case, we will simply add our script to the root of our scene:
 
-
 ```cpp
 auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
@@ -158,14 +151,12 @@ auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibra
 
 You can define, load and assigns as many scripts as you want on any kind of scene nodes. If the script has been successfully added to our node, you should see this in the console:
 
-
 ```
  start update update update update update update ... 
 ```
 
 
 In our case, `my_script:stop()` will never be called because it is never removed from its target node. You can make sure the method works by removing the script after a few frames:
-
 
 ```cpp
 auto numFrames = 0; auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr c, float t, float dt) {
@@ -182,7 +173,6 @@ auto numFrames = 0; auto enterFrame = canvas->enterFrame()->connect([&](Canvas::
 
 So you should get this in the console:
 
-
 ```
  start update update update update stop 
 ```
@@ -190,7 +180,6 @@ So you should get this in the console:
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

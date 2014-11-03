@@ -14,7 +14,6 @@ There are three types of bindings:
 
 Bindings are used to declare how each property of each pass of the effect will be bound to a property available in the node <data::Container> object.
 
-
 ```javascript
 "attributeBindings" : {
 
@@ -59,7 +58,6 @@ The name of the rendering pass. Names can be used to declare passes that can be 
 ### Pass Bindings
 
 Each pass can re-declare attribute, uniform and state bindings. The goal is to be able to have different binding values for a property that might have the same name among different passes. The blending state is a good example:
-
 
 ```javascript
 // some effect {
@@ -150,7 +148,6 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 
 Here is an example that will set the first pass rendering states:
 
-
 ```javascript
 "passes" : [{
 
@@ -207,7 +204,6 @@ Example:
 
 Complete Example
 ----------------
-
 
 ```javascript
 // basic effect {

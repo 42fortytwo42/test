@@ -7,7 +7,6 @@ Step 1: Loading a single effect
 
 To load a single effect, we will use the `AssetLibrary::load()` method:
 
-
 ```cpp
 sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
@@ -21,7 +20,6 @@ sceneManager->assets()->load("MyEffect.effect");
 
 This code snippet should output:
 
-
 ```
  all assets have been loaded! 
 ```
@@ -33,7 +31,6 @@ Step 1 (alternative): Loading multiple effects/assets
 -----------------------------------------------------
 
 To load multiple effects - or if the `*.effect` file(s) you want to load is just one asset among others - we can use the `AssetLibrary::queue()` method. This method expects the same arguments as the `AssetLibrary::load()` method except it will enlist all the files to load. It will then eventually load then in a batch when `AssetLibrary::load()` is actually called:
-
 
 ```cpp
 sceneManager->assets()
@@ -54,7 +51,6 @@ sceneManager->assets()->load();
 
 This code snippet should output:
 
-
 ```
  all assets have been loaded! 
 ```
@@ -71,7 +67,6 @@ const std::string&` argument that will point to the loaded `Effect` object using
 -   the value of the "name" field in the `*.effect` file, if any;
 -   or the actual file name used upon loading (the `std::string` passed to either `AssetLibrary::load()` or `AssetLibrary::queue()`).
 
-
 ```cpp
 sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
 
@@ -83,7 +78,6 @@ sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) 
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

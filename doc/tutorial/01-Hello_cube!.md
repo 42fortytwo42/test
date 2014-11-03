@@ -8,7 +8,6 @@ Step 1: Initialize the window
 
 We will use the SDL plugin to initialize a window. The following code is a simple C++ main function that initialize such window:
 
-
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
@@ -43,7 +42,6 @@ All the assets are loaded to and from an `AssetLibrary`. You can create an `Asse
 
 The following piece of code will create a `SceneManager` and use it's `SceneManager::assets()` property to load the `Basic.effect` from the filesystem:
 
-
 ```cpp
 auto sceneManager = component::SceneManager::create(canvas->context());
 
@@ -70,12 +68,10 @@ Step 3: Initialize the scene
 
 The scene root is just a `Node` with the `SceneManager` component:
 
-
 ```cpp
 auto root = scene::Node::create("root")
 
  ->addComponent(sceneManager);
-
 
 ```
 
@@ -86,7 +82,6 @@ Our camera will be just a scene `Node` with two components:
 
 -   a `Renderer`, that will take care of actual rendering operations
 -   a `PerspectiveCamera` that will provide camera related data (world to view matrix, projection matrix...) for proper rendering
-
 
 ```cpp
 auto camera = scene::Node::create("camera")
@@ -123,7 +118,6 @@ To create the cube, we mainly have to:
 
 The following code will do those 4 steps:
 
-
 ```cpp
 auto cube = scene::Node::create("cube"); auto cubeMaterial = material::BasicMaterial::create(); auto cubeGeometry = geometry::CubeGeometry(assets->context()); auto cubeEffect = assets->effect("effect/Basic.effect");
 
@@ -134,7 +128,6 @@ cube->addComponent(Surface::create(cubeGeometry, cubeMaterial, cubeEffect);
 ### Set the cube color
 
 The `Basic.effect` expects the `diffuseColor` material value to be set to an RGBA `Vector4`. The following code will set the color of our cube to blue (R: 0, G: 0, B: 1, A: 1):
-
 
 ```cpp
 cubeMaterial->diffuseColor(Vector4::create(0.f, 0.f, 1.f, 1.f)); 
@@ -147,7 +140,6 @@ You can learn more about the `BasicMaterial` in the [Working with the BasicMater
 
 By default, our `PerspectiveCamera` will be in (0, 0, 0) looking down the -Z axis. To make sure our cube is visible, we must translate it down the the -Z axis to make sure our camera is not inside the cube. To do this, we simply add a `Transform` component to our cube scene node:
 
-
 ```cpp
 cube->addComponent(Transform::create(Matrix4x4::create()->translation(0.f, 0.f, -5.f))); 
 ```
@@ -159,7 +151,6 @@ Note that we initialize the `Transform` with a `Matrix4x4` holding a (0, 0, -5) 
 
 We can then add our cube directly to the scene root using the `Node::addChild()` method:
 
-
 ```cpp
 root->addChild(cube); 
 ```
@@ -169,7 +160,6 @@ Step 5: Render the scene
 ------------------------
 
 To render our scene, we will use the `SceneManager::nextFrame()` method. This method will tell all `Renderer` components to process their respective list of draw calls. Calling `SceneManager::nextFrame()` will process and render a single frame. To render frames whenever our window is ready, we will listen to the `canvas->enterFrame()` signal:
-
 
 ```cpp
 auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
@@ -185,18 +175,15 @@ Step 6: Make the cube rotate
 
 To rotate our cube, we just have to access its `Transform` component and apply the rotation we want. Here, we will use `Matrix4x4::prependRotation()` because we want our rotation to be done "before" the translation applied in step 4:
 
-
 ```cpp
 
 
  cube->component<Transform>()->matrix()->prependRotationY(.01f);
 
-
 ```
 
 
 To make our cube rotate a bit more at each frame, we simply add this line to our "enter frame" callback:
-
 
 ```cpp
 auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {

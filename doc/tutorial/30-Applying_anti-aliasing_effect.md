@@ -5,7 +5,6 @@ Step 0: Invoke the 'fx' Minko plugin
 
 The first thing you have to do is anything else than [enable the 'fx' plugin](../tutorial/How_to_enable_a_plugin.md) adding this line at the end of your project's premake file:
 
-
 ```lua
 minko.plugin.enable("fx") 
 ```
@@ -18,7 +17,6 @@ Step 1: Load the anti-aliasing effect
 
 The next step is to load the effect that we want to use. For us, it's the FXAA one:
 
-
 ```cpp
 auto sceneManager = SceneManager::create(canvas->context());
 
@@ -27,7 +25,6 @@ sceneManager->assets()->queue("effect/FXAA/FXAA.effect");
 
 
 We can check that our anti-aliasing effect is correctly loaded like that:
-
 
 ```cpp
 auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibrary::Ptr assets) {
@@ -41,7 +38,6 @@ auto complete = sceneManager->assets()->complete()->connect([&](file::AssetLibra
 
 sceneManager->assets()->load();
 
-
 ```
 
 
@@ -50,14 +46,12 @@ Step 2: Create a render target
 
 The anti-aliasing effect is a post processing effect, so we need to create a render target to render the scene into it. I would strongly advise you to read the [tutorial that explains how to create a simple post-processing effect](../tutorial/22-22-Creating_a_simple_post-processing_effect.md).
 
-
 ```cpp
 auto renderTarget = render::Texture::create(assets->context(), clp2(WINDOW_WIDTH), clp2(WINDOW_HEIGHT), false, true); 
 ```
 
 
 Don't forget to call the *upload()* method to really allocate GPU memory for the render target:
-
 
 ```cpp
 renderTarget->upload(); 
@@ -72,7 +66,6 @@ Most effects needs some properties to be set to work properly. For the anti-alia
 -   **textureSampler**: that represent the texture into the render target
 -   **texcoordOffset**: that is the inverse of the texture dimensions along X and Y of the render target.
 
-
 ```cpp
 effect->setUniform("textureSampler", renderTarget); effect->setUniform("texcoordOffset", Vector2::create(1.0f / renderTarget->width(), 1.0f / renderTarget->height())); 
 ```
@@ -82,7 +75,6 @@ Step 4 : Draw the scene
 -----------------------
 
 The final initialization step is to create a second scene - completely different from your actual 3D scene - that will only hold a single surface made from the quad geometry that it supposed to represent our screen, a dummy Material and our post-processing effect:
-
 
 ```cpp
 auto renderer = Renderer::create(); auto postProcessingScene = scene::Node::create() ->addComponent(renderer) ->addComponent(
@@ -104,7 +96,6 @@ Now that all we need for anti-aliasing is intialized, we just have to make sure 
 
 We just have to update what we do in our `Canvas::enterFrame()` callback:
 
-
 ```cpp
 auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
 
@@ -121,7 +112,6 @@ Step 5 (optionnal): Managing the size of the backbuffer
 If we want our post-processing to have a good quality, we have to make sure the size of the render target we use always has the same size as the backbuffer. OpenGL ES 2.0 requires textures with a power of 2 width/height. Thus, we will use `math::clp2` to make sure our render target width/height is always upscaled to the closest upper power of 2.
 
 We will do this in our `Canvas::resized()` callback:
-
 
 ```cpp
 auto resized = canvas->resized()->connect([&](AbstractCanvas::Ptr canvas, uint width, uint height) {
@@ -143,7 +133,6 @@ By assigning a new value to `renderTarget`, we remove the only reference to the 
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

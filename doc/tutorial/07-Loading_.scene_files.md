@@ -8,7 +8,6 @@ Step 1: Enable the serializer plugin
 
 In order to use .scene files, you will have to enable the `serializer` plugin. Make sure the `premake5.lua` file of your project includes the following line :
 
-
 ```lua
 minko.plugin.enable("serializer") 
 ```
@@ -52,7 +51,6 @@ You can look at the [serializer example](../tutorial/ExampleSerializer.md) for a
 
 Final Code
 ==========
-
 
 ```cpp
 #include "minko/Minko.hpp" 

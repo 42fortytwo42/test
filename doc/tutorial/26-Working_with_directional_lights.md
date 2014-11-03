@@ -15,7 +15,6 @@ Step 1: Instantiate a directional light
 
 The first very first thing you need to do is to include the following header to your .cpp file.
 
-
 ```cpp
 #include <DirectionalLight.hpp> 
 ```
@@ -30,7 +29,6 @@ To add a point light to a scene, you have to understand that a `Scene` is a grap
 
 As `DirectionalLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
-
 ```cpp
 
 
@@ -43,19 +41,16 @@ As `DirectionalLight` is a `Component` you'll have to follow this logic to creat
   // Adding the Node to the root of the scene graph
  root->addChild(directionalLightNode);
 
-
 ```
 
 
 As you can see in the code above, we first create a node named "directionalLight" to which we add an instance of a directional light. Of course you can chain those methods to perform all in one line of code
-
 
 ```cpp
 
 
  // Creating the Node & adding the Component DirectionalLight
  auto directionalLightNode = scene::Node::create("directionalLight")->addComponent(DirectionalLight::create());
-
 
 ```
 
@@ -71,7 +66,6 @@ you can directly change way the light appears by modifying it's public parameter
  directionalLight->diffuse(.4f);
  directionalLight->color()->setTo(0,0,0);
 
-
 ```
 
 
@@ -80,13 +74,11 @@ Step 4: Adjust a directional light
 
 Once the light is created you might want to give a direction to your directional light. To do this you need to add a transformation matrix to the Node holding your light.
 
-
 ```cpp
 auto directionalLightNode= scene::Node::create("directionalLight")
 
        ->addComponent(DirectionalLight::create())
        ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(15.f, 20.f, 0.f))));
-
 
 ```
 
@@ -95,7 +87,6 @@ Step 5: Remove a directional light from the scene
 -------------------------------------------------
 
 You may sometime need to remove a light from a scene, to do this you simply need to remove the directional light from the `Node` it has been added to before.
-
 
 ```cpp
 
@@ -109,7 +100,6 @@ You may sometime need to remove a light from a scene, to do this you simply need
  // Remove the component from the node
  directionalLightNode->removeComponent(directionalLight);
 
-
 ```
 
 
@@ -117,7 +107,6 @@ As you can see above, the first step is to retrieve the light component with pre
 
 Final Code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

@@ -5,7 +5,6 @@ Step 1: Binding the model to world matrix
 
 In the [Moving objects](../tutorial/04-Moving_objects.md) tutorial, we've seen that we can add custom 3D transforms to our scene nodes using the `Transform` component. If you take a look at the code for the `Transform::initialize()` method, you'll notice that this very component declares the `transform.modelToWorldMatrix` in it's `[data::Provider`](data::Provider`):
 
-
 ```cpp
 // Transform.cpp void Transform::initialize() {
 
@@ -19,7 +18,6 @@ In the [Moving objects](../tutorial/04-Moving_objects.md) tutorial, we've seen t
 
 When the `Transform` component is added to some target `Node`, it will add its `[data::Provider`](data::Provider`) to this `Node`'s `[data::Container`](data::Container`). The immediate result is that the `transform.modelToWorldMatrix` is then available and can be bound in the `uniformBindings` of our effect:
 
-
 ```javascript
 "uniformBindings" : {
 
@@ -30,7 +28,6 @@ When the `Transform` component is added to some target `Node`, it will add its `
 
 
 If we add this to the code from the [Creating custom materials](../tutorial/18-Creating_custom_materials.md) tutorial, we end up with the following code for our effect:
-
 
 ```javascript
 {
@@ -86,7 +83,6 @@ Because our `uModelToWorldMatrix` property is now bound to `transform.modelToWor
 -   avoid setting `uModelToWorldMatrix` directly: it will be set automatically by data binding;
 -   make sure our scene `Node` actually has a `Transform` component, otherwise the `uModelToWorldMatrix` will not be bound and rendering might be broken.
 
-
 ```cpp
 auto cube = scene::Node::create()
 
@@ -98,7 +94,6 @@ auto cube = scene::Node::create()
    myCustomMaterial,
    myCustomEffect
  ));
-
 
 ```
 

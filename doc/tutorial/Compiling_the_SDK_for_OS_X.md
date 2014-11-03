@@ -5,32 +5,32 @@ Step 1: Get the SDK sources
 
 Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](Installing the SDK (Git)).
 
-Step 2: Install the dependencies
+Step 2: Installing the toolchain
 --------------------------------
 
-If you've never build a Minko application or the Minko SDK for Linux before, follow the [step 1 of the Targeting Linux tutorial](../tutorial/Targeting_Linux#Step_1:_Installing_the_toolchain.md).
+If you've never build a Minko application or the Minko SDK for OSX before, follow the [step 1 of the Targeting OSX tutorial](../tutorial/Targeting_OS_X#Step_1:_Installing_the_toolchain.md).
 
 Step 3: Generate the solution
 -----------------------------
 
-Minko uses Premake for its build system. Premake is a nice solution to have a cross-platform build system that can work across multiple IDEs such as Xcode, Visual Studio and even GNU Make. In order to build the SDK, we will generate a solution for `gmake`. We need to use a terminal to generate a `Makefile`-compatible solution:
+Minko uses Premake for its build system. Premake is a nice solution to have a cross-platform build system that can work across multiple IDEs such as Xcode, Visual Studio and even GNU Make. In order to build the SDK for OSX, we will generate a solution for `gmake`. We need to use a terminal to generate a `Makefile`-compatible solution:
 
 ```bash
-cd ${MINKO_HOME} tool/lin/script/premake5.sh gmake 
+cd ${MINKO_HOME} tool/mac/scripts/premake5.sh gmake 
 ```
 
 
 If we want to select your compiler, we can pass the `cc` option. Supported values are `gcc` and `clang`:
 
 ```bash
-tool/lin/script/premake5.sh --cc=clang gmake 
+tool/mac/scripts/premake5.sh --cc=clang gmake 
 ```
 
 
 To learn more about premake commands, run:
 
 ```bash
-tool/lin/script/premake5.sh --help 
+tool/mac/scripts/premake5.sh help 
 ```
 
 
@@ -44,21 +44,19 @@ Step 4: Compile the SDK
 From the root directory of the SDK, simply run `make` with a valid configuration for your platform:
 
 ```bash
-make config=linux32_release 
+make config=osx64_release 
 ```
 
 
 Valid configurations for `gmake` are:
 
--   `linux32_release`
--   `linux32_debug`
--   `linux64_release`
--   `linux64_debug`
+-   `osx64_release`
+-   `osx64_debug`
 
 To leverage multi-core systems, you can also use `make -j`. The following example will use 4 cores and will compile the SDK much faster as a result:
 
 ```bash
-make -j4 config=linux32_release verbose=1 
+make -j4 config=osx64_release verbose=1 
 ```
 
 
@@ -68,7 +66,7 @@ Step 5: Package
 The SDK is now built, but you might want to share or copy it so you don't have to deal with the sources again. We use a script to produce a distributable SDK.
 
 ```bash
-tool/lin/scripts/premake5.sh dist 
+tool/mac/scripts/premake5.sh dist 
 ```
 
 

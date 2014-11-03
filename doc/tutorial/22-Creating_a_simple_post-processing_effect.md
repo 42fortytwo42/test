@@ -19,7 +19,6 @@ For post-processing to work, we have to render a fullscreen quad and then apply 
 
 The `geometry::QuadGeometry` class provides the geometry for a unit sized quad lying in the (x, y) plane. Thus, its top left corner is in (-0.5, 0.5, 0.0) and its bottom right corner is in (0.5, -0.5, 0.0). Our vertex shader is supposed to output normalized device coordinates in the [-1 .. 1] bounds. So we just have to scale our quad to make it fill the entire screen:
 
-
 ```c
 gl_Position = vec4(aPosition, 1) * vec4(1., 1., 1., .5); 
 ```
@@ -28,7 +27,6 @@ gl_Position = vec4(aPosition, 1) * vec4(1., 1., 1., .5);
 Note how we actually divide `w` by 2 instead of multiplying `x` and `y` by 2. It's exactly the same result in the end since the value will be normalized by the hardware.
 
 Because OpenGL performs render to texture using an inverted y axis, we also have modify the original UVs to make sure our backbuffer will be sampled properly. Here is the final code for our post-processing vertex shader:
-
 
 ```c
 #ifdef GL_ES precision mediump float; #endif
@@ -54,7 +52,6 @@ The vertex shader is pretty standard and should be pretty much the same for most
 
 Here, we will simply sample the backbuffer and use an average of its `RGB` value to get a greyscale result color:
 
-
 ```c
 #ifdef GL_ES precision mediump float; #endif
 
@@ -78,7 +75,6 @@ Step 3: Setting up the scene
 
 The first thing to do is to create the `Texture` that will be used as a replacement for our backbuffer:
 
-
 ```cpp
 auto ppTarget = render::Texture::create(assets->context(), 1024, 1024, false, true);
 
@@ -91,7 +87,6 @@ ppTarget->upload();
 Just like any `Effect`, our post-processing file should be loaded using the `AssetLibrary::load()` method. You can read more on this subject in the [Loading effects](../tutorial/16-Loading_effects.md) tutorial.
 
 When our `Effect` has been successfully loaded, we can fetch it from the library using the `AssetLibrary::effect()` method. The following code makes sure the effect has been properly loaded and throws an exception otherwise:
-
 
 ```cpp
 auto ppFx = sceneManager->assets()->effect("effect/Desaturate.effect");
@@ -108,7 +103,6 @@ As you can see, we also set the `uBackbuffer` uniform to be our `ppTarget` which
 
 The final initialization step is to create a second scene - completely different from your actual 3D scene - that will only hold a single surface made from the quad geometry that it supposed to represent our screen, a dummy `Material` and our post-processing effect:
 
-
 ```cpp
 auto ppRenderer = Renderer::create(); auto ppScene = scene::Node::create()
 
@@ -119,7 +113,6 @@ auto ppRenderer = Renderer::create(); auto ppScene = scene::Node::create()
    ppFx
  ));
 
-
 ```
 
 
@@ -129,7 +122,6 @@ Now that all we need for post-processing is intialized, we just have to make sur
 -   our `ppRenderer` renders a frame and, because of our setup, this frame will render a single quad using our post-processin effect.
 
 We just have to update what we do in our `Canvas::enterFrame()` callback:
-
 
 ```cpp
 auto enterFrame = canvas->enterFrame()->connect([&](Canvas::Ptr canvas, float t, float dt) {
@@ -147,7 +139,6 @@ Step 4 (optional): Managing the size of the backbuffer
 If we want our post-processing to have a good quality, we have to make sure the size of the render target we use always has the same size as the backbuffer. OpenGL ES 2.0 requires textures with a power of 2 width/height. Thus, we will use `math::clp2` to make sure our render target width/height is always upscaled to the closest upper power of 2.
 
 We will do this in our `Canvas::resized()` callback:
-
 
 ```cpp
 auto resized = canvas->resized()->connect([&](Canvas::Ptr canvas, unsigned int width, unsigned int height) {

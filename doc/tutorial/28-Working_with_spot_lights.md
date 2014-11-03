@@ -13,7 +13,6 @@ Step 1: Instantiate a spot light
 
 The first very first thing you need to do is to include the following header to your .cpp file.
 
-
 ```cpp
 #include <SpotLight.hpp> 
 ```
@@ -34,7 +33,6 @@ To add a point light to a scene, you have to understand that a `Scene` is a grap
 
 As a `SpotLight` is a `Component` you'll have to follow this logic to create and add a light to a scene.
 
-
 ```cpp
 
 
@@ -47,19 +45,16 @@ As a `SpotLight` is a `Component` you'll have to follow this logic to create and
   // Adding the Node to the root of the scene graph
  root->addChild(spotLightNode);
 
-
 ```
 
 
 As you can see in the code above, we first create a node named "spotLight" to which we add an instance of a spot light. Of course you can chain those methods to perform all in one line of code
-
 
 ```cpp
 
 
  // Creating the Node & adding the Component SpotLight
  auto spotLightNode = scene::Node::create("spotLight")->addComponent(SpotLight::create(.15f, .4f));
-
 
 ```
 
@@ -74,7 +69,6 @@ you can directly change way the light appears by modifying it's public parameter
  auto spotLight = SpotLight::create(.15f, .4f);
  spotLight->diffuse(.4f);
 
-
 ```
 
 
@@ -83,13 +77,11 @@ Step 4: Adjust a spot light
 
 Once the light is created you might want to turn the spot light toward a direction. To do this you need to add a transformation matrix to the Node holding your spot light.
 
-
 ```cpp
 auto spotLight = scene::Node::create("spotLight")
 
        ->addComponent(SpotLight::create(.15f, .4f))
        ->addComponent(Transform::create(Matrix4x4::create()->lookAt(Vector3::zero(), Vector3::create(15.f, 20.f, 0.f))));
-
 
 ```
 
@@ -98,7 +90,6 @@ Step 5: Remove a spot light from the scene
 ------------------------------------------
 
 You may sometime need to remove a light from a scene, to do this you simply need to remove the spot light from the `Node` it has been added to before.
-
 
 ```cpp
 
@@ -112,7 +103,6 @@ You may sometime need to remove a light from a scene, to do this you simply need
  // Remove the component from the node
  spotLightNode->removeComponent(spotLight);
 
-
 ```
 
 
@@ -120,7 +110,6 @@ As you can see above, the first step is to retrieve the light component with pre
 
 Final code
 ----------
-
 
 ```cpp
 #include "minko/Minko.hpp" 

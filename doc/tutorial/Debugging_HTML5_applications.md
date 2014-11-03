@@ -39,7 +39,6 @@ emscripten_run_script("alert('foo');console.log('bar');");
 
 In native, reaching a `return` instruction in the `main` would result in the program to close. In HTML5, it is not as visible. When the `main` returns, the page is not closed, but your application will no longer be executed. If your application doesn't run normally and you can't find an obvious reason, try displaying a message right before any `main` `return` instruction, that way you will see instantly if the program returns.
 
-
 ```cpp
 void main(int argc, char* argv) {
 

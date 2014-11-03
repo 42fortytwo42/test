@@ -21,14 +21,12 @@ Step 2: Enable plugins (optional)
 
 It's more than likely that your application will actually require some Minko plugins to work properly. To do this, simply open the `premake5.lua` file located in your application folder and uncomment the line for the plugin you want to use. For example, if you want to use a JPEG image file parser, uncomment the following line:
 
-
 ```lua
 minko.plugin.enable("jpeg") 
 ```
 
 
 If the plugin you want to use is not listed (see [Plugin compatibility matrix](../tutorial/Plugin_compatibility_matrix.md) ), just add it yourself:
-
 
 ```lua
 minko.plugin.enable("my-plugin") 

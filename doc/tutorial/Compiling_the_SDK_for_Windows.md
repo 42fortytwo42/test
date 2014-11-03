@@ -23,18 +23,15 @@ To do this you can:
 
 -   Run the following script from the "%MINKO_HOME%\tools\win\scripts" directory
 
-
 ```bash
 
 
 premake_vs2013.bat
 
-
 ```
 
 
 -   **Or** open a command line prompt in the root directory of the SDK and run:
-
 
 ```bash
 tool/win/bin/premake5.exe --no-tests vs2013 
@@ -56,7 +53,6 @@ Step 5: Package (optional)
 --------------------------
 
 The SDK is now built, but you might want to share or copy it so you don't have to deal with the sources again. We use a script to produce a distributable SDK. Open a terminal at the SDK root and run:
-
 
 ```bash
 tool\win\bin\premake5.exe dist 

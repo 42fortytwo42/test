@@ -49,7 +49,6 @@ When it is back, you will see that **Default** changes to **Install** for the **
 
 The final folder hierarchy should be as follow:
 
-
 ```
  ${ANDROID}
 
@@ -62,7 +61,6 @@ The final folder hierarchy should be as follow:
  /platform-tools
  /toolchains
  /tools
-
 
 ```
 
@@ -85,14 +83,12 @@ Step 4: Compile the SDK
 
 Now, you should have a bunch of Makefiles. You can build the solution using the following command line:
 
-
 ```bash
 $ make config=android_release 
 ```
 
 
 If you want to leverage multicore processors, you can use the following command line (replace '4' by your actual number of cores):
-
 
 ```bash
 $ make -j 4 config=android_release 

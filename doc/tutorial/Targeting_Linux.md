@@ -12,14 +12,12 @@ We'll document the procedure for Ubuntu. Please refer to your Linux distribution
 
 You can install either GCC:
 
-
 ```bash
 sudo apt-get install gcc-4.8 g++-4.8 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50 
 ```
 
 
 Or Clang:
-
 
 ```bash
 sudo apt-get install clang-3.4 
@@ -28,14 +26,12 @@ sudo apt-get install clang-3.4
 
 For older (< 13.10) versions of Ubuntu, you may have to add some PPAs first:
 
-
 ```bash
 sudo apt-get install python-software-properties sudo add-apt-repository ppa:ubuntu-toolchain-r/test # GCC 4.8 wget -O - <http://llvm.org/apt/llvm-snapshot.gpg.key> | sudo apt-key add - # Clang sudo apt-get update 
 ```
 
 
 Optionally, you can install `gcc-multilib` to allow cross-compilation between 32 and 64-bit Linux:
-
 
 ```bash
 sudo apt-get install gcc-multilib g++-multilib 
@@ -56,7 +52,6 @@ No library is necessary to run a basic Minko application. However, most applicat
 
 Install them:
 
-
 ```bash
 # Install the PPA for libsdl2 sudo apt-get install software-properties-common sudo add-apt-repository ppa:zoogie/sdl2-snapshots sudo apt-get update
 
@@ -72,7 +67,6 @@ Install them:
 
 If you need to do offscreen rendering (available through the `offscreen` plugin), you should also install another bunch of libraries:
 
-
 ```bash
 sudo apt-get install libosmesa6-dev 
 ```
@@ -83,14 +77,12 @@ Step 3: Generate the solution
 
 On Linux, only `Makefile`s are supported. A script is provided to generate a GNU Make-compatible solution with default options:
 
-
 ```bash
 script/solution_gmake_gcc.sh 
 ```
 
 
 Or, if we prefer Clang:
-
 
 ```bash
 script/solution_gmake_clang.sh 
@@ -99,14 +91,12 @@ script/solution_gmake_clang.sh
 
 If we want to customise our solution, we can call `premake` directly. For instance, when selecting the compiler, the `cc` option is passed (supported values are `gcc` and `clang`):
 
-
 ```bash
 ${MINKO_HOME}/tool/lin/script/premake5.sh --cc=clang gmake 
 ```
 
 
 To learn more about premake commands, run:
-
 
 ```bash
 ${MINKO_HOME}/tool/lin/script/premake5.sh help 
@@ -117,7 +107,6 @@ Step 4: Build the solution
 --------------------------
 
 To target native command line applications, run:
-
 
 ```bash
 make config=linux32_release 
@@ -135,14 +124,12 @@ As expected, they allow you to select optimized or debuggable binaries, along wi
 
 We can get more information about the building process by setting the `verbose` variable:
 
-
 ```bash
 make config=linux32_release verbose=1 
 ```
 
 
 To leverage multi-core systems, you can also use `make -j`. The following example will use 4 cores and will compile much faster as a result:
-
 
 ```bash
 make -j4 config=linux32_release verbose=1 
@@ -153,7 +140,6 @@ Step 5: Run one of the examples
 -------------------------------
 
 Let's run the application under a 32-bit Linux. Open a terminal in the application directory and type:
-
 
 ```bash
 cd bin/linux32/release ./my-project 
@@ -167,7 +153,6 @@ Step 6: Clean the solution (optional)
 
 To clean the build, pass the `clean` target to `make`. For instance:
 
-
 ```bash
 make config=linux32_release clean 
 ```
@@ -176,7 +161,6 @@ make config=linux32_release clean
 This will basically remove any target file (`bin` and `obj` folders) for the specific configuration.
 
 If you also want to erase generated solution files (`Makefile`), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`):
-
 
 ```bash
 script/clean.sh 

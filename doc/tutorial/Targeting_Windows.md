@@ -12,7 +12,6 @@ Step 2: Generate the solution
 
 To generate a solution, run the following script:
 
-
 ```bash
 script\solution_vs2013ctp.bat 
 ```
@@ -21,7 +20,6 @@ script\solution_vs2013ctp.bat
 This should generate a `.sln` Visual Studio solution file. Double-click on it to open the solution in Visual Studio 2013.
 
 Note that you can also run the command from a terminal in your application directory (<kbd>Shift</kbd> + Right click on the folder-> `Open command window here`), which will allow you to customize your solution, such as [enabling specific plugins using the command line](../tutorial/How_to_enable_a_plugin#Step_2_.28alternative.29:_Enable_a_plugin_in_the_command_line.md):
-
 
 ```bash
 "%MINKO_HOME%"\tool\win\bin\premake5.exe vs2013ctp 
@@ -57,7 +55,6 @@ Step 5: Clean the solution (optional)
 To clean the build, right-click on the solution and run Clean Solution.
 
 If you also want to erase generated solution files (`.sln`, `.vcxproj` files), you can use a stronger command which will erase any ignored file (files matched by a pattern in `.gitignore`):
-
 
 ```bash
 script\clean.bat 

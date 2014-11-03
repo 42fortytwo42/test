@@ -19,7 +19,6 @@ Step 1: Updating our effect
 
 As is, our effect only declares per-effect `uniform`s that we have to set/update manually. To fix this, we will use `uniformBindings` in order to map each `uniform` name to a data binding property (in this case, available in the material):
 
-
 ```javascript
 "uniformBindings" : {
 
@@ -30,7 +29,6 @@ As is, our effect only declares per-effect `uniform`s that we have to set/update
 
 
 This `uniformBinding` field can be declared in the pass object or directly at the root of our effect. Here is the complete code for our updated `MyCustomEffect.effect` file:
-
 
 ```javascript
 {
@@ -96,7 +94,6 @@ In the very case of our `material.color` uniform binding, the rendering pipeline
 
 To make sure the rendering engine works as expected, we just have to make sure our `Material` object will indeed provide a `color` property:
 
-
 ```cpp
 auto myCustomMaterial = material::Material::create();
 
@@ -112,7 +109,6 @@ Step 3 (optional) : Creating a custom material class
 Setting all the properties of a material can be quite difficult since developers have to open the corresponding `*.effect` file to read find all the relevant `uniformBindings` declarations. It would be much simpler to have an actual `Material`-derived class that eventually declare static setter methods for all those properties.
 
 In our very case, we will create a `MyCustomMaterial` class that extends `Material` and declares a `color` setter in a `MyCustomMaterial.hpp` file:
-
 
 ```cpp
 #include "minko/Common.hpp" 
@@ -150,7 +146,6 @@ namespace minko {
 
 
 Developers can now use your material as follow:
-
 
 ```cpp
 auto myCustomMaterial = material::MyCustomMaterial::create();
