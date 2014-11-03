@@ -18,7 +18,7 @@ The first very first thing you need to do is to include the following header to 
 ```
 
 
-To create a new [SpotLight](http://doc.minko.io/reference/v3/classminko_1_1component_1_1_spot_light.html) object, we simply use the `PointLight::create` static method.
+To create a new [SpotLight](http://doc.v3.minko.io/reference/classminko_1_1component_1_1_spot_light.html) object, we simply use the `PointLight::create` static method.
 
 The create method needs at least two arguments to be instantiated :
 
@@ -114,10 +114,12 @@ Final code
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
