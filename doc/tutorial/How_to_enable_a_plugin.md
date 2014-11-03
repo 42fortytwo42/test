@@ -65,7 +65,7 @@ You can, of course, enable as many plugins as you need.
 Step 2: Generate the solution
 -----------------------------
 
-Now that our solution configuration is up to date, we have to re-generate the actual solution file for our IDE/build system. To do this, please refer to the [step 3 of the "Create a new application" tutorial](../tutorial/Create_a_new_application#Step_3:_Generate_the_solution_file.md).
+Now that our solution configuration is up to date, we have to re-generate the actual solution file for our IDE/build system. To do this, please refer to the [step 3 of the "Create a new application" tutorial](../tutorial/Create_a_new_application.md#Step_3:_Generate_the_solution_file).
 
 Step 2 (alternative): Enable a plugin in the command line
 ---------------------------------------------------------
@@ -79,7 +79,7 @@ For example, if we want to enabled the "jpeg" plugin, we will have to add the fo
 ```
 
 
-The command line itself is documented in the [step 3 of the "Create a new application" tutorial](../tutorial/Create_a_new_application#Step_3:_Generate_the_solution_file.md).
+The command line itself is documented in the [step 3 of the "Create a new application" tutorial](../tutorial/Create_a_new_application.md#Step_3:_Generate_the_solution_file).
 
 For example, the following Windows command line will enable the "jpeg" plugin when generating the Visual Studio 2013 solution file for our project:
 
