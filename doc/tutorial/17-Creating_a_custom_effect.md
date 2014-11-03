@@ -41,7 +41,7 @@ As you can see, `*.effect` files are declared using the JSON format. Here are a 
 
 -   the `name` field declares the name of our effect; when loaded our effect will be referenced in the `AssetLibrary` by 1) the actual file name used for loading 2) the value of this "name" field
 -   the `attributeBindings` field declares an object that will map our effect's shaders (vertex) attribute declarations to actual engine data properties
--   the `passes` field declares an array of objects where each object is a rendering pass made mainly of a [<https://en.wikipedia.org/wiki/Shader>#Vertex_shaders vertex shader] (the "vertexShader" field) and a [<https://en.wikipedia.org/wiki/Shader>#Pixel_shaders fragment shader] (the "fragmentShader" field).
+-   the `passes` field declares an array of objects where each object is a rendering pass made mainly of a [https://en.wikipedia.org/wiki/Shader#Vertex_shaders vertex shader] (the "vertexShader" field) and a [https://en.wikipedia.org/wiki/Shader#Pixel_shaders fragment shader] (the "fragmentShader" field).
 
 You can learn more about the `*.effect` files format in the [Effect files format reference](../article/Effect_file_format_reference.md) article.
 
