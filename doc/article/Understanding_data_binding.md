@@ -9,7 +9,7 @@ To understand what could be the different issues in this process, we will start 
 Use case
 --------
 
-To understand how our CPU side code collaborates with the GPU side program, let's take a simple example. The following code belongs to the [Create your first custom effect](../tutorial/Create_your_first_custom_effect.md) tutorial:
+To understand how our CPU side code collaborates with the GPU side program, let's take a simple example. The following code belongs to the [Create your first custom effect](../tutorial/17-Creating_a_custom_effect.md) tutorial:
 
 asset/effect/MyCustomEffect.effect 
 ```javascript
@@ -61,10 +61,12 @@ src/main.cpp
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
@@ -279,7 +281,7 @@ There are 4 different kinds of bindings:
 
 **A binding is declared with at least a property name and a source.** The property name will be used to get the corresponding value from a `[data::Container`](data::Container`). The "source" will tell which container should be read. The source of a binding can be set to `<data::BindingSource>::TARGET` ("target"), `<data::BindingSource>::RENDERER` ("renderer") or `<data::BindingSource>::ROOT` ("root").
 
-Here is an example of how uniform bindings can be declared in an `*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](../tutorial/Effect_files_format_reference.md)):
+Here is an example of how uniform bindings can be declared in an `*.effect` file (to learn more about the effect files format, please read the [Effect files format reference](../article/Effect_file_format_reference.md):
 
 ```javascript
 "uniformBindings" : {
