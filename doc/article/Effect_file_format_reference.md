@@ -91,11 +91,7 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
 
 | Name | Type | Description | Example |
 |------|------|-------------|---------|
-| priority  | float   | The priority of the render pass: passes with higher priority are rendered first. |
-```javascript
-"priority" : 42.5
-```
-|
+| priority  | float   | The priority of the render pass: passes with higher priority are rendered first. | "priority" : 42.5|
 | blendMode | array[string, string] or string | The source and destination blend factors to use in the equation blending the pixels rendered by this pass and the pixels already drawn in the frame buffer. The first value of the array is the blending source factor and must be one of the following values: 
                                                                                                                                                                                                                                                                                                                 
                                                -   "zero"                                                                                                                                                                                                                                                       
@@ -123,13 +119,10 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                -   "default"                                                                                                                                                                                                                                                    
                                                -   "alpha"                                                                                                                                                                                                                                                      
                                                -   "additive"                                                                                                                                                                                                                                                   | 
-```javascript
 "blendMode" : ["one", "zero"]
-```
  
-```javascript
 "blendMode" : "default"
-```
+
 | depthTest | array[boolean, string]   | The depth mask and depth function to be used for this rendering pass. The first value is the depth mask and can be either true or false. The second value is the depth function and must be one of the following:                                               
                                                                                                                                                                                                                                                                                                                 
                                                -   "always"                                                                                                                                                                                                                                                     
@@ -140,9 +133,9 @@ Each pass can re-declare attribute, uniform and state bindings. The goal is to b
                                                -   "less_equal"                                                                                                                                                                                                                                                
                                                -   "never"                                                                                                                                                                                                                                                      
                                                -   "not_equal"                                                                                                                                                                                                                                                 | 
-```javascript
+
 "depthTest" : [true, "less"]
-```
+
                                                                 |
 
 Here is an example that will set the first pass rendering states:
