@@ -5,7 +5,7 @@ Step 1: Install the toolchain
 
 Windows doesn't come with a C++ compiler, we'll have to install it by ourselves. On Windows, Minko supports only Visual Studio 2013 at the moment. We recommend [Visual Studio 2013 Express for Windows](http://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx).
 
-Though Minko works fine without it, we also suggest upgrading to the new compiler, named [CTP November 2013](http://www.microsoft.com/en-us/download/details.aspx?id=41151), provided for free by Microsoft. This is documented in [Compiling the SDK with Visual Studio 2013](../tutorial/Compiling_the_SDK_with_Visual_Studio_2013#Step_3:_Updating_the_solution_for_Visual_Studio_2013.md).
+Though Minko works fine without it, we also suggest upgrading to the new compiler, named [CTP November 2013](http://www.microsoft.com/en-us/download/details.aspx?id=41151), provided for free by Microsoft. This is documented in [Compiling the SDK with Visual Studio 2013](../tutorial/Compiling_the_SDK_for_Windows.md).
 
 Step 2: Generate the solution
 -----------------------------
