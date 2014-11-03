@@ -37,7 +37,7 @@ sceneManager->assets()
 ```
 
 
-Most common 3D file formats are supported by the ASSIMPParser ([Supported file formats](../tutorial/Supported_file_formats_(Community_Edition).md)). To load file with specific Minko extension (lighter, faster and modular), you can read the corresponding tutorial: [Loading .scene files](../tutorial/07-Loading_.scene_files.md). Learn how to export this format from the editor : [Exporting .scene files](../tutorial/Exporting_.scene_files.md).
+Most common 3D file formats are supported by the ASSIMPParser ([Supported file formats](../article/Supported_file_formats_(Minko_Engine).md)). To load file with specific Minko extension (lighter, faster and modular), you can read the corresponding tutorial: [Loading .scene files](../tutorial/07-Loading_.scene_files.md). Learn how to export this format from the editor : [Exporting .scene files](../tutorial/Exporting_.scene_files.md).
 
 After that, you can add your files to the loading queue and the right parser will be chosen automatically.
 
@@ -78,10 +78,12 @@ Final Code
 #include "minko/MinkoSDL.hpp" 
 #include "minko/MinkoASSIMP.hpp" 
 #include "minko/MinkoJPEG.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::component; 
 using namespace minko::math;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 const std::string OBJ_MODEL_FILENAME = "model/pirate.obj"; 
