@@ -35,7 +35,7 @@ Transform Gizmos
 
 When a node is selected on the scene, you will notice there is a gizmo placed at its origin. You can use it to move your node in a more visual way than with the form. It also makes it easier to move a node that is included in transformed group.
 
-To switch between gizmos, use the three buttons on the left of bottom bar. See the [bottom bar](../tutorial/The_bottom_bar#Transform_gizmos.md) tutorial for more details.
+To switch between gizmos, use the three buttons on the left of bottom bar. See the [bottom bar](../tutorial/The_bottom_bar.md#transform-gizmos) tutorial for more details.
 
 ![](../../doc/image/Transform_gizmos.png "../../doc/image/Transform_gizmos.png")
 
