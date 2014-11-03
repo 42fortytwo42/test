@@ -1,5 +1,3 @@
-__NOTOC__
-
 Minko Engine
 ------------
 
@@ -10,7 +8,7 @@ Please make sure you also check the [developer reference](http://doc.v3.minko.io
 ### Getting started
 
 -   [Getting started with Minko 3](../tutorial/Getting_started_with_Minko_3.md)
--   [Installing the SDK](Installing the SDK)
+-   [Installing the SDK](../tutorial/Installing_the_SDK.md)
 -   [Create a new application](../tutorial/Create_a_new_application.md)
 -   [How to enable a plugin](../tutorial/How_to_enable_a_plugin.md)
 
