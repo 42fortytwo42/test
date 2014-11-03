@@ -100,15 +100,6 @@ phongMaterial->normalMap(assets->texture("texture/normalmap.png"));
 ![ link=](../../doc/image/TextureNormal2.jpg " link=")  | ![](../../doc/image/Normal2_1.PNG "../../doc/image/Normal2_1.PNG") | ![](../../doc/image/Normal2_2.PNG "../../doc/image/Normal2_2.PNG") | ![](../../doc/image/Normal2_3.PNG "../../doc/image/Normal2_3.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") | 
 ![ link=](../../doc/image/TextureNormal3.jpg " link=")  | ![](../../doc/image/Normal3_1.PNG "../../doc/image/Normal3_1.PNG") | ![](../../doc/image/Normal3_2.PNG "../../doc/image/Normal3_2.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") | 
 
-hhhhh
-
-| scope="col" widt"100px"| DiffuseMap / NormalMap                              | Right                                                              | Left                                                               | Front                                                              |
-|------------------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|
-| ![ link=](../../doc/image/TextureNormal1.jpg " link=")                       | ![](../../doc/image/Normal1_1.PNG "../../doc/image/Normal1_1.PNG") | ![](../../doc/image/Normal1_2.PNG "../../doc/image/Normal1_2.PNG") | ![](../../doc/image/Normal1_3.PNG "../../doc/image/Normal1_3.PNG") |
-| ![ link=](../../doc/image/TextureNormal2.jpg " link=")                       | ![](../../doc/image/Normal2_1.PNG "../../doc/image/Normal2_1.PNG") | ![](../../doc/image/Normal2_2.PNG "../../doc/image/Normal2_2.PNG") | ![](../../doc/image/Normal2_3.PNG "../../doc/image/Normal2_3.PNG") |
-| ![](../../doc/image/TextureNormal3.jpg "../../doc/image/TextureNormal3.jpg") | ![](../../doc/image/Normal3_1.PNG "../../doc/image/Normal3_1.PNG") | ![](../../doc/image/Normal3_2.PNG "../../doc/image/Normal3_2.PNG") | ![](../../doc/image/Normal3_3.PNG "../../doc/image/Normal3_3.PNG") |
-||
-
 If you need more information about normal mapping : [Working with normal maps](../tutorial/12-Working_with_normal_maps.md)
 
 ### Specular Map
