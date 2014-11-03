@@ -16,7 +16,4 @@ You can set your custom properties directly from the editor, and export them in 
 
 ![](../../doc/image/User_Data_-_Set_the_property_name_and_value.png "../../doc/image/User_Data_-_Set_the_property_name_and_value.png")
 
-This process is also detailed in the following video:
-
-{{#ev:youtube|kxx6ZthK3V8}}
-
+This process is also detailed in [this video.](http://youtu.be/6ZthK3V8)
