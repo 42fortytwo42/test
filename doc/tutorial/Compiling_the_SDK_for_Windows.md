@@ -7,12 +7,12 @@ This tutorial will guide through the few steps to compile the Minko SDK using Vi
 Step 1: Get the sources
 -----------------------
 
-Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](Installing the SDK (Git)).
+Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](../tutorial/Installing_the_SDK.md).
 
 Step 2: Install the dependencies
 --------------------------------
 
-If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](../tutorial/Targeting_Windows#Step_1:_Install_the_toolchain.md).
+If you've never build a Minko application or the Minko SDK for Windows before, follow the [step 1 of the Targeting Windows tutorial](../tutorial/Targeting_Windows.md#step-1-install-the-toolchain).
 
 Step 3: Generating the Visual Studio Solution
 ---------------------------------------------
@@ -24,10 +24,7 @@ To do this you can:
 -   Run the following script from the "%MINKO_HOME%\tools\win\scripts" directory
 
 ```bash
-
-
 premake_vs2013.bat
-
 ```
 
 
