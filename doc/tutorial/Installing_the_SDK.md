@@ -1,7 +1,7 @@
 Step 1: Downloading and extracting the SDK
 ------------------------------------------
 
-**During the beta the SDK is only installable from the sources and this step does not work. Please folow the [Getting started with Minko 3 beta 1](../tutorial/Getting_started_with_Minko_3_beta_1.md) tutorial.**
+**During the beta the SDK is only installable from the sources and this step does not work. Please folow the [Getting started with Minko 3 beta 1](../tutorial/Getting_started_with_Minko_3.md) tutorial.**
 
 <strike>The first step is to download the Minko SDK and extract it wherever you want on your local machine. The archive download is available here:
 
