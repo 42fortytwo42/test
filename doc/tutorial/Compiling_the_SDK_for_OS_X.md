@@ -3,12 +3,12 @@
 Step 1: Get the SDK sources
 ---------------------------
 
-Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](Installing the SDK (Git)).
+Make sure you have the source code of Minko on your filesystem. You can get them from our repository: [Installing the Minko SDK sources](../tutorial/Installing_the_SDK.md).
 
 Step 2: Installing the toolchain
 --------------------------------
 
-If you've never build a Minko application or the Minko SDK for OSX before, follow the [step 1 of the Targeting OSX tutorial](../tutorial/Targeting_OS_X#Step_1:_Installing_the_toolchain.md).
+If you've never build a Minko application or the Minko SDK for OSX before, follow the [step 1 of the Targeting OSX tutorial](../tutorial/Targeting_Windows.md#step-1-install-the-toolchain).
 
 Step 3: Generate the solution
 -----------------------------
