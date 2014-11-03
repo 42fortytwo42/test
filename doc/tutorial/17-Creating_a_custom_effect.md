@@ -43,7 +43,7 @@ As you can see, `*.effect` files are declared using the JSON format. Here are a 
 -   the `attributeBindings` field declares an object that will map our effect's shaders (vertex) attribute declarations to actual engine data properties
 -   the `passes` field declares an array of objects where each object is a rendering pass made mainly of a [<https://en.wikipedia.org/wiki/Shader>#Vertex_shaders vertex shader] (the "vertexShader" field) and a [<https://en.wikipedia.org/wiki/Shader>#Pixel_shaders fragment shader] (the "fragmentShader" field).
 
-You can learn more about the `*.effect` files format in the [Effect files format reference](../tutorial/Effect_files_format_reference.md) article.
+You can learn more about the `*.effect` files format in the [Effect files format reference](../article/Effect_file_format_reference.md) article.
 
 Step 2 : The vertex shader
 --------------------------
@@ -178,10 +178,12 @@ src/main.cpp
 ```cpp
 #include "minko/Minko.hpp" 
 #include "minko/MinkoSDL.hpp"
-using namespace minko; 
+
+using namespace minko; 
 using namespace minko::math; 
 using namespace minko::component;
-const uint WINDOW_WIDTH = 800; 
+
+const uint WINDOW_WIDTH = 800; 
 const uint WINDOW_HEIGHT = 600;
 
 int main(int argc, char** argv) {
