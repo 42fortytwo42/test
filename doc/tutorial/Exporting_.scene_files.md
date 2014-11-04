@@ -1,7 +1,7 @@
 Step 0: Get the latest version of Minko Studio
 ==============================================
 
-In order to publish `.scene` files, you will need at least a recent version of Minko Studio. You should be prompted for an update when you launch Minko, or you can get the latest version [here](http://minko.io/download/).
+In order to publish `.scene` files, you will need at least a recent version of Minko Studio. You should be prompted for an update when you launch Minko, or you can get the latest version [here](http://minko.io/product-category/minko-studio/).
 
 Step 1: Export a .scene file from Minko Studio
 ==============================================
