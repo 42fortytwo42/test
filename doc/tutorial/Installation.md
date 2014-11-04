@@ -8,7 +8,7 @@ In order to install Minko, you first have to get Adobe Air. If Air is already in
 Step 2: Install Minko
 =====================
 
-Once you have installed Adobe Air, get the lastest version of Minko [here](http://minko.io/download/). Launch the installer and once it has finished, you are ready to use Minko !
+Once you have installed Adobe Air, get the lastest version of Minko [here](http://minko.io/engine/#download). Launch the installer and once it has finished, you are ready to use Minko !
 
 Note for Avast users
 --------------------
