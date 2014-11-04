@@ -1,7 +1,7 @@
 Platforms Compatibility for Minko 3 BETA 1
 ==========================================
 
-The platforms compatibility matrix provides the current state of support for each platform officially targeted by the Minko Framework. you can consult the [plugins compatibility matrix](../tutorial/Plugins_compatibility_matrix.md) to find out more about the plugins support for each platform.
+The platforms compatibility matrix provides the current state of support for each platform officially targeted by the Minko Framework. you can consult the [plugins compatibility matrix](../article/Plugins_compatibility_matrix.md) to find out more about the plugins support for each platform.
 
 Platforms officially targeted
 -----------------------------
