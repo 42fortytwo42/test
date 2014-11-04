@@ -23,7 +23,7 @@ There are multiple approach to install Emscripten, all listed on the [SDK](https
 
 ### OS X
 
--   Run `tool/mac/script/install_emscripten.sh` (this will install the [SDK.](https://github.com/kripken/emscripten/wiki/Emscripten-SDK#wiki-downloads Emscripten SDK])
+-   Run `tool/mac/script/install_emscripten.sh` (this will install the [SDK).](https://github.com/kripken/emscripten/wiki/Emscripten-SDK#wiki-downloads Emscripten SDK])
 
 ### Linux
 
@@ -50,7 +50,7 @@ sudo apt-get update sudo apt-get install -y python-software-properties python g+
 ```
 
 
-Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on this [github account.](https://github.com/kripken/emscripten/wiki/LLVM-Backend#getting-fastcomp Getting Fastcomp page of the Emscripten wiki). 
+Then you need to **install the latest Emscripten compiler backend based on LLVM aka "fastcomp"**. Just follow the instructions available on this [github account](https://github.com/kripken/emscripten/wiki/LLVM-Backend#getting-fastcomp Getting Fastcomp page of the Emscripten wiki). 
 
 Note: Currently, Minko supports **Emscripten 1.25.0**.
 
