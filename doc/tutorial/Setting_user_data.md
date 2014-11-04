@@ -15,5 +15,3 @@ You can set your custom properties directly from the editor, and export them in 
 -   Set the property name and the property value
 
 ![](../../doc/image/User_Data_-_Set_the_property_name_and_value.png "../../doc/image/User_Data_-_Set_the_property_name_and_value.png")
-
-This process is also detailed in [this video.](http://youtu.be/6ZthK3V8)
